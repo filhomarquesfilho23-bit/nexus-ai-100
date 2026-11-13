@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS AI 100 • Catálogo Oficial de Inteligências Artificiais</title>
+  <style>
+    :root {
+      --bg: #060a12;
+      --card: #0d1526;
+      --border: #1e293b;
+      --cyan: #00e5ff;
+      --blue-btn: #16243d;
+      --amber: #f59e0b;
+      --green: #10b981;
+      --red: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: 92px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 14px 12px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-title h1 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .badge-100 {
+      background: rgba(0, 229, 255, 0.14);
+      border: 1px solid rgba(0, 229, 255, 0.45);
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .pix-bar {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.16), rgba(13, 21, 38, 0.98));
+      border: 1px solid rgba(245, 158, 11, 0.55);
+      border-radius: 12px;
+      padding: 11px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pix-bar.vip {
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0.18), rgba(13, 21, 38, 0.98));
+      border-color: var(--green);
+    }
+
+    .pix-bar strong {
+      font-size: 12px;
+      color: var(--amber);
+      display: block;
+    }
+
+    .pix-bar.vip strong {
+      color: var(--green);
+    }
+
+    .pix-bar span {
+      font-size: 11px;
+      color: var(--text);
+    }
+
+    .btn-vip {
+      background: var(--amber);
+      color: #050811;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .ad-banner {
+      background: #0a1120;
+      border: 1px dashed #2563eb;
+      border-radius: 10px;
+      padding: 9px 10px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .ad-banner small {
+      display: block;
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.8px;
+      margin-bottom: 3px;
+    }
+
+    .ad-banner a {
+      text-decoration: none;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+      display: block;
+    }
+
+    .ad-banner p {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .search-input,
+    .field-input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 13px;
+      border-radius: 10px;
+      font-size: 13px;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .search-input:focus,
+    .field-input:focus {
+      border-color: var(--cyan);
+    }
+
+    .tabs-row {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+
+    .tabs-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 7px 13px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .tab-pill.active {
+      background: var(--cyan);
+      color: #030712;
+      border-color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 158px;
+    }
+
+    .card.unlocked-card {
+      border-color: rgba(0, 229, 255, 0.35);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .num-id {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--cyan);
+    }
+
+    .cat-tag {
+      font-size: 9px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.38;
+      margin-bottom: 12px;
+    }
+
+    .card-footer {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .btn-open {
+      flex: 1;
+      background: var(--blue-btn);
+      border: 1px solid rgba(0, 229, 255, 0.28);
+      color: var(--cyan);
+      text-decoration: none;
+      text-align: center;
+      padding: 8px 6px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-lock {
+      flex: 1;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: var(--amber);
+      padding: 8px 6px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-star {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 32px;
+      height: 31px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .btn-star.saved {
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .box-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .box-panel h2 {
+      font-size: 16px;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+
+    .box-panel p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .btn-action {
+      width: 100%;
+      background: linear-gradient(90deg, #0284c7, #00e5ff);
+      color: #030712;
+      border: none;
+      padding: 11px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .scan-box {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .scan-ok {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid var(--green);
+      color: #a7f3d0;
+    }
+
+    .scan-mid {
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid var(--amber);
+      color: #fde68a;
+    }
+
+    .scan-bad {
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid var(--red);
+      color: #fecaca;
+    }
+
+    .footer-ad {
+      position: fixed;
+      bottom: 54px;
+      left: 0;
+      right: 0;
+      background: #0a1222;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 5px 8px;
+      font-size: 11px;
+      color: var(--cyan);
+      z-index: 20;
+    }
+
+    .nav-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 54px;
+      background: #080d19;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 30;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .nav-btn.active {
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 50;
+    }
+
+    .modal-card {
+      background: var(--card);
+      border: 1px solid var(--amber);
+      border-radius: 14px;
+      padding: 18px;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .close-x {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .modal-card h3 {
+      color: var(--amber);
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .modal-card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .step-box {
+      background: #070c16;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .step-box small {
+      display: block;
+      font-size: 11px;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+
+    .mp-link {
+      display: block;
+      background: #009ee3;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-title">
+        <span>🚀</span>
+        <h1>Catálogo Oficial — 100 Inteligências Artificiais</h1>
+      </div>
+      <span class="badge-100" id="badge-count">100 IAs</span>
+    </header>
+
+    <div class="pix-bar" id="pix-bar">
+      <div>
+        <strong>2 IAs de Teste Grátis liberadas!</strong>
+        <span>Desbloqueie todas as 100 IAs por <b>R$ 2,00 no Pix</b></span>
+      </div>
+      <button class="btn-vip" onclick="abrirModal()">DESBLOQUEAR</button>
+    </div>
+
+    <!-- Espaço para seu Banner Adsterra 320x50 -->
+    <div class="ad-banner" id="adsterra-top">
+      <small>PUBLICIDADE • DESTAQUE</small>
+      <a href="https://wa.me/5589994315977" target="_blank" rel="noopener">Crie seu Site ou App com Inteligência Artificial</a>
+      <p>Anuncie sua marca aqui ou peça seu projeto • Toque para falar no WhatsApp</p>
+    </div>
+
+    <!-- PÁGINA 1: CATÁLOGO 100 IAs -->
+    <main id="page-catalogo" class="page active">
+      <input type="text" id="busca" class="search-input" placeholder="🔍 Buscar ferramenta por nome ou função (ex: vídeo, voz, código, imagem)..." oninput="renderizar()">
+
+      <div class="tabs-row">
+        <button class="tab-pill active" onclick="mudarCategoria('Todas', this)">Todas (100)</button>
+        <button class="tab-pill" onclick="mudarCategoria('Texto & Chat', this)">Texto & Chat</button>
+        <button class="tab-pill" onclick="mudarCategoria('Imagem & Arte', this)">Imagem & Arte</button>
+        <button class="tab-pill" onclick="mudarCategoria('Vídeo & Áudio', this)">Vídeo & Áudio</button>
+        <button class="tab-pill" onclick="mudarCategoria('Código & Dev', this)">Código & Dev</button>
+        <button class="tab-pill" onclick="mudarCategoria('Segurança & Dados', this)">Segurança & Dados</button>
+        <button class="tab-pill" onclick="mudarCategoria('Favoritas', this)">★ Favoritas</button>
+      </div>
+
+      <div class="grid" id="grid-ias"></div>
+    </main>
+
+    <!-- PÁGINA 2: ANTIVÍRUS IA -->
+    <main id="page-antivirus" class="page">
+      <div class="box-panel">
+        <h2>🛡️ Antivírus IA • Detector de Links Falsos</h2>
+        <p id="av-info">Cole qualquer link suspeito de Pix, banco, promoção ou mensagem antes de clicar (2 análises grátis).</p>
+        <input type="url" id="link-suspeito" class="field-input" placeholder="Cole o link aqui (ex: http://resgate-pix-gratis.xyz)">
+        <button class="btn-action" onclick="verificarLink()">Verificar Link Agora</button>
+        <div id="av-resultado" class="scan-box hidden"></div>
+      </div>
+    </main>
+
+    <div class="footer-ad">
+      <span>🚀 Espaço Patrocinado: Divulgue seu link ou negócio no NEXUS AI 100!</span>
+    </div>
+
+    <nav class="nav-bottom">
+      <button class="nav-btn active" onclick="trocarPagina('catalogo', this)">
+        <span>🏠</span>
+        <span>Catálogo (100)</span>
+      </button>
+      <button class="nav-btn" onclick="trocarPagina('antivirus', this)">
+        <span>🛡️</span>
+        <span>Antivírus IA</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- MODAL PIX R$ 2,00 -->
+  <div class="modal-bg hidden" id="modal-vip">
+    <div class="modal-card">
+      <button class="close-x" onclick="fecharModal()">✕</button>
+      <h3>🔓 Desbloquear Todas as 100 IAs</h3>
+      <p>Libere acesso imediato a todas as 100 ferramentas e ao Antivírus IA ilimitado por apenas <b>R$ 2,00</b>.</p>
+
+      <div class="step-box">
+        <small>1. Faça o pagamento de R$ 2,00 no Mercado Pago / Pix:</small>
+        <a href="https://mpago.la/13o8xzR" target="_blank" rel="noopener" class="mp-link">Pagar R$ 2,00 no Mercado Pago</a>
+      </div>
+
+      <div class="step-box">
+        <small>2. Após pagar, digite a chave de liberação:</small>
+        <input type="text" id="input-chave" class="field-input" placeholder="Digite: NEXUS2026">
+        <button class="btn-action" onclick="ativarVip()">Liberar Acesso Agora</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const LISTA_100_IAS = [
+      { id: "001", n: "ChatGPT", c: "Texto & Chat", d: "Assistente conversacional avançado da OpenAI.", u: "https://chatgpt.com", free: true },
+      { id: "002", n: "Google Gemini", c: "Texto & Chat", d: "IA multimodal do Google para texto, código e análise.", u: "https://gemini.google.com", free: true },
+      { id: "003", n: "Claude 3.5 Sonnet", c: "Texto & Chat", d: "IA da Anthropic líder em escrita natural e lógica.", u: "https://claude.ai" },
+      { id: "004", n: "Microsoft Copilot", c: "Texto & Chat", d: "Assistente integrado com pesquisa na web em tempo real.", u: "https://copilot.microsoft.com" },
+      { id: "005", n: "Perplexity AI", c: "Texto & Chat", d: "Buscador com IA que cita fontes verificadas.", u: "https://www.perplexity.ai" },
+      { id: "006", n: "DeepSeek R1", c: "Texto & Chat", d: "Modelo de raciocínio profundo e matemática avançada.", u: "https://chat.deepseek.com" },
+      { id: "007", n: "Grok AI", c: "Texto & Chat", d: "IA conectada em tempo real às tendências.", u: "https://grok.com" },
+      { id: "008", n: "Poe", c: "Texto & Chat", d: "Acesso unificado a dezenas de modelos de IA.", u: "https://poe.com" },
+      { id: "009", n: "Meta AI", c: "Texto & Chat", d: "Assistente rápido baseado nos modelos Llama.", u: "https://www.meta.ai" },
+      { id: "010", n: "Pi AI", c: "Texto & Chat", d: "Assistente pessoal focado em conversa natural.", u: "https://pi.ai" },
+      { id: "011", n: "Character.ai", c: "Texto & Chat", d: "Converse com personagens personalizados.", u: "https://character.ai" },
+      { id: "012", n: "Mistral Le Chat", c: "Texto & Chat", d: "IA europeia ultrarrápida para tarefas diárias.", u: "https://chat.mistral.ai" },
+      { id: "013", n: "Copy.ai", c: "Texto & Chat", d: "Automação de textos comerciais e e-mails.", u: "https://www.copy.ai" },
+      { id: "014", n: "Writesonic", c: "Texto & Chat", d: "Redator de artigos otimizados para SEO.", u: "https://writesonic.com" },
+      { id: "015", n: "Jasper AI", c: "Texto & Chat", d: "Criação de campanhas e copywriting profissional.", u: "https://www.jasper.ai" },
+      { id: "016", n: "Rytr", c: "Texto & Chat", d: "Gerador rápido de textos curtos e anúncios.", u: "https://rytr.me" },
+      { id: "017", n: "QuillBot", c: "Texto & Chat", d: "Reescrita inteligente e correção gramatical.", u: "https://quillbot.com" },
+      { id: "018", n: "Grammarly AI", c: "Texto & Chat", d: "Revisão de clareza, tom e gramática.", u: "https://www.grammarly.com" },
+      { id: "019", n: "DeepL Write", c: "Texto & Chat", d: "Tradução neural e aprimoramento de texto.", u: "https://www.deepl.com" },
+      { id: "020", n: "Notion AI", c: "Texto & Chat", d: "Resumo de notas e organização de projetos.", u: "https://www.notion.so/product/ai" },
+      { id: "021", n: "Gamma App", c: "Texto & Chat", d: "Criação automática de slides e apresentações.", u: "https://gamma.app" },
+      { id: "022", n: "Tome AI", c: "Texto & Chat", d: "Apresentações visuais geradas por comando.", u: "https://tome.app" },
+      { id: "023", n: "You.com", c: "Texto & Chat", d: "Pesquisa inteligente com agentes de IA.", u: "https://you.com" },
+      { id: "024", n: "HuggingChat", c: "Texto & Chat", d: "Chat aberto com modelos open-source.", u: "https://huggingface.co/chat" },
+      { id: "025", n: "NotebookLM", c: "Texto & Chat", d: "Estudo de PDFs e geração de resumos falados.", u: "https://notebooklm.google.com" },
+
+      { id: "026", n: "Midjourney", c: "Imagem & Arte", d: "Geração fotorrealista e direção de arte.", u: "https://www.midjourney.com" },
+      { id: "027", n: "Leonardo AI", c: "Imagem & Arte", d: "Criação de artes e texturas ultra-detalhadas.", u: "https://leonardo.ai" },
+      { id: "028", n: "Ideogram", c: "Imagem & Arte", d: "Renderização com tipografia nítida e logos.", u: "https://ideogram.ai" },
+      { id: "029", n: "Flux.1 AI", c: "Imagem & Arte", d: "Alta fidelidade visual e iluminação realista.", u: "https://blackforestlabs.ai" },
+      { id: "030", n: "Adobe Firefly", c: "Imagem & Arte", d: "Preenchimento generativo e arte comercial.", u: "https://firefly.adobe.com" },
+      { id: "031", n: "DALL-E 3", c: "Imagem & Arte", d: "Criação precisa de cenas complexas por texto.", u: "https://openai.com/dall-e-3" },
+      { id: "032", n: "DreamStudio", c: "Imagem & Arte", d: "Estúdio oficial Stable Diffusion.", u: "https://dreamstudio.ai" },
+      { id: "033", n: "Playground AI", c: "Imagem & Arte", d: "Edição e criação visual com filtros IA.", u: "https://playground.com" },
+      { id: "034", n: "SeaArt AI", c: "Imagem & Arte", d: "Ilustrações, anime e modelos criativos.", u: "https://www.seaart.ai" },
+      { id: "035", n: "Tensor.art", c: "Imagem & Arte", d: "Geração online com LoRAs personalizados.", u: "https://tensor.art" },
+      { id: "036", n: "Civitai", c: "Imagem & Arte", d: "Comunidade e modelos de arte generativa.", u: "https://civitai.com" },
+      { id: "037", n: "Lexica Art", c: "Imagem & Arte", d: "Galeria de prompts e gerador rápido.", u: "https://lexica.art" },
+      { id: "038", n: "NightCafe", c: "Imagem & Arte", d: "Estúdio de arte neural com vários estilos.", u: "https://creator.nightcafe.studio" },
+      { id: "039", n: "Magnific AI", c: "Imagem & Arte", d: "Aumento extremo de detalhes em imagens.", u: "https://magnific.ai" },
+      { id: "040", n: "Krea AI", c: "Imagem & Arte", d: "Geração e melhoria visual em tempo real.", u: "https://www.krea.ai" },
+      { id: "041", n: "Freepik Pikaso", c: "Imagem & Arte", d: "Desenho ao vivo transformado em arte.", u: "https://www.freepik.com/pikaso" },
+      { id: "042", n: "Canva Magic Studio", c: "Imagem & Arte", d: "Design gráfico e edição mágica para posts.", u: "https://www.canva.com" },
+      { id: "043", n: "Photoroom", c: "Imagem & Arte", d: "Remoção de fundo e cenários de estúdio.", u: "https://www.photoroom.com" },
+      { id: "044", n: "Remove.bg", c: "Imagem & Arte", d: "Recorte automático de fundo em segundos.", u: "https://www.remove.bg" },
+      { id: "045", n: "Clipdrop", c: "Imagem & Arte", d: "Reiluminação, limpeza e expansão de fotos.", u: "https://clipdrop.co" },
+      { id: "046", n: "Cleanup.pictures", c: "Imagem & Arte", d: "Remove objetos indesejados das fotos.", u: "https://cleanup.pictures" },
+      { id: "047", n: "Upscayl", c: "Imagem & Arte", d: "Melhora a resolução sem perder nitidez.", u: "https://upscayl.org" },
+      { id: "048", n: "Recraft AI", c: "Imagem & Arte", d: "Criação de vetores SVG e ícones.", u: "https://www.recraft.ai" },
+      { id: "049", n: "Looka AI", c: "Imagem & Arte", d: "Gerador de logotipos e identidade visual.", u: "https://looka.com" },
+      { id: "050", n: "Artbreeder", c: "Imagem & Arte", d: "Mistura criativa de retratos e paisagens.", u: "https://www.artbreeder.com" },
+
+      { id: "051", n: "Kling AI", c: "Vídeo & Áudio", d: "Vídeos cinematográficos com física realista.", u: "https://klingai.com" },
+      { id: "052", n: "Runway Gen-3", c: "Vídeo & Áudio", d: "Efeitos visuais e geração de cenas de cinema.", u: "https://runwayml.com" },
+      { id: "053", n: "Sora (OpenAI)", c: "Vídeo & Áudio", d: "Geração de vídeos realistas a partir de texto.", u: "https://sora.com" },
+      { id: "054", n: "Luma Dream Machine", c: "Vídeo & Áudio", d: "Animação rápida de imagens e câmera.", u: "https://lumalabs.ai/dream-machine" },
+      { id: "055", n: "Hailuo AI (MiniMax)", c: "Vídeo & Áudio", d: "Vídeos dinâmicos de ação e movimento.", u: "https://hailuoai.video" },
+      { id: "056", n: "Pika Art", c: "Vídeo & Áudio", d: "Animação criativa com efeitos especiais.", u: "https://pika.art" },
+      { id: "057", n: "Haiper AI", c: "Vídeo & Áudio", d: "Clipes curtos para TikTok e Reels.", u: "https://haiper.ai" },
+      { id: "058", n: "Viggle AI", c: "Vídeo & Áudio", d: "Transferência de movimento para personagens.", u: "https://viggle.ai" },
+      { id: "059", n: "PixVerse", c: "Vídeo & Áudio", d: "Vídeos virais e transições estilizadas.", u: "https://app.pixverse.ai" },
+      { id: "060", n: "HeyGen", c: "Vídeo & Áudio", d: "Avatares falantes e dublagem labial.", u: "https://www.heygen.com" },
+      { id: "061", n: "Synthesia", c: "Vídeo & Áudio", d: "Vídeos com apresentadores virtuais.", u: "https://www.synthesia.io" },
+      { id: "062", n: "D-ID", c: "Vídeo & Áudio", d: "Animação facial de fotos com voz.", u: "https://www.d-id.com" },
+      { id: "063", n: "InVideo AI", c: "Vídeo & Áudio", d: "Roteiro, narração e montagem automática.", u: "https://invideo.io" },
+      { id: "064", n: "CapCut Web AI", c: "Vídeo & Áudio", d: "Edição na nuvem com legendas automáticas.", u: "https://www.capcut.com" },
+      { id: "065", n: "OpusClip", c: "Vídeo & Áudio", d: "Transforma vídeos longos em cortes virais.", u: "https://www.opus.pro" },
+      { id: "066", n: "Fliki AI", c: "Vídeo & Áudio", d: "Converte textos em vídeos narrados.", u: "https://fliki.ai" },
+      { id: "067", n: "Pictory AI", c: "Vídeo & Áudio", d: "Criação automática de vídeos de roteiros.", u: "https://pictory.ai" },
+      { id: "068", n: "Vidnoz AI", c: "Vídeo & Áudio", d: "Estúdio gratuito de avatares falantes.", u: "https://www.vidnoz.com" },
+      { id: "069", n: "Descript", c: "Vídeo & Áudio", d: "Edição de vídeo editando o texto transcrito.", u: "https://www.descript.com" },
+      { id: "070", n: "Suno AI", c: "Vídeo & Áudio", d: "Criação de músicas completas com vocal.", u: "https://suno.com" },
+      { id: "071", n: "Udio AI", c: "Vídeo & Áudio", d: "Produção musical em qualquer estilo.", u: "https://www.udio.com" },
+      { id: "072", n: "ElevenLabs", c: "Vídeo & Áudio", d: "Narração realista e clonagem de voz.", u: "https://elevenlabs.io" },
+      { id: "073", n: "Murf AI", c: "Vídeo & Áudio", d: "Locuções profissionais para anúncios.", u: "https://murf.ai" },
+      { id: "074", n: "Lalal.ai", c: "Vídeo & Áudio", d: "Separação limpa de voz e instrumental.", u: "https://www.lalal.ai" },
+      { id: "075", n: "Adobe Podcast", c: "Vídeo & Áudio", d: "Limpeza de ruído para áudio de estúdio.", u: "https://podcast.adobe.com" },
+
+      { id: "076", n: "Cursor Editor", c: "Código & Dev", d: "Editor de código com IA integrada.", u: "https://www.cursor.com" },
+      { id: "077", n: "GitHub Copilot", c: "Código & Dev", d: "Autocompletar inteligente de código.", u: "https://github.com/features/copilot" },
+      { id: "078", n: "v0 by Vercel", c: "Código & Dev", d: "Gera interfaces web completas via prompt.", u: "https://v0.dev" },
+      { id: "079", n: "Bolt.new", c: "Código & Dev", d: "Criação e publicação de apps no navegador.", u: "https://bolt.new" },
+      { id: "080", n: "Lovable.dev", c: "Código & Dev", d: "Desenvolvimento ágil de sistemas web.", u: "https://lovable.dev" },
+      { id: "081", n: "Replit Agent", c: "Código & Dev", d: "Agente que programa e hospeda projetos.", u: "https://replit.com" },
+      { id: "082", n: "Windsurf AI", c: "Código & Dev", d: "IDE inteligente com fluxo contínuo.", u: "https://codeium.com/windsurf" },
+      { id: "083", n: "Phind", c: "Código & Dev", d: "Buscador técnico para desenvolvedores.", u: "https://www.phind.com" },
+      { id: "084", n: "Blackbox AI", c: "Código & Dev", d: "Geração rápida de funções e scripts.", u: "https://www.blackbox.ai" },
+      { id: "085", n: "Tabnine", c: "Código & Dev", d: "Assistente de programação privado.", u: "https://www.tabnine.com" },
+      { id: "086", n: "Amazon Q Developer", c: "Código & Dev", d: "Assistente para nuvem AWS e backend.", u: "https://aws.amazon.com/q/developer" },
+      { id: "087", n: "Ollama", c: "Código & Dev", d: "Execução local de modelos de IA.", u: "https://ollama.com" },
+      { id: "088", n: "LM Studio", c: "Código & Dev", d: "Interface para rodar LLMs offline.", u: "https://lmstudio.ai" },
+      { id: "089", n: "Groq Cloud", c: "Código & Dev", d: "API ultrarrápida para modelos abertos.", u: "https://groq.com" },
+      { id: "090", n: "Hugging Face", c: "Código & Dev", d: "Repositório global de modelos e datasets.", u: "https://huggingface.co" },
+      { id: "091", n: "Google Colab AI", c: "Código & Dev", d: "Notebooks Python na nuvem com IA.", u: "https://colab.research.google.com" },
+      { id: "092", n: "CodePen AI", c: "Código & Dev", d: "Prototipagem rápida em HTML, CSS e JS.", u: "https://codepen.io" },
+
+      { id: "093", n: "VirusTotal Scanner", c: "Segurança & Dados", d: "Análise de links e arquivos contra vírus.", u: "https://www.virustotal.com" },
+      { id: "094", n: "URLScan Security", c: "Segurança & Dados", d: "Inspeção segura de redirecionamentos.", u: "https://urlscan.io" },
+      { id: "095", n: "Have I Been Pwned", c: "Segurança & Dados", d: "Verifica se seu e-mail vazou na internet.", u: "https://haveibeenpwned.com" },
+      { id: "096", n: "Consensus AI", c: "Segurança & Dados", d: "Busca em artigos científicos verificados.", u: "https://consensus.app" },
+      { id: "097", n: "Elicit Research", c: "Segurança & Dados", d: "Extração inteligente de dados acadêmicos.", u: "https://elicit.com" },
+      { id: "098", n: "SciSpace", c: "Segurança & Dados", d: "Explicação simplificada de PDFs técnicos.", u: "https://typeset.io" },
+      { id: "099", n: "Humata AI", c: "Segurança & Dados", d: "Consulta rápida em documentos extensos.", u: "https://www.humata.ai" },
+      { id: "100", n: "Speechify", c: "Segurança & Dados", d: "Leitura em voz alta de documentos e textos.", u: "https://speechify.com" }
+    ];
+
+    let catSelecionada = "Todas";
+    let vipAtivo = localStorage.getItem("nexus_vip_ok") === "true";
+    let favs = JSON.parse(localStorage.getItem("nexus_favoritas") || "[]");
+    let usosAv = parseInt(localStorage.getItem("nexus_av_usos") || "0", 10);
+
+    function atualizarTopo() {
+      const bar = document.getElementById("pix-bar");
+      const avInfo = document.getElementById("av-info");
+      if (vipAtivo) {
+        bar.classList.add("vip");
+        bar.innerHTML = `
+          <div>
+            <strong>✅ Acesso VIP Ativo!</strong>
+            <span>Todas as 100 Inteligências Artificiais estão desbloqueadas.</span>
+          </div>
+        `;
+        avInfo.textContent = "Modo VIP ativo: análises ilimitadas de links suspeitos.";
+      } else {
+        const restam = Math.max(0, 2 - usosAv);
+        avInfo.textContent = `Cole qualquer link suspeito antes de clicar (${restam} de 2 análises grátis restantes).`;
+      }
+    }
+
+    function renderizar() {
+      const grid = document.getElementById("grid-ias");
+      const termo = document.getElementById("busca").value.toLowerCase().trim();
+      grid.innerHTML = "";
+
+      const filtradas = LISTA_100_IAS.filter(ia => {
+        const matchTexto =
+          ia.n.toLowerCase().includes(termo) ||
+          ia.d.toLowerCase().includes(termo) ||
+          ia.c.toLowerCase().includes(termo) ||
+          ia.id.includes(termo);
+        if (!matchTexto) return false;
+        if (catSelecionada === "Todas") return true;
+        if (catSelecionada === "Favoritas") return favs.includes(ia.id);
+        return ia.c === catSelecionada;
+      });
+
+      document.getElementById("badge-count").textContent = `${filtradas.length} IAs`;
+
+      filtradas.forEach(ia => {
+        const liberada = ia.free || vipAtivo;
+        const salva = favs.includes(ia.id);
+        const card = document.createElement("div");
+        card.className = `card ${liberada ? "unlocked-card" : ""}`;
+
+        card.innerHTML = `
+          <div>
+            <div class="card-meta">
+              <span class="num-id">#${ia.id}</span>
+              <span class="cat-tag">${ia.c}</span>
+            </div>
+            <h3>${ia.n}</h3>
+            <p>${ia.d}</p>
+          </div>
+          <div class="card-footer">
+            ${
+              liberada
+                ? `<a href="${ia.u}" target="_blank" rel="noopener" class="btn-open">Abrir IA ↗</a>`
+                : `<button class="btn-lock" onclick="abrirModal()">🔒 Liberar (R$ 2)</button>`
+            }
+            <button class="btn-star ${salva ? "saved" : ""}" onclick="toggleFav('${ia.id}')">${salva ? "★" : "☆"}</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function mudarCategoria(cat, el) {
+      catSelecionada = cat;
+      document.querySelectorAll(".tab-pill").forEach(b => b.classList.remove("active"));
+      el.classList.add("active");
+      renderizar();
+    }
+
+    function toggleFav(id) {
+      if (favs.includes(id)) {
+        favs = favs.filter(x => x !== id);
+      } else {
+        favs.push(id);
+      }
+      localStorage.setItem("nexus_favoritas", JSON.stringify(favs));
+      renderizar();
+    }
+
+    function trocarPagina(nome, el) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById(`page-${nome}`).classList.add("active");
+      el.classList.add("active");
+    }
+
+    function abrirModal() {
+      document.getElementById("modal-vip").classList.remove("hidden");
+    }
+
+    function fecharModal() {
+      document.getElementById("modal-vip").classList.add("hidden");
+    }
+
+    function ativarVip() {
+      const chave = document.getElementById("input-chave").value.trim().toUpperCase();
+      if (chave === "NEXUS2026" || chave === "NEXUS100" || chave === "VIP100") {
+        vipAtivo = true;
+        localStorage.setItem("nexus_vip_ok", "true");
+        fecharModal();
+        atualizarTopo();
+        renderizar();
+        alert("Acesso VIP ativado! Todas as 100 IAs estão liberadas.");
+      } else {
+        alert("Chave inválida. Após pagar R$ 2,00, digite NEXUS2026.");
+      }
+    }
+
+    function verificarLink() {
+      if (!vipAtivo && usosAv >= 2) {
+        abrirModal();
+        return;
+      }
+
+      const url = document.getElementById("link-suspeito").value.trim();
+      const res = document.getElementById("av-resultado");
+      if (!url) {
+        alert("Cole um link primeiro.");
+        return;
+      }
+
+      if (!vipAtivo) {
+        usosAv += 1;
+        localStorage.setItem("nexus_av_usos", String(usosAv));
+        atualizarTopo();
+      }
+
+      let risco = 0;
+      const motivos = [];
+      const low = url.toLowerCase();
+
+      if (!low.startsWith("https://")) {
+        risco += 30;
+        motivos.push("Site sem cadeado de segurança HTTPS.");
+      }
+      if (/(\d{1,3}\.){3}\d{1,3}/.test(low)) {
+        risco += 45;
+        motivos.push("Usa endereço IP direto em vez de domínio oficial.");
+      }
+      if (/(bit\.ly|tinyurl|cutt\.ly|t\.co|is\.gd)/.test(low)) {
+        risco += 25;
+        motivos.push("Link encurtado ocultando o endereço real.");
+      }
+      if (/(pix|resgate|premio|gratis|nubank|caixa|gov-br|atualize|ganhe)/.test(low)) {
+        risco += 35;
+        motivos.push("Palavras comuns em golpes de phishing financeiro.");
+      }
+      if (/(\.xyz|\.top|\.tk|\.ml|\.ga|\.cf|\.click)/.test(low)) {
+        risco += 30;
+        motivos.push("Extensão de domínio frequentemente usada em páginas falsas.");
+      }
+
+      res.classList.remove("hidden", "scan-ok", "scan-mid", "scan-bad");
+      if (risco >= 50) {
+        res.classList.add("scan-bad");
+        res.innerHTML = `<strong>🚨 ALTO RISCO (${Math.min(risco, 99)}% de perigo)</strong><br>${motivos.join("<br>")}<br><b>Não clique nem digite senhas ou dados bancários.</b>`;
+      } else if (risco >= 25) {
+        res.classList.add("scan-mid");
+        res.innerHTML = `<strong>⚠️ LINK SUSPEITO (${risco}% de risco)</strong><br>${motivos.join("<br>")}<br><b>Confirme a origem antes de abrir.</b>`;
+      } else {
+        res.classList.add("scan-ok");
+        res.innerHTML = `<strong>✅ APARENTEMENTE SEGURO</strong><br>HTTPS ativo e nenhum padrão de golpe identificado.`;
+      }
+    }
+
+    atualizarTopo();
+    renderizar();
+  </script>
+</body>
+</html>
