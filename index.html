@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXUS AI 100 - Catálogo Oficial de Inteligências Artificiais</title>
+  <title>NEXUS AI 100 - Catálogo Oficial de Inteligências Artificiais Grátis</title>
   <style>
     :root {
       --bg: #060a12;
@@ -54,6 +54,7 @@
       font-size: 17px;
       font-weight: 800;
       letter-spacing: 0.4px;
+      color: var(--cyan);
     }
 
     .badge-100 {
@@ -67,77 +68,142 @@
       white-space: nowrap;
     }
 
-    .service-banner {
+    /* Espaço do Banner 320x50 */
+    .ad-banner-box {
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      background: linear-gradient(90deg, rgba(0, 229, 255, 0.12), rgba(13, 21, 38, 0.95));
+      min-height: 54px;
+      margin: 8px 0 12px;
+      background: rgba(13, 21, 38, 0.6);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* Botão Smartlink Adsterra */
+    .smartlink-btn {
+      display: block;
+      background: linear-gradient(90deg, #00e5ff, #00b8d4);
+      color: #060a12;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+      padding: 13px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin: 12px 0;
+      box-shadow: 0 4px 14px rgba(0, 229, 255, 0.25);
+    }
+
+    .smartlink-btn.gold {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+    }
+
+    /* AI Antivírus Card (100% Grátis) */
+    .av-card {
+      background: var(--card);
       border: 1px solid rgba(0, 229, 255, 0.35);
       border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 10px;
-      text-decoration: none;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .av-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .av-title {
+      font-size: 15px;
+      font-weight: 800;
       color: var(--text);
     }
 
-    .service-banner small {
-      display: block;
-      color: var(--cyan);
+    .av-status {
       font-size: 11px;
       font-weight: 700;
-    }
-
-    .service-banner span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .wa-pill {
-      background: var(--green);
-      color: #04130d;
-      font-weight: 800;
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      white-space: nowrap;
-    }
-
-    .bonus-bar {
-      background: linear-gradient(90deg, rgba(245, 158, 11, 0.16), rgba(13, 21, 38, 0.96));
-      border: 1px solid rgba(245, 158, 11, 0.5);
+      padding: 3px 8px;
       border-radius: 12px;
-      padding: 11px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--green);
     }
 
-    .bonus-info strong {
-      display: block;
-      font-size: 13px;
-      color: #fbbf24;
-    }
-
-    .bonus-info span {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .bonus-btn {
-      background: var(--amber);
-      color: #090d16;
-      text-decoration: none;
-      font-weight: 800;
+    .av-desc {
       font-size: 12px;
-      padding: 9px 13px;
-      border-radius: 9px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .av-form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .av-input {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .av-input:focus {
+      border-color: var(--cyan);
+    }
+
+    .av-btn {
+      background: var(--cyan);
+      color: #060a12;
+      border: none;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 0 14px;
+      border-radius: 8px;
+      cursor: pointer;
       white-space: nowrap;
     }
 
+    .av-result {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+      display: none;
+    }
+
+    .res-safe {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--green);
+      color: #a7f3d0;
+    }
+
+    .res-warn {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--amber);
+      color: #fde68a;
+    }
+
+    .res-danger {
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid var(--red);
+      color: #fecaca;
+    }
+
+    /* Busca e Filtros */
     .search-box {
+      margin-bottom: 10px;
+    }
+
+    .search-input {
       width: 100%;
       background: var(--card);
       border: 1px solid var(--border);
@@ -145,474 +211,436 @@
       padding: 11px 14px;
       border-radius: 10px;
       font-size: 14px;
-      margin-bottom: 10px;
       outline: none;
     }
 
-    .search-box:focus {
+    .search-input:focus {
       border-color: var(--cyan);
     }
 
-    .cats {
+    .filters {
       display: flex;
-      gap: 7px;
+      gap: 6px;
       overflow-x: auto;
       padding-bottom: 8px;
       margin-bottom: 10px;
       scrollbar-width: none;
     }
 
-    .cats::-webkit-scrollbar {
+    .filters::-webkit-scrollbar {
       display: none;
     }
 
-    .cat-btn {
+    .filter-pill {
       background: var(--card);
       border: 1px solid var(--border);
       color: var(--muted);
-      padding: 6px 12px;
-      border-radius: 20px;
       font-size: 12px;
       font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
       white-space: nowrap;
       cursor: pointer;
     }
 
-    .cat-btn.active {
-      background: rgba(0, 229, 255, 0.14);
+    .filter-pill.active {
+      background: rgba(0, 229, 255, 0.16);
       border-color: var(--cyan);
       color: var(--cyan);
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    @media (max-width: 420px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
+    /* Lista de IAs */
+    .tools-grid {
       display: flex;
       flex-direction: column;
+      gap: 9px;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 10px;
     }
 
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 6px;
+    .tool-info {
+      flex: 1;
     }
 
-    .card-title {
+    .tool-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .tool-name {
       font-size: 14px;
       font-weight: 700;
       color: var(--text);
     }
 
-    .card-cat {
+    .tool-cat {
       font-size: 10px;
-      color: var(--cyan);
-      background: rgba(0, 229, 255, 0.1);
+      background: rgba(148, 163, 184, 0.14);
+      color: var(--muted);
       padding: 2px 7px;
       border-radius: 6px;
-      white-space: nowrap;
     }
 
-    .card-desc {
+    .tool-desc {
       font-size: 12px;
       color: var(--muted);
-      line-height: 1.4;
+      line-height: 1.35;
+    }
+
+    .tool-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fav-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .fav-btn.saved {
+      border-color: var(--amber);
+      color: var(--amber);
     }
 
     .open-btn {
-      display: block;
-      text-align: center;
       background: var(--blue-btn);
       border: 1px solid rgba(0, 229, 255, 0.35);
       color: var(--cyan);
-      text-decoration: none;
       font-size: 12px;
       font-weight: 700;
-      padding: 8px;
+      padding: 8px 12px;
       border-radius: 8px;
-    }
-
-    .av-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-    }
-
-    .av-box h2 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: var(--cyan);
-    }
-
-    .av-box p {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-
-    .av-btn {
-      width: 100%;
-      background: var(--cyan);
-      color: #050a14;
-      border: none;
-      font-weight: 800;
-      font-size: 14px;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .av-result {
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 10px;
-      display: none;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .av-safe {
-      background: rgba(16, 185, 129, 0.14);
-      border: 1px solid var(--green);
-      color: #a7f3d0;
-    }
-
-    .av-warn {
-      background: rgba(245, 158, 11, 0.14);
-      border: 1px solid var(--amber);
-      color: #fde68a;
-    }
-
-    .av-danger {
-      background: rgba(239, 68, 68, 0.16);
-      border: 1px solid var(--red);
-      color: #fecaca;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #09101f;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 8px;
-      z-index: 99;
-    }
-
-    .nav-btn {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .nav-btn.active {
-      color: var(--cyan);
-      background: rgba(0, 229, 255, 0.12);
-    }
-
-    .hidden {
-      display: none;
+      text-decoration: none;
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
+    <header class="header">
       <div class="header-title">
-        <h1>🤖 NEXUS AI 100</h1>
+        <h1>⚡ NEXUS AI 100</h1>
       </div>
-      <span class="badge-100">100 IAs LIBERADAS</span>
+      <span class="badge-100" id="counterBadge">100 IAs Liberadas</span>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- 1. BANNER 320x50 ADSTERRA: COLE O SCRIPT DO SEU BANNER LOGO ABAIXO   -->
+    <!-- =================================================================== -->
+    <div class="ad-banner-box">
+      <!-- COLE AQUI O CÓDIGO SCRIPT DO BANNER 320x50 DA ADSTERRA -->
     </div>
 
-    <a class="service-banner" href="https://wa.me/5589994315977?text=Ol%C3%A1%2C%20vim%20pelo%20NEXUS%20AI%20100%20e%20quero%20criar%20meu%20site%20ou%20app!" target="_blank" rel="noopener noreferrer">
-      <div>
-        <small>Crie seu Site ou App com Inteligência Artificial</small>
-        <span>Desenvolvimento rápido direto pelo celular</span>
-      </div>
-      <div class="wa-pill">WhatsApp</div>
+    <!-- =================================================================== -->
+    <!-- 2. SMARTLINK (ID 32258008) - BOTÃO 1 (TOPO)                         -->
+    <!-- =================================================================== -->
+    <a href="COLE_AQUI_O_LINK_DO_SMARTLINK_32258008" target="_blank" rel="noopener noreferrer" class="smartlink-btn">
+      🎁 ACESSAR FERRAMENTAS SECRETAS GRÁTIS
     </a>
 
-    <div class="bonus-bar">
-      <div class="bonus-info">
-        <strong>🎁 Ferramenta Bônus & Parceiros</strong>
-        <span>Acesse recursos e ofertas recomendadas</span>
+    <!-- MÓDULO AI ANTIVÍRUS 100% GRATUITO E ILIMITADO -->
+    <section class="av-card">
+      <div class="av-top">
+        <span class="av-title">🛡️ AI Antivírus — Detector de Links Falsos</span>
+        <span class="av-status">✅ 100% Grátis</span>
       </div>
-      <a class="bonus-btn" href="https://asiafilm.org/4/e4ca6435bc078464b818eb49776543b4" target="_blank" rel="noopener noreferrer">ACESSAR AGORA</a>
-    </div>
-
-    <!-- ABA CATÁLOGO (100 IAs) -->
-    <div id="tab-catalog">
-      <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar entre as 100 IAs (ex: vídeo, voz, texto)..." oninput="renderTools()">
-      <div class="cats" id="catBar"></div>
-      <div class="grid" id="toolsGrid"></div>
-    </div>
-
-    <!-- ABA ANTIVÍRUS IA -->
-    <div id="tab-antivirus" class="hidden">
-      <div class="av-box">
-        <h2>🛡️ Antivírus IA — Detector de Links</h2>
-        <p>Recebeu um link suspeito no WhatsApp, SMS ou e-mail? Cole abaixo para verificar agora se há sinais de golpe ou site falso (uso 100% gratuito e ilimitado).</p>
-        <input type="text" id="urlInput" class="search-box" placeholder="Cole o link aqui (ex: http://premio-pix.xyz)">
-        <button class="av-btn" onclick="scanLink()">ANALISAR LINK AGORA</button>
-        <div id="avResult" class="av-result"></div>
+      <p class="av-desc">Cole qualquer link suspeito do WhatsApp, Pix ou promoção antes de clicar para detectar golpes e phishing gratuitamente.</p>
+      <div class="av-form">
+        <input type="text" id="urlInput" class="av-input" placeholder="Ex: https://site-suspeito.com/pix">
+        <button onclick="verificarLink()" class="av-btn">Analisar</button>
       </div>
-    </div>
-  </div>
+      <div id="avResult" class="av-result"></div>
+    </section>
 
-  <div class="bottom-nav">
-    <button class="nav-btn active" id="navCat" onclick="switchTab('catalog')">🤖 Catálogo (100)</button>
-    <button class="nav-btn" id="navAv" onclick="switchTab('antivirus')">🛡️ Antivírus IA</button>
+    <!-- =================================================================== -->
+    <!-- 2. SMARTLINK (ID 32258008) - BOTÃO 2 (MEIO)                         -->
+    <!-- =================================================================== -->
+    <a href="COLE_AQUI_O_LINK_DO_SMARTLINK_32258008" target="_blank" rel="noopener noreferrer" class="smartlink-btn gold">
+      ⚡ GERADOR DE IMAGENS & VÍDEOS IA ILIMITADO
+    </a>
+
+    <!-- BUSCA E FILTROS DO CATÁLOGO -->
+    <div class="search-box">
+      <input type="text" id="searchInput" class="search-input" placeholder="🔎 Buscar entre as 100 IAs (ex: vídeo, voz, imagem, texto)..." oninput="renderTools()">
+    </div>
+
+    <div class="filters" id="filterBar">
+      <button class="filter-pill active" onclick="setCategory('Todas', this)">Todas (100)</button>
+      <button class="filter-pill" onclick="setCategory('Favoritos', this)">⭐ Favoritos</button>
+      <button class="filter-pill" onclick="setCategory('Texto & Chat', this)">Texto & Chat</button>
+      <button class="filter-pill" onclick="setCategory('Imagem & Design', this)">Imagem & Design</button>
+      <button class="filter-pill" onclick="setCategory('Vídeo & Animação', this)">Vídeo & Animação</button>
+      <button class="filter-pill" onclick="setCategory('Áudio & Voz', this)">Áudio & Voz</button>
+      <button class="filter-pill" onclick="setCategory('Código & Sites', this)">Código & Sites</button>
+      <button class="filter-pill" onclick="setCategory('Produtividade', this)">Produtividade</button>
+    </div>
+
+    <!-- LISTA DAS 100 INTELIGÊNCIAS ARTIFICIAIS (TODAS ABERTAS) -->
+    <div class="tools-grid" id="toolsGrid"></div>
+
+    <!-- =================================================================== -->
+    <!-- 2. SMARTLINK (ID 32258008) - BOTÃO 3 (FINAL)                        -->
+    <!-- =================================================================== -->
+    <a href="COLE_AQUI_O_LINK_DO_SMARTLINK_32258008" target="_blank" rel="noopener noreferrer" class="smartlink-btn" style="margin-top: 18px;">
+      🚀 DESBLOQUEAR MAIS 50 IAs BÔNUS GRÁTIS
+    </a>
   </div>
 
   <script>
-    const tools = [
-      // TEXTO & CHAT (20)
-      { name: "ChatGPT", cat: "Texto", desc: "Assistente completo para textos, ideias, estudos e códigos.", url: "https://chatgpt.com" },
-      { name: "Google Gemini", cat: "Texto", desc: "IA oficial do Google integrada para pesquisa, criação e análise.", url: "https://gemini.google.com" },
-      { name: "Claude", cat: "Texto", desc: "Excelente para redação natural, resumos longos e programação.", url: "https://claude.ai" },
-      { name: "DeepSeek", cat: "Texto", desc: "Modelo avançado de raciocínio lógico e programação gratuita.", url: "https://chat.deepseek.com" },
-      { name: "Microsoft Copilot", cat: "Texto", desc: "IA da Microsoft com acesso à web e criação de imagens.", url: "https://copilot.microsoft.com" },
-      { name: "Perplexity AI", cat: "Texto", desc: "Buscador inteligente que responde com fontes atualizadas.", url: "https://www.perplexity.ai" },
-      { name: "Grok", cat: "Texto", desc: "Assistente de IA conectado em tempo real às tendências.", url: "https://grok.com" },
-      { name: "Meta AI", cat: "Texto", desc: "Assistente gratuito da Meta para conversas e imagens rápidas.", url: "https://www.meta.ai" },
-      { name: "Mistral Le Chat", cat: "Texto", desc: "IA europeia rápida e eficiente para textos e documentos.", url: "https://chat.mistral.ai" },
-      { name: "Poe AI", cat: "Texto", desc: "Plataforma que reúne vários modelos de chat em um só lugar.", url: "https://poe.com" },
-      { name: "Character.AI", cat: "Texto", desc: "Converse com personagens, tutores e assistentes personalizados.", url: "https://character.ai" },
-      { name: "Jasper AI", cat: "Texto", desc: "Criação de textos persuasivos para marketing e anúncios.", url: "https://www.jasper.ai" },
-      { name: "Copy.ai", cat: "Texto", desc: "Gerador de legendas, e-mails e textos de vendas.", url: "https://www.copy.ai" },
-      { name: "Writesonic", cat: "Texto", desc: "Artigos otimizados para blogs e redes sociais.", url: "https://writesonic.com" },
-      { name: "Rytr", cat: "Texto", desc: "Assistente rápido para escrever posts, anúncios e bios.", url: "https://rytr.me" },
-      { name: "QuillBot", cat: "Texto", desc: "Reescrita inteligente, correção gramatical e resumos.", url: "https://quillbot.com" },
-      { name: "You.com", cat: "Texto", desc: "Motor de busca com chat de IA e modos de pesquisa.", url: "https://you.com" },
-      { name: "Pi AI", cat: "Texto", desc: "Assistente pessoal amigável para conversas e ideias.", url: "https://pi.ai" },
-      { name: "HuggingChat", cat: "Texto", desc: "Chat aberto com modelos gratuitos da comunidade AI.", url: "https://huggingface.co/chat" },
-      { name: "Phind", cat: "Texto", desc: "Buscador técnico focado em respostas rápidas e objetivas.", url: "https://www.phind.com" },
+    // ==========================================
+    // AI ANTIVÍRUS 100% GRATUITO E ILIMITADO
+    // ==========================================
+    function verificarLink() {
+      const input = document.getElementById('urlInput').value.trim();
+      const resBox = document.getElementById('avResult');
 
-      // VÍDEO (20)
-      { name: "CapCut IA", cat: "Vídeo", desc: "Editor completo com legendas, cortes e efeitos por IA.", url: "https://www.capcut.com" },
-      { name: "InVideo AI", cat: "Vídeo", desc: "Cria vídeos narrados prontos a partir de um comando.", url: "https://invideo.io" },
-      { name: "Kling AI", cat: "Vídeo", desc: "Geração de vídeos realistas em alta definição por texto.", url: "https://klingai.com" },
-      { name: "Runway", cat: "Vídeo", desc: "Estúdio criativo para gerar e editar cenas cinematográficas.", url: "https://runwayml.com" },
-      { name: "Luma Dream Machine", cat: "Vídeo", desc: "Transforma fotos e textos em vídeos fluidos.", url: "https://lumalabs.ai/dream-machine" },
-      { name: "Pika Art", cat: "Vídeo", desc: "Animações criativas e efeitos especiais em vídeos curtos.", url: "https://pika.art" },
-      { name: "Hailuo AI", cat: "Vídeo", desc: "Gerador de vídeos dinâmicos com movimentos realistas.", url: "https://hailuoai.video" },
-      { name: "HeyGen", cat: "Vídeo", desc: "Avatares falantes realistas com sincronização labial.", url: "https://www.heygen.com" },
-      { name: "Synthesia", cat: "Vídeo", desc: "Apresentadores virtuais para vídeos explicativos.", url: "https://www.synthesia.io" },
-      { name: "D-ID", cat: "Vídeo", desc: "Faz fotos falarem com voz e expressão natural.", url: "https://www.d-id.com" },
-      { name: "Vidnoz AI", cat: "Vídeo", desc: "Criação gratuita de vídeos com avatares e modelos prontos.", url: "https://www.vidnoz.com" },
-      { name: "Fliki", cat: "Vídeo", desc: "Transforma textos e roteiros em vídeos com narração.", url: "https://fliki.ai" },
-      { name: "Pictory", cat: "Vídeo", desc: "Converte artigos e roteiros em vídeos para redes sociais.", url: "https://pictory.ai" },
-      { name: "Viggle AI", cat: "Vídeo", desc: "Transfere movimentos para personagens em vídeo.", url: "https://viggle.ai" },
-      { name: "OpusClip", cat: "Vídeo", desc: "Corta vídeos longos em Shorts e TikToks virais.", url: "https://www.opus.pro" },
-      { name: "Kapwing AI", cat: "Vídeo", desc: "Editor online com legendas automáticas e redimensionamento.", url: "https://www.kapwing.com" },
-      { name: "Descript", cat: "Vídeo", desc: "Edite vídeos apagando palavras diretamente no texto.", url: "https://www.descript.com" },
-      { name: "VEED.IO", cat: "Vídeo", desc: "Edição rápida com legendas, dublagem e filtros IA.", url: "https://www.veed.io" },
-      { name: "PixVerse", cat: "Vídeo", desc: "Geração rápida de clipes animados e efeitos visuais.", url: "https://pixverse.ai" },
-      { name: "Haiper AI", cat: "Vídeo", desc: "Ferramenta gratuita para criar clipes curtos a partir de texto.", url: "https://haiper.ai" },
+      if (!input) {
+        alert('Cole um link para analisar.');
+        return;
+      }
 
-      // IMAGEM (20)
-      { name: "Leonardo.Ai", cat: "Imagem", desc: "Geração de artes, logos e imagens ultra detalhadas.", url: "https://leonardo.ai" },
-      { name: "Midjourney", cat: "Imagem", desc: "Referência em qualidade artística e fotorrealismo.", url: "https://www.midjourney.com" },
-      { name: "Ideogram", cat: "Imagem", desc: "Melhor IA para criar imagens com textos e logotipos.", url: "https://ideogram.ai" },
-      { name: "Bing Image Creator", cat: "Imagem", desc: "Gerador gratuito de imagens com tecnologia DALL-E.", url: "https://www.bing.com/images/create" },
-      { name: "Adobe Firefly", cat: "Imagem", desc: "Criação e edição generativa profissional da Adobe.", url: "https://firefly.adobe.com" },
-      { name: "SeaArt AI", cat: "Imagem", desc: "Gerador gratuito com milhares de estilos e modelos.", url: "https://www.seaart.ai" },
-      { name: "Playground AI", cat: "Imagem", desc: "Crie e edite artes para posts e capas facilmente.", url: "https://playground.com" },
-      { name: "Lexica", cat: "Imagem", desc: "Buscador e gerador de imagens com prompts prontos.", url: "https://lexica.art" },
-      { name: "Clipdrop", cat: "Imagem", desc: "Remove fundo, melhora luz e limpa objetos de fotos.", url: "https://clipdrop.co" },
-      { name: "Remove.bg", cat: "Imagem", desc: "Remove o fundo de qualquer imagem em 3 segundos.", url: "https://www.remove.bg" },
-      { name: "Photopea", cat: "Imagem", desc: "Editor estilo Photoshop grátis direto no navegador.", url: "https://www.photopea.com" },
-      { name: "Canva Magic Studio", cat: "Imagem", desc: "Design completo com recursos de IA integrados.", url: "https://www.canva.com" },
-      { name: "Krea AI", cat: "Imagem", desc: "Geração e melhoria de imagens em tempo real.", url: "https://www.krea.ai" },
-      { name: "Magnific AI", cat: "Imagem", desc: "Aumenta a resolução e os detalhes de qualquer foto.", url: "https://magnific.ai" },
-      { name: "Freepik Pikaso", cat: "Imagem", desc: "Desenhe e gere artes instantâneas no navegador.", url: "https://www.freepik.com/ai" },
-      { name: "Tensor.Art", cat: "Imagem", desc: "Plataforma gratuita para gerar ilustrações e retratos.", url: "https://tensor.art" },
-      { name: "Civitai", cat: "Imagem", desc: "Comunidade com modelos e gerador online de imagens.", url: "https://civitai.com" },
-      { name: "NightCafe", cat: "Imagem", desc: "Crie pinturas digitais e artes criativas grátis.", url: "https://creator.nightcafe.studio" },
-      { name: "Artbreeder", cat: "Imagem", desc: "Misture imagens e crie personagens únicos.", url: "https://www.artbreeder.com" },
-      { name: "Remini Web", cat: "Imagem", desc: "Restaura fotos antigas ou borradas em alta nitidez.", url: "https://remini.ai" },
+      const urlLower = input.toLowerCase();
+      let risco = 0;
+      let motivos = [];
 
-      // ÁUDIO & VOZ (15)
-      { name: "TTSMaker", cat: "Áudio", desc: "Conversor gratuito de texto em voz natural em português.", url: "https://ttsmaker.com" },
-      { name: "ElevenLabs", cat: "Áudio", desc: "Vozes ultra realistas e clonagem de áudio por IA.", url: "https://elevenlabs.io" },
-      { name: "Suno AI", cat: "Áudio", desc: "Cria músicas completas com letra e vocal em segundos.", url: "https://suno.com" },
-      { name: "Udio", cat: "Áudio", desc: "Gerador musical de alta qualidade em vários estilos.", url: "https://www.udio.com" },
-      { name: "Murf AI", cat: "Áudio", desc: "Estúdio de locução profissional para vídeos e anúncios.", url: "https://murf.ai" },
-      { name: "Speechify", cat: "Áudio", desc: "Lê textos, PDFs e artigos em voz alta.", url: "https://speechify.com" },
-      { name: "Lovo AI", cat: "Áudio", desc: "Narração expressiva para criadores de conteúdo.", url: "https://lovo.ai" },
-      { name: "Play.ht", cat: "Áudio", desc: "Síntese de voz realista em dezenas de idiomas.", url: "https://play.ht" },
-      { name: "Adobe Podcast", cat: "Áudio", desc: "Limpa ruídos e deixa áudio de celular com som de estúdio.", url: "https://podcast.adobe.com" },
-      { name: "VocalRemover", cat: "Áudio", desc: "Separa voz e instrumental de qualquer música grátis.", url: "https://vocalremover.org" },
-      { name: "Moises AI", cat: "Áudio", desc: "Separação de faixas, acordes e metrônomo inteligente.", url: "https://moises.ai" },
-      { name: "Krisp", cat: "Áudio", desc: "Cancela ruídos de fundo em chamadas e gravações.", url: "https://krisp.ai" },
-      { name: "AIVA", cat: "Áudio", desc: "Compositor de trilhas sonoras instrumentais por IA.", url: "https://www.aiva.ai" },
-      { name: "Soundraw", cat: "Áudio", desc: "Gera trilhas livres de direitos autorais para vídeos.", url: "https://soundraw.io" },
-      { name: "Kits AI", cat: "Áudio", desc: "Ferramentas vocais e conversão de timbre musical.", url: "https://www.kits.ai" },
+      if (urlLower.startsWith('http://')) {
+        risco += 2;
+        motivos.push('Site sem cadeado de segurança HTTPS.');
+      }
+      if (/(\.xyz|\.top|\.tk|\.ml|\.ga|\.cf|\.click|\.loan|\.gq)/.test(urlLower)) {
+        risco += 3;
+        motivos.push('Domínio de extensão gratuita muito usada em golpes.');
+      }
+      if (/(pix-gratis|resgate|premio|saque-rapido|atualize|bloqueio|gov-br-|bradesco-|itau-|nubank-)/.test(urlLower) && !urlLower.includes('.gov.br')) {
+        risco += 4;
+        motivos.push('Palavras típicas de phishing financeiro ou clonagem.');
+      }
+      if (/https?:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(urlLower)) {
+        risco += 4;
+        motivos.push('Link aponta direto para número de IP oculto.');
+      }
+      if (/(bit\.ly|tinyurl|cutt\.ly|is\.gd|shorturl)/.test(urlLower)) {
+        risco += 1;
+        motivos.push('Link encurtado esconde o destino real.');
+      }
 
-      // CÓDIGO & APPS (13)
-      { name: "Google AI Studio", cat: "Código", desc: "Crie apps, protótipos e teste modelos Gemini grátis.", url: "https://aistudio.google.com" },
-      { name: "GitHub Copilot", cat: "Código", desc: "Assistente de programação integrado ao GitHub.", url: "https://github.com/features/copilot" },
-      { name: "Cursor AI", cat: "Código", desc: "Editor de código inteligente que escreve projetos inteiros.", url: "https://www.cursor.com" },
-      { name: "Bolt.new", cat: "Código", desc: "Crie e publique sites completos direto pelo navegador.", url: "https://bolt.new" },
-      { name: "Lovable", cat: "Código", desc: "Transforma descrições em aplicações web funcionais.", url: "https://lovable.dev" },
-      { name: "v0 Vercel", cat: "Código", desc: "Gera interfaces modernas e responsivas em segundos.", url: "https://v0.dev" },
-      { name: "Replit Agent", cat: "Código", desc: "Programe e hospede aplicativos direto pelo celular.", url: "https://replit.com" },
-      { name: "Blackbox AI", cat: "Código", desc: "Assistente focado em gerar e corrigir trechos de código.", url: "https://www.blackbox.ai" },
-      { name: "Codeium", cat: "Código", desc: "Autocompletar código gratuito com inteligência artificial.", url: "https://codeium.com" },
-      { name: "Tabnine", cat: "Código", desc: "Sugestões inteligentes de código em várias linguagens.", url: "https://www.tabnine.com" },
-      { name: "Firebase Studio", cat: "Código", desc: "Ambiente na nuvem do Google para criar apps completos.", url: "https://firebase.studio" },
-      { name: "Glitch", cat: "Código", desc: "Edite e coloque páginas HTML no ar instantaneamente.", url: "https://glitch.com" },
-      { name: "CodePen", cat: "Código", desc: "Teste HTML, CSS e JavaScript ao vivo no navegador.", url: "https://codepen.io" },
+      resBox.style.display = 'block';
+      resBox.className = 'av-result';
 
-      // PRODUTIVIDADE (12)
-      { name: "Gamma App", cat: "Produtividade", desc: "Cria apresentações, slides e páginas profissionais em segundos.", url: "https://gamma.app" },
-      { name: "Tome AI", cat: "Produtividade", desc: "Apresentações visuais interativas geradas por IA.", url: "https://tome.app" },
-      { name: "Notion AI", cat: "Produtividade", desc: "Organize tarefas, anotações e projetos com IA integrada.", url: "https://www.notion.so" },
-      { name: "NotebookLM", cat: "Produtividade", desc: "Transforma PDFs e links em resumos e podcasts de estudo.", url: "https://notebooklm.google.com" },
-      { name: "Otter.ai", cat: "Produtividade", desc: "Transcreve reuniões e áudios em texto automaticamente.", url: "https://otter.ai" },
-      { name: "Fireflies.ai", cat: "Produtividade", desc: "Resume chamadas e organiza pontos principais.", url: "https://fireflies.ai" },
-      { name: "Napkin AI", cat: "Produtividade", desc: "Transforma textos em diagramas e infográficos visuais.", url: "https://www.napkin.ai" },
-      { name: "Beautiful.ai", cat: "Produtividade", desc: "Slides com design automático para negócios.", url: "https://www.beautiful.ai" },
-      { name: "Durable", cat: "Produtividade", desc: "Gera sites completos para negócios locais em 30 segundos.", url: "https://durable.co" },
-      { name: "Framer AI", cat: "Produtividade", desc: "Criação e publicação rápida de landing pages modernas.", url: "https://www.framer.com" },
-      { name: "Humata AI", cat: "Produtividade", desc: "Faça perguntas e extraia respostas de arquivos PDF.", url: "https://www.humata.ai" },
-      { name: "ChatPDF", cat: "Produtividade", desc: "Converse com qualquer documento PDF gratuitamente.", url: "https://www.chatpdf.com" }
-    ];
-
-    const categories = ["Todas", "Texto", "Vídeo", "Imagem", "Áudio", "Código", "Produtividade"];
-    let currentCat = "Todas";
-
-    function renderCategories() {
-      const bar = document.getElementById("catBar");
-      bar.innerHTML = categories.map(cat => `
-        <button class="cat-btn ${cat === currentCat ? 'active' : ''}" onclick="setCategory('${cat}')">
-          ${cat === 'Todas' ? 'Todas (100)' : cat}
-        </button>
-      `).join("");
+      if (risco >= 3) {
+        resBox.classList.add('res-danger');
+        resBox.innerHTML = `<strong>🚨 ALTO RISCO DE GOLPE DETECTADO!</strong><br>Não informe senhas, CPF ou dados bancários.<br>• ${motivos.join('<br>• ')}`;
+      } else if (risco >= 1) {
+        resBox.classList.add('res-warn');
+        resBox.innerHTML = `<strong>⚠️ ATENÇÃO — LINK SUSPEITO</strong><br>Verifique o remetente antes de continuar.<br>• ${motivos.join('<br>• ')}`;
+      } else {
+        resBox.classList.add('res-safe');
+        resBox.innerHTML = `<strong>✅ ESTRUTURA SEGURA (HTTPS OK)</strong><br>Nenhum padrão conhecido de phishing foi encontrado neste endereço.`;
+      }
     }
 
-    function setCategory(cat) {
-      currentCat = cat;
-      renderCategories();
+    // ==========================================
+    // CATÁLOGO COMPLETO DAS 100 IAs LIBERADAS
+    // ==========================================
+    const aiTools = [
+      { n: "ChatGPT", c: "Texto & Chat", d: "Assistente conversacional completo para textos, ideias e respostas.", u: "https://chatgpt.com" },
+      { n: "Claude", c: "Texto & Chat", d: "IA avançada para análise de documentos longos e escrita natural.", u: "https://claude.ai" },
+      { n: "Google Gemini", c: "Texto & Chat", d: "IA multimodal do Google integrada a pesquisa, código e imagens.", u: "https://gemini.google.com" },
+      { n: "Microsoft Copilot", c: "Texto & Chat", d: "Assistente com acesso à web em tempo real e criação visual.", u: "https://copilot.microsoft.com" },
+      { n: "Perplexity AI", c: "Texto & Chat", d: "Buscador inteligente que responde com fontes e links verificados.", u: "https://www.perplexity.ai" },
+      { n: "DeepSeek", c: "Texto & Chat", d: "Modelo gratuito de raciocínio lógico, matemática e programação.", u: "https://chat.deepseek.com" },
+      { n: "Grok", c: "Texto & Chat", d: "IA com informações atualizadas e respostas diretas.", u: "https://grok.com" },
+      { n: "Mistral Le Chat", c: "Texto & Chat", d: "Assistente europeu rápido e gratuito para texto e código.", u: "https://chat.mistral.ai" },
+      { n: "Meta AI", c: "Texto & Chat", d: "Assistente gratuito da Meta para chat e geração de imagens.", u: "https://www.meta.ai" },
+      { n: "Poe", c: "Texto & Chat", d: "Plataforma que reúne vários modelos de IA em um só lugar.", u: "https://poe.com" },
+      { n: "Pi AI", c: "Texto & Chat", d: "Assistente pessoal focado em conversas naturais e suporte.", u: "https://pi.ai" },
+      { n: "Character.ai", c: "Texto & Chat", d: "Converse com personagens virtuais e tutores personalizados.", u: "https://character.ai" },
+      { n: "You.com", c: "Texto & Chat", d: "Motor de busca com agentes de IA personalizados.", u: "https://you.com" },
+      { n: "HuggingChat", c: "Texto & Chat", d: "Chat gratuito com modelos de código aberto da comunidade.", u: "https://huggingface.co/chat" },
+      { n: "Qwen Chat", c: "Texto & Chat", d: "Modelo multilíngue potente para texto, visão e código.", u: "https://chat.qwen.ai" },
+      { n: "Jasper AI", c: "Texto & Chat", d: "Criação de copy, anúncios e textos profissionais de marketing.", u: "https://www.jasper.ai" },
+      { n: "Copy.ai", c: "Texto & Chat", d: "Gerador rápido de legendas, e-mails e textos de vendas.", u: "https://www.copy.ai" },
+      { n: "Writesonic", c: "Texto & Chat", d: "Redator de artigos otimizados para SEO e redes sociais.", u: "https://writesonic.com" },
+      { n: "Rytr", c: "Texto & Chat", d: "Assistente leve para escrever textos curtos em português.", u: "https://rytr.me" },
+      { n: "Cohere Coral", c: "Texto & Chat", d: "IA corporativa para resumos e respostas baseadas em dados.", u: "https://coral.cohere.com" },
+
+      { n: "Midjourney", c: "Imagem & Design", d: "Referência em arte digital ultra realista e ilustrações.", u: "https://www.midjourney.com" },
+      { n: "Leonardo.Ai", c: "Imagem & Design", d: "Geração de imagens e artes conceituais com créditos diários.", u: "https://leonardo.ai" },
+      { n: "Ideogram", c: "Imagem & Design", d: "Especialista em gerar imagens com textos perfeitos escritos.", u: "https://ideogram.ai" },
+      { n: "Adobe Firefly", c: "Imagem & Design", d: "Criação e preenchimento generativo seguro para design.", u: "https://firefly.adobe.com" },
+      { n: "Canva Magic Studio", c: "Imagem & Design", d: "Ferramentas de IA dentro do Canva para posts e capas.", u: "https://www.canva.com" },
+      { n: "Playground AI", c: "Imagem & Design", d: "Editor e gerador de imagens criativas gratuito.", u: "https://playground.com" },
+      { n: "Lexica", c: "Imagem & Design", d: "Galeria e gerador de artes em estilo fotorrealista e anime.", u: "https://lexica.art" },
+      { n: "SeaArt AI", c: "Imagem & Design", d: "Estúdio gratuito de criação de imagens e filtros artísticos.", u: "https://www.seaart.ai" },
+      { n: "Tensor.Art", c: "Imagem & Design", d: "Plataforma online para rodar modelos de imagem sem PC.", u: "https://tensor.art" },
+      { n: "NightCafe", c: "Imagem & Design", d: "Criador de arte digital com desafios e créditos grátis.", u: "https://creator.nightcafe.studio" },
+      { n: "Clipdrop", c: "Imagem & Design", d: "Remove fundo, melhora iluminação e amplia fotos.", u: "https://clipdrop.co" },
+      { n: "Remove.bg", c: "Imagem & Design", d: "Remove o fundo de qualquer foto automaticamente em segundos.", u: "https://www.remove.bg" },
+      { n: "Photoroom", c: "Imagem & Design", d: "Cria fotos profissionais de produtos e perfis no celular.", u: "https://www.photoroom.com" },
+      { n: "Krea AI", c: "Imagem & Design", d: "Geração de imagens em tempo real e aumento de nitidez.", u: "https://www.krea.ai" },
+      { n: "Magnific AI", c: "Imagem & Design", d: "Upscaler que transforma imagens simples em ultra HD.", u: "https://magnific.ai" },
+      { n: "Freepik Pikaso", c: "Imagem & Design", d: "Desenho em tempo real transformado em imagem realista.", u: "https://www.freepik.com/ai" },
+      { n: "Bing Image Creator", c: "Imagem & Design", d: "Gerador gratuito da Microsoft com qualidade DALL-E.", u: "https://www.bing.com/images/create" },
+      { n: "Recraft AI", c: "Imagem & Design", d: "Cria logotipos, vetores e ícones editáveis com IA.", u: "https://www.recraft.ai" },
+      { n: "Kittl AI", c: "Imagem & Design", d: "Design gráfico para estampas, cartazes e tipografia.", u: "https://www.kittl.com" },
+      { n: "Looka", c: "Imagem & Design", d: "Gerador automático de logotipos e identidade visual.", u: "https://looka.com" },
+
+      { n: "Sora", c: "Vídeo & Animação", d: "Gerador cinematográfico de vídeos a partir de texto.", u: "https://sora.com" },
+      { n: "Runway Gen-3", c: "Vídeo & Animação", d: "Estúdio completo para criar e editar vídeos com IA.", u: "https://runwayml.com" },
+      { n: "Kling AI", c: "Vídeo & Animação", d: "Gera vídeos realistas com movimentos naturais e créditos grátis.", u: "https://klingai.com" },
+      { n: "Luma Dream Machine", c: "Vídeo & Animação", d: "Anima fotos e cria cenas em vídeo de alta qualidade.", u: "https://lumalabs.ai/dream-machine" },
+      { n: "Pika Art", c: "Vídeo & Animação", d: "Criação de vídeos curtos e efeitos especiais com texto.", u: "https://pika.art" },
+      { n: "Hailuo AI", c: "Vídeo & Animação", d: "Gerador de vídeos dinâmicos de alta definição.", u: "https://hailuoai.video" },
+      { n: "HeyGen", c: "Vídeo & Animação", d: "Avatares realistas que falam seu texto com sincronia labial.", u: "https://www.heygen.com" },
+      { n: "Synthesia", c: "Vídeo & Animação", d: "Apresentadores virtuais para vídeos de treinamento e vendas.", u: "https://www.synthesia.io" },
+      { n: "D-ID", c: "Vídeo & Animação", d: "Faz qualquer foto falar e se expressar com voz.", u: "https://www.d-id.com" },
+      { n: "InVideo AI", c: "Vídeo & Animação", d: "Cria vídeos prontos com roteiro, narração e legendas.", u: "https://ai.invideo.io" },
+      { n: "CapCut AI", c: "Vídeo & Animação", d: "Editor mobile com legendas automáticas e efeitos IA.", u: "https://www.capcut.com" },
+      { n: "OpusClip", c: "Vídeo & Animação", d: "Transforma vídeos longos em cortes virais para TikTok e Shorts.", u: "https://www.opus.pro" },
+      { n: "Vizard AI", c: "Vídeo & Animação", d: "Corta e legenda vídeos verticais automaticamente.", u: "https://vizard.ai" },
+      { n: "Fliki", c: "Vídeo & Animação", d: "Transforma texto em vídeo narrado com vozes em português.", u: "https://fliki.ai" },
+      { n: "Pictory", c: "Vídeo & Animação", d: "Converte roteiros e artigos em vídeos com bancos de cenas.", u: "https://pictory.ai" },
+      { n: "Kaiber AI", c: "Vídeo & Animação", d: "Animações musicais e transformação artística de vídeos.", u: "https://kaiber.ai" },
+      { n: "Viggle AI", c: "Vídeo & Animação", d: "Coloca qualquer personagem fazendo movimentos de dança ou ação.", u: "https://viggle.ai" },
+      { n: "Hedra", c: "Vídeo & Animação", d: "Cria personagens falantes e cantores a partir de uma foto.", u: "https://www.hedra.com" },
+      { n: "Descript", c: "Vídeo & Animação", d: "Edita vídeos apagando palavras diretamente no texto.", u: "https://www.descript.com" },
+      { n: "Vidnoz AI", c: "Vídeo & Animação", d: "Gerador gratuito de vídeos com avatares e modelos prontos.", u: "https://www.vidnoz.com" },
+
+      { n: "ElevenLabs", c: "Áudio & Voz", d: "Vozes ultra realistas e clonagem de voz em português.", u: "https://elevenlabs.io" },
+      { n: "Suno AI", c: "Áudio & Voz", d: "Cria músicas completas com letra e vocal em segundos.", u: "https://suno.com" },
+      { n: "Udio", c: "Áudio & Voz", d: "Gerador musical de alta fidelidade em qualquer ritmo.", u: "https://www.udio.com" },
+      { n: "TTSMaker", c: "Áudio & Voz", d: "Conversor gratuito de texto em voz para vídeos e narrações.", u: "https://ttsmaker.com" },
+      { n: "Murf AI", c: "Áudio & Voz", d: "Locuções profissionais em estúdio virtual.", u: "https://murf.ai" },
+      { n: "Play.ht", c: "Áudio & Voz", d: "Síntese de fala natural para vídeos e podcasts.", u: "https://play.ht" },
+      { n: "Speechify", c: "Áudio & Voz", d: "Lê PDFs, livros e textos em voz alta no celular.", u: "https://speechify.com" },
+      { n: "Adobe Podcast", c: "Áudio & Voz", d: "Limpa ruídos e deixa gravação de celular com som de estúdio.", u: "https://podcast.adobe.com" },
+      { n: "Krisp AI", c: "Áudio & Voz", d: "Remove barulhos de fundo em chamadas e gravações.", u: "https://krisp.ai" },
+      { n: "Lalal.ai", c: "Áudio & Voz", d: "Separa vocal, bateria e instrumentos de qualquer música.", u: "https://www.lalal.ai" },
+      { n: "Moises AI", c: "Áudio & Voz", d: "App para separar faixas musicais e detectar acordes.", u: "https://moises.ai" },
+      { n: "Voicemod", c: "Áudio & Voz", d: "Modificador de voz em tempo real e efeitos sonoros.", u: "https://www.voicemod.net" },
+      { n: "Kits.AI", c: "Áudio & Voz", d: "Modelos de voz cantada livres de direitos autorais.", u: "https://www.kits.ai" },
+      { n: "AIVA", c: "Áudio & Voz", d: "Compositor de trilhas sonoras instrumentais para vídeos.", u: "https://www.aiva.ai" },
+      { n: "Mubert", c: "Áudio & Voz", d: "Gera músicas de fundo sem copyright para criadores.", u: "https://mubert.com" },
+
+      { n: "GitHub Copilot", c: "Código & Sites", d: "Assistente de programação que completa código em tempo real.", u: "https://github.com/features/copilot" },
+      { n: "Cursor AI", c: "Código & Sites", d: "Editor de código inteligente que cria projetos inteiros.", u: "https://www.cursor.com" },
+      { n: "Bolt.new", c: "Código & Sites", d: "Cria e publica sites e apps direto pelo navegador.", u: "https://bolt.new" },
+      { n: "Lovable", c: "Código & Sites", d: "Construtor de aplicativos web completos usando comandos em texto.", u: "https://lovable.dev" },
+      { n: "v0 by Vercel", c: "Código & Sites", d: "Gera interfaces modernas em HTML/React prontas para usar.", u: "https://v0.dev" },
+      { n: "Replit Agent", c: "Código & Sites", d: "Programa, testa e hospeda apps direto pelo celular.", u: "https://replit.com" },
+      { n: "Windsurf", c: "Código & Sites", d: "Ambiente de desenvolvimento com agente autônomo.", u: "https://codeium.com/windsurf" },
+      { n: "Tabnine", c: "Código & Sites", d: "Autocompletar inteligente para várias linguagens.", u: "https://www.tabnine.com" },
+      { n: "Blackbox AI", c: "Código & Sites", d: "Extrai código de vídeos e resolve erros de programação.", u: "https://www.blackbox.ai" },
+      { n: "Framer AI", c: "Código & Sites", d: "Cria e publica landing pages profissionais em minutos.", u: "https://www.framer.com" },
+      { n: "Durable AI", c: "Código & Sites", d: "Construtor instantâneo de sites para negócios locais.", u: "https://durable.co" },
+      { n: "Google AI Studio", c: "Código & Sites", d: "Ambiente gratuito para testar modelos Gemini e gerar chaves API.", u: "https://aistudio.google.com" },
+
+      { n: "Gamma App", c: "Produtividade", d: "Cria apresentações de slides e sites bonitos em segundos.", u: "https://gamma.app" },
+      { n: "Tome AI", c: "Produtividade", d: "Apresentações visuais e storytelling automatizado.", u: "https://tome.app" },
+      { n: "Notion AI", c: "Produtividade", d: "Organiza notas, tarefas e resumos no workspace.", u: "https://www.notion.so" },
+      { n: "NotebookLM", c: "Produtividade", d: "Estuda seus PDFs e cria até um podcast explicando o conteúdo.", u: "https://notebooklm.google.com" },
+      { n: "Otter.ai", c: "Produtividade", d: "Transcreve reuniões e áudios em texto automaticamente.", u: "https://otter.ai" },
+      { n: "Fireflies.ai", c: "Produtividade", d: "Grava e resume chamadas de vídeo e reuniões.", u: "https://fireflies.ai" },
+      { n: "Tl;dv", c: "Produtividade", d: "Gravador de reuniões com destaques automáticos.", u: "https://tldv.io" },
+      { n: "QuillBot", c: "Produtividade", d: "Reescreve, corrige gramática e resume textos.", u: "https://quillbot.com" },
+      { n: "Grammarly", c: "Produtividade", d: "Correção inteligente de escrita e clareza textual.", u: "https://www.grammarly.com" },
+      { n: "DeepL", c: "Produtividade", d: "Tradutor de alta precisão para documentos e textos.", u: "https://www.deepl.com" },
+      { n: "Humata AI", c: "Produtividade", d: "Faz perguntas e extrai respostas de arquivos PDF grandes.", u: "https://www.humata.ai" },
+      { n: "ChatPDF", c: "Produtividade", d: "Converse com qualquer livro, contrato ou apostila em PDF.", u: "https://www.chatpdf.com" },
+      { n: "Napkin AI", c: "Produtividade", d: "Transforma textos em diagramas e fluxogramas visuais.", u: "https://www.napkin.ai" }
+    ];
+
+    let currentCategory = 'Todas';
+    let favorites = JSON.parse(localStorage.getItem('nexus_favorites') || '[]');
+
+    function setCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      renderTools();
+    }
+
+    function toggleFav(name) {
+      if (favorites.includes(name)) {
+        favorites = favorites.filter(item => item !== name);
+      } else {
+        favorites.push(name);
+      }
+      localStorage.setItem('nexus_favorites', JSON.stringify(favorites));
       renderTools();
     }
 
     function renderTools() {
-      const q = document.getElementById("searchInput").value.toLowerCase().trim();
-      const filtered = tools.filter(t => {
-        const matchCat = currentCat === "Todas" || t.cat === currentCat;
-        const matchText = t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.cat.toLowerCase().includes(q);
-        return matchCat && matchText;
+      const grid = document.getElementById('toolsGrid');
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = aiTools.filter(tool => {
+        const matchCat =
+          currentCategory === 'Todas' ||
+          (currentCategory === 'Favoritos' && favorites.includes(tool.n)) ||
+          tool.c === currentCategory;
+
+        const matchSearch =
+          tool.n.toLowerCase().includes(query) ||
+          tool.d.toLowerCase().includes(query) ||
+          tool.c.toLowerCase().includes(query);
+
+        return matchCat && matchSearch;
       });
 
-      const grid = document.getElementById("toolsGrid");
-      grid.innerHTML = filtered.map(t => `
-        <div class="card">
-          <div>
-            <div class="card-top">
-              <div class="card-title">${t.name}</div>
-              <span class="card-cat">${t.cat}</span>
-            </div>
-            <p class="card-desc" style="margin-top:6px;">${t.desc}</p>
-          </div>
-          <a class="open-btn" href="${t.url}" target="_blank" rel="noopener noreferrer">Abrir IA ↗</a>
-        </div>
-      `).join("");
-    }
+      document.getElementById('counterBadge').textContent = `${filtered.length} IAs Liberadas`;
 
-    function switchTab(tab) {
-      document.getElementById("tab-catalog").classList.toggle("hidden", tab !== "catalog");
-      document.getElementById("tab-antivirus").classList.toggle("hidden", tab !== "antivirus");
-      document.getElementById("navCat").classList.toggle("active", tab === "catalog");
-      document.getElementById("navAv").classList.toggle("active", tab === "antivirus");
-    }
-
-    function scanLink() {
-      const raw = document.getElementById("urlInput").value.trim();
-      const res = document.getElementById("avResult");
-      if (!raw) {
-        res.style.display = "block";
-        res.className = "av-result av-warn";
-        res.innerHTML = "⚠️ Cole um endereço ou link acima antes de clicar em analisar.";
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="text-align:center; color:var(--muted); padding:24px; font-size:13px;">Nenhuma IA encontrada neste filtro.</div>`;
         return;
       }
 
-      const url = raw.toLowerCase();
-      let score = 0;
-      let reasons = [];
-
-      if (url.startsWith("http://")) {
-        score += 2;
-        reasons.push("Conexão sem cadeado de segurança (HTTP comum, não criptografado).");
-      }
-
-      const badTlds = [".xyz", ".top", ".click", ".tk", ".ml", ".ga", ".cf", ".gq", ".buzz", ".vip", ".icu", ".work"];
-      if (badTlds.some(tld => url.includes(tld))) {
-        score += 3;
-        reasons.push("Domínio com terminação frequentemente usada em páginas falsas.");
-      }
-
-      const scamWords = ["pix", "premio", "ganhe", "gratis", "resgate", "banco", "caixa", "nubank", "bradesco", "itau", "gov-br", "receita", "correios", "encomenda", "taxa", "senha", "bloqueado", "urgente", "brinde", "auxilio", "fgts", "inss"];
-      const matchedWords = scamWords.filter(w => url.includes(w));
-      if (matchedWords.length > 0) {
-        score += 3;
-        reasons.push("Contém palavras típicas de isca de golpe: " + matchedWords.join(", ") + ".");
-      }
-
-      if (url.includes("@") || /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(url)) {
-        score += 4;
-        reasons.push("Estrutura de endereço mascarada ou redirecionamento por IP.");
-      }
-
-      const shorteners = ["bit.ly", "tinyurl.com", "is.gd", "cutt.ly", "rb.gy", "t.co"];
-      if (shorteners.some(s => url.includes(s))) {
-        score += 1;
-        reasons.push("Link encurtado: oculta o destino final até você clicar.");
-      }
-
-      res.style.display = "block";
-      if (score >= 3) {
-        res.className = "av-result av-danger";
-        res.innerHTML = `<strong>🚨 ALTO RISCO DE GOLPE DETECTADO</strong><br><br>• ${reasons.join("<br>• ")}<br><br><strong>Recomendação:</strong> Não clique, não digite senhas e não faça pagamentos neste endereço.`;
-      } else if (score >= 1) {
-        res.className = "av-result av-warn";
-        res.innerHTML = `<strong>⚠️ ATENÇÃO — LINK SUSPEITO</strong><br><br>• ${reasons.join("<br>• ")}<br><br><strong>Recomendação:</strong> Confirme diretamente no aplicativo ou site oficial da empresa antes de prosseguir.`;
-      } else {
-        res.className = "av-result av-safe";
-        res.innerHTML = `<strong>✅ NENHUM SINAL ÓBVIO DE GOLPE DETECTADO</strong><br><br>• Utiliza protocolo seguro ou estrutura padrão.<br>• Nenhum padrão conhecido de phishing identificado na URL.<br><br><em>Dica: Sempre confira o nome oficial do site antes de inserir dados pessoais.</em>`;
-      }
+      grid.innerHTML = filtered.map(tool => {
+        const isSaved = favorites.includes(tool.n);
+        return `
+          <div class="tool-card">
+            <div class="tool-info">
+              <div class="tool-header">
+                <span class="tool-name">${tool.n}</span>
+                <span class="tool-cat">${tool.c}</span>
+              </div>
+              <p class="tool-desc">${tool.d}</p>
+            </div>
+            <div class="tool-actions">
+              <button class="fav-btn ${isSaved ? 'saved' : ''}" onclick="toggleFav('${tool.n.replace(/'/g, "\\'")}')" title="Favoritar">
+                ${isSaved ? '★' : '☆'}
+              </button>
+              <a href="${tool.u}" target="_blank" rel="noopener noreferrer" class="open-btn">Abrir</a>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
-    renderCategories();
     renderTools();
   </script>
 
-  <!-- COLE AQUI SEUS SCRIPTS DE BANNER OU SOCIAL BAR DO ADSTERRA SE DESEJAR -->
+  <!-- =================================================================== -->
+  <!-- 3. SOCIAL BAR ADSTERRA: COLE O SCRIPT DA SUA SOCIAL BAR LOGO ABAIXO -->
+  <!-- =================================================================== -->
+
 </body>
 </html>
