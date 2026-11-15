@@ -1,196 +1,482 @@
-<!-- INÍCIO DO GERADOR DE SITES COM IA GEMINI + DOWNLOAD R$ 180,00 -->
-<section id="gerador-site-pro" style="max-width: 920px; margin: 16px auto 28px auto; padding: 22px; background: linear-gradient(145deg, #0f172a, #1e293b); border: 2px solid #a3e635; border-radius: 16px; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; box-shadow: 0 12px 30px rgba(0,0,0,0.4);">
-  <div style="text-align: center; margin-bottom: 18px;">
-    <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 12px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
-      ⚡ Criador de Sites com Inteligência Artificial
-    </span>
-    <h2 style="font-size: 23px; margin: 10px 0 6px 0; color: #ffffff;">
-      Crie o Site Completo da sua Empresa Agora
-    </h2>
-    <p style="color: #cbd5e1; font-size: 14px; margin: 0;">
-      Preencha os dados e visualize seu site pronto <strong>100% grátis</strong>. Gostou? Libere o download do arquivo completo por <strong style="color: #a3e635;">R$ 180,00</strong> (pagamento único).
-    </p>
-  </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS AI 100 — Antivírus com IA e 100 ferramentas de IA gratuitas</title>
+  <meta name="description" content="Antivírus gratuito com IA, detector de links falsos, criador de sites para empresas e diretório com 100 ferramentas de Inteligência Artificial." />
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-bottom: 12px;">
-    <div>
-      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Nome da Empresa *</label>
-      <input id="siteNome" type="text" placeholder="Ex: Oficina Auto Center" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
-    </div>
-    <div>
-      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Ramo / Especialidade *</label>
-      <input id="siteRamo" type="text" placeholder="Ex: Mecânica geral, freios e suspensão" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
-    </div>
-    <div>
-      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">WhatsApp com DDD *</label>
-      <input id="siteWhats" type="tel" placeholder="Ex: 89994315977" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
-    </div>
-    <div>
-      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Cidade / Estado</label>
-      <input id="siteCidade" type="text" placeholder="Ex: Floriano - PI" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
-    </div>
-  </div>
+  <!-- Adsterra Popunder -->
+  <script data-cfasync="false" src="https://abscloud.org/1/fe7a0860a7ff8ec4ca5b613da542f908"></script>
 
-  <div style="margin-bottom: 16px;">
-    <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Serviços ou Diferenciais (separados por vírgula)</label>
-    <input id="siteServicos" type="text" placeholder="Ex: Orçamento na hora, Peças originais, Garantia no serviço" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
-  </div>
-
-  <button id="btnGerarSiteIA" onclick="gerarPreviaSite()" style="width: 100%; padding: 15px; background: #a3e635; color: #0f172a; font-weight: 800; font-size: 16px; border: none; border-radius: 10px; cursor: pointer;">
-    ✨ GERAR SITE COM IA GRÁTIS AGORA
-  </button>
-
-  <div id="areaPreviaSite" style="display: none; margin-top: 22px; border-top: 1px solid #334155; padding-top: 18px;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
-      <span style="color: #a3e635; font-weight: 700; font-size: 14px;">✅ Prévia pronta! Veja como ficou seu site:</span>
-      <button onclick="abrirPaywallSite180()" style="background: #22c55e; color: #052e16; font-weight: 800; font-size: 14px; padding: 10px 18px; border: none; border-radius: 8px; cursor: pointer;">
-        ⬇️ BAIXAR SITE COMPLETO (R$ 180,00)
-      </button>
-    </div>
-
-    <iframe id="iframePreviaSite" style="width: 100%; height: 430px; border: 2px solid #334155; border-radius: 12px; background: #ffffff;"></iframe>
-
-    <div style="text-align: center; margin-top: 16px;">
-      <button onclick="abrirPaywallSite180()" style="width: 100%; max-width: 480px; padding: 15px; background: #a3e635; color: #0f172a; font-weight: 800; font-size: 16px; border: none; border-radius: 10px; cursor: pointer;">
-        🔒 LIBERAR DOWNLOAD DO SITE PRONTO — R$ 180,00
-      </button>
-    </div>
-  </div>
-</section>
-
-<div id="modalPaywall180" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; padding: 16px; font-family: system-ui, -apple-system, sans-serif;">
-  <div style="background: #0f172a; border: 2px solid #a3e635; border-radius: 16px; max-width: 440px; width: 100%; padding: 24px; color: #fff; text-align: center; position: relative;">
-    <button onclick="fecharPaywall180()" style="position: absolute; top: 12px; right: 14px; background: none; border: none; color: #94a3b8; font-size: 22px; cursor: pointer;">✕</button>
-    <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 999px;">DOWNLOAD DO SITE COMPLETO (.HTML)</span>
-    <h3 style="font-size: 21px; margin: 12px 0 8px 0;">Baixe o Site da sua Empresa</h3>
-    <p style="color: #cbd5e1; font-size: 14px; line-height: 1.5; margin-bottom: 16px;">
-      Código completo, responsivo e com botão direto para o seu WhatsApp. <strong>Pagamento único de R$ 180,00 (sem mensalidade).</strong>
-    </p>
-
-    <a href="https://mpago.la/13o8xzR" target="_blank" rel="noopener noreferrer"
-       style="display: block; background: #009ee3; color: #fff; font-weight: 800; padding: 13px; border-radius: 10px; text-decoration: none; margin-bottom: 10px;">
-      💳 1º PASSO: PAGAR R$ 180,00 (PIX / CARTÃO)
-    </a>
-
-    <a href="https://wa.me/5589994315977?text=Ol%C3%A1!%20Acabei%20de%20pagar%20os%20R%24%20180%2C00%20no%20NEXUS%20AI%20100%20e%20quero%20minha%20senha%20para%20baixar%20meu%20site!" target="_blank" rel="noopener noreferrer"
-       style="display: block; background: #22c55e; color: #052e16; font-weight: 800; padding: 11px; border-radius: 10px; text-decoration: none; font-size: 13px; margin-bottom: 16px;">
-      📲 ENVIAR COMPROVANTE NO WHATSAPP E RECEBER SENHA
-    </a>
-
-    <div style="border-top: 1px solid #334155; padding-top: 14px;">
-      <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 6px;">2º PASSO: Digite a senha VIP de liberação:</label>
-      <div style="display: flex; gap: 8px;">
-        <input id="senhaDownloadSite" type="text" placeholder="Digite a senha VIP..." style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #fff;">
-        <button onclick="validarEDownloadSite()" style="background: #a3e635; color: #0f172a; font-weight: 800; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">
-          BAIXAR
-        </button>
-      </div>
-      <p id="msgErroSenhaSite" style="color: #f87171; font-size: 12px; margin: 8px 0 0 0; display: none;">Senha incorreta. Envie o comprovante no WhatsApp para liberar.</p>
-    </div>
-  </div>
-</div>
-
-<script>
-  let htmlSiteGeradoAtual = "";
-
-  async function gerarPreviaSite() {
-    const nome = document.getElementById("siteNome").value.trim();
-    const ramo = document.getElementById("siteRamo").value.trim();
-    const whatsRaw = document.getElementById("siteWhats").value.replace(/\D/g, "") || "89994315977";
-    const whatsLink = whatsRaw.startsWith("55") ? whatsRaw : "55" + whatsRaw;
-    const cidade = document.getElementById("siteCidade").value.trim() || "Atendimento Local e Online";
-    const servicos = document.getElementById("siteServicos").value.trim() || "Atendimento Rápido, Orçamento Grátis, Garantia Total";
-
-    if (!nome || !ramo) {
-      alert("Digite o Nome da Empresa e o Ramo de atuação!");
-      return;
+  <style>
+    :root {
+      --bg: #070b14;
+      --card: #0f172a;
+      --card-border: #1e293b;
+      --neon: #0ea5e9;
+      --neon-hover: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --red: #ef4444;
     }
 
-    const btn = document.getElementById("btnGerarSiteIA");
-    btn.disabled = true;
-    btn.innerText = "⏳ A IA Gemini está criando o site completo...";
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 70px; }
+    .container { max-width: 920px; margin: 0 auto; padding: 14px; }
 
-    const apiKey = localStorage.getItem("gemini_api_key") || localStorage.getItem("nexus_gemini_key") || "";
+    /* Cabeçalho superior */
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: #061120; border-bottom: 1px solid var(--card-border);
+      padding: 12px 14px; position: sticky; top: 0; z-index: 50;
+    }
+    .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.4px; }
+    .brand span { color: var(--neon-hover); }
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .badge-100 {
+      background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 5px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+    }
 
-    try {
-      let codigo = "";
-      if (apiKey) {
-        const prompt = `Crie um site institucional completo, moderno e responsivo em HTML único com CSS interno para:
+    /* Botões CTA Smartlink */
+    .cta-azul {
+      display: block; width: 100%; text-align: center; text-decoration: none;
+      background: linear-gradient(90deg, #0284c7, #0ea5e9); color: #fff;
+      font-weight: 800; font-size: 0.92rem; padding: 13px 16px; border-radius: 10px;
+      margin: 12px 0; box-shadow: 0 4px 18px rgba(14, 165, 233, 0.35); transition: 0.2s;
+    }
+    .cta-ouro {
+      display: block; width: 100%; text-align: center; text-decoration: none;
+      background: linear-gradient(90deg, #d97706, #f59e0b); color: #070b14;
+      font-weight: 900; font-size: 0.92rem; padding: 13px 16px; border-radius: 10px;
+      margin: 12px 0; box-shadow: 0 4px 18px rgba(245, 158, 11, 0.3); transition: 0.2s;
+    }
+    .cta-azul:hover, .cta-ouro:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+    /* Banner 320x50 */
+    .ad-box {
+      display: flex; justify-content: center; align-items: center;
+      min-height: 50px; margin: 10px auto; padding: 4px;
+      background: rgba(15, 23, 42, 0.6); border: 1px dashed #1e293b; border-radius: 10px;
+    }
+
+    /* Card AI Antivírus */
+    .antivirus-card {
+      background: var(--card); border: 1px solid var(--card-border); border-radius: 14px;
+      padding: 16px; margin: 12px 0; box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    }
+    .av-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .av-title { font-size: 1.05rem; font-weight: 800; color: #fff; }
+    .av-badge { background: rgba(16, 185, 129, 0.15); color: #34d399; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+    .av-desc { color: var(--muted); font-size: 0.85rem; margin-bottom: 12px; }
+    .av-form { display: flex; gap: 8px; }
+    .av-input {
+      flex: 1; background: #070b14; border: 1px solid #334155; color: #fff;
+      padding: 11px 12px; border-radius: 10px; font-size: 0.88rem; outline: none;
+    }
+    .av-btn {
+      background: #0ea5e9; color: #070b14; font-weight: 800; border: none;
+      padding: 0 16px; border-radius: 10px; cursor: pointer; font-size: 0.88rem;
+    }
+    .av-result { margin-top: 12px; padding: 12px; border-radius: 10px; font-size: 0.85rem; display: none; }
+
+    /* Busca e Filtros */
+    .search-box {
+      width: 100%; background: var(--card); border: 1px solid var(--card-border); color: #fff;
+      padding: 12px 14px; border-radius: 10px; font-size: 0.9rem; margin: 12px 0; outline: none;
+    }
+    .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 10px; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      background: var(--card); border: 1px solid var(--card-border); color: var(--muted);
+      padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; cursor: pointer;
+    }
+    .tab-btn.active { background: rgba(14, 165, 233, 0.18); border-color: var(--neon); color: var(--neon-hover); }
+
+    /* Lista de Ferramentas */
+    .tools-grid { display: flex; flex-direction: column; gap: 10px; }
+    .tool-item {
+      background: var(--card); border: 1px solid var(--card-border); border-radius: 12px;
+      padding: 13px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .tool-info { flex: 1; }
+    .tool-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+    .tool-name { font-weight: 800; font-size: 0.98rem; color: #fff; }
+    .tool-cat { background: #1e293b; color: #94a3b8; font-size: 0.7rem; padding: 2px 7px; border-radius: 5px; font-weight: 600; }
+    .tool-desc { color: var(--muted); font-size: 0.82rem; }
+    .tool-actions { display: flex; align-items: center; gap: 8px; }
+    .fav-btn {
+      background: #070b14; border: 1px solid #1e293b; color: #64748b; width: 34px; height: 34px;
+      border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    }
+    .fav-btn.active { color: #f59e0b; border-color: rgba(245, 158, 11, 0.4); }
+    .open-btn {
+      background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(14, 165, 233, 0.4);
+      color: var(--neon-hover); text-decoration: none; font-weight: 700; font-size: 0.8rem;
+      padding: 7px 13px; border-radius: 8px; white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">⚡ NEXUS <span>AI 100</span></div>
+    <div class="header-actions">
+      <span class="badge-100">100 IAs Grátis</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- CTA SUPERIOR -->
+    <a href="https://abscloud.org/1/fe7a0860a7ff8ec4ca5b613da542f908" target="_blank" rel="noopener noreferrer" class="cta-azul">
+      🎁 ACESSAR FERRAMENTAS SECRETAS GRÁTIS
+    </a>
+
+    <!-- AI ANTIVÍRUS -->
+    <section class="antivirus-card">
+      <div class="av-header">
+        <div class="av-title">🛡️ AI Antivírus — Detector de Links Falsos</div>
+        <span class="av-badge">✓ 100% Grátis</span>
+      </div>
+      <p class="av-desc">Cole qualquer link suspeito do WhatsApp, Pix ou promoção antes de clicar para detectar golpes e phishing gratuitamente.</p>
+      <div class="av-form">
+        <input type="url" id="avUrlInput" class="av-input" placeholder="Ex: https://site-suspeito.com/pix" />
+        <button onclick="analisarLink()" class="av-btn">Analisar</button>
+      </div>
+      <div id="avResult" class="av-result"></div>
+    </section>
+
+    <!-- BOTÃO AMARELO -->
+    <a href="https://abscloud.org/1/fe7a0860a7ff8ec4ca5b613da542f908" target="_blank" rel="noopener noreferrer" class="cta-ouro">
+      ⚡ GERADOR DE IMAGENS & VÍDEOS IA ILIMITADO
+    </a>
+
+    <!-- INÍCIO DO GERADOR DE SITES COM IA GEMINI + DOWNLOAD R$ 180,00 (EXATAMENTE ABAIXO DO AMARELO) -->
+    <section id="gerador-site-pro" style="margin: 16px 0 22px 0; padding: 20px; background: linear-gradient(145deg, #0f172a, #1e293b); border: 2px solid #a3e635; border-radius: 16px; color: #f8fafc; box-shadow: 0 12px 30px rgba(0,0,0,0.45);">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 11px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
+          ⚡ Criador de Sites com Inteligência Artificial
+        </span>
+        <h2 style="font-size: 21px; margin: 10px 0 6px 0; color: #ffffff;">
+          Crie o Site Completo da sua Empresa Agora
+        </h2>
+        <p style="color: #cbd5e1; font-size: 13.5px; margin: 0;">
+          Preencha os dados e visualize seu site pronto <strong>100% grátis</strong>. Gostou? Libere o download do arquivo completo por <strong style="color: #a3e635;">R$ 180,00</strong> (pagamento único).
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-bottom: 10px;">
+        <div>
+          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Nome da Empresa *</label>
+          <input id="siteNome" type="text" placeholder="Ex: Oficina Auto Center" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Ramo / Especialidade *</label>
+          <input id="siteRamo" type="text" placeholder="Ex: Mecânica geral, freios e suspensão" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">WhatsApp com DDD *</label>
+          <input id="siteWhats" type="tel" placeholder="Ex: 89994315977" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Cidade / Estado</label>
+          <input id="siteCidade" type="text" placeholder="Ex: Floriano - PI" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
+        </div>
+      </div>
+
+      <div style="margin-bottom: 14px;">
+        <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Serviços ou Diferenciais (separados por vírgula)</label>
+        <input id="siteServicos" type="text" placeholder="Ex: Orçamento na hora, Peças originais, Garantia no serviço" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
+      </div>
+
+      <button id="btnGerarSiteIA" onclick="gerarPreviaSite()" style="width: 100%; padding: 14px; background: #a3e635; color: #0f172a; font-weight: 900; font-size: 15px; border: none; border-radius: 10px; cursor: pointer;">
+        ✨ GERAR SITE COM IA GRÁTIS AGORA
+      </button>
+
+      <!-- PRÉVIA DO SITE GERADO -->
+      <div id="areaPreviaSite" style="display: none; margin-top: 20px; border-top: 1px solid #334155; padding-top: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+          <span style="color: #a3e635; font-weight: 700; font-size: 14px;">✅ Prévia pronta! Veja como ficou seu site:</span>
+          <button onclick="abrirPaywallSite180()" style="background: #22c55e; color: #052e16; font-weight: 800; font-size: 13px; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">
+            ⬇️ BAIXAR SITE COMPLETO (R$ 180,00)
+          </button>
+        </div>
+
+        <iframe id="iframePreviaSite" style="width: 100%; height: 420px; border: 2px solid #334155; border-radius: 12px; background: #ffffff;"></iframe>
+
+        <div style="text-align: center; margin-top: 14px;">
+          <button onclick="abrirPaywallSite180()" style="width: 100%; padding: 14px; background: #a3e635; color: #0f172a; font-weight: 900; font-size: 15px; border: none; border-radius: 10px; cursor: pointer;">
+            🔒 LIBERAR DOWNLOAD DO SITE PRONTO — R$ 180,00
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- FIM DO GERADOR DE SITES -->
+
+    <!-- BUSCA E CATEGORIAS DAS 100 IAS -->
+    <input type="text" id="searchInput" class="search-box" placeholder="🔎 Buscar entre as 100 IAs (ex: vídeo, voz, imagem, texto)..." oninput="filtrarFerramentas()" />
+
+    <div class="tabs" id="categoryTabs">
+      <button class="tab-btn active" onclick="selecionarCategoria('Todas', this)">Todas (100)</button>
+      <button class="tab-btn" onclick="selecionarCategoria('Favoritos', this)">★ Favoritos</button>
+      <button class="tab-btn" onclick="selecionarCategoria('Texto & Chat', this)">Texto & Chat</button>
+      <button class="tab-btn" onclick="selecionarCategoria('Imagem & Design', this)">Imagem & Design</button>
+      <button class="tab-btn" onclick="selecionarCategoria('Vídeo & Voz', this)">Vídeo & Voz</button>
+      <button class="tab-btn" onclick="selecionarCategoria('Código & Negócios', this)">Código & Negócios</button>
+    </div>
+
+    <div class="tools-grid" id="toolsGrid"></div>
+
+  </div>
+
+  <!-- MODAL PAYWALL R$ 180,00 PARA BAIXAR O SITE -->
+  <div id="modalPaywall180" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: #0f172a; border: 2px solid #a3e635; border-radius: 16px; max-width: 440px; width: 100%; padding: 24px; color: #fff; text-align: center; position: relative;">
+      <button onclick="fecharPaywall180()" style="position: absolute; top: 12px; right: 14px; background: none; border: none; color: #94a3b8; font-size: 22px; cursor: pointer;">✕</button>
+      <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 999px;">DOWNLOAD DO SITE COMPLETO (.HTML)</span>
+      <h3 style="font-size: 20px; margin: 12px 0 8px 0;">Baixe o Site da sua Empresa</h3>
+      <p style="color: #cbd5e1; font-size: 13.5px; line-height: 1.5; margin-bottom: 16px;">
+        Código completo, responsivo e com botão direto para o seu WhatsApp. <strong>Pagamento único de R$ 180,00 (sem mensalidade).</strong>
+      </p>
+
+      <a href="https://mpago.la/13o8xzR" target="_blank" rel="noopener noreferrer"
+         style="display: block; background: #009ee3; color: #fff; font-weight: 800; padding: 13px; border-radius: 10px; text-decoration: none; margin-bottom: 10px; font-size: 14px;">
+        💳 1º PASSO: PAGAR R$ 180,00 (PIX / CARTÃO)
+      </a>
+
+      <a href="https://wa.me/5589994315977?text=Ol%C3%A1!%20Acabei%20de%20pagar%20os%20R%24%20180%2C00%20no%20NEXUS%20AI%20100%20e%20quero%20minha%20senha%20para%20baixar%20meu%20site!" target="_blank" rel="noopener noreferrer"
+         style="display: block; background: #22c55e; color: #052e16; font-weight: 800; padding: 11px; border-radius: 10px; text-decoration: none; font-size: 13px; margin-bottom: 16px;">
+        📲 ENVIAR COMPROVANTE NO WHATSAPP E RECEBER SENHA
+      </a>
+
+      <div style="border-top: 1px solid #334155; padding-top: 14px;">
+        <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 6px;">2º PASSO: Digite a senha VIP de liberação:</label>
+        <div style="display: flex; gap: 8px;">
+          <input id="senhaDownloadSite" type="text" placeholder="Digite a senha VIP..." style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #fff;">
+          <button onclick="validarEDownloadSite()" style="background: #a3e635; color: #0f172a; font-weight: 800; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">
+            BAIXAR
+          </button>
+        </div>
+        <p id="msgErroSenhaSite" style="color: #f87171; font-size: 12px; margin: 8px 0 0 0; display: none;">Senha incorreta. Envie o comprovante no WhatsApp para liberar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Adsterra Social Bar -->
+  <script type='text/javascript' src='//pl25961013.effectiveratecpm.com/8b/5e/1a/8b5e1a9d4f2c3e8b7a6d5c4f3e2a1b0c.js'></script>
+
+  <script>
+    /* ================= 1. AI ANTIVÍRUS ================= */
+    function analisarLink() {
+      const url = document.getElementById("avUrlInput").value.trim().toLowerCase();
+      const box = document.getElementById("avResult");
+      if (!url) {
+        alert("Cole um link para analisar!");
+        return;
+      }
+      box.style.display = "block";
+      const suspeitos = ["bit.ly", "tinyurl", "pix-gratis", "resgate", "premio", "promo-", "ganhe", "brinde", "atualize", ".xyz", ".top", ".click", ".gq", "login-"];
+      const temPerigo = suspeitos.some(p => url.includes(p)) || !url.startsWith("https://");
+
+      if (temPerigo) {
+        box.style.background = "rgba(239, 68, 68, 0.15)";
+        box.style.border = "1px solid #ef4444";
+        box.style.color = "#fca5a5";
+        box.innerHTML = "⚠️ <strong>ALERTA DE RISCO DETECTADO!</strong> Este link possui padrão suspeito de phishing, encurtador oculto ou ausência de certificado HTTPS seguro. <strong>Não informe senhas nem dados bancários.</strong>";
+      } else {
+        box.style.background = "rgba(16, 185, 129, 0.15)";
+        box.style.border = "1px solid #10b981";
+        box.style.color = "#6ee7b7";
+        box.innerHTML = "✅ <strong>LINK APARENTEMENTE SEGURO:</strong> Protocolo HTTPS ativo e sem palavras-chave conhecidas de golpe. Mesmo assim, confira sempre o domínio oficial antes de fazer pagamentos.";
+      }
+    }
+
+    /* ================= 2. GERADOR DE SITES COM IA GEMINI + PAYWALL R$ 180 ================= */
+    let htmlSiteGeradoAtual = "";
+
+    async function gerarPreviaSite() {
+      const nome = document.getElementById("siteNome").value.trim();
+      const ramo = document.getElementById("siteRamo").value.trim();
+      const whatsRaw = document.getElementById("siteWhats").value.replace(/\D/g, "") || "89994315977";
+      const whatsLink = whatsRaw.startsWith("55") ? whatsRaw : "55" + whatsRaw;
+      const cidade = document.getElementById("siteCidade").value.trim() || "Atendimento Local e Online";
+      const servicos = document.getElementById("siteServicos").value.trim() || "Atendimento Rápido, Orçamento Grátis, Garantia Total";
+
+      if (!nome || !ramo) {
+        alert("Digite o Nome da Empresa e o Ramo de atuação!");
+        return;
+      }
+
+      const btn = document.getElementById("btnGerarSiteIA");
+      btn.disabled = true;
+      btn.innerText = "⏳ A IA Gemini está criando o site completo...";
+
+      const apiKey = localStorage.getItem("gemini_api_key") || localStorage.getItem("nexus_gemini_key") || "";
+
+      try {
+        let codigo = "";
+        if (apiKey) {
+          const prompt = `Crie um site institucional completo, moderno e responsivo em HTML único com CSS interno para:
 Empresa: ${nome} | Ramo: ${ramo} | Cidade: ${cidade} | Serviços: ${servicos}
 Botão WhatsApp obrigatório: https://wa.me/${whatsLink}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20${encodeURIComponent(nome)}
 Retorne APENAS o código HTML puro começando com <!DOCTYPE html> e terminando com </html>, sem markdown.`;
 
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-        });
-        const data = await res.json();
-        codigo = (data?.candidates?.[0]?.content?.parts?.[0]?.text || "").replace(/^```html\s*/i, "").replace(/```\s*$/i, "").trim();
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+          });
+          const data = await res.json();
+          codigo = (data?.candidates?.[0]?.content?.parts?.[0]?.text || "").replace(/^```html\s*/i, "").replace(/```\s*$/i, "").trim();
+        }
+
+        if (!codigo.includes("<html")) {
+          const cards = servicos.split(",").map(s => s.trim()).filter(Boolean).map(item => `
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:12px;">
+              <h3 style="margin:0 0 8px 0;color:#0f172a;">✅ ${item}</h3>
+              <p style="margin:0;color:#475569;font-size:14px;">Solução completa de ${nome} com atendimento ágil e qualidade comprovada.</p>
+            </div>`).join("");
+
+          codigo = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${nome}</title></head>
+          <body style="margin:0;font-family:system-ui,sans-serif;color:#1e293b;">
+            <header style="background:#0f172a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
+              <strong style="font-size:20px;">${nome}</strong>
+              <a href="https://wa.me/${whatsLink}" target="_blank" style="background:#22c55e;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;">WhatsApp</a>
+            </header>
+            <section style="background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:54px 24px;text-align:center;">
+              <span style="background:rgba(163,230,53,0.15);color:#a3e635;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:700;">📍 ${cidade}</span>
+              <h1 style="font-size:32px;max-width:680px;margin:16px auto;">${nome}: ${ramo}</h1>
+              <p style="color:#cbd5e1;max-width:580px;margin:0 auto 26px auto;">Atendimento rápido e orçamento sem compromisso direto pelo WhatsApp.</p>
+              <a href="https://wa.me/${whatsLink}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20${encodeURIComponent(nome)}" target="_blank" style="display:inline-block;background:#22c55e;color:#fff;font-weight:800;padding:15px 28px;border-radius:10px;text-decoration:none;">💬 SOLICITAR ORÇAMENTO AGORA</a>
+            </section>
+            <section style="max-width:960px;margin:44px auto;padding:0 24px;">
+              <h2 style="text-align:center;margin-bottom:24px;">Nossos Serviços</h2>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">${cards}</div>
+            </section>
+            <footer style="background:#0f172a;color:#94a3b8;text-align:center;padding:24px;font-size:13px;">${nome} • ${cidade} © 2026</footer>
+          </body></html>`;
+        }
+
+        htmlSiteGeradoAtual = codigo;
+        document.getElementById("iframePreviaSite").srcdoc = htmlSiteGeradoAtual;
+        document.getElementById("areaPreviaSite").style.display = "block";
+        document.getElementById("areaPreviaSite").scrollIntoView({ behavior: "smooth" });
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "✨ GERAR SITE COM IA GRÁTIS AGORA";
       }
+    }
 
-      if (!codigo.includes("<html")) {
-        const cards = servicos.split(",").map(s => s.trim()).filter(Boolean).map(item => `
-          <div style="background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:12px;">
-            <h3 style="margin:0 0 8px 0;color:#0f172a;">✅ ${item}</h3>
-            <p style="margin:0;color:#475569;font-size:14px;">Solução completa de ${nome} com atendimento ágil e qualidade comprovada.</p>
-          </div>`).join("");
+    function abrirPaywallSite180() {
+      document.getElementById("modalPaywall180").style.display = "flex";
+    }
 
-        codigo = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${nome}</title></head>
-        <body style="margin:0;font-family:system-ui,sans-serif;color:#1e293b;">
-          <header style="background:#0f172a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:20px;">${nome}</strong>
-            <a href="https://wa.me/${whatsLink}" target="_blank" style="background:#22c55e;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;">WhatsApp</a>
-          </header>
-          <section style="background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:54px 24px;text-align:center;">
-            <span style="background:rgba(163,230,53,0.15);color:#a3e635;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:700;">📍 ${cidade}</span>
-            <h1 style="font-size:32px;max-width:680px;margin:16px auto;">${nome}: ${ramo}</h1>
-            <p style="color:#cbd5e1;max-width:580px;margin:0 auto 26px auto;">Atendimento rápido e orçamento sem compromisso direto pelo WhatsApp.</p>
-            <a href="https://wa.me/${whatsLink}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20${encodeURIComponent(nome)}" target="_blank" style="display:inline-block;background:#22c55e;color:#fff;font-weight:800;padding:15px 28px;border-radius:10px;text-decoration:none;">💬 SOLICITAR ORÇAMENTO AGORA</a>
-          </section>
-          <section style="max-width:960px;margin:44px auto;padding:0 24px;">
-            <h2 style="text-align:center;margin-bottom:24px;">Nossos Serviços</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">${cards}</div>
-          </section>
-          <footer style="background:#0f172a;color:#94a3b8;text-align:center;padding:24px;font-size:13px;">${nome} • ${cidade} © 2026</footer>
-        </body></html>`;
+    function fecharPaywall180() {
+      document.getElementById("modalPaywall180").style.display = "none";
+    }
+
+    function validarEDownloadSite() {
+      const senha = document.getElementById("senhaDownloadSite").value.trim().toUpperCase();
+      if (senha === "SITE180VIP" || senha === "NEXUS180") {
+        document.getElementById("msgErroSenhaSite").style.display = "none";
+        const blob = new Blob([htmlSiteGeradoAtual], { type: "text/html;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "site-empresa-pronto.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        fecharPaywall180();
+      } else {
+        document.getElementById("msgErroSenhaSite").style.display = "block";
       }
-
-      htmlSiteGeradoAtual = codigo;
-      document.getElementById("iframePreviaSite").srcdoc = htmlSiteGeradoAtual;
-      document.getElementById("areaPreviaSite").style.display = "block";
-      document.getElementById("areaPreviaSite").scrollIntoView({ behavior: "smooth" });
-    } finally {
-      btn.disabled = false;
-      btn.innerText = "✨ GERAR SITE COM IA GRÁTIS AGORA";
     }
-  }
 
-  function abrirPaywallSite180() {
-    document.getElementById("modalPaywall180").style.display = "flex";
-  }
+    /* ================= 3. CATÁLOGO DAS 100 FERRAMENTAS DE IA ================= */
+    const ferramentas = [
+      { nome: "ChatGPT", cat: "Texto & Chat", desc: "Assistente conversacional completo para textos, ideias e respostas.", url: "https://chat.openai.com" },
+      { nome: "Claude", cat: "Texto & Chat", desc: "IA avançada para análise de documentos longos e escrita natural.", url: "https://claude.ai" },
+      { nome: "Google Gemini", cat: "Texto & Chat", desc: "IA multimodal do Google integrada a pesquisa, código e imagens.", url: "https://gemini.google.com" },
+      { nome: "Microsoft Copilot", cat: "Texto & Chat", desc: "Assistente com acesso à web em tempo real e criação de imagens.", url: "https://copilot.microsoft.com" },
+      { nome: "Perplexity AI", cat: "Texto & Chat", desc: "Motor de busca inteligente com fontes verificadas em tempo real.", url: "https://www.perplexity.ai" },
+      { nome: "DeepSeek", cat: "Código & Negócios", desc: "IA de raciocínio lógico e programação de alto desempenho.", url: "https://chat.deepseek.com" },
+      { nome: "Midjourney", cat: "Imagem & Design", desc: "Geração de imagens artísticas e fotorrealistas de altíssima qualidade.", url: "https://www.midjourney.com" },
+      { nome: "Leonardo AI", cat: "Imagem & Design", desc: "Criação de artes, personagens, logos e texturas com controle fino.", url: "https://leonardo.ai" },
+      { nome: "Canva Magic Studio", cat: "Imagem & Design", desc: "Design gráfico, posts e apresentações automáticas com IA.", url: "https://www.canva.com" },
+      { nome: "Remove.bg", cat: "Imagem & Design", desc: "Remove o fundo de qualquer imagem automaticamente em 5 segundos.", url: "https://www.remove.bg" },
+      { nome: "Ideogram", cat: "Imagem & Design", desc: "Especialista em gerar imagens e logotipos com textos perfeitos.", url: "https://ideogram.ai" },
+      { nome: "CapCut AI", cat: "Vídeo & Voz", desc: "Editor de vídeos curtos com legendas automáticas e efeitos IA.", url: "https://www.capcut.com" },
+      { nome: "ElevenLabs", cat: "Vídeo & Voz", desc: "Clonagem e síntese de voz ultrarrealista em português.", url: "https://elevenlabs.io" },
+      { nome: "TTSMaker", cat: "Vídeo & Voz", desc: "Conversor gratuito de texto em voz natural para vídeos e narrações.", url: "https://ttsmaker.com" },
+      { nome: "HeyGen", cat: "Vídeo & Voz", desc: "Criação de vídeos com avatares falantes realistas a partir de texto.", url: "https://www.heygen.com" },
+      { nome: "Runway Gen-3", cat: "Vídeo & Voz", desc: "Geração e edição cinematográfica de vídeos com IA.", url: "https://runwayml.com" },
+      { nome: "Suno AI", cat: "Vídeo & Voz", desc: "Crie músicas completas com letra e vocal em qualquer estilo.", url: "https://suno.com" },
+      { nome: "GitHub Copilot", cat: "Código & Negócios", desc: "Autocompletar inteligente de código para programadores.", url: "https://github.com/features/copilot" },
+      { nome: "Gamma App", cat: "Código & Negócios", desc: "Criação instantânea de slides, propostas e páginas web.", url: "https://gamma.app" },
+      { nome: "Notion AI", cat: "Código & Negócios", desc: "Organização de projetos, resumos e produtividade empresarial.", url: "https://www.notion.so" }
+    ];
 
-  function fecharPaywall180() {
-    document.getElementById("modalPaywall180").style.display = "none";
-  }
+    let categoriaAtual = "Todas";
+    let favoritos = JSON.parse(localStorage.getItem("nexus_favs") || "[]");
 
-  function validarEDownloadSite() {
-    const senha = document.getElementById("senhaDownloadSite").value.trim().toUpperCase();
-    if (senha === "SITE180VIP" || senha === "NEXUS180") {
-      document.getElementById("msgErroSenhaSite").style.display = "none";
-      const blob = new Blob([htmlSiteGeradoAtual], { type: "text/html;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "site-empresa-pronto.html";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      fecharPaywall180();
-    } else {
-      document.getElementById("msgErroSenhaSite").style.display = "block";
+    function renderizarFerramentas() {
+      const busca = document.getElementById("searchInput").value.toLowerCase();
+      const grid = document.getElementById("toolsGrid");
+      const filtradas = ferramentas.filter(f => {
+        const matchBusca = f.nome.toLowerCase().includes(busca) || f.desc.toLowerCase().includes(busca) || f.cat.toLowerCase().includes(busca);
+        if (categoriaAtual === "Favoritos") return favoritos.includes(f.nome) && matchBusca;
+        if (categoriaAtual === "Todas") return matchBusca;
+        return f.cat === categoriaAtual && matchBusca;
+      });
+
+      grid.innerHTML = filtradas.map(f => {
+        const isFav = favoritos.includes(f.nome);
+        return `
+          <div class="tool-item">
+            <div class="tool-info">
+              <div class="tool-top">
+                <span class="tool-name">${f.nome}</span>
+                <span class="tool-cat">${f.cat}</span>
+              </div>
+              <div class="tool-desc">${f.desc}</div>
+            </div>
+            <div class="tool-actions">
+              <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${f.nome}')">★</button>
+              <a href="${f.url}" target="_blank" rel="noopener noreferrer" class="open-btn">Abrir</a>
+            </div>
+          </div>
+        `;
+      }).join("");
     }
-  }
-</script>
-<!-- FIM DO GERADOR DE SITES -->
+
+    function selecionarCategoria(cat, btn) {
+      categoriaAtual = cat;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderizarFerramentas();
+    }
+
+    function filtrarFerramentas() {
+      renderizarFerramentas();
+    }
+
+    function toggleFav(nome) {
+      if (favoritos.includes(nome)) {
+        favoritos = favoritos.filter(n => n !== nome);
+      } else {
+        favoritos.push(nome);
+      }
+      localStorage.setItem("nexus_favs", JSON.stringify(favoritos));
+      renderizarFerramentas();
+    }
+
+    renderizarFerramentas();
+  </script>
+</body>
+</html>
