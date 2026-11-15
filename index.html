@@ -1,517 +1,196 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXUS AI 100 — AI Antivirus & 100 Free AI Tools</title>
-  <meta name="description" content="Free AI Antivirus Fake Link Detector and directory of 100 free AI tools for text, image, video, voice, and coding." />
-
-  <!-- Adsterra Popunder (ID 32276935) -->
-  <script data-cfasync="false" src="https://abscloud.org/1/fe7a8b60a7ff0ec4ca3b613da542f908"></script>
-
-  <style>
-    :root {
-      --bg: #070b14;
-      --card: #0f172a;
-      --card-border: #1e293b;
-      --neon: #0ea5e9;
-      --neon-hover: #38bdf8;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --green: #10b981;
-      --amber: #f59e0b;
-      --red: #ef4444;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 70px; }
-    .container { max-width: 920px; margin: 0 auto; padding: 14px; }
-
-    /* Top Header */
-    header {
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      background: #0b1120; border-bottom: 1px solid var(--card-border);
-      padding: 12px 14px; position: sticky; top: 0; z-index: 50;
-    }
-    .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.4px; }
-    .brand span { color: var(--neon-hover); }
-    .header-actions { display: flex; align-items: center; gap: 8px; }
-    .lang-btn {
-      background: #1e293b; color: #fff; border: 1px solid #334155;
-      padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
-    }
-    .badge-100 {
-      background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35);
-      padding: 5px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap;
-    }
-
-    /* Smartlink CTA Buttons */
-    .cta-blue {
-      display: block; width: 100%; text-align: center; text-decoration: none;
-      background: linear-gradient(90deg, #0284c7, #0ea5e9); color: #fff;
-      font-weight: 800; font-size: 0.92rem; padding: 13px 16px; border-radius: 10px;
-      margin: 12px 0; box-shadow: 0 0 18px rgba(14, 165, 233, 0.35); transition: 0.2s;
-    }
-    .cta-gold {
-      display: block; width: 100%; text-align: center; text-decoration: none;
-      background: linear-gradient(90deg, #d97706, #f59e0b); color: #070b14;
-      font-weight: 900; font-size: 0.92rem; padding: 13px 16px; border-radius: 10px;
-      margin: 12px 0; box-shadow: 0 0 18px rgba(245, 158, 11, 0.3); transition: 0.2s;
-    }
-    .cta-blue:hover, .cta-gold:hover { transform: translateY(-1px); filter: brightness(1.08); }
-
-    /* Banner 320x50 Box */
-    .ad-box {
-      display: flex; justify-content: center; align-items: center;
-      min-height: 58px; margin: 10px auto; padding: 4px;
-      background: rgba(15, 23, 42, 0.6); border: 1px dashed #1e293b; border-radius: 10px;
-      overflow: hidden;
-    }
-
-    /* AI Antivirus Box */
-    .scanner-card {
-      background: var(--card); border: 1px solid #1d4ed8; border-radius: 12px;
-      padding: 15px; margin: 12px 0; box-shadow: 0 0 20px rgba(29, 78, 216, 0.15);
-    }
-    .scanner-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-    .scanner-title { font-weight: 800; font-size: 0.98rem; color: #f8fafc; }
-    .free-pill {
-      background: rgba(16, 185, 129, 0.18); color: #34d399; font-size: 0.72rem;
-      font-weight: 700; padding: 3px 8px; border-radius: 999px;
-    }
-    .scanner-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; }
-    .scanner-row { display: flex; gap: 8px; }
-    .scanner-row input {
-      flex: 1; background: #070b14; border: 1px solid #334155; color: #fff;
-      padding: 10px 12px; border-radius: 8px; font-size: 0.88rem; outline: none;
-    }
-    .scanner-row input:focus { border-color: var(--neon); }
-    .scan-btn {
-      background: var(--neon); color: #fff; border: none; padding: 10px 16px;
-      border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer; white-space: nowrap;
-    }
-    .scan-result {
-      margin-top: 10px; padding: 10px 12px; border-radius: 8px; font-size: 0.84rem;
-      display: none; font-weight: 600;
-    }
-    .res-safe { background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #6ee7b7; }
-    .res-warn { background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #fcd34d; }
-    .res-danger { background: rgba(239, 68, 68, 0.18); border: 1px solid #ef4444; color: #fca5a5; }
-
-    /* Search & Category Tabs */
-    .search-input {
-      width: 100%; background: var(--card); border: 1px solid var(--card-border); color: #fff;
-      padding: 11px 14px; border-radius: 10px; font-size: 0.9rem; margin: 10px 0; outline: none;
-    }
-    .search-input:focus { border-color: var(--neon); }
-    .tabs {
-      display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 10px;
-      scrollbar-width: none;
-    }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab-btn {
-      background: var(--card); color: var(--muted); border: 1px solid var(--card-border);
-      padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; font-weight: 700;
-      cursor: pointer; white-space: nowrap; transition: 0.15s;
-    }
-    .tab-btn.active { background: var(--neon); color: #fff; border-color: var(--neon); }
-
-    /* Tools List */
-    .tools-grid { display: flex; flex-direction: column; gap: 9px; }
-    .tool-card {
-      background: var(--card); border: 1px solid var(--card-border); border-radius: 10px;
-      padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    }
-    .tool-info { flex: 1; min-width: 0; }
-    .tool-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 3px; }
-    .tool-name { font-weight: 800; font-size: 0.95rem; color: #fff; }
-    .tool-cat {
-      font-size: 0.7rem; font-weight: 700; color: #38bdf8;
-      background: rgba(14, 165, 233, 0.12); padding: 2px 7px; border-radius: 6px;
-    }
-    .tool-desc { font-size: 0.8rem; color: var(--muted); }
-    .tool-actions { display: flex; align-items: center; gap: 8px; }
-    .fav-btn {
-      background: transparent; border: 1px solid #334155; color: #94a3b8;
-      width: 34px; height: 34px; border-radius: 8px; font-size: 1rem; cursor: pointer;
-    }
-    .fav-btn.saved { color: #fbbf24; border-color: #f59e0b; background: rgba(245, 158, 11, 0.12); }
-    .open-btn {
-      background: var(--neon); color: #fff; text-decoration: none; font-weight: 700;
-      font-size: 0.82rem; padding: 8px 14px; border-radius: 8px; white-space: nowrap;
-    }
-    .open-btn:hover { background: var(--neon-hover); }
-    .empty-msg { text-align: center; color: var(--muted); padding: 24px 12px; font-size: 0.9rem; }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="brand">⚡ <span>NEXUS AI 100</span></div>
-    <div class="header-actions">
-      <button id="langToggle" class="lang-btn" onclick="toggleLang()">🇺🇸 EN</button>
-      <div id="badgeCount" class="badge-100">100 IAs Liberadas</div>
-    </div>
-  </header>
-
-  <div class="container">
-    <!-- Top Smartlink CTA -->
-    <a id="ctaTop" class="cta-blue" href="https://asiafilm.org/4/e4ca6435bc078464b818eb49776543b4" target="_blank" rel="noopener noreferrer">
-      🎁 ACESSAR FERRAMENTAS SECRETAS GRÁTIS
-    </a>
-
-    <!-- Adsterra Banner 320x50 (ID 32276937) -->
-    <div class="ad-box">
-      <script>
-        atOptions = {
-          'key' : 'a9acb4c2f5d21587bd1b2e8133765997',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
-        };
-      </script>
-      <script src="https://bauval.org/22/a9acb4c2f5d21587bd1b2e8133765997"></script>
-    </div>
-
-    <!-- AI Antivirus Link Scanner -->
-    <section class="scanner-card">
-      <div class="scanner-top">
-        <div id="scanTitle" class="scanner-title">🛡️ AI Antivírus — Detector de Links Falsos</div>
-        <span id="scanFree" class="free-pill">100% Grátis</span>
-      </div>
-      <p id="scanDesc" class="scanner-desc">
-        Cole qualquer link suspeito do WhatsApp, Pix ou promoção antes de clicar para detectar golpes e phishing gratuitamente.
-      </p>
-      <div class="scanner-row">
-        <input id="urlInput" type="text" placeholder="Cole o link aqui (ex: http://...)" />
-        <button id="scanBtn" class="scan-btn" onclick="scanLink()">Analisar</button>
-      </div>
-      <div id="scanResult" class="scan-result"></div>
-    </section>
-
-    <!-- Middle Smartlink CTA -->
-    <a id="ctaMid" class="cta-gold" href="https://asiafilm.org/4/e4ca6435bc078464b818eb49776543b4" target="_blank" rel="noopener noreferrer">
-      GERADOR DE IMAGENS & VÍDEOS IA ILIMITADO
-    </a>
-
-    <!-- Search & Categories -->
-    <input id="searchInput" class="search-input" type="text" placeholder="🔍 Buscar entre as 100 IAs (ex: vídeo, voz, imagem, texto)..." oninput="renderTools()" />
-    <div id="categoryTabs" class="tabs"></div>
-
-    <!-- 100 AI Tools List -->
-    <div id="toolsList" class="tools-grid"></div>
-
-    <!-- Bottom Smartlink CTA -->
-    <a id="ctaBot" class="cta-blue" style="margin-top: 18px;" href="https://asiafilm.org/4/e4ca6435bc078464b818eb49776543b4" target="_blank" rel="noopener noreferrer">
-      🚀 DESBLOQUEAR FERRAMENTAS VIP DE IA GRÁTIS
-    </a>
+<!-- INÍCIO DO GERADOR DE SITES COM IA GEMINI + DOWNLOAD R$ 180,00 -->
+<section id="gerador-site-pro" style="max-width: 920px; margin: 16px auto 28px auto; padding: 22px; background: linear-gradient(145deg, #0f172a, #1e293b); border: 2px solid #a3e635; border-radius: 16px; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; box-shadow: 0 12px 30px rgba(0,0,0,0.4);">
+  <div style="text-align: center; margin-bottom: 18px;">
+    <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 12px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
+      ⚡ Criador de Sites com Inteligência Artificial
+    </span>
+    <h2 style="font-size: 23px; margin: 10px 0 6px 0; color: #ffffff;">
+      Crie o Site Completo da sua Empresa Agora
+    </h2>
+    <p style="color: #cbd5e1; font-size: 14px; margin: 0;">
+      Preencha os dados e visualize seu site pronto <strong>100% grátis</strong>. Gostou? Libere o download do arquivo completo por <strong style="color: #a3e635;">R$ 180,00</strong> (pagamento único).
+    </p>
   </div>
 
-  <script>
-    const TOOLS = [
-      // Texto & Chat (20)
-      { name: "ChatGPT", cat: "text", url: "https://chatgpt.com", pt: "Assistente conversacional completo para textos, ideias e respostas.", en: "All-in-one conversational AI assistant for writing, ideas, and answers." },
-      { name: "Claude", cat: "text", url: "https://claude.ai", pt: "IA avançada para análise de documentos longos e escrita natural.", en: "Advanced AI for long document analysis, coding, and natural writing." },
-      { name: "Google Gemini", cat: "text", url: "https://gemini.google.com", pt: "IA multimodal do Google integrada a pesquisa, código e imagens.", en: "Google's multimodal AI integrated with search, coding, and images." },
-      { name: "Microsoft Copilot", cat: "text", url: "https://copilot.microsoft.com", pt: "Assistente com acesso à web em tempo real e criação visual.", en: "AI assistant with real-time web access and image generation." },
-      { name: "Perplexity AI", cat: "text", url: "https://www.perplexity.ai", pt: "Buscador inteligente que responde com fontes e links verificados.", en: "AI-powered answer engine with verified real-time web citations." },
-      { name: "DeepSeek", cat: "text", url: "https://chat.deepseek.com", pt: "Modelo gratuito de raciocínio lógico, matemática e programação.", en: "Free high-performance reasoning, math, and coding AI model." },
-      { name: "Grok", cat: "text", url: "https://grok.com", pt: "IA com informações atualizadas e respostas diretas.", en: "Real-time AI assistant with fast and direct answers." },
-      { name: "Mistral Le Chat", cat: "text", url: "https://chat.mistral.ai", pt: "Assistente europeu rápido e gratuito para texto e código.", en: "Fast European AI assistant for writing, research, and code." },
-      { name: "Meta AI", cat: "text", url: "https://www.meta.ai", pt: "Assistente gratuito da Meta para chat e geração de imagens.", en: "Meta's free AI assistant for chat and instant image creation." },
-      { name: "Poe", cat: "text", url: "https://poe.com", pt: "Plataforma que reúne vários modelos de IA em um só lugar.", en: "Unified hub to chat with multiple top AI models in one place." },
-      { name: "Pi AI", cat: "text", url: "https://pi.ai", pt: "Assistente pessoal focado em conversas naturais e suporte.", en: "Personal AI companion built for natural, helpful conversations." },
-      { name: "Character.ai", cat: "text", url: "https://character.ai", pt: "Converse com personagens virtuais e tutores personalizados.", en: "Chat with custom AI characters, roleplay bots, and tutors." },
-      { name: "You.com", cat: "text", url: "https://you.com", pt: "Motor de busca com agentes de IA personalizados.", en: "AI search engine with customizable research and writing agents." },
-      { name: "HuggingChat", cat: "text", url: "https://huggingface.co/chat", pt: "Chat gratuito com modelos de código aberto da comunidade.", en: "Free open-source AI chat powered by community models." },
-      { name: "Qwen Chat", cat: "text", url: "https://chat.qwen.ai", pt: "Modelo multilíngue potente para texto, visão e código.", en: "Powerful multilingual AI model for text, vision, and coding." },
-      { name: "Jasper AI", cat: "text", url: "https://www.jasper.ai", pt: "Criação de copy, anúncios e textos profissionais de marketing.", en: "AI copywriting platform for ads, blogs, and marketing content." },
-      { name: "Copy.ai", cat: "text", url: "https://www.copy.ai", pt: "Gerador rápido de legendas, e-mails e textos de vendas.", en: "Fast AI generator for social captions, emails, and sales copy." },
-      { name: "Writesonic", cat: "text", url: "https://writesonic.com", pt: "Escrita de artigos otimizados para SEO e blogs.", en: "SEO-optimized article writer and marketing content assistant." },
-      { name: "Rytr", cat: "text", url: "https://rytr.me", pt: "Assistente de escrita acessível para posts e descrições.", en: "Lightweight AI writing assistant for posts, emails, and bios." },
-      { name: "QuillBot", cat: "text", url: "https://quillbot.com", pt: "Reescrita, resumo e correção gramatical inteligente.", en: "AI paraphrasing, summarizing, and grammar checker tool." },
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-bottom: 12px;">
+    <div>
+      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Nome da Empresa *</label>
+      <input id="siteNome" type="text" placeholder="Ex: Oficina Auto Center" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+    </div>
+    <div>
+      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Ramo / Especialidade *</label>
+      <input id="siteRamo" type="text" placeholder="Ex: Mecânica geral, freios e suspensão" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+    </div>
+    <div>
+      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">WhatsApp com DDD *</label>
+      <input id="siteWhats" type="tel" placeholder="Ex: 89994315977" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+    </div>
+    <div>
+      <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Cidade / Estado</label>
+      <input id="siteCidade" type="text" placeholder="Ex: Floriano - PI" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+    </div>
+  </div>
 
-      // Imagem & Design (20)
-      { name: "Midjourney", cat: "image", url: "https://www.midjourney.com", pt: "Geração de imagens artísticas de altíssimo realismo.", en: "Industry-leading photorealistic and artistic AI image generator." },
-      { name: "Leonardo.Ai", cat: "image", url: "https://leonardo.ai", pt: "Criação de artes, personagens e texturas com créditos grátis.", en: "AI art, game assets, and illustration generator with daily free credits." },
-      { name: "Ideogram", cat: "image", url: "https://ideogram.ai", pt: "Gerador de imagens especialista em textos e logotipos nítidos.", en: "AI image generator excelling at accurate typography and logos." },
-      { name: "Adobe Firefly", cat: "image", url: "https://firefly.adobe.com", pt: "Criação e preenchimento generativo de imagens comerciais.", en: "Commercial-safe generative AI for images and text effects." },
-      { name: "Canva Magic Studio", cat: "image", url: "https://www.canva.com", pt: "Design gráfico completo com ferramentas de IA integradas.", en: "All-in-one graphic design suite with built-in AI image tools." },
-      { name: "Playground AI", cat: "image", url: "https://playground.com", pt: "Editor e gerador visual gratuito para artes digitais.", en: "Free-tier AI image creator and canvas editor for social graphics." },
-      { name: "Bing Image Creator", cat: "image", url: "https://www.bing.com/images/create", pt: "Gerador gratuito com DALL-E 3 direto no navegador.", en: "Free DALL-E 3 powered image generator right in your browser." },
-      { name: "Freepik Pikaso", cat: "image", url: "https://www.freepik.com/ai/image-generator", pt: "Geração de imagens e esboços em tempo real.", en: "Real-time AI image generator and sketch-to-image studio." },
-      { name: "Remove.bg", cat: "image", url: "https://www.remove.bg", pt: "Remove o fundo de qualquer foto em segundos automaticamente.", en: "Automatic 1-click AI background remover for any photo." },
-      { name: "Cleanup.pictures", cat: "image", url: "https://cleanup.pictures", pt: "Apaga objetos, pessoas e marcas indesejadas de fotos.", en: "Remove unwanted objects, people, or text from photos cleanly." },
-      { name: "Photopea", cat: "image", url: "https://www.photopea.com", pt: "Editor de imagens estilo Photoshop gratuito no navegador.", en: "Free browser-based photo editor with smart selection tools." },
-      { name: "Clipdrop", cat: "image", url: "https://clipdrop.co", pt: "Suite visual para melhorar nitidez, luz e recortar fotos.", en: "Visual AI toolkit for upscaling, relighting, and background removal." },
-      { name: "Photoroom", cat: "image", url: "https://www.photoroom.com", pt: "Criação de fotos profissionais de produtos para vendas.", en: "AI product photography and studio background generator." },
-      { name: "Krea AI", cat: "image", url: "https://www.krea.ai", pt: "Geração e melhoria de imagens em alta definição.", en: "Real-time AI image generation and high-res upscaling." },
-      { name: "SeaArt AI", cat: "image", url: "https://www.seaart.ai", pt: "Plataforma gratuita de arte digital e modelos visuais.", en: "Free AI art studio with thousands of community styles." },
-      { name: "Tensor.art", cat: "image", url: "https://tensor.art", pt: "Geração online gratuita com modelos Flux e Stable Diffusion.", en: "Free online image generator supporting Flux and SD models." },
-      { name: "Lexica", cat: "image", url: "https://lexica.art", pt: "Buscador de prompts e gerador de imagens estilizadas.", en: "AI prompt search engine and stylized image generator." },
-      { name: "NightCafe", cat: "image", url: "https://creator.nightcafe.studio", pt: "Criador comunitário de arte com IA e desafios diários.", en: "Community AI art generator with daily free credits." },
-      { name: "Recraft AI", cat: "image", url: "https://www.recraft.ai", pt: "Geração de vetores SVG, ícones e ilustrações profissionais.", en: "AI vector SVG, icon, and brand illustration generator." },
-      { name: "Looka", cat: "image", url: "https://looka.com", pt: "Criador automático de logotipos e identidade visual.", en: "AI-powered logo maker and brand identity kit builder." },
+  <div style="margin-bottom: 16px;">
+    <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Serviços ou Diferenciais (separados por vírgula)</label>
+    <input id="siteServicos" type="text" placeholder="Ex: Orçamento na hora, Peças originais, Garantia no serviço" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+  </div>
 
-      // Vídeo & Animação (18)
-      { name: "Runway Gen-3", cat: "video", url: "https://runwayml.com", pt: "Geração e edição cinematográfica de vídeos por texto ou foto.", en: "Cinematic AI text-to-video and image-to-video creation suite." },
-      { name: "Pika Art", cat: "video", url: "https://pika.art", pt: "Animação de imagens e efeitos especiais criativos em vídeo.", en: "Creative AI video generator and image animation platform." },
-      { name: "Kling AI", cat: "video", url: "https://klingai.com", pt: "Vídeos realistas de alta fluidez a partir de texto ou imagem.", en: "High-motion realistic AI video generator from text or images." },
-      { name: "Luma Dream Machine", cat: "video", url: "https://lumalabs.ai/dream-machine", pt: "Criação rápida de cenas em vídeo realistas e 3D.", en: "Fast realistic AI video and 3D scene generator." },
-      { name: "Hailuo AI", cat: "video", url: "https://hailuoai.video", pt: "Gerador de vídeos com movimentos naturais e expressivos.", en: "AI video creator known for expressive human motion." },
-      { name: "Sora", cat: "video", url: "https://sora.com", pt: "Modelo da OpenAI para criação de cenas em vídeo por texto.", en: "OpenAI's text-to-video generation platform." },
-      { name: "HeyGen", cat: "video", url: "https://www.heygen.com", pt: "Avatares falantes realistas e tradução labial de vídeos.", en: "Realistic AI talking avatars and video lip-sync translation." },
-      { name: "Synthesia", cat: "video", url: "https://www.synthesia.io", pt: "Vídeos de apresentação com apresentadores virtuais.", en: "AI video presenter platform for tutorials and training." },
-      { name: "D-ID", cat: "video", url: "https://www.d-id.com", pt: "Transforma qualquer retrato em um vídeo falante.", en: "Animate still portraits into talking AI presenters." },
-      { name: "CapCut", cat: "video", url: "https://www.capcut.com", pt: "Editor completo com legendas automáticas e efeitos IA.", en: "All-in-one video editor with auto-captions and AI effects." },
-      { name: "InVideo AI", cat: "video", url: "https://invideo.io", pt: "Cria vídeos prontos com roteiro, narração e cenas a partir de uma frase.", en: "Generate complete narrated videos from a single text prompt." },
-      { name: "OpusClip", cat: "video", url: "https://www.opus.pro", pt: "Corta vídeos longos em Shorts e Reels virais automaticamente.", en: "Turn long videos into viral Shorts and Reels automatically." },
-      { name: "Viggle AI", cat: "video", url: "https://viggle.ai", pt: "Transfere movimentos reais para qualquer personagem.", en: "Controllable character animation and motion transfer AI." },
-      { name: "Kaiber", cat: "video", url: "https://kaiber.ai", pt: "Vídeos musicais e animações estilizadas com IA.", en: "AI music video and stylized animation generator." },
-      { name: "Fliki", cat: "video", url: "https://fliki.ai", pt: "Transforma textos e artigos em vídeos narrados.", en: "Turn blog posts and scripts into narrated videos." },
-      { name: "Pictory", cat: "video", url: "https://pictory.ai", pt: "Edição automática de vídeos curtos a partir de roteiros.", en: "Script-to-video generator for social media creators." },
-      { name: "Veed.io", cat: "video", url: "https://www.veed.io", pt: "Editor online com legendas automáticas e limpeza de áudio.", en: "Online video editor with auto-subtitles and AI tools." },
-      { name: "PixVerse", cat: "video", url: "https://app.pixverse.ai", pt: "Gerador gratuito de clipes animados e efeitos visuais.", en: "Free-tier AI video generator with trendy visual templates." },
+  <button id="btnGerarSiteIA" onclick="gerarPreviaSite()" style="width: 100%; padding: 15px; background: #a3e635; color: #0f172a; font-weight: 800; font-size: 16px; border: none; border-radius: 10px; cursor: pointer;">
+    ✨ GERAR SITE COM IA GRÁTIS AGORA
+  </button>
 
-      // Áudio & Voz (14)
-      { name: "ElevenLabs", cat: "audio", url: "https://elevenlabs.io", pt: "Vozes ultra-realistas e clonagem de voz em dezenas de idiomas.", en: "Ultra-realistic AI voice synthesis and voice cloning." },
-      { name: "Suno AI", cat: "audio", url: "https://suno.com", pt: "Cria músicas completas com letra, vocal e instrumental.", en: "Generate full songs with vocals and instruments from a prompt." },
-      { name: "Udio", cat: "audio", url: "https://www.udio.com", pt: "Produção musical completa de alta fidelidade por texto.", en: "High-fidelity AI music creation studio from text prompts." },
-      { name: "TTSMaker", cat: "audio", url: "https://ttsmaker.com", pt: "Conversor gratuito e ilimitado de texto em voz para vídeos.", en: "Free unlimited text-to-speech voiceover generator." },
-      { name: "Murf AI", cat: "audio", url: "https://murf.ai", pt: "Estúdio de locução profissional para vídeos e anúncios.", en: "Studio-quality AI voiceover generator for videos and ads." },
-      { name: "Speechify", cat: "audio", url: "https://speechify.com", pt: "Lê PDFs, livros e artigos em voz alta naturalmente.", en: "Natural-sounding AI text reader for PDFs, docs, and articles." },
-      { name: "Adobe Podcast", cat: "audio", url: "https://podcast.adobe.com", pt: "Remove ruídos e deixa áudio de celular com som de estúdio.", en: "AI audio enhancer that turns phone recordings into studio sound." },
-      { name: "VocalRemover", cat: "audio", url: "https://vocalremover.org", pt: "Separa vocal e instrumental de qualquer música grátis.", en: "Free AI splitter to separate vocals from instrumentals." },
-      { name: "Lalal.ai", cat: "audio", url: "https://www.lalal.ai", pt: "Extração limpa de voz, bateria e instrumentos.", en: "High-precision AI stem extraction for vocals and instruments." },
-      { name: "AIVA", cat: "audio", url: "https://www.aiva.ai", pt: "Compositor de trilhas sonoras instrumentais e épicas.", en: "AI soundtrack composer for games, trailers, and videos." },
-      { name: "Soundraw", cat: "audio", url: "https://soundraw.io", pt: "Gera batidas e trilhas livres de direitos autorais.", en: "Royalty-free AI music and beat generator for creators." },
-      { name: "Boomy", cat: "audio", url: "https://boomy.com", pt: "Crie músicas originais em segundos mesmo sem saber teoria.", en: "Create original AI tracks in seconds with zero music theory." },
-      { name: "Krisp", cat: "audio", url: "https://krisp.ai", pt: "Cancelamento inteligente de ruído em chamadas e gravações.", en: "AI noise cancellation for calls, streams, and recordings." },
-      { name: "Play.ht", cat: "audio", url: "https://play.ht", pt: "Gerador de locuções realistas para podcasts e narrações.", en: "Realistic AI voice generator for podcasts and narration." },
+  <div id="areaPreviaSite" style="display: none; margin-top: 22px; border-top: 1px solid #334155; padding-top: 18px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+      <span style="color: #a3e635; font-weight: 700; font-size: 14px;">✅ Prévia pronta! Veja como ficou seu site:</span>
+      <button onclick="abrirPaywallSite180()" style="background: #22c55e; color: #052e16; font-weight: 800; font-size: 14px; padding: 10px 18px; border: none; border-radius: 8px; cursor: pointer;">
+        ⬇️ BAIXAR SITE COMPLETO (R$ 180,00)
+      </button>
+    </div>
 
-      // Código & Dev (14)
-      { name: "GitHub Copilot", cat: "code", url: "https://github.com/features/copilot", pt: "Autocompletar inteligente e assistente de programação.", en: "AI pair programmer for faster coding and debugging." },
-      { name: "Cursor", cat: "code", url: "https://www.cursor.com", pt: "Editor de código com IA integrada para projetos completos.", en: "AI-first code editor built to write and refactor entire apps." },
-      { name: "Replit Agent", cat: "code", url: "https://replit.com", pt: "Cria e publica aplicativos e sites direto pelo navegador ou celular.", en: "Build and deploy web apps straight from your browser or phone." },
-      { name: "Bolt.new", cat: "code", url: "https://bolt.new", pt: "Gera aplicações web completas em segundos a partir de um prompt.", en: "Prompt-to-full-stack web app builder in the browser." },
-      { name: "Lovable", cat: "code", url: "https://lovable.dev", pt: "Desenvolvimento visual de aplicativos web modernos com IA.", en: "AI full-stack web app builder with instant live preview." },
-      { name: "v0 by Vercel", cat: "code", url: "https://v0.dev", pt: "Cria interfaces modernas em React e Tailwind por descrição.", en: "Generate clean React & Tailwind UI components from prompts." },
-      { name: "Windsurf", cat: "code", url: "https://codeium.com/windsurf", pt: "IDE agêntica gratuita para programar com assistência contínua.", en: "Agentic AI code editor with deep codebase awareness." },
-      { name: "Blackbox AI", cat: "code", url: "https://www.blackbox.ai", pt: "Assistente rápido para gerar, explicar e corrigir código.", en: "Fast AI coding assistant to write, explain, and fix code." },
-      { name: "Tabnine", cat: "code", url: "https://www.tabnine.com", pt: "Sugestões de código privadas e rápidas para desenvolvedores.", en: "Private AI code completion assistant for developers." },
-      { name: "Phind", cat: "code", url: "https://www.phind.com", pt: "Motor de busca técnico focado em programação e erros.", en: "AI search engine tailored for developers and debugging." },
-      { name: "Google AI Studio", cat: "code", url: "https://aistudio.google.com", pt: "Teste modelos Gemini e gere chaves de API gratuitas.", en: "Prototype with Gemini models and get free API keys." },
-      { name: "Hugging Face", cat: "code", url: "https://huggingface.co", pt: "Maior repositório aberto de modelos, datasets e espaços de IA.", en: "Open-source hub for AI models, datasets, and live demos." },
-      { name: "Firebase Studio", cat: "code", url: "https://firebase.studio", pt: "Ambiente online do Google para criar apps com IA.", en: "Google's cloud workspace for building AI-powered apps." },
-      { name: "CodePen", cat: "code", url: "https://codepen.io", pt: "Editor online instantâneo para testar HTML, CSS e JS.", en: "Instant browser sandbox to build and test HTML, CSS, and JS." },
+    <iframe id="iframePreviaSite" style="width: 100%; height: 430px; border: 2px solid #334155; border-radius: 12px; background: #ffffff;"></iframe>
 
-      // Produtividade & Negócios (14)
-      { name: "Notion AI", cat: "biz", url: "https://www.notion.so", pt: "Organize tarefas, documentos e resumos automáticos.", en: "All-in-one workspace with AI notes, summaries, and tasks." },
-      { name: "Gamma App", cat: "biz", url: "https://gamma.app", pt: "Cria apresentações, slides e páginas profissionais em 1 minuto.", en: "Generate polished presentations and decks in under a minute." },
-      { name: "Tome", cat: "biz", url: "https://tome.app", pt: "Apresentações visuais e pitch decks gerados por IA.", en: "AI storytelling and pitch deck presentation creator." },
-      { name: "NotebookLM", cat: "biz", url: "https://notebooklm.google.com", pt: "Estude PDFs e transforme documentos em podcasts explicativos.", en: "Google's AI research assistant that turns docs into audio overviews." },
-      { name: "Otter.ai", cat: "biz", url: "https://otter.ai", pt: "Transcrição automática de reuniões e aulas em tempo real.", en: "Real-time AI meeting transcription and automatic summaries." },
-      { name: "Fireflies.ai", cat: "biz", url: "https://fireflies.ai", pt: "Grava, transcreve e resume chamadas de vídeo.", en: "AI meeting assistant that records, transcribes, and summarizes." },
-      { name: "Zapier AI", cat: "biz", url: "https://zapier.com", pt: "Automatiza tarefas entre milhares de aplicativos sem código.", en: "No-code AI workflow automation connecting thousands of apps." },
-      { name: "Make", cat: "biz", url: "https://www.make.com", pt: "Automações visuais avançadas com agentes de IA.", en: "Visual automation builder for AI workflows and APIs." },
-      { name: "n8n", cat: "biz", url: "https://n8n.io", pt: "Plataforma flexível de fluxos e agentes autônomos.", en: "Flexible workflow automation platform for AI agents." },
-      { name: "Perplexity Pages", cat: "biz", url: "https://www.perplexity.ai", pt: "Transforma pesquisas em relatórios e artigos estruturados.", en: "Turn research queries into structured, shareable reports." },
-      { name: "ChatPDF", cat: "biz", url: "https://www.chatpdf.com", pt: "Converse com qualquer arquivo PDF e extraia respostas.", en: "Chat with any PDF file to extract answers and summaries." },
-      { name: "Humata AI", cat: "biz", url: "https://www.humata.ai", pt: "Análise rápida de contratos, manuais e artigos técnicos.", en: "Fast AI Q&A and insights for technical papers and contracts." },
-      { name: "Grammarly", cat: "biz", url: "https://www.grammarly.com", pt: "Revisão de ortografia, clareza e tom profissional.", en: "AI writing assistant for grammar, clarity, and tone." },
-      { name: "DeepL", cat: "biz", url: "https://www.deepl.com", pt: "Tradutor de alta precisão para textos e documentos.", en: "High-accuracy AI translator for texts and full documents." }
-    ];
+    <div style="text-align: center; margin-top: 16px;">
+      <button onclick="abrirPaywallSite180()" style="width: 100%; max-width: 480px; padding: 15px; background: #a3e635; color: #0f172a; font-weight: 800; font-size: 16px; border: none; border-radius: 10px; cursor: pointer;">
+        🔒 LIBERAR DOWNLOAD DO SITE PRONTO — R$ 180,00
+      </button>
+    </div>
+  </div>
+</section>
 
-    const I18N = {
-      pt: {
-        toggleBtn: "🇺🇸 EN",
-        badge: "100 IAs Liberadas",
-        ctaTop: "🎁 ACESSAR FERRAMENTAS SECRETAS GRÁTIS",
-        scanTitle: "🛡️ AI Antivírus — Detector de Links Falsos",
-        scanFree: "100% Grátis",
-        scanDesc: "Cole qualquer link suspeito do WhatsApp, Pix ou promoção antes de clicar para detectar golpes e phishing gratuitamente.",
-        scanPlaceholder: "Cole o link aqui (ex: http://...)",
-        scanBtn: "Analisar",
-        ctaMid: "GERADOR DE IMAGENS & VÍDEOS IA ILIMITADO",
-        searchPlaceholder: "🔍 Buscar entre as 100 IAs (ex: vídeo, voz, imagem, texto)...",
-        ctaBot: "🚀 DESBLOQUEAR FERRAMENTAS VIP DE IA GRÁTIS",
-        openBtn: "Abrir",
-        empty: "Nenhuma ferramenta encontrada para essa busca.",
-        cats: {
-          all: "Todas (100)",
-          fav: "⭐ Favoritos",
-          text: "Texto & Chat",
-          image: "Imagem & Design",
-          video: "Vídeo & Animação",
-          audio: "Áudio & Voz",
-          code: "Código & Dev",
-          biz: "Produtividade & Negócios"
-        },
-        scanEmpty: "⚠️ Cole um link válido acima para analisar.",
-        scanDanger: "🚨 PERIGO DETECTADO: Este link apresenta sinais fortes de golpe ou phishing (domínio suspeito, encurtador oculto ou imitação de marca). NÃO informe senhas ou dados bancários!",
-        scanWarn: "⚠️ ATENÇÃO: O endereço não usa HTTPS seguro ou possui estrutura incomum. Verifique com cuidado antes de clicar.",
-        scanSafe: "✅ LINK APARENTEMENTE SEGURO: Conexão HTTPS válida e sem padrões conhecidos de phishing detectados."
-      },
-      en: {
-        toggleBtn: "🇧🇷 PT",
-        badge: "100 Free AIs Unlocked",
-        ctaTop: "🎁 ACCESS FREE SECRET AI TOOLS",
-        scanTitle: "🛡️ AI Antivirus — Fake Link Detector",
-        scanFree: "100% Free",
-        scanDesc: "Paste any suspicious link from messages, promos, or emails before clicking to detect scams and phishing for free.",
-        scanPlaceholder: "Paste link here (e.g. http://...)",
-        scanBtn: "Scan Link",
-        ctaMid: "UNLIMITED AI IMAGE & VIDEO GENERATOR",
-        searchPlaceholder: "🔍 Search 100 free AI tools (e.g. video, voice, image, text)...",
-        ctaBot: "🚀 UNLOCK FREE VIP AI TOOLS",
-        openBtn: "Open",
-        empty: "No AI tools matched your search.",
-        cats: {
-          all: "All (100)",
-          fav: "⭐ Favorites",
-          text: "Text & Chat",
-          image: "Image & Design",
-          video: "Video & Animation",
-          audio: "Audio & Voice",
-          code: "Code & Dev",
-          biz: "Productivity & Business"
-        },
-        scanEmpty: "⚠️ Please paste a valid URL above to scan.",
-        scanDanger: "🚨 HIGH RISK DETECTED: This URL shows strong phishing or scam indicators (suspicious domain, hidden shortener, or brand spoofing). Do NOT enter passwords or payment details!",
-        scanWarn: "⚠️ CAUTION: This link lacks secure HTTPS encryption or uses an unusual domain pattern. Proceed carefully.",
-        scanSafe: "✅ LIKELY SAFE: Valid HTTPS structure with no common phishing or scam patterns detected."
-      }
-    };
+<div id="modalPaywall180" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; padding: 16px; font-family: system-ui, -apple-system, sans-serif;">
+  <div style="background: #0f172a; border: 2px solid #a3e635; border-radius: 16px; max-width: 440px; width: 100%; padding: 24px; color: #fff; text-align: center; position: relative;">
+    <button onclick="fecharPaywall180()" style="position: absolute; top: 12px; right: 14px; background: none; border: none; color: #94a3b8; font-size: 22px; cursor: pointer;">✕</button>
+    <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 999px;">DOWNLOAD DO SITE COMPLETO (.HTML)</span>
+    <h3 style="font-size: 21px; margin: 12px 0 8px 0;">Baixe o Site da sua Empresa</h3>
+    <p style="color: #cbd5e1; font-size: 14px; line-height: 1.5; margin-bottom: 16px;">
+      Código completo, responsivo e com botão direto para o seu WhatsApp. <strong>Pagamento único de R$ 180,00 (sem mensalidade).</strong>
+    </p>
 
-    let lang = (navigator.language || "en").toLowerCase().startsWith("pt") ? "pt" : "en";
-    let activeCat = "all";
-    let favorites = JSON.parse(localStorage.getItem("nexus_favs") || "[]");
+    <a href="https://mpago.la/13o8xzR" target="_blank" rel="noopener noreferrer"
+       style="display: block; background: #009ee3; color: #fff; font-weight: 800; padding: 13px; border-radius: 10px; text-decoration: none; margin-bottom: 10px;">
+      💳 1º PASSO: PAGAR R$ 180,00 (PIX / CARTÃO)
+    </a>
 
-    function applyLanguage() {
-      const t = I18N[lang];
-      document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
-      document.getElementById("langToggle").textContent = t.toggleBtn;
-      document.getElementById("badgeCount").textContent = t.badge;
-      document.getElementById("ctaTop").textContent = t.ctaTop;
-      document.getElementById("scanTitle").textContent = t.scanTitle;
-      document.getElementById("scanFree").textContent = t.scanFree;
-      document.getElementById("scanDesc").textContent = t.scanDesc;
-      document.getElementById("urlInput").placeholder = t.scanPlaceholder;
-      document.getElementById("scanBtn").textContent = t.scanBtn;
-      document.getElementById("ctaMid").textContent = t.ctaMid;
-      document.getElementById("searchInput").placeholder = t.searchPlaceholder;
-      document.getElementById("ctaBot").textContent = t.ctaBot;
-      renderTabs();
-      renderTools();
+    <a href="https://wa.me/5589994315977?text=Ol%C3%A1!%20Acabei%20de%20pagar%20os%20R%24%20180%2C00%20no%20NEXUS%20AI%20100%20e%20quero%20minha%20senha%20para%20baixar%20meu%20site!" target="_blank" rel="noopener noreferrer"
+       style="display: block; background: #22c55e; color: #052e16; font-weight: 800; padding: 11px; border-radius: 10px; text-decoration: none; font-size: 13px; margin-bottom: 16px;">
+      📲 ENVIAR COMPROVANTE NO WHATSAPP E RECEBER SENHA
+    </a>
+
+    <div style="border-top: 1px solid #334155; padding-top: 14px;">
+      <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 6px;">2º PASSO: Digite a senha VIP de liberação:</label>
+      <div style="display: flex; gap: 8px;">
+        <input id="senhaDownloadSite" type="text" placeholder="Digite a senha VIP..." style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #fff;">
+        <button onclick="validarEDownloadSite()" style="background: #a3e635; color: #0f172a; font-weight: 800; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">
+          BAIXAR
+        </button>
+      </div>
+      <p id="msgErroSenhaSite" style="color: #f87171; font-size: 12px; margin: 8px 0 0 0; display: none;">Senha incorreta. Envie o comprovante no WhatsApp para liberar.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let htmlSiteGeradoAtual = "";
+
+  async function gerarPreviaSite() {
+    const nome = document.getElementById("siteNome").value.trim();
+    const ramo = document.getElementById("siteRamo").value.trim();
+    const whatsRaw = document.getElementById("siteWhats").value.replace(/\D/g, "") || "89994315977";
+    const whatsLink = whatsRaw.startsWith("55") ? whatsRaw : "55" + whatsRaw;
+    const cidade = document.getElementById("siteCidade").value.trim() || "Atendimento Local e Online";
+    const servicos = document.getElementById("siteServicos").value.trim() || "Atendimento Rápido, Orçamento Grátis, Garantia Total";
+
+    if (!nome || !ramo) {
+      alert("Digite o Nome da Empresa e o Ramo de atuação!");
+      return;
     }
 
-    function toggleLang() {
-      lang = lang === "pt" ? "en" : "pt";
-      document.getElementById("scanResult").style.display = "none";
-      applyLanguage();
-    }
+    const btn = document.getElementById("btnGerarSiteIA");
+    btn.disabled = true;
+    btn.innerText = "⏳ A IA Gemini está criando o site completo...";
 
-    function renderTabs() {
-      const t = I18N[lang];
-      const container = document.getElementById("categoryTabs");
-      container.innerHTML = Object.entries(t.cats).map(([key, label]) => `
-        <button class="tab-btn ${activeCat === key ? "active" : ""}" onclick="setCategory('${key}')">${label}</button>
-      `).join("");
-    }
+    const apiKey = localStorage.getItem("gemini_api_key") || localStorage.getItem("nexus_gemini_key") || "";
 
-    function setCategory(cat) {
-      activeCat = cat;
-      renderTabs();
-      renderTools();
-    }
+    try {
+      let codigo = "";
+      if (apiKey) {
+        const prompt = `Crie um site institucional completo, moderno e responsivo em HTML único com CSS interno para:
+Empresa: ${nome} | Ramo: ${ramo} | Cidade: ${cidade} | Serviços: ${servicos}
+Botão WhatsApp obrigatório: https://wa.me/${whatsLink}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20${encodeURIComponent(nome)}
+Retorne APENAS o código HTML puro começando com <!DOCTYPE html> e terminando com </html>, sem markdown.`;
 
-    function toggleFav(name) {
-      if (favorites.includes(name)) {
-        favorites = favorites.filter(f => f !== name);
-      } else {
-        favorites.push(name);
-      }
-      localStorage.setItem("nexus_favs", JSON.stringify(favorites));
-      renderTools();
-    }
-
-    function renderTools() {
-      const t = I18N[lang];
-      const query = document.getElementById("searchInput").value.trim().toLowerCase();
-      const list = document.getElementById("toolsList");
-
-      const filtered = TOOLS.filter(tool => {
-        const matchesCat =
-          activeCat === "all" ||
-          (activeCat === "fav" && favorites.includes(tool.name)) ||
-          tool.cat === activeCat;
-        const desc = tool[lang].toLowerCase();
-        const matchesQuery = !query || tool.name.toLowerCase().includes(query) || desc.includes(query);
-        return matchesCat && matchesQuery;
-      });
-
-      if (!filtered.length) {
-        list.innerHTML = `<div class="empty-msg">${t.empty}</div>`;
-        return;
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+        });
+        const data = await res.json();
+        codigo = (data?.candidates?.[0]?.content?.parts?.[0]?.text || "").replace(/^```html\s*/i, "").replace(/```\s*$/i, "").trim();
       }
 
-      list.innerHTML = filtered.map(tool => {
-        const isFav = favorites.includes(tool.name);
-        return `
-          <div class="tool-card">
-            <div class="tool-info">
-              <div class="tool-header">
-                <span class="tool-name">${tool.name}</span>
-                <span class="tool-cat">${t.cats[tool.cat]}</span>
-              </div>
-              <div class="tool-desc">${tool[lang]}</div>
-            </div>
-            <div class="tool-actions">
-              <button class="fav-btn ${isFav ? "saved" : ""}" onclick="toggleFav('${tool.name.replace(/'/g, "\\'")}')" aria-label="Favorite">
-                ${isFav ? "★" : "☆"}
-              </button>
-              <a class="open-btn" href="${tool.url}" target="_blank" rel="noopener noreferrer">${t.openBtn}</a>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
+      if (!codigo.includes("<html")) {
+        const cards = servicos.split(",").map(s => s.trim()).filter(Boolean).map(item => `
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:12px;">
+            <h3 style="margin:0 0 8px 0;color:#0f172a;">✅ ${item}</h3>
+            <p style="margin:0;color:#475569;font-size:14px;">Solução completa de ${nome} com atendimento ágil e qualidade comprovada.</p>
+          </div>`).join("");
 
-    function scanLink() {
-      const t = I18N[lang];
-      const raw = document.getElementById("urlInput").value.trim();
-      const box = document.getElementById("scanResult");
-      box.style.display = "block";
-      box.className = "scan-result";
-
-      if (!raw || raw.length < 4) {
-        box.classList.add("res-warn");
-        box.textContent = t.scanEmpty;
-        return;
+        codigo = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${nome}</title></head>
+        <body style="margin:0;font-family:system-ui,sans-serif;color:#1e293b;">
+          <header style="background:#0f172a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
+            <strong style="font-size:20px;">${nome}</strong>
+            <a href="https://wa.me/${whatsLink}" target="_blank" style="background:#22c55e;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;">WhatsApp</a>
+          </header>
+          <section style="background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:54px 24px;text-align:center;">
+            <span style="background:rgba(163,230,53,0.15);color:#a3e635;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:700;">📍 ${cidade}</span>
+            <h1 style="font-size:32px;max-width:680px;margin:16px auto;">${nome}: ${ramo}</h1>
+            <p style="color:#cbd5e1;max-width:580px;margin:0 auto 26px auto;">Atendimento rápido e orçamento sem compromisso direto pelo WhatsApp.</p>
+            <a href="https://wa.me/${whatsLink}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20${encodeURIComponent(nome)}" target="_blank" style="display:inline-block;background:#22c55e;color:#fff;font-weight:800;padding:15px 28px;border-radius:10px;text-decoration:none;">💬 SOLICITAR ORÇAMENTO AGORA</a>
+          </section>
+          <section style="max-width:960px;margin:44px auto;padding:0 24px;">
+            <h2 style="text-align:center;margin-bottom:24px;">Nossos Serviços</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">${cards}</div>
+          </section>
+          <footer style="background:#0f172a;color:#94a3b8;text-align:center;padding:24px;font-size:13px;">${nome} • ${cidade} © 2026</footer>
+        </body></html>`;
       }
 
-      const lower = raw.toLowerCase();
-      const badTlds = /\.(xyz|top|click|tk|ml|ga|cf|gq|buzz|loan|work|support|vip|win|bid)(\/|$)/i;
-      const shorteners = /(bit\.ly|tinyurl\.com|t\.co|is\.gd|cutt\.ly|rb\.gy|shorturl\.at)/i;
-      const ipHost = /^https?:\/\/\d{1,3}(\.\d{1,3}){3}/i;
-      const spoofWords = /(pix-gratis|resgate|premio|nubank-|caixa-|correios-|gov-br|mercadopago-|login-seguro|verify-account|free-gift)/i;
-
-      if (badTlds.test(lower) || shorteners.test(lower) || ipHost.test(lower) || spoofWords.test(lower) || lower.includes("@")) {
-        box.classList.add("res-danger");
-        box.textContent = t.scanDanger;
-      } else if (lower.startsWith("http://") || !lower.includes(".")) {
-        box.classList.add("res-warn");
-        box.textContent = t.scanWarn;
-      } else {
-        box.classList.add("res-safe");
-        box.textContent = t.scanSafe;
-      }
+      htmlSiteGeradoAtual = codigo;
+      document.getElementById("iframePreviaSite").srcdoc = htmlSiteGeradoAtual;
+      document.getElementById("areaPreviaSite").style.display = "block";
+      document.getElementById("areaPreviaSite").scrollIntoView({ behavior: "smooth" });
+    } finally {
+      btn.disabled = false;
+      btn.innerText = "✨ GERAR SITE COM IA GRÁTIS AGORA";
     }
+  }
 
-    applyLanguage();
-  </script>
+  function abrirPaywallSite180() {
+    document.getElementById("modalPaywall180").style.display = "flex";
+  }
 
-  <!-- Adsterra Social Bar (ID 32276936) -->
-  <script data-cfasync="false" src="https://bauval.org/14/5a88615d312cfa2c58147e4b60125525"></script>
-</body>
-</html>
+  function fecharPaywall180() {
+    document.getElementById("modalPaywall180").style.display = "none";
+  }
+
+  function validarEDownloadSite() {
+    const senha = document.getElementById("senhaDownloadSite").value.trim().toUpperCase();
+    if (senha === "SITE180VIP" || senha === "NEXUS180") {
+      document.getElementById("msgErroSenhaSite").style.display = "none";
+      const blob = new Blob([htmlSiteGeradoAtual], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "site-empresa-pronto.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      fecharPaywall180();
+    } else {
+      document.getElementById("msgErroSenhaSite").style.display = "block";
+    }
+  }
+</script>
+<!-- FIM DO GERADOR DE SITES -->
