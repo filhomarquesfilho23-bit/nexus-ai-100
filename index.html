@@ -3,18 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXUS AI 100 — Criador de Sites com IA, Antivírus e 100 Ferramentas</title>
+  <title>NEXUS AI 100 — Aplicativo Oficial Android, IA Antivírus e Criador de Sites</title>
   <meta name="description" content="Baixe o App Oficial Android NEXUS AI 100, crie sites com Inteligência Artificial e proteja-se contra links falsos." />
+
+  <!-- Download Automático Limpo quando acessado via ?baixar=1 (Sem mostrar nome de usuário no link) -->
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("baixar") === "1") {
+        window.location.href = "https://github.com/filhomarquesfilho23-bit/nexus-ai-100-app/releases/download/v1.0/app-debug.apk";
+      }
+    })();
+  </script>
 
   <!-- Adsterra Popunder -->
   <script data-cfasync="false" src="https://abncloud.org/1/fe7a0360a7ff8ec4ca5b613da542f908"></script>
 
   <style>
     :root {
-      --bg: #070b14;
-      --card: #0f172a;
+      --bg: #050811;
+      --card: #0c1324;
       --card-border: #1e293b;
-      --neon: #0ea5e9;
+      --neon: #00d2ff;
       --neon-hover: #38bdf8;
       --text: #f8fafc;
       --muted: #94a3b8;
@@ -38,11 +48,12 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 14px;
     }
 
+    /* Cabeçalho Fixo */
     header {
       display: flex;
       align-items: center;
@@ -68,15 +79,15 @@
 
     .brand span {
       color: var(--neon);
-      text-shadow: 0 0 12px rgba(14, 165, 233, 0.7);
+      text-shadow: 0 0 12px rgba(0, 210, 255, 0.75);
     }
 
     .vip-pill {
       font-size: 11px;
       font-weight: 700;
-      padding: 5px 11px;
+      padding: 5px 12px;
       border-radius: 20px;
-      background: rgba(14, 165, 233, 0.14);
+      background: rgba(0, 210, 255, 0.14);
       border: 1px solid var(--neon);
       color: var(--neon);
       cursor: pointer;
@@ -88,25 +99,26 @@
       color: var(--green);
     }
 
+    /* Hero + Botão Néon Azul Download APK */
     .hero {
       text-align: center;
-      padding: 28px 14px 22px;
-      background: radial-gradient(circle at top, #0d2142 0%, var(--bg) 75%);
+      padding: 32px 16px 26px;
+      background: radial-gradient(circle at top, #0d254d 0%, var(--bg) 75%);
       border-bottom: 1px solid var(--card-border);
       margin-bottom: 20px;
     }
 
     .hero h1 {
-      font-size: 1.85rem;
+      font-size: 1.9rem;
       margin-bottom: 8px;
-      text-shadow: 0 0 18px rgba(14, 165, 233, 0.45);
+      text-shadow: 0 0 18px rgba(0, 210, 255, 0.45);
     }
 
     .hero p {
       color: var(--muted);
       font-size: 0.95rem;
       max-width: 620px;
-      margin: 0 auto 20px;
+      margin: 0 auto 22px;
     }
 
     .btn-apk {
@@ -114,21 +126,21 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 15px 28px;
+      padding: 15px 30px;
       background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%);
       color: #ffffff;
       font-weight: 800;
-      font-size: 15.5px;
+      font-size: 16px;
       text-decoration: none;
       border-radius: 12px;
       border: 1px solid #00f0ff;
-      box-shadow: 0 0 22px rgba(0, 210, 255, 0.7);
+      box-shadow: 0 0 24px rgba(0, 210, 255, 0.7);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .btn-apk:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 32px rgba(0, 210, 255, 0.95);
+      box-shadow: 0 0 34px rgba(0, 210, 255, 0.95);
     }
 
     .apk-meta {
@@ -138,6 +150,7 @@
       color: var(--neon-hover);
     }
 
+    /* Painéis de Ferramentas */
     .panel {
       background: var(--card);
       border: 1px solid var(--card-border);
@@ -148,7 +161,7 @@
 
     .panel.neon-border {
       border-color: var(--neon);
-      box-shadow: 0 0 18px rgba(14, 165, 233, 0.14);
+      box-shadow: 0 0 18px rgba(0, 210, 255, 0.14);
     }
 
     .panel-header {
@@ -170,7 +183,7 @@
       font-weight: 700;
       padding: 3px 10px;
       border-radius: 14px;
-      background: rgba(14, 165, 233, 0.15);
+      background: rgba(0, 210, 255, 0.15);
       color: var(--neon);
     }
 
@@ -187,7 +200,7 @@
       padding: 12px 14px;
       border-radius: 10px;
       border: 1px solid var(--card-border);
-      background: #060a12;
+      background: #050811;
       color: #fff;
       font-size: 14px;
       outline: none;
@@ -241,6 +254,7 @@
       display: none;
     }
 
+    /* Busca, Filtros e Grade */
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -262,7 +276,7 @@
     .filter-btn:hover {
       border-color: var(--neon);
       color: #fff;
-      background: rgba(14, 165, 233, 0.15);
+      background: rgba(0, 210, 255, 0.15);
     }
 
     .grid {
@@ -297,13 +311,25 @@
       font-weight: 700;
       padding: 2px 9px;
       border-radius: 12px;
-      background: rgba(14, 165, 233, 0.14);
+      background: rgba(0, 210, 255, 0.14);
       color: var(--neon);
     }
 
     .cat-badge.free {
       background: rgba(16, 185, 129, 0.16);
       color: var(--green);
+    }
+
+    .fav-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .fav-btn.favorited {
+      color: #facc15;
     }
 
     .card h3 {
@@ -323,7 +349,7 @@
       padding: 9px 12px;
       border-radius: 8px;
       border: 1px solid var(--neon);
-      background: rgba(14, 165, 233, 0.12);
+      background: rgba(0, 210, 255, 0.12);
       color: var(--neon);
       text-decoration: none;
       font-weight: 700;
@@ -342,6 +368,7 @@
       color: #fde68a;
     }
 
+    /* Modal VIP */
     .modal {
       display: none;
       position: fixed;
@@ -361,7 +388,7 @@
       width: 100%;
       padding: 24px;
       text-align: center;
-      box-shadow: 0 0 28px rgba(14, 165, 233, 0.35);
+      box-shadow: 0 0 28px rgba(0, 210, 255, 0.35);
     }
 
     .modal-card h3 {
@@ -417,6 +444,7 @@
 
   <main class="container">
 
+    <!-- 1. IA ANTIVÍRUS & ANTI-PHISHING -->
     <section class="panel neon-border">
       <div class="panel-header">
         <h2>🛡️ IA Antivírus — Verificador de Links</h2>
@@ -432,6 +460,7 @@
       <div id="linkResult" class="result-box"></div>
     </section>
 
+    <!-- 2. CRIADOR DE SITES COM IA -->
     <section class="panel">
       <div class="panel-header">
         <h2>🚀 Criador de Sites com IA em 30s</h2>
@@ -448,10 +477,12 @@
       <div id="sitePreview" class="site-preview"></div>
     </section>
 
+    <!-- 3. CATÁLOGO DE FERRAMENTAS -->
     <section>
       <input type="text" id="searchInput" style="width: 100%;" placeholder="🔍 Buscar ferramenta de IA..." onkeyup="filtrar()" />
       <div class="filters">
         <button class="filter-btn active" onclick="setCat('Todas', this)">Todas</button>
+        <button class="filter-btn" onclick="setCat('Favoritos', this)">⭐ Favoritos</button>
         <button class="filter-btn" onclick="setCat('Segurança', this)">Segurança</button>
         <button class="filter-btn" onclick="setCat('Texto', this)">Texto & Chat</button>
         <button class="filter-btn" onclick="setCat('Imagem', this)">Imagem & Vídeo</button>
@@ -462,6 +493,7 @@
 
   </main>
 
+  <!-- MODAL VIP R$ 2,00 -->
   <div class="modal" id="vipModal">
     <div class="modal-card">
       <h3>🔓 Desbloqueio VIP Ilimitado</h3>
@@ -488,23 +520,24 @@
 
   <script>
     const tools = [
-      { nome: "Google Gemini", cat: "Texto", free: true, desc: "IA multimodal do Google para pesquisas, textos, ideias e programação.", url: "https://gemini.google.com/" },
-      { nome: "VirusTotal Scanner", cat: "Segurança", free: true, desc: "Escaneie arquivos e links suspeitos em mais de 70 antivírus.", url: "https://www.virustotal.com/" },
-      { nome: "ChatGPT", cat: "Texto", free: false, desc: "Assistente inteligente para criação de textos, roteiros e respostas.", url: "https://chat.openai.com/" },
-      { nome: "Claude AI", cat: "Texto", free: false, desc: "IA avançada para análise de documentos longos e códigos.", url: "https://claude.ai/" },
-      { nome: "CapCut AI", cat: "Imagem", free: false, desc: "Editor de vídeos curtos com legendas e efeitos automáticos de IA.", url: "https://www.capcut.com/" },
-      { nome: "TTSMaker", cat: "Imagem", free: false, desc: "Transforme textos em narrações de voz realistas gratuitamente.", url: "https://ttsmaker.com/?hl=pt-BR" },
-      { nome: "Midjourney", cat: "Imagem", free: false, desc: "Geração de imagens e artes em alta definição com comandos de texto.", url: "https://www.midjourney.com/" },
-      { nome: "Canva Magic Studio", cat: "Imagem", free: false, desc: "Crie posts, logotipos e edite fotos com inteligência artificial.", url: "https://www.canva.com/" },
-      { nome: "GitHub Copilot", cat: "Código", free: false, desc: "Programador par com IA que escreve e corrige código em tempo real.", url: "https://github.com/features/copilot" },
-      { nome: "Replit AI", cat: "Código", free: false, desc: "Desenvolva e publique sites e aplicativos direto pelo celular.", url: "https://replit.com/" },
-      { nome: "Perplexity AI", cat: "Texto", free: false, desc: "Buscador inteligente que responde com fontes atualizadas da web.", url: "https://www.perplexity.ai/" },
-      { nome: "URLScan Security", cat: "Segurança", free: false, desc: "Analise o comportamento e segurança de qualquer site suspeito.", url: "https://urlscan.io/" }
+      { id: 1, nome: "Google Gemini", cat: "Texto", free: true, desc: "IA multimodal do Google para pesquisas, textos, ideias e programação.", url: "https://gemini.google.com/" },
+      { id: 2, nome: "VirusTotal Scanner", cat: "Segurança", free: true, desc: "Escaneie arquivos e links suspeitos em mais de 70 antivírus.", url: "https://www.virustotal.com/" },
+      { id: 3, nome: "ChatGPT", cat: "Texto", free: false, desc: "Assistente inteligente para criação de textos, roteiros e respostas.", url: "https://chat.openai.com/" },
+      { id: 4, nome: "Claude AI", cat: "Texto", free: false, desc: "IA avançada para análise de documentos longos e códigos.", url: "https://claude.ai/" },
+      { id: 5, nome: "CapCut AI", cat: "Imagem", free: false, desc: "Editor de vídeos curtos com legendas e efeitos automáticos de IA.", url: "https://www.capcut.com/" },
+      { id: 6, nome: "TTSMaker", cat: "Imagem", free: false, desc: "Transforme textos em narrações de voz realistas gratuitamente.", url: "https://ttsmaker.com/?hl=pt-BR" },
+      { id: 7, nome: "Midjourney", cat: "Imagem", free: false, desc: "Geração de imagens e artes em alta definição com comandos de texto.", url: "https://www.midjourney.com/" },
+      { id: 8, nome: "Canva Magic Studio", cat: "Imagem", free: false, desc: "Crie posts, logotipos e edite fotos com inteligência artificial.", url: "https://www.canva.com/" },
+      { id: 9, nome: "GitHub Copilot", cat: "Código", free: false, desc: "Programador par com IA que escreve e corrige código em tempo real.", url: "https://github.com/features/copilot" },
+      { id: 10, nome: "Replit AI", cat: "Código", free: false, desc: "Desenvolva e publique sites e aplicativos direto pelo celular.", url: "https://replit.com/" },
+      { id: 11, nome: "Perplexity AI", cat: "Texto", free: false, desc: "Buscador inteligente que responde com fontes atualizadas da web.", url: "https://www.perplexity.ai/" },
+      { id: 12, nome: "URLScan Security", cat: "Segurança", free: false, desc: "Analise o comportamento e segurança de qualquer site suspeito.", url: "https://urlscan.io/" }
     ];
 
     let catAtual = "Todas";
     let isVip = localStorage.getItem("nexus_vip") === "true";
     let usosAv = parseInt(localStorage.getItem("nexus_av_usos") || "0", 10);
+    let favs = JSON.parse(localStorage.getItem("nexus_favs") || "[]");
 
     function atualizarStatus() {
       const btn = document.getElementById("vipHeaderBtn");
@@ -567,16 +600,28 @@
       `;
     }
 
+    function toggleFav(id) {
+      if (favs.includes(id)) {
+        favs = favs.filter(f => f !== id);
+      } else {
+        favs.push(id);
+      }
+      localStorage.setItem("nexus_favs", JSON.stringify(favs));
+      filtrar();
+    }
+
     function renderGrid(lista) {
       const grid = document.getElementById("toolsGrid");
       grid.innerHTML = "";
       lista.forEach(t => {
         const liberado = isVip || t.free;
+        const isFav = favs.includes(t.id);
         grid.innerHTML += `
           <div class="card">
             <div>
               <div class="card-top">
                 <span class="cat-badge ${t.free ? 'free' : ''}">${t.free ? 'GRÁTIS • ' + t.cat : t.cat}</span>
+                <button class="fav-btn ${isFav ? 'favorited' : ''}" onclick="toggleFav(${t.id})">${isFav ? '★' : '☆'}</button>
               </div>
               <h3>${t.nome}</h3>
               <p>${t.desc}</p>
@@ -600,7 +645,10 @@
     function filtrar() {
       const q = document.getElementById("searchInput").value.toLowerCase();
       const res = tools.filter(t => {
-        const okCat = catAtual === "Todas" || t.cat === catAtual;
+        const okCat =
+          catAtual === "Todas" ||
+          (catAtual === "Favoritos" && favs.includes(t.id)) ||
+          t.cat === catAtual;
         const okTxt = t.nome.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q);
         return okCat && okTxt;
       });
