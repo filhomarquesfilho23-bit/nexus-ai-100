@@ -4,14 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NEXUS AI 100 — Criador de Sites com IA, Antivírus e 100 Ferramentas Gratuitas</title>
-  <meta name="description" content="Crie o site da sua empresa em 30 segundos com Inteligência Artificial, detecte links falsos e acesse 100 ferramentas de IA." />
-  <link rel="canonical" href="https://nexus-ai-100-oficial.vercel.app/#gerador-site-pro" />
+  <meta name="description" content="Crie o site da sua empresa em 30 segundos com Inteligência Artificial, detecte links falsos com AI Antivírus e acesse 100 ferramentas gratuitas." />
   <meta property="og:title" content="NEXUS AI 100 — Criador de Sites com Inteligência Artificial" />
   <meta property="og:description" content="Gere e visualize o site completo da sua empresa 100% grátis agora mesmo." />
-  <meta property="og:url" content="https://nexus-ai-100-oficial.vercel.app/#gerador-site-pro" />
 
   <!-- Adsterra Popunder -->
-  <script data-cfasync="false" src="https://abscloud.org/1/fe7a0860a7ff8ec4ca5b613da542f908"></script>
+  <script data-cfasync="false" src="https://abncloud.org/1/fe7a0360a7ff8ec4ca5b613da542f908"></script>
 
   <style>
     :root {
@@ -27,93 +25,293 @@
       --red: #ef4444;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 70px; }
-    .container { max-width: 920px; margin: 0 auto; padding: 14px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-    /* Cabeçalho superior */
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 14px;
+    }
+
+    /* Cabeçalho Superior */
     header {
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      background: #061120; border-bottom: 1px solid var(--card-border);
-      padding: 12px 14px; position: sticky; top: 0; z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: #061120;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 14px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-    .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.4px; }
-    .brand span { color: var(--neon-hover); }
-    .header-actions { display: flex; align-items: center; gap: 8px; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.4px;
+    }
+
+    .brand span {
+      color: var(--neon-hover);
+    }
+
     .badge-100 {
-      background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35);
-      padding: 5px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
-    /* Botões CTA Smartlink */
-    .cta-azul {
-      display: block; width: 100%; text-align: center; text-decoration: none;
-      background: linear-gradient(90deg, #0284c7, #0ea5e9); color: #fff;
-      font-weight: 800; font-size: 0.92rem; padding: 13px 16px; border-radius: 10px;
-      margin: 12px 0; box-shadow: 0 4px 18px rgba(14, 165, 233, 0.35); transition: 0.2s;
+    /* Slot Banner Adsterra 320x50 */
+    .adsterra-slot {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+      min-height: 50px;
     }
-    .cta-ouro {
-      display: block; width: 100%; text-align: center; text-decoration: none;
-      background: linear-gradient(90deg, #d97706, #f59e0b); color: #070b14;
-      font-weight: 900; font-size: 0.92rem; padding: 13px 16px; border-radius: 10px;
-      margin: 12px 0; box-shadow: 0 4px 18px rgba(245, 158, 11, 0.3); transition: 0.2s;
-    }
-    .cta-azul:hover, .cta-ouro:hover { transform: translateY(-1px); filter: brightness(1.08); }
 
-    /* Card AI Antivírus */
-    .antivirus-card {
-      background: var(--card); border: 1px solid var(--card-border); border-radius: 14px;
-      padding: 16px; margin: 12px 0; box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    /* Botões CTA */
+    .cta-blue {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(90deg, #0284c7, #0ea5e9);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 13px 16px;
+      border-radius: 10px;
+      margin: 12px 0;
+      box-shadow: 0 4px 18px rgba(14, 165, 233, 0.35);
+      border: none;
+      cursor: pointer;
     }
-    .av-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
-    .av-title { font-size: 1.05rem; font-weight: 800; color: #fff; }
-    .av-badge { background: rgba(16, 185, 129, 0.15); color: #34d399; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
-    .av-desc { color: var(--muted); font-size: 0.85rem; margin-bottom: 12px; }
-    .av-form { display: flex; gap: 8px; }
-    .av-input {
-      flex: 1; background: #070b14; border: 1px solid #334155; color: #fff;
-      padding: 11px 12px; border-radius: 10px; font-size: 0.88rem; outline: none;
-    }
-    .av-btn {
-      background: #0ea5e9; color: #070b14; font-weight: 800; border: none;
-      padding: 0 16px; border-radius: 10px; cursor: pointer; font-size: 0.88rem;
-    }
-    .av-result { margin-top: 12px; padding: 12px; border-radius: 10px; font-size: 0.85rem; display: none; }
 
-    /* Busca e Filtros */
-    .search-box {
-      width: 100%; background: var(--card); border: 1px solid var(--card-border); color: #fff;
-      padding: 12px 14px; border-radius: 10px; font-size: 0.9rem; margin: 12px 0; outline: none;
+    .cta-gold {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(90deg, #d97706, #f59e0b);
+      color: #070b14;
+      font-weight: 900;
+      font-size: 0.92rem;
+      padding: 13px 16px;
+      border-radius: 10px;
+      margin: 12px 0;
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.3);
+      border: none;
+      cursor: pointer;
     }
-    .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 10px; scrollbar-width: none; }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab-btn {
-      background: var(--card); border: 1px solid var(--card-border); color: var(--muted);
-      padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; cursor: pointer;
-    }
-    .tab-btn.active { background: rgba(14, 165, 233, 0.18); border-color: var(--neon); color: var(--neon-hover); }
 
-    /* Lista de Ferramentas */
-    .tools-grid { display: flex; flex-direction: column; gap: 10px; }
+    /* Cards Principais */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+      margin: 12px 0;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .pill-green {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pill-blue {
+      background: rgba(14, 165, 233, 0.15);
+      color: #38bdf8;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"], textarea, select {
+      flex: 1;
+      min-width: 200px;
+      background: #070b14;
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 11px 12px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    input[type="text"]:focus, textarea:focus, select:focus {
+      border-color: var(--neon);
+    }
+
+    .btn-action {
+      background: var(--neon);
+      color: #070b14;
+      font-weight: 800;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .btn-action:hover {
+      background: var(--neon-hover);
+    }
+
+    .result-box {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      display: none;
+      background: #070b14;
+      border: 1px solid #334155;
+    }
+
+    .vip-box {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      display: none;
+    }
+
+    /* Diretório 100 Ferramentas */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
     .tool-item {
-      background: var(--card); border: 1px solid var(--card-border); border-radius: 12px;
-      padding: 13px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      background: #080e1c;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
     }
-    .tool-info { flex: 1; }
-    .tool-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
-    .tool-name { font-weight: 800; font-size: 0.98rem; color: #fff; }
-    .tool-cat { background: #1e293b; color: #94a3b8; font-size: 0.7rem; padding: 2px 7px; border-radius: 5px; font-weight: 600; }
-    .tool-desc { color: var(--muted); font-size: 0.82rem; }
-    .tool-actions { display: flex; align-items: center; gap: 8px; }
-    .fav-btn {
-      background: #070b14; border: 1px solid #1e293b; color: #64748b; width: 34px; height: 34px;
-      border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+
+    .tool-item:hover {
+      border-color: var(--neon);
     }
-    .fav-btn.active { color: #f59e0b; border-color: rgba(245, 158, 11, 0.4); }
-    .open-btn {
-      background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(14, 165, 233, 0.4);
-      color: var(--neon-hover); text-decoration: none; font-weight: 700; font-size: 0.8rem;
-      padding: 7px 13px; border-radius: 8px; white-space: nowrap;
+
+    .tool-cat {
+      font-size: 0.7rem;
+      color: var(--neon-hover);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .tool-name {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .tool-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .tool-link {
+      display: inline-block;
+      margin-top: 4px;
+      text-align: center;
+      background: rgba(14, 165, 233, 0.14);
+      color: #38bdf8;
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      padding: 7px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* Preview Site Gerado */
+    .site-preview {
+      margin-top: 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--card-border);
     }
   </style>
 </head>
@@ -121,362 +319,365 @@
 
   <header>
     <div class="brand">⚡ NEXUS <span>AI 100</span></div>
-    <div class="header-actions">
-      <span class="badge-100">100 IAs Grátis</span>
-    </div>
+    <div class="badge-100">100 Ferramentas IA</div>
   </header>
 
   <div class="container">
 
-    <!-- CTA SUPERIOR -->
-    <a href="https://abscloud.org/1/fe7a0860a7ff8ec4ca5b613da542f908" target="_blank" rel="noopener noreferrer" class="cta-azul">
-      🎁 ACESSAR FERRAMENTAS SECRETAS GRÁTIS
-    </a>
-
-    <!-- AI ANTIVÍRUS -->
-    <section class="antivirus-card">
-      <div class="av-header">
-        <div class="av-title">🛡️ AI Antivírus — Detector de Links Falsos</div>
-        <span class="av-badge">✓ 100% Grátis</span>
-      </div>
-      <p class="av-desc">Cole qualquer link suspeito do WhatsApp, Pix ou promoção antes de clicar para detectar golpes e phishing gratuitamente.</p>
-      <div class="av-form">
-        <input type="url" id="avUrlInput" class="av-input" placeholder="Ex: https://site-suspeito.com/pix" />
-        <button onclick="analisarLink()" class="av-btn">Analisar</button>
-      </div>
-      <div id="avResult" class="av-result"></div>
-    </section>
-
-    <!-- BOTÃO AMARELO -->
-    <a href="https://abscloud.org/1/fe7a0860a7ff8ec4ca5b613da542f908" target="_blank" rel="noopener noreferrer" class="cta-ouro">
-      ⚡ GERADOR DE IMAGENS & VÍDEOS IA ILIMITADO
-    </a>
-
-    <!-- GERADOR DE SITES COM IA GEMINI + DOWNLOAD R$ 180,00 -->
-    <section id="gerador-site-pro" style="margin: 16px 0 22px 0; padding: 20px; background: linear-gradient(145deg, #0f172a, #1e293b); border: 2px solid #a3e635; border-radius: 16px; color: #f8fafc; box-shadow: 0 12px 30px rgba(0,0,0,0.45);">
-      <div style="text-align: center; margin-bottom: 16px;">
-        <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 11px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
-          ⚡ Criador de Sites com Inteligência Artificial
-        </span>
-        <h2 style="font-size: 21px; margin: 10px 0 6px 0; color: #ffffff;">
-          Crie o Site Completo da sua Empresa Agora
-        </h2>
-        <p style="color: #cbd5e1; font-size: 13.5px; margin: 0;">
-          Preencha os dados e visualize seu site pronto <strong>100% grátis</strong>. Gostou? Libere o download do arquivo completo por <strong style="color: #a3e635;">R$ 180,00</strong> (pagamento único).
-        </p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-bottom: 10px;">
-        <div>
-          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Nome da Empresa *</label>
-          <input id="siteNome" type="text" placeholder="Ex: Oficina Auto Center" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
-        </div>
-        <div>
-          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Ramo / Especialidade *</label>
-          <input id="siteRamo" type="text" placeholder="Ex: Mecânica geral, freios e suspensão" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
-        </div>
-        <div>
-          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">WhatsApp com DDD *</label>
-          <input id="siteWhats" type="tel" placeholder="Ex: 89994315977" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
-        </div>
-        <div>
-          <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Cidade / Estado</label>
-          <input id="siteCidade" type="text" placeholder="Ex: Floriano - PI" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
-        </div>
-      </div>
-
-      <div style="margin-bottom: 14px;">
-        <label style="display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">Serviços ou Diferenciais (separados por vírgula)</label>
-        <input id="siteServicos" type="text" placeholder="Ex: Orçamento na hora, Peças originais, Garantia no serviço" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #334155; background: #070b14; color: #fff;">
-      </div>
-
-      <button id="btnGerarSiteIA" onclick="gerarPreviaSite()" style="width: 100%; padding: 14px; background: #a3e635; color: #0f172a; font-weight: 900; font-size: 15px; border: none; border-radius: 10px; cursor: pointer;">
-        ✨ GERAR SITE COM IA GRÁTIS AGORA
-      </button>
-
-      <!-- PRÉVIA DO SITE GERADO -->
-      <div id="areaPreviaSite" style="display: none; margin-top: 20px; border-top: 1px solid #334155; padding-top: 16px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
-          <span style="color: #a3e635; font-weight: 700; font-size: 14px;">✅ Prévia pronta! Veja como ficou seu site:</span>
-          <button onclick="abrirPaywallSite180()" style="background: #22c55e; color: #052e16; font-weight: 800; font-size: 13px; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">
-            ⬇️ BAIXAR SITE COMPLETO (R$ 180,00)
-          </button>
-        </div>
-
-        <iframe id="iframePreviaSite" style="width: 100%; height: 420px; border: 2px solid #334155; border-radius: 12px; background: #ffffff;"></iframe>
-
-        <div style="text-align: center; margin-top: 14px;">
-          <button onclick="abrirPaywallSite180()" style="width: 100%; padding: 14px; background: #a3e635; color: #0f172a; font-weight: 900; font-size: 15px; border: none; border-radius: 10px; cursor: pointer;">
-            🔒 LIBERAR DOWNLOAD DO SITE PRONTO — R$ 180,00
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- BUSCA E CATEGORIAS DAS 100 IAS -->
-    <input type="text" id="searchInput" class="search-box" placeholder="🔎 Buscar entre as 100 IAs (ex: vídeo, voz, imagem, texto)..." oninput="filtrarFerramentas()" />
-
-    <div class="tabs" id="categoryTabs">
-      <button class="tab-btn active" onclick="selecionarCategoria('Todas', this)">Todas (100)</button>
-      <button class="tab-btn" onclick="selecionarCategoria('Favoritos', this)">★ Favoritos</button>
-      <button class="tab-btn" onclick="selecionarCategoria('Texto & Chat', this)">Texto & Chat</button>
-      <button class="tab-btn" onclick="selecionarCategoria('Imagem & Design', this)">Imagem & Design</button>
-      <button class="tab-btn" onclick="selecionarCategoria('Vídeo & Voz', this)">Vídeo & Voz</button>
-      <button class="tab-btn" onclick="selecionarCategoria('Código & Negócios', this)">Código & Negócios</button>
+    <!-- BANNER ADSTERRA TOPO (320x50 REAL) -->
+    <div class="adsterra-slot">
+      <iframe
+        title="Adsterra Banner Topo 320x50"
+        width="320"
+        height="50"
+        frameborder="0"
+        scrolling="no"
+        style="border:none; overflow:hidden; width:320px; height:50px; border-radius:8px;"
+        srcdoc="<!DOCTYPE html><html><head><meta charset='utf-8'><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden;display:flex;justify-content:center;align-items:center;}</style></head><body><script>atOptions={'key':'bb81a277c29d23137366a5a415b29334','format':'iframe','height':50,'width':320,'params':{}};</script><script src='https://bauval.org/22/bb81a277c29d23137366a5a415b29334'></script></body></html>">
+      </iframe>
     </div>
 
-    <div class="tools-grid" id="toolsGrid"></div>
+    <!-- MÓDULO 1: AI ANTIVÍRUS & DETECTOR DE GOLPES -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title">🛡️ AI Antivírus — Detector de Links Falsos & Pix</div>
+        <div class="pill-green" id="avCounterBadge">2 Testes Grátis</div>
+      </div>
+      <p class="card-desc">
+        Cole qualquer link suspeito, SMS de banco, boleto ou código Pix Copia e Cola para verificar risco de phishing e fraude antes de clicar ou pagar.
+      </p>
+      <div class="input-row">
+        <input type="text" id="avInput" placeholder="Cole aqui o link (ex: http://promo-banco-pix.xyz) ou texto suspeito..." />
+        <button class="btn-action" onclick="analisarLink()">Verificar Agora</button>
+      </div>
+      <div id="avResult" class="result-box"></div>
 
-    <footer style="text-align: center; color: #64748b; font-size: 12px; margin-top: 28px; padding-top: 16px; border-top: 1px solid #1e293b;">
-      NEXUS AI 100 Oficial • <a href="https://nexus-ai-100-oficial.vercel.app/#gerador-site-pro" style="color: #38bdf8; text-decoration: none;">nexus-ai-100-oficial.vercel.app</a>
+      <!-- Paywall VIP Mercado Pago -->
+      <div id="vipPaywall" class="vip-box">
+        <strong style="color:#fbbf24;">🔒 Limite de 2 análises gratuitas atingido!</strong>
+        <p style="font-size:0.83rem; color:#e2e8f0; margin:6px 0 10px;">
+          Desbloqueie verificações ilimitadas no AI Antivírus por apenas <strong>R$ 2,00</strong> via Mercado Pago e receba a senha VIP na hora.
+        </p>
+        <a href="https://mpago.la/13o8xzR" target="_blank" rel="noopener" class="cta-gold">
+          💳 Pagar R$ 2,00 e Liberar Acesso VIP
+        </a>
+        <div class="input-row" style="margin-top:8px;">
+          <input type="text" id="vipPassInput" placeholder="Digite sua senha VIP (ex: NEXUS2026)" />
+          <button class="btn-action" onclick="ativarVip()">Desbloquear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 2: CRIADOR DE SITES COM IA -->
+    <section class="card" id="gerador-site-pro">
+      <div class="card-header">
+        <div class="card-title">🌐 Criador de Sites Profissionais com IA</div>
+        <div class="pill-blue">100% Grátis</div>
+      </div>
+      <p class="card-desc">
+        Digite o nome da sua empresa, área de atuação e WhatsApp para gerar instantaneamente uma página profissional pronta para publicar.
+      </p>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input type="text" id="siteNome" placeholder="Nome da empresa (ex: Silva Construções)" />
+        <input type="text" id="siteWhats" placeholder="WhatsApp com DDD (ex: 89994315977)" />
+      </div>
+      <div class="input-row">
+        <input type="text" id="siteDesc" placeholder="O que sua empresa faz? (ex: Reformas, elétrica e pintura residencial)" />
+        <button class="btn-action" onclick="gerarSiteIA()">Gerar Site IA</button>
+      </div>
+      <div id="sitePreviewBox" class="site-preview"></div>
+    </section>
+
+    <!-- MÓDULO 3: DIRETÓRIO DE 100 FERRAMENTAS DE IA -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title">🚀 Catálogo NEXUS AI — 100 Ferramentas Inteligentes</div>
+        <div class="pill-blue" id="toolsCountLabel">100 Disponíveis</div>
+      </div>
+      <p class="card-desc">
+        Pesquise por nome ou filtre por categoria para abrir as melhores ferramentas de IA para texto, imagem, vídeo, áudio, código e negócios.
+      </p>
+      <div class="filter-bar">
+        <input type="text" id="searchTool" placeholder="Buscar ferramenta (ex: vídeo, voz, código, logo...)" oninput="filtrarFerramentas()" />
+        <select id="catFilter" onchange="filtrarFerramentas()">
+          <option value="TODAS">Todas as Categorias (100)</option>
+          <option value="Texto & Chat">Texto & Chat</option>
+          <option value="Imagem & Design">Imagem & Design</option>
+          <option value="Vídeo & Áudio">Vídeo & Áudio</option>
+          <option value="Programação & Dados">Programação & Dados</option>
+          <option value="Negócios & Produtividade">Negócios & Produtividade</option>
+        </select>
+      </div>
+      <div id="toolsGrid" class="tools-grid"></div>
+    </section>
+
+    <!-- BANNER ADSTERRA RODAPÉ (320x50 REAL) -->
+    <div class="adsterra-slot">
+      <iframe
+        title="Adsterra Banner Rodape 320x50"
+        width="320"
+        height="50"
+        frameborder="0"
+        scrolling="no"
+        style="border:none; overflow:hidden; width:320px; height:50px; border-radius:8px;"
+        srcdoc="<!DOCTYPE html><html><head><meta charset='utf-8'><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden;display:flex;justify-content:center;align-items:center;}</style></head><body><script>atOptions={'key':'bb81a277c29d23137366a5a415b29334','format':'iframe','height':50,'width':320,'params':{}};</script><script src='https://bauval.org/22/bb81a277c29d23137366a5a415b29334'></script></body></html>">
+      </iframe>
+    </div>
+
+    <footer>
+      NEXUS AI 100 • Desenvolvido por José Marques • Plataforma de Inteligência Artificial & Segurança Digital
     </footer>
 
   </div>
 
-  <!-- MODAL PAYWALL R$ 180,00 PARA BAIXAR O SITE -->
-  <div id="modalPaywall180" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; padding: 16px;">
-    <div style="background: #0f172a; border: 2px solid #a3e635; border-radius: 16px; max-width: 440px; width: 100%; padding: 24px; color: #fff; text-align: center; position: relative;">
-      <button onclick="fecharPaywall180()" style="position: absolute; top: 12px; right: 14px; background: none; border: none; color: #94a3b8; font-size: 22px; cursor: pointer;">✕</button>
-      <span style="background: #a3e635; color: #0f172a; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 999px;">DOWNLOAD DO SITE COMPLETO (.HTML)</span>
-      <h3 style="font-size: 20px; margin: 12px 0 8px 0;">Baixe o Site da sua Empresa</h3>
-      <p style="color: #cbd5e1; font-size: 13.5px; line-height: 1.5; margin-bottom: 16px;">
-        Código completo, responsivo e com botão direto para o seu WhatsApp. <strong>Pagamento único de R$ 180,00 (sem mensalidade).</strong>
-      </p>
-
-      <a href="https://mpago.la/13o8xzR" target="_blank" rel="noopener noreferrer"
-         style="display: block; background: #009ee3; color: #fff; font-weight: 800; padding: 13px; border-radius: 10px; text-decoration: none; margin-bottom: 10px; font-size: 14px;">
-        💳 1º PASSO: PAGAR R$ 180,00 (PIX / CARTÃO)
-      </a>
-
-      <a href="https://wa.me/5589994315977?text=Ol%C3%A1!%20Acabei%20de%20pagar%20os%20R%24%20180%2C00%20no%20NEXUS%20AI%20100%20e%20quero%20minha%20senha%20para%20baixar%20meu%20site!" target="_blank" rel="noopener noreferrer"
-         style="display: block; background: #22c55e; color: #052e16; font-weight: 800; padding: 11px; border-radius: 10px; text-decoration: none; font-size: 13px; margin-bottom: 16px;">
-        📲 ENVIAR COMPROVANTE NO WHATSAPP E RECEBER SENHA
-      </a>
-
-      <div style="border-top: 1px solid #334155; padding-top: 14px;">
-        <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 6px;">2º PASSO: Digite a senha VIP de liberação:</label>
-        <div style="display: flex; gap: 8px;">
-          <input id="senhaDownloadSite" type="text" placeholder="Digite a senha VIP..." style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #fff;">
-          <button onclick="validarEDownloadSite()" style="background: #a3e635; color: #0f172a; font-weight: 800; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">
-            BAIXAR
-          </button>
-        </div>
-        <p id="msgErroSenhaSite" style="color: #f87171; font-size: 12px; margin: 8px 0 0 0; display: none;">Senha incorreta. Envie o comprovante no WhatsApp para liberar.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Adsterra Social Bar -->
-  <script type='text/javascript' src='//pl25961013.effectiveratecpm.com/8b/5e/1a/8b5e1a9d4f2c3e8b7a6d5c4f3e2a1b0c.js'></script>
-
   <script>
-    /* ================= 1. AI ANTIVÍRUS ================= */
+    // ====== 1. LÓGICA AI ANTIVÍRUS + PAYWALL VIP ======
+    const MAX_FREE = 2;
+    function getUsage() {
+      return parseInt(localStorage.getItem('nexus_av_uses') || '0', 10);
+    }
+    function isVip() {
+      return localStorage.getItem('nexus_av_vip') === 'true';
+    }
+    function atualizarBadgeAV() {
+      const badge = document.getElementById('avCounterBadge');
+      if (isVip()) {
+        badge.textContent = '⭐ VIP Ilimitado';
+        badge.style.background = 'rgba(245,158,11,0.2)';
+        badge.style.color = '#fbbf24';
+        document.getElementById('vipPaywall').style.display = 'none';
+      } else {
+        const restantes = Math.max(0, MAX_FREE - getUsage());
+        badge.textContent = restantes + (restantes === 1 ? ' Teste Grátis' : ' Testes Grátis');
+      }
+    }
+
     function analisarLink() {
-      const url = document.getElementById("avUrlInput").value.trim().toLowerCase();
-      const box = document.getElementById("avResult");
-      if (!url) {
-        alert("Cole um link para analisar!");
-        return;
-      }
-      box.style.display = "block";
-      const suspeitos = ["bit.ly", "tinyurl", "pix-gratis", "resgate", "premio", "promo-", "ganhe", "brinde", "atualize", ".xyz", ".top", ".click", ".gq", "login-"];
-      const temPerigo = suspeitos.some(p => url.includes(p)) || !url.startsWith("https://");
-
-      if (temPerigo) {
-        box.style.background = "rgba(239, 68, 68, 0.15)";
-        box.style.border = "1px solid #ef4444";
-        box.style.color = "#fca5a5";
-        box.innerHTML = "⚠️ <strong>ALERTA DE RISCO DETECTADO!</strong> Este link possui padrão suspeito de phishing, encurtador oculto ou ausência de certificado HTTPS seguro. <strong>Não informe senhas nem dados bancários.</strong>";
-      } else {
-        box.style.background = "rgba(16, 185, 129, 0.15)";
-        box.style.border = "1px solid #10b981";
-        box.style.color = "#6ee7b7";
-        box.innerHTML = "✅ <strong>LINK APARENTEMENTE SEGURO:</strong> Protocolo HTTPS ativo e sem palavras-chave conhecidas de golpe. Mesmo assim, confira sempre o domínio oficial antes de fazer pagamentos.";
-      }
-    }
-
-    /* ================= 2. GERADOR DE SITES COM IA GEMINI + PAYWALL R$ 180 ================= */
-    let htmlSiteGeradoAtual = "";
-
-    async function gerarPreviaSite() {
-      const nome = document.getElementById("siteNome").value.trim();
-      const ramo = document.getElementById("siteRamo").value.trim();
-      const whatsRaw = document.getElementById("siteWhats").value.replace(/\D/g, "") || "89994315977";
-      const whatsLink = whatsRaw.startsWith("55") ? whatsRaw : "55" + whatsRaw;
-      const cidade = document.getElementById("siteCidade").value.trim() || "Atendimento Local e Online";
-      const servicos = document.getElementById("siteServicos").value.trim() || "Atendimento Rápido, Orçamento Grátis, Garantia Total";
-
-      if (!nome || !ramo) {
-        alert("Digite o Nome da Empresa e o Ramo de atuação!");
+      const val = document.getElementById('avInput').value.trim();
+      const resBox = document.getElementById('avResult');
+      if (!val) {
+        alert('Cole um link, SMS ou código Pix para analisar.');
         return;
       }
 
-      const btn = document.getElementById("btnGerarSiteIA");
-      btn.disabled = true;
-      btn.innerText = "⏳ A IA Gemini está criando o site completo...";
-
-      const apiKey = localStorage.getItem("gemini_api_key") || localStorage.getItem("nexus_gemini_key") || "";
-
-      try {
-        let codigo = "";
-        if (apiKey) {
-          const prompt = `Crie um site institucional completo, moderno e responsivo em HTML único com CSS interno para:
-Empresa: ${nome} | Ramo: ${ramo} | Cidade: ${cidade} | Serviços: ${servicos}
-Botão WhatsApp obrigatório: https://wa.me/${whatsLink}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20${encodeURIComponent(nome)}
-Retorne APENAS o código HTML puro começando com <!DOCTYPE html> e terminando com </html>, sem markdown.`;
-
-          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-          });
-          const data = await res.json();
-          codigo = (data?.candidates?.[0]?.content?.parts?.[0]?.text || "").replace(/^```html\s*/i, "").replace(/```\s*$/i, "").trim();
-        }
-
-        if (!codigo.includes("<html")) {
-          const cards = servicos.split(",").map(s => s.trim()).filter(Boolean).map(item => `
-            <div style="background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:12px;">
-              <h3 style="margin:0 0 8px 0;color:#0f172a;">✅ ${item}</h3>
-              <p style="margin:0;color:#475569;font-size:14px;">Solução completa de ${nome} com atendimento ágil e qualidade comprovada.</p>
-            </div>`).join("");
-
-          codigo = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${nome}</title></head>
-          <body style="margin:0;font-family:system-ui,sans-serif;color:#1e293b;">
-            <header style="background:#0f172a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
-              <strong style="font-size:20px;">${nome}</strong>
-              <a href="https://wa.me/${whatsLink}" target="_blank" style="background:#22c55e;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;">WhatsApp</a>
-            </header>
-            <section style="background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:54px 24px;text-align:center;">
-              <span style="background:rgba(163,230,53,0.15);color:#a3e635;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:700;">📍 ${cidade}</span>
-              <h1 style="font-size:32px;max-width:680px;margin:16px auto;">${nome}: ${ramo}</h1>
-              <p style="color:#cbd5e1;max-width:580px;margin:0 auto 26px auto;">Atendimento rápido e orçamento sem compromisso direto pelo WhatsApp.</p>
-              <a href="https://wa.me/${whatsLink}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20${encodeURIComponent(nome)}" target="_blank" style="display:inline-block;background:#22c55e;color:#fff;font-weight:800;padding:15px 28px;border-radius:10px;text-decoration:none;">💬 SOLICITAR ORÇAMENTO AGORA</a>
-            </section>
-            <section style="max-width:960px;margin:44px auto;padding:0 24px;">
-              <h2 style="text-align:center;margin-bottom:24px;">Nossos Serviços</h2>
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">${cards}</div>
-            </section>
-            <footer style="background:#0f172a;color:#94a3b8;text-align:center;padding:24px;font-size:13px;">${nome} • ${cidade} © 2026</footer>
-          </body></html>`;
-        }
-
-        htmlSiteGeradoAtual = codigo;
-        document.getElementById("iframePreviaSite").srcdoc = htmlSiteGeradoAtual;
-        document.getElementById("areaPreviaSite").style.display = "block";
-        document.getElementById("areaPreviaSite").scrollIntoView({ behavior: "smooth" });
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "✨ GERAR SITE COM IA GRÁTIS AGORA";
+      if (!isVip() && getUsage() >= MAX_FREE) {
+        document.getElementById('vipPaywall').style.display = 'block';
+        resBox.style.display = 'none';
+        return;
       }
-    }
 
-    function abrirPaywallSite180() {
-      document.getElementById("modalPaywall180").style.display = "flex";
-    }
+      if (!isVip()) {
+        localStorage.setItem('nexus_av_uses', String(getUsage() + 1));
+        atualizarBadgeAV();
+      }
 
-    function fecharPaywall180() {
-      document.getElementById("modalPaywall180").style.display = "none";
-    }
+      const lower = val.toLowerCase();
+      const sinaisRisco = [];
+      if (lower.startsWith('http://')) sinaisRisco.push('Conexão sem cadeado HTTPS (http:// inseguro)');
+      if (/(bit\.ly|tinyurl|cutt\.ly|is\.gd|t\.co|shorturl)/.test(lower)) sinaisRisco.push('Encurtador de link ocultando o destino real');
+      if (/(\.xyz|\.top|\.club|\.click|\.gq|\.tk|\.ml|\.cf|\.work|\.zip)/.test(lower)) sinaisRisco.push('Extensão de domínio frequentemente usada em golpes');
+      if (/(premio|resgate|urgente|bloqueado|atualize|receita|correios|nubank-seguro|itau-alerta|bb-atualiza|pix-gratis)/.test(lower)) {
+        sinaisRisco.push('Palavras de engenharia social / urgência financeira detectadas');
+      }
+      if (/@/.test(lower) || /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(lower)) {
+        sinaisRisco.push('Uso de IP direto ou redirecionamento mascarado (@)');
+      }
 
-    function validarEDownloadSite() {
-      const senha = document.getElementById("senhaDownloadSite").value.trim().toUpperCase();
-      if (senha === "SITE180VIP" || senha === "NEXUS180") {
-        document.getElementById("msgErroSenhaSite").style.display = "none";
-        const blob = new Blob([htmlSiteGeradoAtual], { type: "text/html;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "site-empresa-pronto.html";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        fecharPaywall180();
+      resBox.style.display = 'block';
+      if (sinaisRisco.length >= 2) {
+        resBox.style.borderColor = '#ef4444';
+        resBox.innerHTML = `<strong style="color:#f87171;">🚨 ALTO RISCO DE GOLPE / PHISHING</strong><br><br>` +
+          sinaisRisco.map(s => `• ${s}`).join('<br>') +
+          `<br><br><span style="color:#94a3b8;">Recomendação: Não clique, não digite senhas e não faça transferências Pix neste endereço.</span>`;
+      } else if (sinaisRisco.length === 1) {
+        resBox.style.borderColor = '#f59e0b';
+        resBox.innerHTML = `<strong style="color:#fbbf24;">⚠️ ATENÇÃO — SUSPEITO</strong><br><br>• ${sinaisRisco[0]}<br><br><span style="color:#94a3b8;">Recomendação: Confirme diretamente no aplicativo oficial antes de prosseguir.</span>`;
       } else {
-        document.getElementById("msgErroSenhaSite").style.display = "block";
+        resBox.style.borderColor = '#10b981';
+        resBox.innerHTML = `<strong style="color:#34d399;">✅ NENHUM INDÍCIO ÓBVIO DE PHISHING DETECTADO</strong><br><br><span style="color:#94a3b8;">O formato do endereço não apresenta padrões clássicos de fraude, mas sempre confira o destinatário antes de pagar.</span>`;
+      }
+
+      if (!isVip() && getUsage() >= MAX_FREE) {
+        document.getElementById('vipPaywall').style.display = 'block';
       }
     }
 
-    /* ================= 3. CATÁLOGO DAS 100 FERRAMENTAS DE IA ================= */
-    const ferramentas = [
-      { nome: "ChatGPT", cat: "Texto & Chat", desc: "Assistente conversacional completo para textos, ideias e respostas.", url: "https://chat.openai.com" },
-      { nome: "Claude", cat: "Texto & Chat", desc: "IA avançada para análise de documentos longos e escrita natural.", url: "https://claude.ai" },
-      { nome: "Google Gemini", cat: "Texto & Chat", desc: "IA multimodal do Google integrada a pesquisa, código e imagens.", url: "https://gemini.google.com" },
-      { nome: "Microsoft Copilot", cat: "Texto & Chat", desc: "Assistente com acesso à web em tempo real e criação de imagens.", url: "https://copilot.microsoft.com" },
-      { nome: "Perplexity AI", cat: "Texto & Chat", desc: "Motor de busca inteligente com fontes verificadas em tempo real.", url: "https://www.perplexity.ai" },
-      { nome: "DeepSeek", cat: "Código & Negócios", desc: "IA de raciocínio lógico e programação de alto desempenho.", url: "https://chat.deepseek.com" },
-      { nome: "Midjourney", cat: "Imagem & Design", desc: "Geração de imagens artísticas e fotorrealistas de altíssima qualidade.", url: "https://www.midjourney.com" },
-      { nome: "Leonardo AI", cat: "Imagem & Design", desc: "Criação de artes, personagens, logos e texturas com controle fino.", url: "https://leonardo.ai" },
-      { nome: "Canva Magic Studio", cat: "Imagem & Design", desc: "Design gráfico, posts e apresentações automáticas com IA.", url: "https://www.canva.com" },
-      { nome: "Remove.bg", cat: "Imagem & Design", desc: "Remove o fundo de qualquer imagem automaticamente em 5 segundos.", url: "https://www.remove.bg" },
-      { nome: "Ideogram", cat: "Imagem & Design", desc: "Especialista em gerar imagens e logotipos com textos perfeitos.", url: "https://ideogram.ai" },
-      { nome: "CapCut AI", cat: "Vídeo & Voz", desc: "Editor de vídeos curtos com legendas automáticas e efeitos IA.", url: "https://www.capcut.com" },
-      { nome: "ElevenLabs", cat: "Vídeo & Voz", desc: "Clonagem e síntese de voz ultrarrealista em português.", url: "https://elevenlabs.io" },
-      { nome: "TTSMaker", cat: "Vídeo & Voz", desc: "Conversor gratuito de texto em voz natural para vídeos e narrações.", url: "https://ttsmaker.com" },
-      { nome: "HeyGen", cat: "Vídeo & Voz", desc: "Criação de vídeos com avatares falantes realistas a partir de texto.", url: "https://www.heygen.com" },
-      { nome: "Runway Gen-3", cat: "Vídeo & Voz", desc: "Geração e edição cinematográfica de vídeos com IA.", url: "https://runwayml.com" },
-      { nome: "Suno AI", cat: "Vídeo & Voz", desc: "Crie músicas completas com letra e vocal em qualquer estilo.", url: "https://suno.com" },
-      { nome: "GitHub Copilot", cat: "Código & Negócios", desc: "Autocompletar inteligente de código para programadores.", url: "https://github.com/features/copilot" },
-      { nome: "Gamma App", cat: "Código & Negócios", desc: "Criação instantânea de slides, propostas e páginas web.", url: "https://gamma.app" },
-      { nome: "Notion AI", cat: "Código & Negócios", desc: "Organização de projetos, resumos e produtividade empresarial.", url: "https://www.notion.so" }
+    function ativarVip() {
+      const pass = document.getElementById('vipPassInput').value.trim().toUpperCase();
+      if (pass === 'NEXUS2026') {
+        localStorage.setItem('nexus_av_vip', 'true');
+        atualizarBadgeAV();
+        alert('Acesso VIP Ilimitado ativado com sucesso!');
+      } else {
+        alert('Senha incorreta. Após concluir o pagamento de R$ 2,00, utilize a senha VIP liberada (NEXUS2026).');
+      }
+    }
+
+    // ====== 2. CRIADOR DE SITES IA ======
+    function gerarSiteIA() {
+      const nome = document.getElementById('siteNome').value.trim() || 'Minha Empresa Pro';
+      const whats = document.getElementById('siteWhats').value.replace(/\D/g, '') || '5589994315977';
+      const desc = document.getElementById('siteDesc').value.trim() || 'Soluções rápidas, atendimento especializado e qualidade garantida.';
+      const box = document.getElementById('sitePreviewBox');
+      box.style.display = 'block';
+      box.innerHTML = `
+        <div style="background:linear-gradient(135deg,#0284c7,#0f172a); padding:22px; text-align:center;">
+          <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#bae6fd; font-weight:700;">Site Oficial</div>
+          <h2 style="font-size:1.4rem; margin:6px 0; color:#fff;">${nome}</h2>
+          <p style="font-size:0.9rem; color:#e2e8f0; max-width:520px; margin:0 auto 14px;">${desc}</p>
+          <a href="https://wa.me/55${whats.replace(/^55/, '')}" target="_blank" rel="noopener"
+             style="display:inline-block; background:#10b981; color:#052e16; font-weight:800; padding:10px 18px; border-radius:999px; text-decoration:none; font-size:0.88rem;">
+            💬 Falar no WhatsApp Agora
+          </a>
+        </div>
+      `;
+    }
+
+    // ====== 3. LISTA DE 100 FERRAMENTAS DE IA ======
+    const baseTools = [
+      ["ChatGPT", "Texto & Chat", "Assistente conversacional para textos, resumos e ideias.", "https://chatgpt.com"],
+      ["Google Gemini", "Texto & Chat", "IA multimodal do Google para pesquisa, código e escrita.", "https://gemini.google.com"],
+      ["Claude AI", "Texto & Chat", "Análise de documentos longos e escrita natural.", "https://claude.ai"],
+      ["Perplexity AI", "Texto & Chat", "Buscador com respostas citadas em tempo real.", "https://www.perplexity.ai"],
+      ["Microsoft Copilot", "Texto & Chat", "Assistente integrado com busca na web e criação.", "https://copilot.microsoft.com"],
+      ["DeepSeek", "Programação & Dados", "Modelo avançado para raciocínio lógico e programação.", "https://chat.deepseek.com"],
+      ["HuggingChat", "Texto & Chat", "Acesso gratuito a modelos open-source de linguagem.", "https://huggingface.co/chat"],
+      ["Poe AI", "Texto & Chat", "Reúne vários modelos de IA em uma única interface.", "https://poe.com"],
+      ["You.com", "Texto & Chat", "Motor de pesquisa com agentes de IA personalizados.", "https://you.com"],
+      ["Pi AI", "Texto & Chat", "Assistente pessoal focado em conversas rápidas.", "https://pi.ai"],
+      ["Canva Magic Studio", "Imagem & Design", "Criação de artes, posts e apresentações com IA.", "https://www.canva.com"],
+      ["Leonardo AI", "Imagem & Design", "Geração de imagens artísticas e assets em alta definição.", "https://leonardo.ai"],
+      ["Microsoft Designer", "Imagem & Design", "Gerador gratuito de imagens e banners com DALL-E.", "https://designer.microsoft.com"],
+      ["Ideogram", "Imagem & Design", "Geração de imagens com tipografia e logos precisos.", "https://ideogram.ai"],
+      ["Playground AI", "Imagem & Design", "Edição e criação de imagens com filtros inteligentes.", "https://playground.com"],
+      ["Remove.bg", "Imagem & Design", "Remove o fundo de qualquer foto automaticamente.", "https://www.remove.bg"],
+      ["Clipdrop", "Imagem & Design", "Suite de edição visual, iluminação e remoção de objetos.", "https://clipdrop.co"],
+      ["Upscale.media", "Imagem & Design", "Aumenta a resolução e nitidez de imagens com IA.", "https://www.upscale.media"],
+      ["Looka", "Imagem & Design", "Criador automático de logotipos e identidade visual.", "https://looka.com"],
+      ["Photopea", "Imagem & Design", "Editor avançado de imagens direto no navegador.", "https://www.photopea.com"],
+      ["CapCut Web", "Vídeo & Áudio", "Editor de vídeos curtos com legendas automáticas.", "https://www.capcut.com"],
+      ["TTSMaker", "Vídeo & Áudio", "Conversor gratuito de texto em voz natural em português.", "https://ttsmaker.com"],
+      ["ElevenLabs", "Vídeo & Áudio", "Síntese de voz ultra-realista e clonagem de áudio.", "https://elevenlabs.io"],
+      ["Suno AI", "Vídeo & Áudio", "Criação de músicas completas com letra e voz por IA.", "https://suno.com"],
+      ["Udio", "Vídeo & Áudio", "Gerador musical de alta fidelidade a partir de texto.", "https://www.udio.com"],
+      ["Fliki", "Vídeo & Áudio", "Transforma roteiros em vídeos narrados automaticamente.", "https://fliki.ai"],
+      ["InVideo AI", "Vídeo & Áudio", "Gera vídeos completos para TikTok e YouTube.", "https://invideo.io"],
+      ["Runway ML", "Vídeo & Áudio", "Geração e edição cinematográfica de vídeo com IA.", "https://runwayml.com"],
+      ["HeyGen", "Vídeo & Áudio", "Avatares falantes e tradução labial de vídeos.", "https://www.heygen.com"],
+      ["Adobe Podcast Enhance", "Vídeo & Áudio", "Limpa ruídos e deixa gravações de celular com som de estúdio.", "https://podcast.adobe.com"],
+      ["GitHub Copilot", "Programação & Dados", "Autocompletar inteligente de código em tempo real.", "https://github.com/features/copilot"],
+      ["Google Colab", "Programação & Dados", "Execute Python e modelos de IA na nuvem pelo celular.", "https://colab.research.google.com"],
+      ["Replit", "Programação & Dados", "IDE online com agente de IA para criar apps completos.", "https://replit.com"],
+      ["CodePen", "Programação & Dados", "Teste e publique HTML, CSS e JavaScript na hora.", "https://codepen.io"],
+      ["v0 by Vercel", "Programação & Dados", "Gera interfaces React e Tailwind a partir de prompts.", "https://v0.dev"],
+      ["Bolt.new", "Programação & Dados", "Cria e roda aplicações web full-stack no navegador.", "https://bolt.new"],
+      ["Lovable", "Programação & Dados", "Construtor de aplicativos web a partir de descrições.", "https://lovable.dev"],
+      ["Blackbox AI", "Programação & Dados", "Assistente especializado em gerar e depurar código.", "https://www.blackbox.ai"],
+      ["Phind", "Programação & Dados", "Buscador técnico otimizado para desenvolvedores.", "https://www.phind.com"],
+      ["Kaggle", "Programação & Dados", "Datasets gratuitos e notebooks de ciência de dados.", "https://www.kaggle.com"],
+      ["Gamma App", "Negócios & Produtividade", "Cria apresentações, slides e sites em segundos.", "https://gamma.app"],
+      ["Notion AI", "Negócios & Produtividade", "Organização de notas, tarefas e escrita assistida.", "https://www.notion.so"],
+      ["Tome", "Negócios & Produtividade", "Storytelling e apresentações comerciais geradas por IA.", "https://tome.app"],
+      ["Grammarly", "Negócios & Produtividade", "Correção gramatical e melhoria de clareza em textos.", "https://www.grammarly.com"],
+      ["QuillBot", "Negócios & Produtividade", "Reescrita, paráfrase e resumo de textos acadêmicos.", "https://quillbot.com"],
+      ["DeepL Translator", "Negócios & Produtividade", "Tradução de alta precisão para dezenas de idiomas.", "https://www.deepl.com"],
+      ["Otter.ai", "Negócios & Produtividade", "Transcrição automática de reuniões e áudios.", "https://otter.ai"],
+      ["Fireflies.ai", "Negócios & Produtividade", "Assistente de reuniões que grava e resume chamadas.", "https://fireflies.ai"],
+      ["Zapier", "Negócios & Produtividade", "Automação de fluxos entre aplicativos sem código.", "https://zapier.com"],
+      ["Make", "Negócios & Produtividade", "Automação visual avançada de processos e APIs.", "https://www.make.com"]
     ];
 
-    let categoriaAtual = "Todas";
-    let favoritos = JSON.parse(localStorage.getItem("nexus_favs") || "[]");
+    // Completa exatamente 100 ferramentas combinando especialidades adicionais
+    const extraCategories = ["Texto & Chat", "Imagem & Design", "Vídeo & Áudio", "Programação & Dados", "Negócios & Produtividade"];
+    const extraEntries = [
+      ["Copy.ai", "Negócios & Produtividade", "Gerador de textos persuasivos para anúncios e vendas.", "https://www.copy.ai"],
+      ["Jasper AI", "Negócios & Produtividade", "Criação de conteúdo de marketing em escala.", "https://www.jasper.ai"],
+      ["Writesonic", "Texto & Chat", "Artigos otimizados para SEO e descrições de produtos.", "https://writesonic.com"],
+      ["Rytr", "Texto & Chat", "Assistente rápido para e-mails, posts e legendas.", "https://rytr.me"],
+      ["Simplified", "Imagem & Design", "Design gráfico, vídeo e copywriting em um só lugar.", "https://simplified.com"],
+      ["Recraft AI", "Imagem & Design", "Ilustrações vetoriais e ícones editáveis por IA.", "https://www.recraft.ai"],
+      ["Krea AI", "Imagem & Design", "Geração e aprimoramento visual em tempo real.", "https://www.krea.ai"],
+      ["Pixlr AI", "Imagem & Design", "Editor de fotos online com ferramentas generativas.", "https://pixlr.com"],
+      ["Fotor AI", "Imagem & Design", "Retoque de fotos, avatares e efeitos artísticos.", "https://www.fotor.com"],
+      ["Cleanup.pictures", "Imagem & Design", "Apaga pessoas ou objetos indesejados de fotos.", "https://cleanup.pictures"],
+      ["Luma Dream Machine", "Vídeo & Áudio", "Geração realista de vídeos a partir de texto ou foto.", "https://lumalabs.ai"],
+      ["Pika Art", "Vídeo & Áudio", "Animação criativa de imagens e clipes curtos.", "https://pika.art"],
+      ["Kling AI", "Vídeo & Áudio", "Vídeos de alta duração e movimento natural.", "https://klingai.com"],
+      ["Descript", "Vídeo & Áudio", "Edite vídeos editando o texto da transcrição.", "https://www.descript.com"],
+      ["Murf AI", "Vídeo & Áudio", "Locuções profissionais para vídeos institucionais.", "https://murf.ai"],
+      ["Voicemod", "Vídeo & Áudio", "Modulador de voz em tempo real com efeitos IA.", "https://www.voicemod.net"],
+      ["AIVA", "Vídeo & Áudio", "Compositor de trilhas sonoras instrumentais.", "https://www.aiva.ai"],
+      ["Soundraw", "Vídeo & Áudio", "Gera batidas e músicas livres de direitos autorais.", "https://soundraw.io"],
+      ["Lalal.ai", "Vídeo & Áudio", "Separa vocal e instrumentos de qualquer música.", "https://www.lalal.ai"],
+      ["Kapwing", "Vídeo & Áudio", "Editor colaborativo com redimensionamento automático.", "https://www.kapwing.com"],
+      ["Cursor AI", "Programação & Dados", "Editor de código construído nativamente com IA.", "https://www.cursor.com"],
+      ["Windsurf", "Programação & Dados", "Ambiente de desenvolvimento com fluxo agêntico.", "https://codeium.com/windsurf"],
+      ["Tabnine", "Programação & Dados", "Sugestões de código privadas e contextualizadas.", "https://www.tabnine.com"],
+      ["CodeSandbox", "Programação & Dados", "Ambientes instantâneos na nuvem para projetos web.", "https://codesandbox.io"],
+      ["StackBlitz", "Programação & Dados", "Executa Node.js e frameworks web direto no navegador.", "https://stackblitz.com"],
+      ["Glitch", "Programação & Dados", "Crie e hospede apps web colaborativos gratuitamente.", "https://glitch.com"],
+      ["Hugging Face", "Programação & Dados", "Comunidade e hospedagem de milhares de modelos IA.", "https://huggingface.co"],
+      ["GroqCloud", "Programação & Dados", "Inferência ultrarrápida para modelos Llama e Mixtral.", "https://console.groq.com"],
+      ["OpenRouter", "Programação & Dados", "API unificada para acessar dezenas de LLMs.", "https://openrouter.ai"],
+      ["Supabase", "Programação & Dados", "Banco de dados PostgreSQL e autenticação prontos.", "https://supabase.com"],
+      ["Netlify", "Programação & Dados", "Hospedagem rápida e deploy contínuo de sites.", "https://www.netlify.com"],
+      ["Vercel", "Programação & Dados", "Plataforma global para aplicações front-end e IA.", "https://vercel.com"],
+      ["Durable", "Negócios & Produtividade", "Construtor de sites e CRM para pequenos negócios.", "https://durable.co"],
+      ["10Web", "Negócios & Produtividade", "Criação e hospedagem WordPress impulsionada por IA.", "https://10web.io"],
+      ["Framer AI", "Negócios & Produtividade", "Publique sites interativos a partir de um comando.", "https://www.framer.com"],
+      ["Tidio AI", "Negócios & Produtividade", "Chatbot de atendimento ao cliente para sites.", "https://www.tidio.com"],
+      ["ManyChat", "Negócios & Produtividade", "Automação de mensagens para Instagram e WhatsApp.", "https://manychat.com"],
+      ["Chatbase", "Negócios & Produtividade", "Treine um chatbot com os dados do seu próprio site.", "https://www.chatbase.co"],
+      ["PDF.ai", "Texto & Chat", "Converse com seus arquivos PDF e extraia respostas.", "https://pdf.ai"],
+      ["Humata AI", "Texto & Chat", "Analisa contratos e manuais técnicos rapidamente.", "https://www.humata.ai"],
+      ["Consensus", "Texto & Chat", "Pesquisa respostas baseadas em artigos científicos.", "https://consensus.app"],
+      ["Elicit", "Texto & Chat", "Assistente de pesquisa acadêmica e revisão de literatura.", "https://elicit.com"],
+      ["SciSpace", "Texto & Chat", "Explica artigos científicos e fórmulas complexas.", "https://typeset.io"],
+      ["Napkin AI", "Imagem & Design", "Transforma textos em diagramas e infográficos visuais.", "https://www.napkin.ai"],
+      ["Whimsical AI", "Negócios & Produtividade", "Mapas mentais e fluxogramas gerados por IA.", "https://whimsical.com"],
+      ["Miro AI", "Negócios & Produtividade", "Quadro branco colaborativo com organização automática.", "https://miro.com"],
+      ["Taskade", "Negócios & Produtividade", "Listas de tarefas e agentes autônomos em equipe.", "https://www.taskade.com"],
+      ["ClickUp Brain", "Negócios & Produtividade", "Gestão de projetos conectada com resumos por IA.", "https://clickup.com"],
+      ["Scribe", "Negócios & Produtividade", "Cria tutoriais passo a passo automaticamente.", "https://scribehow.com"],
+      ["Loom AI", "Vídeo & Áudio", "Gravação de tela com títulos e resumos automáticos.", "https://www.loom.com"]
+    ];
 
-    function renderizarFerramentas() {
-      const busca = document.getElementById("searchInput").value.toLowerCase();
-      const grid = document.getElementById("toolsGrid");
-      const filtradas = ferramentas.filter(f => {
-        const matchBusca = f.nome.toLowerCase().includes(busca) || f.desc.toLowerCase().includes(busca) || f.cat.toLowerCase().includes(busca);
-        if (categoriaAtual === "Favoritos") return favoritos.includes(f.nome) && matchBusca;
-        if (categoriaAtual === "Todas") return matchBusca;
-        return f.cat === categoriaAtual && matchBusca;
-      });
-
-      grid.innerHTML = filtradas.map(f => {
-        const isFav = favoritos.includes(f.nome);
-        return `
-          <div class="tool-item">
-            <div class="tool-info">
-              <div class="tool-top">
-                <span class="tool-name">${f.nome}</span>
-                <span class="tool-cat">${f.cat}</span>
-              </div>
-              <div class="tool-desc">${f.desc}</div>
-            </div>
-            <div class="tool-actions">
-              <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${f.nome}')">★</button>
-              <a href="${f.url}" target="_blank" rel="noopener noreferrer" class="open-btn">Abrir</a>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function selecionarCategoria(cat, btn) {
-      categoriaAtual = cat;
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      renderizarFerramentas();
-    }
+    const allTools = [...baseTools, ...extraEntries].map((item, idx) => ({
+      id: idx + 1,
+      name: item[0],
+      category: item[1],
+      desc: item[2],
+      url: item[3]
+    }));
 
     function filtrarFerramentas() {
-      renderizarFerramentas();
+      const q = document.getElementById('searchTool').value.toLowerCase().trim();
+      const cat = document.getElementById('catFilter').value;
+      const grid = document.getElementById('toolsGrid');
+
+      const filtradas = allTools.filter(t => {
+        const matchCat = cat === 'TODAS' || t.category === cat;
+        const matchQ = !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.category.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      document.getElementById('toolsCountLabel').textContent = `${filtradas.length} de 100`;
+
+      grid.innerHTML = filtradas.map(t => `
+        <div class="tool-item">
+          <div>
+            <div class="tool-cat">#${t.id} • ${t.category}</div>
+            <div class="tool-name">${t.name}</div>
+            <div class="tool-desc">${t.desc}</div>
+          </div>
+          <a href="${t.url}" target="_blank" rel="noopener" class="tool-link">Abrir Ferramenta ↗</a>
+        </div>
+      `).join('');
     }
 
-    function toggleFav(nome) {
-      if (favoritos.includes(nome)) {
-        favoritos = favoritos.filter(n => n !== nome);
-      } else {
-        favoritos.push(nome);
-      }
-      localStorage.setItem("nexus_favs", JSON.stringify(favoritos));
-      renderizarFerramentas();
-    }
-
-    renderizarFerramentas();
+    // Inicialização
+    atualizarBadgeAV();
+    filtrarFerramentas();
   </script>
 </body>
 </html>
