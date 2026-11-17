@@ -9,7 +9,11 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXUS AI 100 — Download</title>
+  <title>NEXUS AI 100 — Calculadora Falante & Inteligente</title>
+  
+  <!-- Ícones do Google Material para o Microfone -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
   <style>
     body {
       background-color: #040914;
@@ -22,121 +26,408 @@
       min-height: 100vh;
       margin: 0;
       text-align: center;
-      padding: 24px;
+      padding: 16px;
       box-sizing: border-box;
     }
     .container {
       max-width: 400px;
       width: 100%;
       background: rgba(255, 255, 255, 0.03);
-      padding: 32px 24px;
+      padding: 24px 16px;
       border-radius: 24px;
       border: 1px solid rgba(0, 210, 255, 0.1);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    .logo-container {
-      margin-bottom: 24px;
+    
+    /* Cabeçalho do App */
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 0 8px;
     }
-    .logo-icon {
-      font-size: 50px;
-      background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-      animation: pulse 2s infinite ease-in-out;
+    .app-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      color: #00d2ff;
+      font-size: 16px;
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.05); opacity: 1; }
-    }
-    h2 {
-      font-size: 22px;
-      font-weight: 800;
-      margin: 0 0 8px 0;
-      background: linear-gradient(to right, #00d2ff, #0066ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .status {
-      font-size: 13px;
+    .voice-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
       color: #00ff88;
       background: rgba(0, 255, 136, 0.1);
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 50px;
-      display: inline-block;
-      margin-bottom: 20px;
       font-weight: 600;
     }
-    p {
-      color: #94a3b8;
+
+    /* Visor e Microfone integrados */
+    .display-area {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      align-items: stretch;
+    }
+    .visor {
+      flex-grow: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 210, 255, 0.15);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      min-height: 80px;
+      box-sizing: border-box;
+    }
+    .operation {
+      color: #64748b;
       font-size: 14px;
-      line-height: 1.6;
-      margin: 0 0 32px 0;
+      min-height: 18px;
+      word-break: break-all;
+    }
+    .result {
+      color: #00d2ff;
+      font-size: 32px;
+      font-weight: bold;
+      word-break: break-all;
+    }
+    
+    /* Botão de Voz / Microfone */
+    .mic-button {
+      width: 60px;
+      background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%);
+      border: none;
+      border-radius: 18px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .mic-button:active {
+      transform: scale(0.92);
+    }
+    .mic-button.listening {
+      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+      animation: pulseMic 1.5s infinite;
+    }
+    @keyframes pulseMic {
+      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+
+    /* Teclado da Calculadora */
+    .keyboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    button.key {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 500;
+      padding: 16px 0;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    button.key:active {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(1px);
+    }
+    button.key.op {
+      color: #00d2ff;
+      background: rgba(0, 210, 255, 0.05);
+    }
+    button.key.clear {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.08);
+    }
+    button.key.equal {
+      color: #ffffff;
+      background: linear-gradient(135deg, #00ff88 0%, #00b359 100%);
+      grid-column: span 1;
+      font-weight: bold;
+    }
+    
+    .btn-action-bottom {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 10px 0;
+      color: #94a3b8;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    /* Footer Download Link */
+    .download-footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
     .btn-download {
-      display: block;
-      padding: 16px 24px;
-      background: linear-gradient(135deg, #00e5ff 0%, #0066ff 100%);
-      color: #ffffff !important;
+      display: inline-block;
+      width: 100%;
+      padding: 14px 0;
+      background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%);
+      color: #ffffff;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-      font-size: 15px;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .btn-download:active {
-      transform: scale(0.98);
-      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-    }
-    .instructions {
-      margin-top: 28px;
-      font-size: 12px;
-      color: #64748b;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 20px;
-    }
-    .instructions-step {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 6px;
-    }
-    .instructions-step span {
-      background: rgba(255, 255, 255, 0.05);
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      margin-right: 6px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.25);
+      font-size: 14px;
+      box-sizing: border-box;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <div class="logo-container">
-      <div class="logo-icon">🛡️</div>
+    
+    <!-- Cabeçalho -->
+    <div class="app-header">
+      <div class="app-title">
+        <span>🤖</span>
+        <span>Calculadora Falante AI</span>
+      </div>
+      <div class="voice-badge" id="voiceStatus">
+        <span class="material-symbols-outlined" style="font-size: 16px;">volume_up</span>
+        <span>Voz Ativa</span>
+      </div>
     </div>
-    <h2>NEXUS AI 100</h2>
-    <div class="status">● APK Oficial Liberado</div>
-    
-    <p>O aplicativo completo com inteligência artificial, antivírus e detector de golpes já está disponível para o teu Android.</p>
-    
-    <a href="https://is.gd/nexusia100oficial" target="_blank" rel="noopener noreferrer" class="btn-download">
-      📥 BAIXAR APLICATIVO AGORA
-    </a>
-    
-    <div class="instructions">
-      <div class="instructions-step"><span>1</span> Clica no botão acima para iniciar.</div>
-      <div class="instructions-step"><span>2</span> Instala o arquivo (.apk) no teu celular.</div>
+
+    <!-- Visor + Botão de Microfone -->
+    <div class="display-area">
+      <div class="visor">
+        <div class="operation" id="visorOperation"></div>
+        <div class="result" id="visorResult">0</div>
+      </div>
+      
+      <!-- Botão de Microfone de Voz -->
+      <button class="mic-button" id="micBtn" onclick="toggleVoiceInput()" title="Falar conta">
+        <span class="material-symbols-outlined" id="micIcon" style="font-size: 28px;">mic</span>
+      </button>
     </div>
+
+    <!-- Teclado de Botões -->
+    <div class="keyboard">
+      <button class="key clear" onclick="clearVisor()">C</button>
+      <button class="key op" onclick="addChar('(')">(</button>
+      <button class="key op" onclick="addChar(')')">)</button>
+      <button class="key op" onclick="addChar('/')">÷</button>
+
+      <button class="key" onclick="addChar('7')">7</button>
+      <button class="key" onclick="addChar('8')">8</button>
+      <button class="key" onclick="addChar('9')">9</button>
+      <button class="key op" onclick="addChar('*')">×</button>
+
+      <button class="key" onclick="addChar('4')">4</button>
+      <button class="key" onclick="addChar('5')">5</button>
+      <button class="key" onclick="addChar('6')">6</button>
+      <button class="key op" onclick="addChar('-')">-</button>
+
+      <button class="key" onclick="addChar('1')">1</button>
+      <button class="key" onclick="addChar('2')">2</button>
+      <button class="key" onclick="addChar('3')">3</button>
+      <button class="key op" onclick="addChar('+')">+</button>
+
+      <button class="key" onclick="addChar('0')">0</button>
+      <button class="key" onclick="addChar('.')">,</button>
+      <button class="key op" onclick="addChar('%')">%</button>
+      <button class="key equal" onclick="calculateResult()">=</button>
+    </div>
+
+    <button class="btn-action-bottom" onclick="backspace()">⌫ Apagar Dígito</button>
+
+    <!-- Rodapé para Download Oficial -->
+    <div class="download-footer">
+      <a href="https://is.gd/nexusia100oficial" target="_blank" rel="noopener noreferrer" class="btn-download">
+        📥 BAIXAR APK NEXUS AI 100
+      </a>
+    </div>
+
   </div>
+
+  <!-- Lógica Inteligente de Voz e Cálculo -->
+  <script>
+    let visorOp = document.getElementById("visorOperation");
+    let visorRes = document.getElementById("visorResult");
+    let micBtn = document.getElementById("micBtn");
+    let micIcon = document.getElementById("micIcon");
+    let voiceActive = true;
+    let isListening = false;
+    let recognition;
+
+    // Configurar Voz Ativa (Ouvir cliques)
+    function speak(text) {
+      if (!voiceActive) return;
+      window.speechSynthesis.cancel();
+      let utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "pt-BR";
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function addChar(char) {
+      if (visorRes.innerText === "0" && !isNaN(char)) {
+        visorRes.innerText = char;
+      } else {
+        visorRes.innerText += char;
+      }
+      
+      let speakName = char;
+      if (char === '+') speakName = "mais";
+      if (char === '-') speakName = "menos";
+      if (char === '*') speakName = "vezes";
+      if (char === '/') speakName = "dividido por";
+      if (char === '%') speakName = "por cento";
+      if (char === '.') speakName = "vírgula";
+      if (char === '(') speakName = "abre parênteses";
+      if (char === ')') speakName = "fecha parênteses";
+      
+      speak(speakName);
+    }
+
+    function clearVisor() {
+      visorOp.innerText = "";
+      visorRes.innerText = "0";
+      speak("limpar");
+    }
+
+    function backspace() {
+      let text = visorRes.innerText;
+      if (text.length > 1) {
+        visorRes.innerText = text.slice(0, -1);
+      } else {
+        visorRes.innerText = "0";
+      }
+      speak("apagar");
+    }
+
+    function calculateResult() {
+      try {
+        let rawExpression = visorRes.innerText;
+        // Substituir operadores para o cálculo interno do JS
+        let evalExpression = rawExpression.replace(/÷/g, '/').replace(/×/g, '*').replace(/%/g, '/100');
+        
+        let calculation = eval(evalExpression);
+        
+        // Se der resultado válido, mostra e fala
+        if (calculation !== undefined && !isNaN(calculation)) {
+          visorOp.innerText = rawExpression + " =";
+          visorRes.innerText = calculation;
+          speak("igual a " + calculation);
+        }
+      } catch (err) {
+        visorRes.innerText = "Erro";
+        speak("Erro na conta");
+      }
+    }
+
+    // INTERFACE DE VOZ / MICROFONE (Cálculo por Voz)
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'pt-BR';
+
+      recognition.onstart = () => {
+        isListening = true;
+        micBtn.classList.add('listening');
+        micIcon.innerText = 'mic_active';
+        visorOp.innerText = "Ouvindo voz...";
+        visorRes.innerText = "Fale agora...";
+        speak("Pode falar");
+      };
+
+      recognition.onend = () => {
+        isListening = false;
+        micBtn.classList.remove('listening');
+        micIcon.innerText = 'mic';
+      };
+
+      recognition.onerror = () => {
+        visorOp.innerText = "Voz não reconhecida";
+        visorRes.innerText = "Tente de novo";
+        speak("Não entendi");
+      };
+
+      recognition.onresult = (event) => {
+        let voiceInput = event.results[0][0].transcript.toLowerCase();
+        visorOp.innerText = "Ouvido: " + voiceInput;
+
+        // Processar termos matemáticos e números falados
+        let processed = voiceInput
+          .replace(/vezes/g, '*')
+          .replace(/x/g, '*')
+          .replace(/multiplicado por/g, '*')
+          .replace(/mais/g, '+')
+          .replace(/menos/g, '-')
+          .replace(/dividido por/g, '/')
+          .replace(/por/g, '/')
+          .replace(/igual/g, '')
+          .replace(/quanto é/g, '')
+          .replace(/,/g, '.')
+          .replace(/\s+/g, ''); // Remove espaços
+
+        // Tentar limpar e converter textos normais de números para símbolos (opcional)
+        // O Speech do celular já manda como '71+16' na grande maioria das vezes.
+
+        visorRes.innerText = processed;
+        
+        // Executar cálculo automaticamente
+        setTimeout(() => {
+          calculateResult();
+        }, 1200);
+      };
+
+    } else {
+      micBtn.style.display = "none"; // Oculta se o navegador não der suporte
+    }
+
+    function toggleVoiceInput() {
+      if (!recognition) {
+        alert("O teu telemóvel não suporta entrada de voz no navegador.");
+        return;
+      }
+      
+      if (isListening) {
+        recognition.stop();
+      } else {
+        recognition.start();
+      }
+    }
+
+    // Toggle de Voz ativa no badge
+    document.getElementById("voiceStatus").onclick = function() {
+      voiceActive = !voiceActive;
+      this.style.opacity = voiceActive ? "1" : "0.5";
+      if(voiceActive) {
+        speak("Voz ativa");
+      }
+    }
+  </script>
 
 </body>
 </html>
