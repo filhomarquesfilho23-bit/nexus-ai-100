@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Adsterra: Popunder -->
-  <script data-cfasync="false" src="https://bicea.org/14/7f390cc421631ce7015b6700a709d8ad"></script>
-
-  <!-- Adsterra: Social Bar -->
+  <!-- Adsterra: Social Bar (Anúncio Dinâmico e Amigável que Não Abre Vários Sites) -->
   <script data-cfasync="false" src="https://afders.org/1/22bdd1a167447dac64f22b1697a2d858"></script>
 
   <meta charset="UTF-8">
@@ -266,15 +263,6 @@
       box-sizing: border-box;
     }
   </style>
-  
-  <!-- Carrega a API do Gemini com o SDK do Google AI -->
-  <script type="importmap">
-    {
-      "imports": {
-        "@google/generative-ai": "https://esm.run/@google/generative-ai"
-      }
-    }
-  </script>
 </head>
 <body>
 
@@ -357,7 +345,7 @@
       </div>
       
       <div class="input-group">
-        <label for="compBranch">Diferenciais (Separados por vírgulas)</label>
+        <label for="compDiff">Diferenciais (Separados por vírgulas)</label>
         <input type="text" id="compDiff" placeholder="Ex: Suporte 24h, Entrega rápida, Garantia">
       </div>
       
@@ -378,7 +366,8 @@
 
   <!-- Lógica Inteligente de Voz, Cálculo e Criador de Sites IA -->
   <script type="module">
-    import { GoogleGenAI } from "@google/generative-ai";
+    // Carrega o SDK do Google Generative AI de forma estável para Web
+    import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
 
     let visorOp = document.getElementById("visorOperation");
     let visorRes = document.getElementById("visorResult");
@@ -571,9 +560,9 @@
       alertBox.style.display = "block";
 
       try {
-        const ai = new GoogleGenAI({ apiKey: geminiApiKey });
+        const genAI = new GoogleGenerativeAI(geminiApiKey);
         // USANDO O MODELO ATUALIZADO 3.8-FLASH PARA EVITAR HTTP 404
-        const model = ai.getGenerativeModel({ model: "gemini-3.8-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
         const prompt = `Gere o código HTML completo, moderno e responsivo para uma landing page de uma empresa chamada "${name}" que atua no ramo de "${branch}". 
         Seus diferenciais são: "${diff}". Quero um design premium no estilo escuro (dark cyber), com botões para contato via WhatsApp fictício, seções de diferenciais, chamativas e scripts de animações visuais simples.`;
