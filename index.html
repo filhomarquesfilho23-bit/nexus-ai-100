@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baixando Aplicativo Oficial...</title>
+  <title>NEXUS AI 100 — Download</title>
   <style>
     body {
       background-color: #040914;
@@ -13,67 +13,124 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       text-align: center;
-      padding: 20px;
+      padding: 24px;
+      box-sizing: border-box;
     }
-    .loader {
-      border: 4px solid rgba(0, 210, 255, 0.1);
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border-left-color: #00d2ff;
-      animation: spin 1s linear infinite;
-      margin-bottom: 20px;
+    .container {
+      max-width: 400px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 32px 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(0, 210, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .logo-container {
+      margin-bottom: 24px;
+    }
+    .logo-icon {
+      font-size: 50px;
+      background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; }
     }
     h2 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 8px;
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+      background: linear-gradient(to right, #00d2ff, #0066ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .status {
+      font-size: 13px;
+      color: #00ff88;
+      background: rgba(0, 255, 136, 0.1);
+      padding: 4px 12px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
     p {
       color: #94a3b8;
       font-size: 14px;
-      margin-bottom: 24px;
+      line-height: 1.6;
+      margin: 0 0 32px 0;
     }
-    .btn-fallback {
-      display: inline-block;
-      padding: 12px 24px;
+    .btn-download {
+      display: block;
+      padding: 16px 24px;
       background: linear-gradient(135deg, #00e5ff 0%, #0066ff 100%);
-      color: white;
+      color: #ffffff !important;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-      font-size: 14px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+      font-size: 15px;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-download:active {
+      transform: scale(0.98);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+    }
+    .instructions {
+      margin-top: 28px;
+      font-size: 12px;
+      color: #64748b;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 20px;
+    }
+    .instructions-step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+    .instructions-step span {
+      background: rgba(255, 255, 255, 0.05);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      margin-right: 6px;
     }
   </style>
-  <script>
-    window.onload = function() {
-      // Abre o download do app direto
-      window.location.href = "https://is.gd/nexusia100oficial";
-      
-      // Segunda tentativa de download se o navegador do TikTok parar o primeiro redirecionamento
-      setTimeout(function() {
-        window.location.href = "https://is.gd/nexusia100oficial";
-      }, 1500);
-    }
-  </script>
 </head>
 <body>
 
-  <div class="loader"></div>
-  <h2>Seu download está começando...</h2>
-  <p>O aplicativo NEXUS AI 100 está sendo baixado diretamente para o seu Android.</p>
-  
-  <a href="https://is.gd/nexusia100oficial" class="btn-fallback">
-    Se o download não começar, clique aqui para baixar
-  </a>
+  <div class="container">
+    <div class="logo-container">
+      <div class="logo-icon">🛡️</div>
+    </div>
+    <h2>NEXUS AI 100</h2>
+    <div class="status">● APK Oficial Liberado</div>
+    
+    <p>O aplicativo completo com inteligência artificial, antivírus e detector de golpes já está disponível para o teu Android.</p>
+    
+    <a href="https://is.gd/nexusia100oficial" target="_blank" rel="noopener noreferrer" class="btn-download">
+      📥 BAIXAR APLICATIVO AGORA
+    </a>
+    
+    <div class="instructions">
+      <div class="instructions-step"><span>1</span> Clica no botão acima para iniciar.</div>
+      <div class="instructions-step"><span>2</span> Instala o arquivo (.apk) no teu celular.</div>
+    </div>
+  </div>
 
 </body>
 </html>
