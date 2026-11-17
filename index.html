@@ -9,9 +9,9 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXUS AI 100 — Calculadora Falante & Inteligente</title>
+  <title>NEXUS AI 100 — Calculadora Falante & Criador de Sites</title>
   
-  <!-- Ícones do Google Material para o Microfone -->
+  <!-- Ícones do Google Material -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <style>
@@ -37,6 +37,7 @@
       border-radius: 24px;
       border: 1px solid rgba(0, 210, 255, 0.1);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
     }
     
     /* Cabeçalho do App */
@@ -65,6 +66,7 @@
       padding: 4px 10px;
       border-radius: 50px;
       font-weight: 600;
+      cursor: pointer;
     }
 
     /* Visor e Microfone integrados */
@@ -113,8 +115,6 @@
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
       transition: all 0.2s ease;
-      position: relative;
-      overflow: hidden;
     }
     .mic-button:active {
       transform: scale(0.92);
@@ -147,7 +147,6 @@
       padding: 16px 0;
       cursor: pointer;
       transition: all 0.15s ease;
-      -webkit-tap-highlight-color: transparent;
     }
     button.key:active {
       background: rgba(255, 255, 255, 0.12);
@@ -164,7 +163,6 @@
     button.key.equal {
       color: #ffffff;
       background: linear-gradient(135deg, #00ff88 0%, #00b359 100%);
-      grid-column: span 1;
       font-weight: bold;
     }
     
@@ -177,10 +175,78 @@
       color: #94a3b8;
       font-size: 13px;
       cursor: pointer;
-      margin-top: 10px;
     }
-    
-    /* Footer Download Link */
+
+    /* Seção do Criador de Sites */
+    .site-maker {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+    }
+    .maker-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #00d2ff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .input-group {
+      margin-bottom: 12px;
+    }
+    .input-group label {
+      display: block;
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .input-group input {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0, 210, 255, 0.15);
+      border-radius: 10px;
+      padding: 10px;
+      color: #fff;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .btn-generate {
+      width: 100%;
+      background: linear-gradient(135deg, #00ff88 0%, #00b359 100%);
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .alert-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 12px;
+      padding: 12px;
+      color: #fca5a5;
+      font-size: 12px;
+      margin-top: 12px;
+      display: none;
+    }
+    .success-box {
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      border-radius: 12px;
+      padding: 12px;
+      color: #a7f3d0;
+      font-size: 12px;
+      margin-top: 12px;
+      display: none;
+      word-break: break-all;
+    }
+
+    /* Rodapé para Download Oficial */
     .download-footer {
       margin-top: 24px;
       padding-top: 16px;
@@ -200,6 +266,15 @@
       box-sizing: border-box;
     }
   </style>
+  
+  <!-- Carrega a API do Gemini com o SDK do Google AI -->
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -211,6 +286,10 @@
         <span>🤖</span>
         <span>Calculadora Falante AI</span>
       </div>
+      <!-- Botão para Inserir API do Gemini -->
+      <button onclick="promptApiKey()" style="background:none; border:none; color:#00d2ff; cursor:pointer;" title="Configurar Chave API">
+        <span class="material-symbols-outlined" style="font-size: 24px;">key</span>
+      </button>
       <div class="voice-badge" id="voiceStatus">
         <span class="material-symbols-outlined" style="font-size: 16px;">volume_up</span>
         <span>Voz Ativa</span>
@@ -260,6 +339,34 @@
 
     <button class="btn-action-bottom" onclick="backspace()">⌫ Apagar Dígito</button>
 
+    <!-- Criador de Sites IA (Gemini 3.8 Flash) -->
+    <div class="site-maker">
+      <div class="maker-title">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <span>Criador de Sites por IA</span>
+      </div>
+      
+      <div class="input-group">
+        <label for="compName">Nome da Empresa</label>
+        <input type="text" id="compName" placeholder="Ex: Nexus Tech, Padaria Silva">
+      </div>
+      
+      <div class="input-group">
+        <label for="compBranch">Ramo de Atuação / Especialidade</label>
+        <input type="text" id="compBranch" placeholder="Ex: Inteligência Artificial, Panificação">
+      </div>
+      
+      <div class="input-group">
+        <label for="compBranch">Diferenciais (Separados por vírgulas)</label>
+        <input type="text" id="compDiff" placeholder="Ex: Suporte 24h, Entrega rápida, Garantia">
+      </div>
+      
+      <button class="btn-generate" onclick="generateSite()">✨ Gerar Site com IA Grátis Agora</button>
+      
+      <div class="alert-box" id="makerAlert"></div>
+      <div class="success-box" id="makerSuccess"></div>
+    </div>
+
     <!-- Rodapé para Download Oficial -->
     <div class="download-footer">
       <a href="https://is.gd/nexusia100oficial" target="_blank" rel="noopener noreferrer" class="btn-download">
@@ -269,8 +376,10 @@
 
   </div>
 
-  <!-- Lógica Inteligente de Voz e Cálculo -->
-  <script>
+  <!-- Lógica Inteligente de Voz, Cálculo e Criador de Sites IA -->
+  <script type="module">
+    import { GoogleGenAI } from "@google/generative-ai";
+
     let visorOp = document.getElementById("visorOperation");
     let visorRes = document.getElementById("visorResult");
     let micBtn = document.getElementById("micBtn");
@@ -278,6 +387,18 @@
     let voiceActive = true;
     let isListening = false;
     let recognition;
+    let geminiApiKey = localStorage.getItem("gemini_api_key") || "";
+
+    // Configurar API Key
+    window.promptApiKey = function() {
+      let key = prompt("Insira a sua Chave da API do Gemini (AIzaSy...):", geminiApiKey);
+      if (key !== null) {
+        geminiApiKey = key.trim();
+        localStorage.setItem("gemini_api_key", geminiApiKey);
+        alert("Chave salva com sucesso!");
+        document.getElementById("makerAlert").style.display = "none";
+      }
+    }
 
     // Configurar Voz Ativa (Ouvir cliques)
     function speak(text) {
@@ -288,7 +409,7 @@
       window.speechSynthesis.speak(utterance);
     }
 
-    function addChar(char) {
+    window.addChar = function(char) {
       if (visorRes.innerText === "0" && !isNaN(char)) {
         visorRes.innerText = char;
       } else {
@@ -308,13 +429,13 @@
       speak(speakName);
     }
 
-    function clearVisor() {
+    window.clearVisor = function() {
       visorOp.innerText = "";
       visorRes.innerText = "0";
       speak("limpar");
     }
 
-    function backspace() {
+    window.backspace = function() {
       let text = visorRes.innerText;
       if (text.length > 1) {
         visorRes.innerText = text.slice(0, -1);
@@ -324,7 +445,7 @@
       speak("apagar");
     }
 
-    function calculateResult() {
+    window.calculateResult = function() {
       try {
         let rawExpression = visorRes.innerText;
         // Substituir operadores para o cálculo interno do JS
@@ -377,7 +498,6 @@
         let voiceInput = event.results[0][0].transcript.toLowerCase();
         visorOp.innerText = "Ouvido: " + voiceInput;
 
-        // Processar termos matemáticos e números falados
         let processed = voiceInput
           .replace(/vezes/g, '*')
           .replace(/x/g, '*')
@@ -391,24 +511,20 @@
           .replace(/,/g, '.')
           .replace(/\s+/g, ''); // Remove espaços
 
-        // Tentar limpar e converter textos normais de números para símbolos (opcional)
-        // O Speech do celular já manda como '71+16' na grande maioria das vezes.
-
         visorRes.innerText = processed;
         
-        // Executar cálculo automaticamente
         setTimeout(() => {
           calculateResult();
         }, 1200);
       };
 
     } else {
-      micBtn.style.display = "none"; // Oculta se o navegador não der suporte
+      micBtn.style.display = "none";
     }
 
-    function toggleVoiceInput() {
+    window.toggleVoiceInput = function() {
       if (!recognition) {
-        alert("O teu telemóvel não suporta entrada de voz no navegador.");
+        alert("O seu telemóvel não suporta entrada de voz no navegador.");
         return;
       }
       
@@ -425,6 +541,59 @@
       this.style.opacity = voiceActive ? "1" : "0.5";
       if(voiceActive) {
         speak("Voz ativa");
+      }
+    }
+
+    // Lógica do Criador de Sites IA (Gerar Site usando Gemini 3.8 Flash)
+    window.generateSite = async function() {
+      const name = document.getElementById("compName").value.trim();
+      const branch = document.getElementById("compBranch").value.trim();
+      const diff = document.getElementById("compDiff").value.trim();
+      const alertBox = document.getElementById("makerAlert");
+      const successBox = document.getElementById("makerSuccess");
+
+      alertBox.style.display = "none";
+      successBox.style.display = "none";
+
+      if (!geminiApiKey) {
+        alertBox.innerText = "Erro: Configure a sua Chave da API do Gemini clicando no ícone de chave no topo!";
+        alertBox.style.display = "block";
+        return;
+      }
+
+      if (!name || !branch) {
+        alertBox.innerText = "Atenção: Preencha o Nome da Empresa e o Ramo/Especialidade!";
+        alertBox.style.display = "block";
+        return;
+      }
+
+      alertBox.innerText = "IA pensando e gerando o site... Aguarde.";
+      alertBox.style.display = "block";
+
+      try {
+        const ai = new GoogleGenAI({ apiKey: geminiApiKey });
+        // USANDO O MODELO ATUALIZADO 3.8-FLASH PARA EVITAR HTTP 404
+        const model = ai.getGenerativeModel({ model: "gemini-3.8-flash" });
+
+        const prompt = `Gere o código HTML completo, moderno e responsivo para uma landing page de uma empresa chamada "${name}" que atua no ramo de "${branch}". 
+        Seus diferenciais são: "${diff}". Quero um design premium no estilo escuro (dark cyber), com botões para contato via WhatsApp fictício, seções de diferenciais, chamativas e scripts de animações visuais simples.`;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const htmlCode = response.text();
+
+        // Salvar código gerado em arquivo ou permitir visualização
+        const blob = new Blob([htmlCode], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+
+        alertBox.style.display = "none";
+        successBox.innerHTML = `🎉 Site criado com sucesso!<br><br>
+        <a href="${url}" target="_blank" style="color:#00ff88; font-weight:bold; text-decoration:underline;">Clique aqui para visualizar o site gerado</a>`;
+        successBox.style.display = "block";
+
+      } catch (err) {
+        alertBox.innerHTML = "Erro ao gerar o site pela IA: " + err.message + "<br><br>Verifique se sua Chave de API está correta e tente de novo.";
+        alertBox.style.display = "block";
       }
     }
   </script>
