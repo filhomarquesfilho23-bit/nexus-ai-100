@@ -1,568 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXUS AI 100 — Sites • Antivírus • 100 IAs • Utilitários</title>
-
-  <!-- Adsterra Popunder -->
-  <script data-cfasync="false" src="https://abncloud.org/1/fe7a0360a7ff8ec4ca5b613da542f908"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS AI 100 — Download Oficial</title>
   <style>
-    :root {
-      --bg: #040914;
-      --card: #091326;
-      --card-inner: #0d1b33;
-      --border: #172b4d;
-      --neon: #00d2ff;
-      --neon-dark: #0077ff;
-      --green: #10b981;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
     body {
-      background: var(--bg);
-      color: var(--text);
-      padding-bottom: 85px;
-    }
-
-    .app-wrap {
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 12px;
-    }
-
-    /* Topo igual ao App */
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 4px 12px;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .shield-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: rgba(0, 210, 255, 0.14);
-      border: 1px solid var(--neon);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
-    }
-
-    .title-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .title-row h1 {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
-    }
-
-    .badge-free {
-      font-size: 10px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 12px;
-      background: rgba(16, 185, 129, 0.16);
-      border: 1px solid var(--green);
-      color: var(--green);
-    }
-
-    .subtitle {
-      font-size: 11px;
-      color: var(--neon);
-    }
-
-    .key-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--neon);
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    /* Pílula de Testes VIP */
-    .vip-bar {
-      width: 100%;
-      padding: 8px 12px;
-      border-radius: 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--neon);
-      font-size: 12px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    /* BOTÃO NÉON DE BAIXAR O APLICATIVO ANDROID */
-    .btn-download-app {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 14px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #00e5ff 0%, #0066ff 100%);
+      background-color: #040914;
       color: #ffffff;
-      font-size: 15px;
-      font-weight: 900;
-      text-decoration: none;
-      border: 1px solid #7ceeff;
-      box-shadow: 0 0 22px rgba(0, 210, 255, 0.65);
-      margin-bottom: 10px;
-      animation: pulseGlow 2s infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 18px rgba(0, 210, 255, 0.6); }
-      50% { box-shadow: 0 0 30px rgba(0, 210, 255, 0.95); }
-    }
-
-    /* Botão Assistente por Voz */
-    .btn-voice {
-      width: 100%;
-      padding: 13px;
-      border-radius: 14px;
-      background: #00b4ff;
-      border: none;
-      color: #03101f;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      margin-bottom: 12px;
-    }
-
-    /* Card Previsão do Tempo */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-
-    .weather-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .stat-pill {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 8px 10px;
-      font-size: 12px;
-      text-align: center;
-      color: #e2e8f0;
-    }
-
-    .city-row {
-      display: flex;
-      gap: 8px;
-    }
-
-    .city-input {
-      flex: 1;
-      background: #050b18;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 12px;
-      color: #fff;
-      font-size: 13px;
-      outline: none;
-    }
-
-    .icon-sq {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--card-inner);
-      border: 1px solid var(--neon);
-      color: var(--neon);
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    /* Utilitários: Despertador & Calculadora */
-    .utils-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .util-btn {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    /* Card AI Antivírus Corporativo */
-    .av-card {
-      background: linear-gradient(180deg, #091a32 0%, #071122 100%);
-      border: 1px solid var(--neon);
-      border-radius: 16px;
-      padding: 15px;
-      box-shadow: 0 0 18px rgba(0, 210, 255, 0.18);
-      margin-bottom: 14px;
-    }
-
-    .prot-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 12px;
-      background: rgba(16, 185, 129, 0.16);
-      color: var(--green);
-      margin-bottom: 8px;
-    }
-
-    .av-card h2 {
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .av-card p {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .av-input-row {
-      display: flex;
-      gap: 8px;
-    }
-
-    .btn-scan {
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: none;
-      background: var(--neon);
-      color: #04101f;
-      font-weight: 800;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    .result-box {
-      display: none;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 12.5px;
-    }
-
-    /* Abas Inferiores Fixas */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #060d1c;
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      padding: 8px 4px;
-      z-index: 90;
-    }
-
-    .nav-item {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
-      cursor: pointer;
-    }
-
-    .nav-item.active {
-      color: var(--neon);
-    }
-
-    .section-view {
-      display: none;
-    }
-
-    .section-view.active {
-      display: block;
-    }
-
-    /* Ferramentas 100 IAs */
-    .tool-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .tool-item a {
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: rgba(0, 210, 255, 0.15);
-      border: 1px solid var(--neon);
-      color: var(--neon);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* Modal VIP */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(2, 6, 15, 0.88);
-      z-index: 200;
-      align-items: center;
       justify-content: center;
-      padding: 16px;
-    }
-
-    .modal-box {
-      background: #0a152b;
-      border: 1px solid var(--neon);
-      border-radius: 16px;
-      padding: 20px;
-      max-width: 380px;
-      width: 100%;
+      height: 100vh;
+      margin: 0;
       text-align: center;
+      padding: 20px;
+    }
+    .loader {
+      border: 4px solid rgba(0, 210, 255, 0.1);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border-left-color: #00d2ff;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .btn-fallback {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #00e5ff 0%, #0066ff 100%);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+      font-size: 14px;
     }
   </style>
+  <script>
+    window.onload = function() {
+      // Tenta iniciar o download automático do APK imediatamente
+      window.location.href = "https://is.gd/nexusia100oficial";
+      
+      // Se por algum motivo o navegador do TikTok segurar o redirecionamento, 
+      // faz uma segunda tentativa após 1.5 segundos
+      setTimeout(function() {
+        window.location.href = "https://is.gd/nexusia100oficial";
+      }, 1500);
+    }
+  </script>
 </head>
 <body>
 
-  <div class="app-wrap">
-    <!-- Cabeçalho do App -->
-    <div class="top-bar">
-      <div class="logo-area">
-        <div class="shield-icon">🛡️</div>
-        <div>
-          <div class="title-row">
-            <h1>NEXUS AI 100</h1>
-            <span class="badge-free">100% GRATUITO</span>
-          </div>
-          <div class="subtitle">Sites • Antivírus • 100 IAs • Utilitários</div>
-        </div>
-      </div>
-      <button class="key-btn" onclick="abrirVip()">🔑</button>
-    </div>
+  <div class="loader"></div>
+  <h2>Preparando seu download...</h2>
+  <p>O aplicativo NEXUS AI 100 está a ser descarregado automaticamente.</p>
+  
+  <!-- Botão de garantia caso o navegador precise de um clique para forçar -->
+  <a href="https://is.gd/nexusia100oficial" class="btn-fallback">
+    Se não iniciar, clique aqui para baixar
+  </a>
 
-    <div class="vip-bar" id="vipStatusBar" onclick="abrirVip()">
-      ⚡ 3/3 testes gratuitos restantes hoje • Desbloquear VIP
-    </div>
-
-    <!-- BOTÃO PRINCIPAL PARA BAIXAR O APP ANDROID (LINK LIMPO SEM SEU NOME) -->
-    <a href="https://is.gd/nexusia100oficial" class="btn-download-app">
-      📲 BAIXAR APLICATIVO ANDROID (APK OFICIAL)
-    </a>
-
-    <!-- Botão Assistente Universal por Voz -->
-    <button class="btn-voice" onclick="falarAssistente()">
-      🎙️ Assistente Universal por Voz • Toque e Fale
-    </button>
-
-    <!-- ABA 1: PAINEL PRINCIPAL & AI ANTIVÍRUS -->
-    <div id="tab-antivirus" class="section-view active">
-      <div class="card">
-        <div class="weather-grid">
-          <div class="stat-pill">🌡️ Sensação 26°C</div>
-          <div class="stat-pill">💧 Umidade 77%</div>
-        </div>
-        <div class="city-row">
-          <input type="text" id="cidadeInput" class="city-input" value="Floriano - PI" />
-          <button class="icon-sq" onclick="atualizarClima()">🔄</button>
-        </div>
-      </div>
-
-      <div class="utils-row">
-        <button class="util-btn" onclick="alert('⏰ Despertador ativo! Para alarmes em segundo plano, baixe o App Android no botão azul acima.')">⏰ Despertador</button>
-        <button class="util-btn" onclick="calcRapida()">🧮 Calculadora Voz</button>
-      </div>
-
-      <div class="av-card">
-        <span class="prot-badge">✔ Proteção Empresarial Ativa</span>
-        <h2>🛡️ AI Antivírus Corporativo — Detector de Links Falsos e Segurança</h2>
-        <p>Cole URLs suspeitas, códigos "Pix Copia e Cola" ou linha digitável de boletos para detectar fraudes.</p>
-        <div class="av-input-row">
-          <input type="text" id="urlScanInput" class="city-input" placeholder="Cole URL, Pix Copia e Cola ou boleto..." />
-          <button class="btn-scan" onclick="verificarUrl()">Analisar</button>
-        </div>
-        <div id="scanResult" class="result-box"></div>
-      </div>
-    </div>
-
-    <!-- ABA 2: CRIADOR DE SITES IA -->
-    <div id="tab-sites" class="section-view">
-      <div class="av-card">
-        <h2>🌐 Criador de Sites com IA em 30 Segundos</h2>
-        <p>Digite o nome do seu negócio para gerar uma página pronta na hora:</p>
-        <input type="text" id="nomeSite" class="city-input" style="width:100%;margin-bottom:8px;" placeholder="Nome da empresa..." />
-        <input type="text" id="descSite" class="city-input" style="width:100%;margin-bottom:10px;" placeholder="O que você vende ou oferece..." />
-        <button class="btn-scan" style="width:100%;" onclick="gerarMiniSite()">🚀 Gerar Site Agora</button>
-        <div id="siteGeradoBox" class="result-box" style="background:#050b18;border:1px solid var(--neon);color:#fff;"></div>
-      </div>
-    </div>
-
-    <!-- ABA 3: 100 FERRAMENTAS IA -->
-    <div id="tab-tools" class="section-view">
-      <div class="card">
-        <h2 style="font-size:15px;margin-bottom:10px;">⚡ Catálogo 100 Ferramentas IA</h2>
-        <div class="tool-item"><span>🤖 Google Gemini</span><a href="https://gemini.google.com/" target="_blank">Abrir</a></div>
-        <div class="tool-item"><span>💬 ChatGPT</span><a href="https://chat.openai.com/" target="_blank">Abrir</a></div>
-        <div class="tool-item"><span>🛡️ VirusTotal Scanner</span><a href="https://www.virustotal.com/" target="_blank">Abrir</a></div>
-        <div class="tool-item"><span>🎬 CapCut AI</span><a href="https://www.capcut.com/" target="_blank">Abrir</a></div>
-        <div class="tool-item"><span>🎙️ TTSMaker Voz IA</span><a href="https://ttsmaker.com/?hl=pt-BR" target="_blank">Abrir</a></div>
-        <div class="tool-item"><span>🎨 Canva Magic</span><a href="https://www.canva.com/" target="_blank">Abrir</a></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navegação Inferior Igual ao App -->
-  <nav class="bottom-nav">
-    <button class="nav-item" id="nav-sites" onclick="mudarAba('sites')">
-      <span>🌐</span>Criador de Sites IA
-    </button>
-    <button class="nav-item active" id="nav-antivirus" onclick="mudarAba('antivirus')">
-      <span>🛡️</span>AI Antivírus
-    </button>
-    <button class="nav-item" id="nav-tools" onclick="mudarAba('tools')">
-      <span>🎛️</span>100 Ferramentas IA
-    </button>
-  </nav>
-
-  <!-- Modal VIP -->
-  <div class="modal" id="vipModal">
-    <div class="modal-box">
-      <h3 style="margin-bottom:8px;">🔓 Desbloquear VIP Ilimitado</h3>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Libere análises ilimitadas por apenas <strong>R$ 2,00</strong> ou baixe o aplicativo oficial.</p>
-      <a href="https://mpago.la/13o8xzR" target="_blank" class="btn-download-app" style="margin-bottom:10px;">💳 Pagar R$ 2,00 (Mercado Pago)</a>
-      <div class="av-input-row" style="margin-bottom:10px;">
-        <input type="text" id="senhaVip" class="city-input" placeholder="Senha VIP..." />
-        <button class="btn-scan" onclick="ativarVip()">Ativar</button>
-      </div>
-      <button onclick="fecharVip()" style="background:none;border:none;color:var(--muted);font-size:12px;text-decoration:underline;">Fechar</button>
-    </div>
-  </div>
-
-  <script>
-    let testes = 3;
-    let vipAtivo = false;
-
-    function mudarAba(nome) {
-      document.querySelectorAll('.section-view').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-      document.getElementById('tab-' + nome).classList.add('active');
-      document.getElementById('nav-' + nome).classList.add('active');
-    }
-
-    function verificarUrl() {
-      const val = document.getElementById('urlScanInput').value.trim().toLowerCase();
-      const box = document.getElementById('scanResult');
-      if (!val) { alert('Cole um link, código Pix ou boleto para analisar.'); return; }
-      if (!vipAtivo && testes <= 0) { abrirVip(); return; }
-      if (!vipAtivo) {
-        testes--;
-        document.getElementById('vipStatusBar').textContent = `⚡ ${testes}/3 testes gratuitos restantes hoje • Desbloquear VIP`;
-      }
-      box.style.display = 'block';
-      const suspeito = ['bit.ly', 'tinyurl', 'http://', 'pix-gratis', 'premio', '.xyz', '.top'].some(p => val.includes(p));
-      if (suspeito) {
-        box.style.background = 'rgba(239,68,68,0.18)';
-        box.style.border = '1px solid #ef4444';
-        box.style.color = '#fecaca';
-        box.innerHTML = '⚠️ <strong>ALERTA DE RISCO:</strong> Link ou código suspeito detectado!';
-      } else {
-        box.style.background = 'rgba(16,185,129,0.18)';
-        box.style.border = '1px solid #10b981';
-        box.style.color = '#a7f3d0';
-        box.innerHTML = '✅ <strong>SEGURO:</strong> Nenhum indício de phishing encontrado.';
-      }
-    }
-
-    function gerarMiniSite() {
-      const n = document.getElementById('nomeSite').value.trim();
-      const d = document.getElementById('descSite').value.trim();
-      const box = document.getElementById('siteGeradoBox');
-      if (!n || !d) { alert('Preencha o nome e a descrição.'); return; }
-      box.style.display = 'block';
-      box.innerHTML = `<strong style="color:#00d2ff;">✨ ${n}</strong><br><span style="font-size:12px;">${d}</span>`;
-    }
-
-    function falarAssistente() {
-      alert('🎙️ Assistente NEXUS AI: Para comandos de voz nativos no celular, toque no botão azul "BAIXAR APLICATIVO ANDROID" acima!');
-    }
-
-    function atualizarClima() {
-      const c = document.getElementById('cidadeInput').value || 'Floriano - PI';
-      alert('🌤️ Clima atualizado para ' + c + ': 26°C • Umidade 77%');
-    }
-
-    function calcRapida() {
-      const conta = prompt('Digite uma conta rápida (ex: 150 * 2):');
-      if (conta) {
-        try { alert('Resultado: ' + Function('"use strict";return (' + conta.replace(/[^0-9+\-*/().]/g, '') + ')')()); }
-        catch (e) { alert('Conta inválida.'); }
-      }
-    }
-
-    function abrirVip() { document.getElementById('vipModal').style.display = 'flex'; }
-    function fecharVip() { document.getElementById('vipModal').style.display = 'none'; }
-    function ativarVip() {
-      if (document.getElementById('senhaVip').value.trim().toUpperCase() === 'NEXUS2026') {
-        vipAtivo = true;
-        document.getElementById('vipStatusBar').textContent = '✅ MODO VIP ILIMITADO ATIVO';
-        fecharVip();
-      } else {
-        alert('Senha incorreta.');
-      }
-    }
-  </script>
 </body>
 </html>
