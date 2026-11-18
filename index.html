@@ -3,454 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Tag de verificação do Google Search Console -->
-    <meta name="google-site-verification" content="f_-t9Oi7-r5MIaTDDu8gHakxR3KlWn3lpz-Ef5sIS20" />
-    <title>Nexus IA - Sites de Alta Conversão para sua Empresa</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>NEXUS AI 100 - Sites e Ferramentas IA</title>
     <style>
-        :root {
-            --bg-dark: #030712;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --border-color: rgba(0, 210, 255, 0.15);
-            --primary: #00d2ff;
-            --secondary: #00ffaa;
-            --text: #ffffff;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
+        /* Estilos básicos do seu projeto */
         body {
-            background-color: var(--bg-dark);
-            color: var(--text);
+            background-color: #030712;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-
         .container {
             width: 100%;
             max-width: 480px;
-            padding: 100px 16px 32px 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 32px;
+            padding: 20px;
             text-align: center;
         }
-
-        .logo-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            padding: 6px 12px;
-            border-radius: 100px;
-            margin-bottom: 12px;
-        }
-
-        .logo-badge span {
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .logo-badge .material-symbols-outlined {
-            color: var(--secondary);
-            font-size: 16px;
-        }
-
-        h1 {
-            font-size: 26px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, var(--text) 50%, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        p.subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            max-width: 90%;
-        }
-
-        section {
-            margin-bottom: 32px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.05);
-        }
-
-        .icon-box {
-            width: 42px;
-            height: 42px;
-            background: rgba(0, 210, 255, 0.03);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            color: var(--primary);
-        }
-
-        .service-info h3 {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .service-info p {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .step-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 12px;
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 4px;
-        }
-
-        .step-card h4 {
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .step-card p {
-            font-size: 9px;
-            color: var(--text-muted);
-            line-height: 1.3;
-        }
-
-        .testimonial {
-            background: rgba(0, 255, 170, 0.02);
-            border: 1px solid rgba(0, 255, 170, 0.05);
-            border-radius: 20px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .testimonial p {
-            font-size: 12px;
-            font-style: italic;
-            color: var(--text);
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .client {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .client-avatar {
-            width: 28px;
-            height: 28px;
-            background: #334155;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-
-        .client-info h4 {
-            font-size: 11px;
-            font-weight: 600;
-            text-align: left;
-        }
-
-        .form-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 24px;
-        }
-
-        .form-box h2 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .form-box p {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 18px;
-        }
-
-        .input-group {
-            margin-bottom: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .input-group label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .input-group input, .input-group textarea, .input-group select {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 12px;
-            color: var(--text);
-            font-size: 13px;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.1);
-        }
-
-        .input-group select option {
-            background: var(--bg-dark);
-            color: var(--text);
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: linear-gradient(135deg, #00ffaa 0%, #00b379 100%);
-            border: none;
-            border-radius: 12px;
-            padding: 14px;
+        .btn-acao {
+            background-color: #00ffaa;
             color: #030712;
-            font-size: 14px;
-            font-weight: 700;
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-            margin-top: 8px;
-        }
-
-        .btn-submit:active {
-            transform: scale(0.97);
-        }
-
-        footer {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 32px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <h1>NEXUS AI 100</h1>
+        <p>Plataforma de Inteligência Artificial integrada.</p>
         
-        <header>
-            <div class="logo-badge">
-                <span class="material-symbols-outlined">auto_awesome</span>
-                <span>Sites Profissionais</span>
-            </div>
-            <h1>Tenha um Site que Vende Todos os Dias</h1>
-            <p class="subtitle">Criamos sites modernos, ultra-rápidos e sob medida para alavancar as vendas da sua empresa.</p>
-        </header>
-
-        <section>
-            <h2 class="section-title">
-                <span class="material-symbols-outlined">painel</span>
-                O que criamos
-            </h2>
-            
-            <div class="service-card">
-                <div class="icon-box">
-                    <span class="material-symbols-outlined">web</span>
-                </div>
-                <div class="service-info">
-                    <h3>Landing Pages de Vendas</h3>
-                    <p>Páginas de alta conversão para seus anúncios e redes sociais venderem mais.</p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="icon-box">
-                    <span class="material-symbols-outlined">storefront</span>
-                </div>
-                <div class="service-info">
-                    <h3>Catálogos Digitais</h3>
-                    <p>Seus produtos e serviços exibidos de forma profissional com botão de pedido.</p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="icon-box">
-                    <span class="material-symbols-outlined">business</span>
-                </div>
-                <div class="service-info">
-                    <h3>Sites Institucionais</h3>
-                    <p>Posicione sua marca e passe confiança para novos clientes na internet.</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Como funciona</h2>
-            <div class="steps">
-                <div class="step-card">
-                    <div class="step-number">01</div>
-                    <h4>Pedido</h4>
-                    <p>Fale conosco no WhatsApp</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">02</div>
-                    <h4>Criação</h4>
-                    <p>Desenvolvemos seu site</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">03</div>
-                    <h4>No ar</h4>
-                    <p>Site publicado e vendendo</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Quem confia</h2>
-            <div class="testimonial">
-                <p>"Depois que a Nexus IA criou a nossa landing page, os pedidos e orçamentos pelo WhatsApp não param de chegar. Excelente investimento!"</p>
-                <div class="client">
-                    <div class="client-avatar">PR</div>
-                    <div class="client-info">
-                        <h4>Pedro Rocha</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="form-box">
-            <h2>Solicitar Orçamento Grátis</h2>
-            <p>Preencha os dados e receba uma proposta exclusiva diretamente no seu WhatsApp.</p>
-            
-            <form id="leadForm">
-                <div class="input-group">
-                    <label for="name">Seu Nome</label>
-                    <input type="text" id="name" required placeholder="Ex: João Silva">
-                </div>
-
-                <div class="input-group">
-                    <label for="company">Nome da Empresa</label>
-                    <input type="text" id="company" required placeholder="Ex: Padaria do João">
-                </div>
-
-                <div class="input-group">
-                    <label for="siteType">Tipo de Site</label>
-                    <select id="siteType" required>
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option value="Landing Page">Landing Page de Vendas</option>
-                        <option value="Catálogo Digital">Catálogo Digital</option>
-                        <option value="Site Institucional">Site Institucional</option>
-                        <option value="Outro / Não sei">Outro / Não sei</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label for="details">Sobre o seu negócio</label>
-                    <textarea id="details" rows="3" placeholder="Fale brevemente o que você vende ou oferece..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">
-                    <span class="material-symbols-outlined">send</span>
-                    Enviar para o WhatsApp
-                </button>
-            </form>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Nexus IA. Todos os direitos reservados.</p>
-        </footer>
-
+        <button class="btn-acao" onclick="testarIA()">Testar Chamada da IA</button>
+        <p id="resposta-ia" style="margin-top: 20px; font-size: 14px; color: #94a3b8;"></p>
     </div>
 
+    <!-- SCRIPT DE INTEGRAÇÃO E CORREÇÃO DA API DO GEMINI -->
     <script>
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Função principal para chamar a IA com o modelo corrigido
+        async function chamarGemini(promptUsuario) {
+            // Pega a chave que foi salva no localStorage pelo ícone do app
+            const apiKey = localStorage.getItem('gemini_api_key');
             
-            const name = document.getElementById('name').value;
-            const company = document.getElementById('company').value;
-            const siteType = document.getElementById('siteType').value;
-            const details = document.getElementById('details').value || 'Não informado';
+            if (!apiKey) {
+                alert("Por favor, clique no ícone de chave verde no topo da tela e insira sua chave da API do Gemini.");
+                return null;
+            }
+
+            // URL ATUALIZADA COM O MODELO CORRETO (gemini-1.5-flash)
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+            const dadosRequisicao = {
+                contents: [
+                    {
+                        parts: [
+                            { text: promptUsuario }
+                        ]
+                    }
+                ]
+            };
+
+            try {
+                const resposta = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dadosRequisicao)
+                });
+
+                const resultado = await resposta.json();
+
+                if (resposta.ok) {
+                    // Retorna o texto gerado pela IA
+                    return resultado.candidates[0].content.parts[0].text;
+                } else {
+                    console.error("Erro na API:", resultado);
+                    alert("Erro na API do Gemini: " + (resultado.error?.message || "Erro desconhecido"));
+                    return null;
+                }
+            } catch (erro) {
+                console.error("Erro de conexão:", erro);
+                alert("Falha ao conectar com a API do Gemini.");
+                return null;
+            }
+        }
+
+        // Função de exemplo para o botão de teste
+        async function testarIA() {
+            const campoResposta = document.getElementById('resposta-ia');
+            campoResposta.innerText = "Conectando com a IA...";
             
-            // Seu número de atendimento
-            const phone = "559484475942";
+            const resposta = await chamarGemini("Diga olá em uma frase curta para o projeto NEXUS AI 100.");
             
-            // Mensagem que será enviada
-            const text = `Olá! Vim através do site e gostaria de solicitar um orçamento para:\n\n👤 *Nome:* ${name}\n🏢 *Empresa:* ${company}\n🌐 *Tipo de Site:* ${siteType}\n📝 *Sobre o negócio:* ${details}`;
-            
-            const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank');
-        });
+            if (resposta) {
+                campoResposta.innerText = resposta;
+            } else {
+                campoResposta.innerText = "Não foi possível obter resposta.";
+            }
+        }
     </script>
 </body>
 </html>
