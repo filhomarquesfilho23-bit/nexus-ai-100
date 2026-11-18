@@ -1,44 +1,47 @@
-async function chamarGemini(promptUsuario) {
-  try {
-    const k = 'gemini_api_key';
-    let apiKey = localStorage.getItem(k);
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS AI 100</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            background-color: #00ffff;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bem-vindo ao NEXUS AI 100</h1>
+    <p>Sua central definitiva de Inteligência Artificial.</p>
     
-    if (!apiKey || apiKey === "" || apiKey === "null" || apiKey === "undefined") {
-      apiKey = prompt("Por favor, insira sua chave da API do Gemini:");
-      if (!apiKey) {
-        alert("Chave da API não fornecida.");
-        return null;
-      }
-      localStorage.setItem(k, apiKey);
-    }
+    <button onclick="testarIA()">Testar IA do Gemini</button>
+    <p id="resposta"></p>
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-    
-    const dadosRequisicao = {
-      contents: [{ parts: [{ text: promptUsuario }] }]
-    };
+    <script>
+        async function testarIA() {
+            const resultado = await chamarGemini("Olá! Diga olá para o criador do NEXUS AI.");
+            if (resultado) {
+                document.getElementById('resposta').innerText = resultado;
+            }
+        }
+    </script>
 
-    const resposta = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dadosRequisicao)
-    });
-
-    if (!resposta.ok) {
-      throw new Error(`Erro na API: ${resposta.status}`);
-    }
-
-    const resultado = await resposta.json();
-    
-    if (resultado.candidates && resultado.candidates[0].content && resultado.candidates[0].content.parts[0].text) {
-      return resultado.candidates[0].content.parts[0].text;
-    } else {
-      throw new Error("Formato de resposta inesperado da API.");
-    }
-
-  } catch (erro) {
-    console.error("Erro de conexão:", erro);
-    alert("Falha ao conectar com a API do Gemini. Verifique sua chave.");
-    return null;
-  }
-}
+    <!-- Chamada do seu arquivo script.js externo -->
+    <script src="script.js"></script>
+</body>
+</html>
