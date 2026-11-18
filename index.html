@@ -1,107 +1,44 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS AI 100 - Sites e Ferramentas IA</title>
-    <style>
-        body {
-            background-color: #030712;
-            color: #ffffff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        .container {
-            width: 100%;
-            max-width: 480px;
-            padding: 20px;
-            text-align: center;
-        }
-        .btn-acao {
-            background-color: #00ffaa;
-            color: #030712;
-            border: none;
-            padding: 12px 24px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
+async function chamarGemini(promptUsuario) {
+    const apiKey = localStorage.getItem('gemini_api_key');
+    
+    if (!apiKey) {
+        alert("Por favor, clique no ícone de chave verde no topo da tela e insira sua chave da API do Gemini.");
+        return null;
+    }
 
-    <div class="container">
-        <h1>NEXUS AI 100</h1>
-        <p>Plataforma de Inteligência Artificial Integrada.</p>
-        
-        <button class="btn-acao" onclick="testarIA()">Testar Chamada da IA</button>
-        <p id="resposta-ia" style="margin-top: 20px; font-size: 14px; color: #94a3b8;"></p>
-    </div>
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
-    <script>
-        async function chamarGemini(promptUsuario) {
-            const apiKey = localStorage.getItem('gemini_api_key');
-            
-            if (!apiKey) {
-                alert("Por favor, clique no ícone de chave verde no topo da tela e insira sua chave da API do Gemini.");
-                return null;
-            }
-
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-
-            const dadosRequisicao = {
-                contents: [
-                    {
-                        parts: [
-                            { text: promptUsuario }
-                        ]
-                    }
+    const dadosRequisicao = {
+        contents: [
+            {
+                parts: [
+                    { text: promptUsuario }
                 ]
-            };
-
-            try {
-                const resposta = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(dadosRequisicao)
-                });
-
-                const resultado = await resposta.json();
-
-                if (resposta.ok) {
-                    return resultado.candidates[0].content.parts[0].text;
-                } else {
-                    console.error("Erro na API:", resultado);
-                    alert("Erro na API do Gemini: " + (resultado.error?.message || "Erro desconhecido"));
-                    return null;
-                }
-            } catch (erro) {
-                console.error("Erro de conexão:", erro);
-                alert("Falha ao conectar com a API do Gemini.");
-                return null;
             }
-        }
+        ]
+    };
 
-        async function testarIA() {
-            const campoResposta = document.getElementById('resposta-ia');
-            campoResposta.innerText = "Conectando com a IA...";
-            
-            const resposta = await chamarGemini("Diga olá em uma frase curta para o projeto NEXUS AI 100.");
-            
-            if (resposta) {
-                campoResposta.innerText = resposta;
-            } else {
-                campoResposta.innerText = "Não foi possível obter resposta.";
-            }
+    try {
+        const resposta = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosRequisicao)
+        });
+
+        const resultado = await resposta.json();
+
+        if (resposta.ok) {
+            return resultado.candidates[0].content.parts[0].text;
+        } else {
+            console.error("Erro na API:", resultado);
+            alert("Erro na API do Gemini: " + (resultado.error?.message || "Erro desconhecido"));
+            return null;
         }
-    </script>
-</body>
-</html>
+    } catch (erro) {
+        console.error("Erro de conexão:", erro);
+        alert("Falha ao conectar com a API do Gemini.");
+        return null;
+    }
+}
