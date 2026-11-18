@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS AI 100 - Sites e Ferramentas IA</title>
     <style>
-        /* Estilos básicos do seu projeto */
         body {
             background-color: #030712;
             color: #ffffff;
@@ -39,17 +38,14 @@
 
     <div class="container">
         <h1>NEXUS AI 100</h1>
-        <p>Plataforma de Inteligência Artificial integrada.</p>
+        <p>Plataforma de Inteligência Artificial Integrada.</p>
         
         <button class="btn-acao" onclick="testarIA()">Testar Chamada da IA</button>
         <p id="resposta-ia" style="margin-top: 20px; font-size: 14px; color: #94a3b8;"></p>
     </div>
 
-    <!-- SCRIPT DE INTEGRAÇÃO E CORREÇÃO DA API DO GEMINI -->
     <script>
-        // Função principal para chamar a IA com o modelo corrigido
         async function chamarGemini(promptUsuario) {
-            // Pega a chave que foi salva no localStorage pelo ícone do app
             const apiKey = localStorage.getItem('gemini_api_key');
             
             if (!apiKey) {
@@ -57,7 +53,6 @@
                 return null;
             }
 
-            // URL ATUALIZADA COM O MODELO CORRETO (gemini-1.5-flash)
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
             const dadosRequisicao = {
@@ -82,7 +77,6 @@
                 const resultado = await resposta.json();
 
                 if (resposta.ok) {
-                    // Retorna o texto gerado pela IA
                     return resultado.candidates[0].content.parts[0].text;
                 } else {
                     console.error("Erro na API:", resultado);
@@ -96,7 +90,6 @@
             }
         }
 
-        // Função de exemplo para o botão de teste
         async function testarIA() {
             const campoResposta = document.getElementById('resposta-ia');
             campoResposta.innerText = "Conectando com a IA...";
