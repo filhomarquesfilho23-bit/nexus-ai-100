@@ -1,12 +1,12 @@
 async function chamarGemini(promptUsuario) {
-    const !apiKey = localStorage.getItem('gemini_api_key');
+    const apiKey = localStorage.getItem('gemini_api_key');
     
     if (!apiKey) {
         alert("Por favor, clique no ícone de chave verde no topo da tela e insira sua chave da API do Gemini.");
         return null;
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
     const dadosRequisicao = {
         contents: [
