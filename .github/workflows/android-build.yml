@@ -25,13 +25,42 @@ jobs:
           distribution: "temurin"
           java-version: "17"
 
+      - name: Configure Android SDK Env
+        run: |
+          export ANDROID_HOME=${ANDROID_HOME:-/usr/local/lib/android/sdk}
+          export ANDROID_SDK_ROOT=$ANDROID_HOME
+          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/34.0.0" >> $GITHUB_PATH
+
       - name: Decode Keystore from Base64
         run: |
           mkdir -p android/app
           echo "${{ secrets.KEYSTORE_BASE64 }}" | tr -d '\n\r ' | base64 -d > android/app/upload-keystore.jks
           ls -lh android/app/upload-keystore.jks
 
-      - name: Check project structure
+      - name: Build Signed AAB (if android project exists)
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          ls -la
-          ls -la android || true
+          if [ -f "android/gradlew" ]; then
+            cd android
+            chmod +x gradlew
+            ./gradlew bundleRelease \
+              -Pandroid.injected.signing.store.file=app/upload-keystore.jks \
+              -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
+              -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
+              -Pandroid.injected.signing.key.password="$KEY_PASSWORD"
+          else
+            echo "Pasta android/gradlew nao encontrada neste repositorio. Se o app for web/PWA, configure o projeto Android (ex.: Capacitor ou Bubblewrap) antes do bundleRelease."
+            exit 1
+          fi
+
+      - name: Upload AAB Artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-ai-100-signed-aab
+          path: android/app/build/outputs/bundle/release/*.aab
