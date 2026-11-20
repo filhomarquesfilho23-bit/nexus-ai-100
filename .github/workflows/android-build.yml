@@ -1,0 +1,40 @@
+name: Build Signed Android AAB
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - principal
+
+jobs:
+  build-aab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Decode Keystore from Base64
+        run: |
+          mkdir -p android/app
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | tr -d '\n\r ' | base64 -d > android/app/upload-keystore.jks
+          ls -lh android/app/upload-keystore.jks
+
+      - name: Check project structure
+        run: |
+          ls -la
+          ls -la android || true
