@@ -1,47 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS AI 100</title>
-    <style>
-        body {
-            background-color: #0d1117;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        button {
-            background-color: #00ffff;
-            color: #000;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS AI 100</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px 16px;
+      margin: 0;
+    }
+    .caixa {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #161b22;
+      color: #ffffff;
+      border: 1px solid #00ffff;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 14px;
+      resize: vertical;
+    }
+    button {
+      background-color: #00ffff;
+      color: #000000;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    #resposta {
+      margin-top: 20px;
+      padding: 14px;
+      background-color: #161b22;
+      border-radius: 8px;
+      text-align: left;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
-
+  <div class="caixa">
     <h1>Bem-vindo ao NEXUS AI 100</h1>
     <p>Sua central definitiva de Inteligência Artificial.</p>
-    
-    <button onclick="testarIA()">Testar IA do Gemini</button>
-    <p id="resposta"></p>
 
-    <script>
-        async function testarIA() {
-            const resultado = await chamarGemini("Olá! Diga olá para o criador do NEXUS AI.");
-            if (resultado) {
-                document.getElementById('resposta').innerText = resultado;
-            }
-        }
-    </script>
+    <textarea id="promptInput" rows="4" placeholder="Digite sua pergunta para a IA..."></textarea>
+    <button onclick="testarIA()">Enviar para IA do Gemini</button>
+    <div id="resposta"></div>
+  </div>
 
-    <!-- Chamada do seu arquivo script.js externo -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
+  <script>
+    async function testarIA() {
+      const campo = document.getElementById("promptInput");
+      const caixaResposta = document.getElementById("resposta");
+      const texto = campo.value.trim() || "Olá! Diga olá para o NEXUS AI 100.";
+
+      caixaResposta.innerText = "Gerando resposta...";
+      const resultado = await chamarGemini(texto);
+
+      if (resultado) {
+        caixaResposta.innerText = resultado;
+      } else {
+        caixaResposta.innerText = "Nenhuma resposta recebida.";
+      }
+    }
+  </script>
 </body>
 </html>
