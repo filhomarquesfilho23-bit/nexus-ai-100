@@ -49,6 +49,11 @@
       white-space: pre-wrap;
       line-height: 1.5;
     }
+    .banner-area {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
@@ -59,6 +64,10 @@
     <textarea id="promptInput" rows="4" placeholder="Digite sua pergunta para a IA..."></textarea>
     <button onclick="testarIA()">Enviar para IA do Gemini</button>
     <div id="resposta"></div>
+
+    <div class="banner-area">
+      <iframe src="banner.html" width="320" height="50" frameborder="0" scrolling="no" style="border:none; overflow:hidden;"></iframe>
+    </div>
   </div>
 
   <script src="script.js"></script>
