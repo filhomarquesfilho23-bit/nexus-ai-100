@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +17,16 @@
       max-width: 520px;
       margin: 0 auto;
     }
+    h1 {
+      color: #00bfff;
+      margin-bottom: 8px;
+    }
     textarea {
       width: 100%;
       box-sizing: border-box;
       background-color: #161b22;
       color: #ffffff;
-      border: 1px solid #00ffff;
+      border: 1px solid #00bfff;
       border-radius: 8px;
       padding: 12px;
       font-size: 16px;
@@ -30,7 +34,7 @@
       resize: vertical;
     }
     button {
-      background-color: #00ffff;
+      background-color: #00bfff;
       color: #000000;
       border: none;
       padding: 12px 24px;
@@ -40,14 +44,20 @@
       cursor: pointer;
       width: 100%;
     }
-    #resposta {
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    #resposta-area {
       margin-top: 20px;
       padding: 14px;
       background-color: #161b22;
+      border: 1px solid #263241;
       border-radius: 8px;
       text-align: left;
       white-space: pre-wrap;
       line-height: 1.5;
+      min-height: 48px;
     }
     .banner-area {
       margin-top: 24px;
@@ -58,12 +68,12 @@
 </head>
 <body>
   <div class="caixa">
-    <h1>Bem-vindo ao NEXUS AI 100</h1>
-    <p>Sua central definitiva de Inteligência Artificial.</p>
+    <h1>Welcome to NEXUS AI 100</h1>
+    <p>Your ultimate Artificial Intelligence hub.</p>
 
-    <textarea id="promptInput" rows="4" placeholder="Digite sua pergunta para a IA..."></textarea>
-    <button onclick="testarIA()">Enviar para IA do Gemini</button>
-    <div id="resposta"></div>
+    <textarea id="prompt-textarea" rows="4" placeholder="Type your question for the AI..."></textarea>
+    <button id="enviar-btn" type="button">Send to Gemini AI</button>
+    <div id="resposta-area"></div>
 
     <div class="banner-area">
       <iframe src="banner.html" width="320" height="50" frameborder="0" scrolling="no" style="border:none; overflow:hidden;"></iframe>
@@ -71,21 +81,5 @@
   </div>
 
   <script src="script.js"></script>
-  <script>
-    async function testarIA() {
-      const campo = document.getElementById("promptInput");
-      const caixaResposta = document.getElementById("resposta");
-      const texto = campo.value.trim() || "Olá! Diga olá para o NEXUS AI 100.";
-
-      caixaResposta.innerText = "Gerando resposta...";
-      const resultado = await chamarGemini(texto);
-
-      if (resultado) {
-        caixaResposta.innerText = resultado;
-      } else {
-        caixaResposta.innerText = "Nenhuma resposta recebida.";
-      }
-    }
-  </script>
 </body>
 </html>
