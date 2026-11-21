@@ -1,5 +1,5 @@
 async function chamarGemini(promptUsuario) {
-  const MODELO = "gemini-1.5-flash"; // Usar modelo existente
+  const MODELO = "gemini-1.0-flash"; // Usar modelo existente
   const CHAVE_LOCAL_STORAGE = "gemini_api_key_v2";
 
   try {
