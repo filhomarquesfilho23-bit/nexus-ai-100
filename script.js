@@ -3,7 +3,7 @@ async function chamarGemini(promptUsuario) {
     let apiKey = localStorage.getItem("gemini_api_key");
 
     if (!apiKey || apiKey.trim() === "") {
-      const chaveDigitada = prompt("Cole a sua chave da API do Google Gemini:");
+      const chaveDigitada = prompt("Cole a sua chave da API do Google Gemini (AIza...):");
       if (!chaveDigitada || chaveDigitada.trim() === "") {
         alert("Chave da API necessária para usar a IA.");
         return null;
@@ -12,37 +12,41 @@ async function chamarGemini(promptUsuario) {
       localStorage.setItem("gemini_api_key", apiKey);
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const endpoints = [
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${apiKey}`
+    ];
 
     const dadosRequisicao = {
       contents: [{ parts: [{ text: promptUsuario }] }]
     };
 
-    const resposta = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dadosRequisicao)
-    });
+    let ultimoStatus = 0;
 
-    if (!resposta.ok) {
-      if (resposta.status === 400 || resposta.status === 403) {
-        localStorage.removeItem("gemini_api_key");
+    for (const url of endpoints) {
+      const resposta = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosRequisicao)
+      });
+
+      if (resposta.ok) {
+        const resultado = await resposta.json();
+        if (
+          resultado.candidates &&
+          resultado.candidates[0] &&
+          resultado.candidates[0].content &&
+          resultado.candidates[0].content.parts[0]
+        ) {
+          return resultado.candidates[0].content.parts[0].text;
+        }
       }
-      throw new Error(`Erro na API: ${resposta.status}`);
+
+      ultimoStatus = resposta.status;
     }
 
-    const resultado = await resposta.json();
-
-    if (
-      resultado.candidates &&
-      resultado.candidates[0] &&
-      resultado.candidates[0].content &&
-      resultado.candidates[0].content.parts[0]
-    ) {
-      return resultado.candidates[0].content.parts[0].text;
-    } else {
-      throw new Error("Formato de resposta inesperado da API.");
-    }
+    localStorage.removeItem("gemini_api_key");
+    throw new Error(`Erro na API: ${ultimoStatus}. Verifique se a chave começa com AIza.`);
   } catch (erro) {
     console.error("Erro ao chamar Gemini:", erro);
     alert(`Falha ao comunicar com a IA: ${erro.message}`);
