@@ -4,8 +4,8 @@
   "private": true,
   "description": "NEXUS AI 100 - Plataforma web e app com integracao Gemini",
   "scripts": {
-    "prepare:web": "mkdir -p dist www && cp -r index.html script.js banner.html dist/ 2>/dev/null || true && cp -r index.html script.js banner.html www/ 2>/dev/null || true",
-    "build": "npm run prepare:web"
+    "prepare-web": "mkdir -p dist www && cp -r index.html script.js banner.html manifest.json dist/ 2>/dev/null || true && cp -r index.html script.js banner.html manifest.json www/ 2>/dev/null || true",
+    "build": "npm run prepare-web"
   },
   "dependencies": {
     "@capacitor/core": "^6.0.0",
