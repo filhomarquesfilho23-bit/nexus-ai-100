@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NEXUS AI 100</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#00f0ff" />
   <style>
     body {
       background-color: #0d1117;
@@ -57,7 +59,7 @@
       text-align: left;
       white-space: pre-wrap;
       line-height: 1.5;
-      min-height: 48px;
+      min-height: 45px;
     }
     .banner-area {
       margin-top: 24px;
@@ -68,18 +70,20 @@
 </head>
 <body>
   <div class="caixa">
-    <h1>Welcome to NEXUS AI 100</h1>
-    <p>Your ultimate Artificial Intelligence hub.</p>
-
-    <textarea id="prompt-textarea" rows="4" placeholder="Type your question for the AI..."></textarea>
-    <button id="enviar-btn" type="button">Send to Gemini AI</button>
-    <div id="resposta-area"></div>
-
-    <div class="banner-area">
-      <iframe src="banner.html" width="320" height="50" frameborder="0" scrolling="no" style="border:none; overflow:hidden;"></iframe>
-    </div>
+    <h1>NEXUS AI 100</h1>
+    <p>Ecossistema de 100 Agentes de Inteligência Artificial.</p>
+    <textarea id="prompt-textarea" rows="4" placeholder="Digite a sua pergunta para a IA..."></textarea>
+    <button id="enviar-btn" type="button">Enviar para a IA</button>
+    <div id="resposta-area">A resposta aparecerá aqui...</div>
+    <div class="banner-area" id="banner-area"></div>
   </div>
-
   <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/sw.js").catch(function () {});
+      });
+    }
+  </script>
 </body>
 </html>
