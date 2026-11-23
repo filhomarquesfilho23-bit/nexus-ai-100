@@ -1,14 +1,14 @@
-const MODELO_GEMINI = "gemini-2.5-flash";
-const CHAVE_LOCAL_STORAGE = "gemini_api_key_v2";
-const ENDPOINT_GEMINI = `https://generativelanguage.googleapis.com/v1beta/models/${MODELO_GEMINI}:generateContent`;
+const GEMINI_MODEL = "gemini-2.5-flash";
+const LOCAL_STORAGE_KEY = "gemini_api_key_v2";
+const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 function obterOuSolicitarApiKey() {
-  let apiKey = localStorage.getItem(CHAVE_LOCAL_STORAGE);
+  let apiKey = localStorage.getItem(LOCAL_STORAGE_KEY);
   if (!apiKey || !apiKey.trim()) {
-    const informada = window.prompt("Cole sua chave da API do Gemini (Google AI Studio):");
+    const informada = window.prompt("Cole sua chave da API do Google Gemini (AI Studio):");
     if (informada && informada.trim()) {
       apiKey = informada.trim();
-      localStorage.setItem(CHAVE_LOCAL_STORAGE, apiKey);
+      localStorage.setItem(LOCAL_STORAGE_KEY, apiKey);
     }
   }
   return apiKey ? apiKey.trim() : "";
@@ -17,10 +17,10 @@ function obterOuSolicitarApiKey() {
 async function chamarGemini(promptUsuario) {
   const apiKey = obterOuSolicitarApiKey();
   if (!apiKey) {
-    throw new Error("Chave da API do Gemini não configurada no navegador.");
+    throw new Error("Chave da API do Gemini não configurada.");
   }
 
-  const resposta = await fetch(`${ENDPOINT_GEMINI}?key=${encodeURIComponent(apiKey)}`, {
+  const resposta = await fetch(`${GEMINI_ENDPOINT}?key=${encodeURIComponent(apiKey)}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -38,77 +38,22 @@ async function chamarGemini(promptUsuario) {
     })
   });
 
-  const dados = await resposta.json().catch(() => ({}));
+  const dados = await resposta.json();
 
   if (!resposta.ok) {
-    const mensagemErro =
-      (dados && dados.error && dados.error.message) ||
-      `Falha na requisição (${resposta.status})`;
-    if (resposta.status === 400 || resposta.status === 401 || resposta.status === 403) {
-      localStorage.removeItem(CHAVE_LOCAL_STORAGE);
-    }
+    const mensagemErro = dados?.error?.message || `Erro HTTP ${resposta.status}`;
     throw new Error(mensagemErro);
   }
 
-  const textoResposta =
-    dados &&
-    dados.candidates &&
-    dados.candidates[0] &&
-    dados.candidates[0].content &&
-    dados.candidates[0].content.parts &&
-    dados.candidates[0].content.parts[0] &&
-    dados.candidates[0].content.parts[0].text;
-
+  const textoResposta = dados?.candidates?.[0]?.content?.parts?.[0]?.text;
   if (!textoResposta) {
-    throw new Error("A API retornou uma resposta vazia.");
+    throw new Error("A API não retornou texto válido.");
   }
 
   return textoResposta;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const campoPergunta =
-    document.getElementById("prompt-textarea") ||
-    document.getElementById("área de texto de prompt");
-  const botaoEnviar = document.getElementById("enviar-btn");
-  const areaResposta =
-    document.getElementById("resposta-area") ||
-    document.getElementById("área de resposta");
-
-  if (!botaoEnviar) {
-    console.error("Botão com ID 'enviar-btn' não encontrado. Verifique o HTML.");
-    return;
-  }
-
-  botaoEnviar.addEventListener("click", async () => {
-    const pergunta = campoPergunta ? campoPergunta.value.trim() : "";
-
-    if (!pergunta) {
-      alert("Por favor, escreva uma pergunta.");
-      return;
-    }
-
-    if (areaResposta) {
-      areaResposta.innerText = "Consultando o Gemini...";
-      areaResposta.style.color = "#00bfff";
-    }
-
-    botaoEnviar.disabled = true;
-
-    try {
-      const respostaFinal = await chamarGemini(pergunta);
-      if (areaResposta) {
-        areaResposta.innerText = respostaFinal;
-        areaResposta.style.color = "#f0f0f0";
-      }
-    } catch (erro) {
-      if (areaResposta) {
-        areaResposta.innerText = `Erro: ${erro.message}`;
-        areaResposta.style.color = "#ff5555";
-      }
-      console.error("Erro ao chamar Gemini:", erro);
-    } finally {
-      botaoEnviar.disabled = false;
-    }
-  });
-});
+function limparApiKey() {
+  localStorage.removeItem(LOCAL_STORAGE_KEY);
+  alert("Chave da API removida. Na próxima consulta será solicitada uma nova chave.");
+}
