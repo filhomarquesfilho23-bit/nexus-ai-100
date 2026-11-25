@@ -2,9 +2,9 @@
   "name": "nexus-ai-100",
   "version": "1.0.0",
   "private": true,
-  "description": "NEXUS AI 100 - Plataforma web e app com integracao Gemini",
+  "description": "NEXUS AI 100 - Plataforma web e app com integração Gemini",
   "scripts": {
-    "prepare-web": "mkdir -p dist www && cp -r index.html script.js banner.html manifest.json dist/ 2>/dev/null || true && cp -r index.html script.js banner.html manifest.json www/ 2>/dev/null || true",
+    "prepare-web": "mkdir -p dist && cp index.html dist/",
     "build": "npm run prepare-web"
   },
   "dependencies": {
