@@ -1,6 +1,6 @@
 {
-  "name": "NEXUS IA",
-  "short_name": "NEXUS IA",
+  "name": "NEXUS AI 100",
+  "short_name": "NEXUS AI 100",
   "description": "Ecossistema de 100 Agentes de Inteligência Artificial",
   "start_url": "/",
   "display": "standalone",
@@ -9,13 +9,13 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/icone-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/icone-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
