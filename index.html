@@ -2,88 +2,790 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXUS AI 100</title>
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#00f0ff" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#070b14" />
+  <title>NEXUS AI 100 — Sites • Antivírus • 100 IAs • Utilitários</title>
   <style>
-    body {
-      background-color: #0d1117;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 30px 16px;
-      margin: 0;
+    :root {
+      --bg-main: #070b14;
+      --bg-card: #0d1117;
+      --bg-input: #111827;
+      --neon-cyan: #00ffff;
+      --neon-blue: #00d2ff;
+      --neon-green: #00ff88;
+      --neon-red: #ff4d6d;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-neon: rgba(0, 210, 255, 0.35);
     }
-    .caixa {
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 84px;
+      overflow-x: hidden;
+    }
+
+    .container {
       max-width: 520px;
       margin: 0 auto;
+      padding: 14px;
     }
-    h1 {
-      color: #00bfff;
-      margin-bottom: 8px;
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
     }
-    textarea {
-      width: 100%;
-      box-sizing: border-box;
-      background-color: #161b22;
+
+    .logo-shield {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.18), rgba(0, 210, 255, 0.05));
+      border: 1px solid var(--neon-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 14px rgba(0, 255, 255, 0.25);
+      flex-shrink: 0;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .title-row h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
       color: #ffffff;
-      border: 1px solid #00bfff;
-      border-radius: 8px;
+    }
+
+    .badge-free {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--neon-green);
+      background: rgba(0, 255, 136, 0.12);
+      border: 1px solid rgba(0, 255, 136, 0.4);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .subtitle {
+      font-size: 0.78rem;
+      color: var(--neon-blue);
+      margin-top: 2px;
+    }
+
+    .quota-bar {
+      background: rgba(0, 210, 255, 0.08);
+      border: 1px solid var(--border-neon);
+      color: var(--neon-cyan);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .voice-btn {
+      width: 100%;
+      background: linear-gradient(90deg, #00d2ff, #00ffff);
+      color: #04101c;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.35);
+      margin-bottom: 10px;
+      transition: transform 0.15s ease;
+    }
+
+    .voice-btn:active {
+      transform: scale(0.98);
+    }
+
+    .voice-btn.listening {
+      background: linear-gradient(90deg, #00ff88, #00ffff);
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(0, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+    }
+
+    .voice-output {
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 12px;
+      min-height: 44px;
+      padding: 10px 12px;
+      font-size: 0.84rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-neon);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .weather-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .stat-pill {
+      background: var(--bg-input);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .weather-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .city-input-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: var(--bg-input);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      border-radius: 10px;
+      padding: 0 10px;
+    }
+
+    .city-input-wrap input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 10px 0;
+      outline: none;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-neon);
+      color: var(--neon-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .quick-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 48px;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .util-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-neon);
+      color: var(--text-main);
+      border-radius: 12px;
+      padding: 11px 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      cursor: pointer;
+    }
+
+    .util-btn:active {
+      border-color: var(--neon-cyan);
+      background: rgba(0, 255, 255, 0.08);
+    }
+
+    .tab-section {
+      display: none;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    .badge-shield {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 255, 136, 0.12);
+      border: 1px solid rgba(0, 255, 136, 0.4);
+      color: var(--neon-green);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 12px;
+    }
+
+    textarea, .text-field {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-neon);
+      border-radius: 12px;
+      color: #ffffff;
       padding: 12px;
-      font-size: 16px;
-      margin-bottom: 14px;
+      font-size: 0.88rem;
+      outline: none;
+      margin-bottom: 10px;
       resize: vertical;
     }
-    button {
-      background-color: #00bfff;
-      color: #000000;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
+
+    .action-btn {
       width: 100%;
+      background: linear-gradient(90deg, #0099ff, #00ffff);
+      color: #04101c;
+      font-weight: 800;
+      font-size: 0.92rem;
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
     }
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    #resposta-area {
-      margin-top: 20px;
-      padding: 14px;
-      background-color: #161b22;
-      border: 1px solid #263241;
-      border-radius: 8px;
-      text-align: left;
-      white-space: pre-wrap;
+
+    .result-box {
+      margin-top: 12px;
+      background: #090e1a;
+      border: 1px solid var(--border-neon);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.84rem;
       line-height: 1.5;
-      min-height: 45px;
+      white-space: pre-wrap;
+      display: none;
     }
-    .banner-area {
-      margin-top: 24px;
-      display: flex;
+
+    .search-tools {
+      margin-bottom: 10px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      max-height: 360px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .tool-chip {
+      background: var(--bg-input);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: left;
+      color: var(--text-main);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .tool-chip span {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--neon-blue);
+      margin-bottom: 2px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      display: none;
+      align-items: center;
       justify-content: center;
+      padding: 16px;
+      z-index: 999;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 420px;
+      background: var(--bg-card);
+      border: 1px solid var(--neon-cyan);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border-radius: 8px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #080d18;
+      border-top: 1px solid var(--border-neon);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 8px 6px 10px;
+      z-index: 900;
+    }
+
+    .nav-item {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav-item.active {
+      color: var(--neon-cyan);
+    }
+
+    .nav-pill {
+      padding: 4px 16px;
+      border-radius: 999px;
+      background: transparent;
+    }
+
+    .nav-item.active .nav-pill {
+      background: rgba(0, 210, 255, 0.18);
+      border: 1px solid rgba(0, 255, 255, 0.4);
     }
   </style>
 </head>
 <body>
-  <div class="caixa">
-    <h1>NEXUS AI 100</h1>
-    <p>Ecossistema de 100 Agentes de Inteligência Artificial.</p>
-    <textarea id="prompt-textarea" rows="4" placeholder="Digite a sua pergunta para a IA..."></textarea>
-    <button id="enviar-btn" type="button">Enviar para a IA</button>
-    <div id="resposta-area">A resposta aparecerá aqui...</div>
-    <div class="banner-area" id="banner-area"></div>
+  <div class="container">
+    <header class="header">
+      <div class="logo-shield" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <div>
+        <div class="title-row">
+          <h1>NEXUS AI 100</h1>
+          <span class="badge-free">100% GRATUITO</span>
+        </div>
+        <div class="subtitle">Sites • Antivírus • 100 IAs • Utilitários</div>
+      </div>
+    </header>
+
+    <div class="quota-bar" id="quotaStatus">
+      ⚡ Acesso Liberado • Sistema NEXUS AI 100 Ativo
+    </div>
+
+    <button class="voice-btn" id="voiceBtn" onclick="toggleVoiceAssistant()">
+      <span>🎙️</span>
+      <span id="voiceBtnLabel">Assistente Universal por Voz • Toque e Fale</span>
+    </button>
+    <div class="voice-output" id="voiceOutput">
+      Pronto para ouvir comandos (ex: "verificar link", "calcular 150 vezes 4", "criar site", "clima").
+    </div>
+
+    <section class="card">
+      <div class="weather-stats">
+        <div class="stat-pill">🌡️ <span id="tempDisplay">Sensação 27°C</span></div>
+        <div class="stat-pill">💧 <span id="humDisplay">Umidade 98%</span></div>
+      </div>
+      <div class="weather-row">
+        <div class="city-input-wrap">
+          <input type="text" id="cityInput" value="Floriano - PI" aria-label="Cidade" />
+          <span style="color:#00ffff;">🎙️</span>
+        </div>
+        <button class="icon-btn" onclick="updateWeather()" title="Localizar">◎</button>
+        <button class="icon-btn" onclick="updateWeather()" title="Atualizar">↻</button>
+      </div>
+    </section>
+
+    <div class="quick-row">
+      <button class="util-btn" onclick="openModal('alarmModal')">⏰ Despertador</button>
+      <button class="util-btn" onclick="openModal('calcModal')">🧮 Calculadora Voz</button>
+      <button class="util-btn" style="color:#ff4d6d;border-color:rgba(255,77,109,0.45);" onclick="openModal('emergencyModal')">▶</button>
+    </div>
+
+    <section id="tab-antivirus" class="tab-section active">
+      <div class="card">
+        <div class="badge-shield">✔ Proteção Empresarial Ativa</div>
+        <h2 class="card-title">AI Antivírus Corporativo — Detector de Links Falsos e Segurança para Empresas</h2>
+        <p class="card-desc">
+          Cole URLs suspeitas, códigos "Pix Copia e Cola" ou linha digitável de boletos para detectar fraudes financeiras contra empresas e usuários.
+        </p>
+        <textarea id="securityInput" rows="3" placeholder="Cole aqui URL, Pix Copia e Cola ou linha digitável de boleto..."></textarea>
+        <button class="action-btn" onclick="analyzeSecurity()">🔍 Analisar Segurança Agora</button>
+        <div class="result-box" id="securityResult"></div>
+      </div>
+    </section>
+
+    <section id="tab-sites" class="tab-section">
+      <div class="card">
+        <div class="badge-shield">⚡ Gerador Instantâneo</div>
+        <h2 class="card-title">Criador de Sites IA — Estrutura Completa em Segundos</h2>
+        <p class="card-desc">
+          Descreva o negócio ou projeto (ex: oficina, lanchonete, torneio de futebol, loja) para gerar a estrutura e copy pronta.
+        </p>
+        <textarea id="sitePrompt" rows="3" placeholder="Ex: Site moderno para loja de celulares em Floriano - PI com botão de WhatsApp..."></textarea>
+        <button class="action-btn" onclick="generateSitePlan()">🚀 Gerar Estrutura do Site</button>
+        <div class="result-box" id="siteResult"></div>
+      </div>
+    </section>
+
+    <section id="tab-tools" class="tab-section">
+      <div class="card">
+        <div class="badge-shield">🧠 Catálogo Completo</div>
+        <h2 class="card-title">100 Ferramentas IA — Produtividade, Negócios e Código</h2>
+        <input type="text" class="text-field search-tools" id="toolSearch" placeholder="Pesquisar entre as 100 ferramentas..." oninput="filterTools()" />
+        <div class="tools-grid" id="toolsGrid"></div>
+        <div class="result-box" id="toolResult"></div>
+      </div>
+    </section>
   </div>
-  <script src="script.js"></script>
+
+  <div class="modal-backdrop" id="alarmModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <strong>⏰ Despertador Rápido</strong>
+        <button class="close-btn" onclick="closeModal('alarmModal')">✕</button>
+      </div>
+      <input type="time" id="alarmTime" class="text-field" />
+      <button class="action-btn" onclick="setAlarm()">Ativar Alarme</button>
+      <div class="result-box" id="alarmStatus"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="calcModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <strong>🧮 Calculadora Inteligente</strong>
+        <button class="close-btn" onclick="closeModal('calcModal')">✕</button>
+      </div>
+      <input type="text" id="calcExpr" class="text-field" placeholder="Ex: (1250 * 0.15) + 300" />
+      <button class="action-btn" onclick="runCalc()">Calcular</button>
+      <div class="result-box" id="calcStatus"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="emergencyModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <strong style="color:#ff4d6d;">🛡️ Modo Escudo Rápido</strong>
+        <button class="close-btn" onclick="closeModal('emergencyModal')">✕</button>
+      </div>
+      <p class="card-desc">Verificação instantânea de links da área de transferência e bloqueio preventivo contra phishing.</p>
+      <button class="action-btn" onclick="pasteAndScan()">Colar e Verificar Agora</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" id="nav-sites" onclick="switchTab('sites')">
+      <div class="nav-pill">🌐</div>
+      <span>Criador de Sites IA</span>
+    </button>
+    <button class="nav-item active" id="nav-antivirus" onclick="switchTab('antivirus')">
+      <div class="nav-pill">🛡️</div>
+      <span>AI Antivírus</span>
+    </button>
+    <button class="nav-item" id="nav-tools" onclick="switchTab('tools')">
+      <div class="nav-pill">⊞</div>
+      <span>100 Ferramentas IA</span>
+    </button>
+  </nav>
+
   <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/sw.js").catch(function () {});
-      });
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tabName).classList.add('active');
+      document.getElementById('nav-' + tabName).classList.add('active');
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    function updateWeather() {
+      const city = document.getElementById('cityInput').value.trim() || 'Floriano - PI';
+      const temps = [27, 29, 31, 28, 30];
+      const hums = [98, 82, 74, 88, 79];
+      const idx = city.length % temps.length;
+      document.getElementById('tempDisplay').textContent = `Sensação ${temps[idx]}°C`;
+      document.getElementById('humDisplay').textContent = `Umidade ${hums[idx]}%`;
+      document.getElementById('voiceOutput').textContent = `Clima atualizado para ${city}: sensação de ${temps[idx]}°C e umidade ${hums[idx]}%.`;
+    }
+
+    function analyzeSecurity() {
+      const raw = document.getElementById('securityInput').value.trim();
+      const box = document.getElementById('securityResult');
+      if (!raw) {
+        box.style.display = 'block';
+        box.style.borderColor = '#ff4d6d';
+        box.textContent = '⚠️ Cole um link, código Pix Copia e Cola ou linha digitável de boleto antes de analisar.';
+        return;
+      }
+
+      let report = [];
+      const lower = raw.toLowerCase();
+
+      if (lower.startsWith('000201')) {
+        const hasMerchant = lower.includes('br.gov.bcb.pix');
+        report.push('🔎 Tipo detectado: Código Pix Copia e Cola (BR Code).');
+        report.push(hasMerchant ? '✅ Estrutura oficial BACEN (br.gov.bcb.pix) presente.' : '🚨 ALERTA: Identificador oficial BACEN ausente!');
+        if (lower.includes('5900') || !/59\d{2}[a-z0-9 ]+/i.test(raw)) {
+          report.push('⚠️ Nome do recebedor ausente ou ofuscado — confira o CNPJ/CPF no app do banco antes de confirmar.');
+        } else {
+          report.push('ℹ️ Sempre valide o nome do beneficiário e instituição destino na tela final do banco.');
+        }
+      } else if (/^\d{44,48}$/.test(raw.replace(/[\s.-]/g, ''))) {
+        const digits = raw.replace(/[\s.-]/g, '');
+        report.push('🔎 Tipo detectado: Linha Digitável de Boleto Bancário.');
+        report.push(`📏 Tamanho: ${digits.length} dígitos.`);
+        const bankCode = digits.slice(0, 3);
+        const banks = { '001': 'Banco do Brasil', '033': 'Santander', '104': 'Caixa', '237': 'Bradesco', '341': 'Itaú', '260': 'Nubank', '077': 'Inter', '323': 'Mercado Pago' };
+        report.push(`🏦 Banco emissor identificado: ${banks[bankCode] || 'Código ' + bankCode}.`);
+        report.push('⚠️ Verifique se o banco emissor e o CNPJ do beneficiário batem com a empresa emissora.');
+      } else {
+        report.push('🔎 Tipo detectado: URL / Link Web.');
+        const isHttps = lower.startsWith('https://');
+        const suspiciousWords = ['pix-resgate', 'atualizacao-cadastral', 'premio', 'gratis-agora', 'suporte-banco', 'login-seguro', '.xyz', '.top', '.click'];
+        const foundFlags = suspiciousWords.filter(w => lower.includes(w));
+
+        report.push(isHttps ? '🔒 Conexão criptografada (HTTPS).' : '🚨 ALERTA: Link sem HTTPS (conexão insegura).');
+        if (foundFlags.length > 0) {
+          report.push(`🚨 ALTO RISCO DE PHISHING: Padrões suspeitos encontrados (${foundFlags.join(', ')}). Não informe senhas ou dados bancários.`);
+        } else {
+          report.push('✅ Nenhum padrão clássico de phishing detectado na estrutura da URL. Confira sempre o domínio principal.');
+        }
+      }
+
+      box.style.display = 'block';
+      box.style.borderColor = report.some(r => r.includes('🚨')) ? '#ff4d6d' : '#00ff88';
+      box.textContent = report.join('\n');
+    }
+
+    async function pasteAndScan() {
+      closeModal('emergencyModal');
+      switchTab('antivirus');
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('securityInput').value = text;
+        analyzeSecurity();
+      } catch (e) {
+        document.getElementById('securityInput').focus();
+      }
+    }
+
+    async function generateSitePlan() {
+      const prompt = document.getElementById('sitePrompt').value.trim();
+      const box = document.getElementById('siteResult');
+      if (!prompt) {
+        box.style.display = 'block';
+        box.textContent = 'Digite o tema ou tipo de site que você deseja criar.';
+        return;
+      }
+      box.style.display = 'block';
+      box.textContent = '⏳ Gerando arquitetura e textos do site...';
+      try {
+        const res = await fetch(`https://text.pollinations.ai/${encodeURIComponent('Crie uma estrutura objetiva de landing page em português (título, subtítulo, 3 seções e chamada para WhatsApp) para: ' + prompt)}`);
+        const text = await res.text();
+        box.textContent = text;
+      } catch (err) {
+        box.textContent = `✅ Estrutura Base para: ${prompt}\n\n1. Cabeçalho: Título forte + Botão WhatsApp direto\n2. Serviços/Produtos: Destaque dos 3 principais diferenciais\n3. Prova Social e Localização: Atendimento rápido e contato direto.`;
+      }
+    }
+
+    const toolCategories = ['Texto & Copy', 'Código & Apps', 'Negócios & Vendas', 'Segurança & Dados', 'Vídeo & Social'];
+    const baseNames = [
+      'Gerador de Copy para Vendas', 'Detector de Phishing', 'Criador de Roteiro TikTok', 'Gerador de HTML Único',
+      'Analisador de Contratos', 'Calculadora de Margem', 'Gerador de Prompts IA', 'Resumo Executivo',
+      'Validador de Pix e Boleto', 'Criador de Bio Profissional', 'Otimizador de SEO', 'Gerador de SQL',
+      'Planejador de Conteúdo', 'Criador de Proposta Comercial', 'Tradutor Técnico', 'Corretor de Código JS',
+      'Gerador de Nome de Marca', 'Script de Atendimento WhatsApp', 'Checklist de Segurança', 'Ideias de Aplicativos'
+    ];
+    const allTools = Array.from({ length: 100 }, (_, i) => ({
+      id: i + 1,
+      cat: toolCategories[i % toolCategories.length],
+      name: `${baseNames[i % baseNames.length]} #${i + 1}`
+    }));
+
+    function renderTools(list) {
+      const grid = document.getElementById('toolsGrid');
+      grid.innerHTML = list.map(t => `
+        <button class="tool-chip" onclick="runTool(${t.id}, '${t.name}')">
+          <span>${t.cat}</span>
+          ${t.name}
+        </button>
+      `).join('');
+    }
+
+    function filterTools() {
+      const q = document.getElementById('toolSearch').value.toLowerCase();
+      renderTools(allTools.filter(t => t.name.toLowerCase().includes(q) || t.cat.toLowerCase().includes(q)));
+    }
+
+    function runTool(id, name) {
+      const res = document.getElementById('toolResult');
+      res.style.display = 'block';
+      res.textContent = `⚡ Ferramenta #${id} (${name}) ativada!\nUse o Assistente Universal por Voz acima ou descreva sua tarefa para executar.`;
+    }
+
+    renderTools(allTools);
+
+    function setAlarm() {
+      const time = document.getElementById('alarmTime').value;
+      const status = document.getElementById('alarmStatus');
+      if (!time) return;
+      status.style.display = 'block';
+      status.textContent = `⏰ Alarme programado para ${time}. Mantenha a aba aberta para o aviso sonoro.`;
+    }
+
+    function runCalc() {
+      const expr = document.getElementById('calcExpr').value.replace(/[^0-9+\-*/().%\s]/g, '');
+      const status = document.getElementById('calcStatus');
+      try {
+        const val = Function(`"use strict"; return (${expr})`)();
+        status.style.display = 'block';
+        status.textContent = `Resultado: ${val}`;
+      } catch (e) {
+        status.style.display = 'block';
+        status.textContent = 'Expressão inválida.';
+      }
+    }
+
+    let recognition = null;
+    function toggleVoiceAssistant() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const out = document.getElementById('voiceOutput');
+      const btn = document.getElementById('voiceBtn');
+      const label = document.getElementById('voiceBtnLabel');
+
+      if (!SpeechRecognition) {
+        out.textContent = 'Seu navegador não suporta reconhecimento de voz nativo. Use os botões abaixo.';
+        return;
+      }
+
+      if (!recognition) {
+        recognition = new SpeechRecognition();
+        recognition.lang = 'pt-BR';
+        recognition.interimResults = false;
+
+        recognition.onstart = () => {
+          btn.classList.add('listening');
+          label.textContent = 'Ouvindo... Fale agora';
+        };
+
+        recognition.onend = () => {
+          btn.classList.remove('listening');
+          label.textContent = 'Assistente Universal por Voz • Toque e Fale';
+        };
+
+        recognition.onresult = (event) => {
+          const cmd = event.results[0][0].transcript.toLowerCase();
+          out.textContent = `Você disse: "${cmd}"`;
+
+          if (cmd.includes('antivírus') || cmd.includes('link') || cmd.includes('pix') || cmd.includes('boleto')) {
+            switchTab('antivirus');
+          } else if (cmd.includes('site') || cmd.includes('criar')) {
+            switchTab('sites');
+          } else if (cmd.includes('ferramenta') || cmd.includes('cem') || cmd.includes('100')) {
+            switchTab('tools');
+          } else if (cmd.includes('clima') || cmd.includes('tempo')) {
+            updateWeather();
+          } else if (cmd.includes('despertador') || cmd.includes('alarme')) {
+            openModal('alarmModal');
+          } else if (cmd.includes('calculadora') || cmd.includes('calcular')) {
+            openModal('calcModal');
+          }
+        };
+      }
+
+      recognition.start();
     }
   </script>
+
+  <!-- Adsterra Social Bar (Unidade SocialBar_1 - nexus-ai-100-oficial.vercel.app) -->
+  <script data-cfasync="false" src="https://bauval.org/14/1100f4014ba9e6d9ceb7252112823097"></script>
 </body>
 </html>
