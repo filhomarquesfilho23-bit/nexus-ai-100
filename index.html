@@ -3,791 +3,2835 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#070b14" />
-  <title>NEXUS AI 100 — Sites • Antivírus • 100 IAs • Utilitários</title>
+  <title>NEXUS IA .2</title>
   <style>
     :root {
-      --bg-main: #070b14;
-      --bg-card: #0d1117;
-      --bg-input: #111827;
-      --neon-cyan: #00ffff;
-      --neon-blue: #00d2ff;
-      --neon-green: #00ff88;
-      --neon-red: #ff4d6d;
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --border-neon: rgba(0, 210, 255, 0.35);
+      --bg: #050811;
+      --surface: #0b1220;
+      --surface-2: #111b2e;
+      --void: #070c18;
+      --cyan: #00e5ff;
+      --blue: #38bdf8;
+      --mint: #10f5a0;
+      --violet: #a855f7;
+      --amber: #fbbf24;
+      --red: #fb7185;
+      --text: #f1f5f9;
+      --text-2: #94a3b8;
+      --border: rgba(0, 229, 255, 0.22);
+      --radius: 18px;
     }
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
       min-height: 100vh;
-      padding-bottom: 84px;
       overflow-x: hidden;
     }
 
-    .container {
-      max-width: 520px;
+    body {
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(0, 229, 255, 0.12), transparent 36%),
+        radial-gradient(circle at 88% 18%, rgba(56, 189, 248, 0.10), transparent 34%),
+        radial-gradient(circle at 50% 95%, rgba(168, 85, 247, 0.08), transparent 40%);
+      padding-bottom: 84px;
+    }
+
+    .app-shell {
+      max-width: 720px;
       margin: 0 auto;
-      padding: 14px;
+      padding: 12px 14px 20px;
     }
 
-    .header {
+    /* Top Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(5, 8, 17, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
+      justify-content: space-between;
+      gap: 10px;
     }
 
-    .logo-shield {
-      width: 44px;
-      height: 44px;
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0, 255, 255, 0.18), rgba(0, 210, 255, 0.05));
-      border: 1px solid var(--neon-cyan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 14px rgba(0, 255, 255, 0.25);
-      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--violet));
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #04101d;
+      font-size: 16px;
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
     }
 
-    .title-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .title-row h1 {
-      font-size: 1.15rem;
+    .brand-title {
       font-weight: 800;
+      font-size: 16px;
       letter-spacing: 0.4px;
-      color: #ffffff;
     }
 
-    .badge-free {
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: var(--neon-green);
-      background: rgba(0, 255, 136, 0.12);
-      border: 1px solid rgba(0, 255, 136, 0.4);
-      padding: 2px 8px;
+    .brand-sub {
+      font-size: 11px;
+      color: var(--cyan);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-btn {
+      background: var(--surface);
+      color: var(--cyan);
+      border: 1px solid var(--border);
       border-radius: 999px;
-    }
-
-    .subtitle {
-      font-size: 0.78rem;
-      color: var(--neon-blue);
-      margin-top: 2px;
-    }
-
-    .quota-bar {
-      background: rgba(0, 210, 255, 0.08);
-      border: 1px solid var(--border-neon);
-      color: var(--neon-cyan);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 12px;
-    }
-
-    .voice-btn {
-      width: 100%;
-      background: linear-gradient(90deg, #00d2ff, #00ffff);
-      color: #04101c;
-      border: none;
-      border-radius: 14px;
-      padding: 14px 16px;
-      font-size: 0.98rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 0 18px rgba(0, 255, 255, 0.35);
-      margin-bottom: 10px;
-      transition: transform 0.15s ease;
-    }
-
-    .voice-btn:active {
-      transform: scale(0.98);
-    }
-
-    .voice-btn.listening {
-      background: linear-gradient(90deg, #00ff88, #00ffff);
-      animation: pulse 1.2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.6); }
-      70% { box-shadow: 0 0 0 12px rgba(0, 255, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
-    }
-
-    .voice-output {
-      background: var(--bg-card);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 12px;
-      min-height: 44px;
-      padding: 10px 12px;
-      font-size: 0.84rem;
-      color: var(--text-main);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-neon);
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
-    }
-
-    .weather-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .stat-pill {
-      background: var(--bg-input);
-      border: 1px solid rgba(0, 210, 255, 0.25);
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .weather-row {
-      display: flex;
-      gap: 8px;
-    }
-
-    .city-input-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      background: var(--bg-input);
-      border: 1px solid rgba(0, 210, 255, 0.25);
-      border-radius: 10px;
-      padding: 0 10px;
-    }
-
-    .city-input-wrap input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 0.9rem;
-      padding: 10px 0;
-      outline: none;
-    }
-
-    .icon-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: var(--bg-input);
-      border: 1px solid var(--border-neon);
-      color: var(--neon-cyan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .quick-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 48px;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .util-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-neon);
-      color: var(--text-main);
-      border-radius: 12px;
-      padding: 11px 10px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      cursor: pointer;
-    }
-
-    .util-btn:active {
-      border-color: var(--neon-cyan);
-      background: rgba(0, 255, 255, 0.08);
-    }
-
-    .tab-section {
-      display: none;
-    }
-
-    .tab-section.active {
-      display: block;
-    }
-
-    .badge-shield {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(0, 255, 136, 0.12);
-      border: 1px solid rgba(0, 255, 136, 0.4);
-      color: var(--neon-green);
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 999px;
+      gap: 5px;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .pill-btn:active { transform: scale(0.95); }
+    .pill-btn.active {
+      background: rgba(0, 229, 255, 0.2);
+      border-color: var(--cyan);
+    }
+
+    /* Cards & Controls */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
       margin-bottom: 10px;
     }
 
     .card-title {
-      font-size: 1.05rem;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .card-sub {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.4;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
       font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 6px;
-      line-height: 1.3;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(0, 229, 255, 0.14);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 229, 255, 0.35);
     }
 
-    .card-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-      margin-bottom: 12px;
-    }
+    .badge.mint { background: rgba(16, 245, 160, 0.14); color: var(--mint); border-color: rgba(16, 245, 160, 0.35); }
+    .badge.violet { background: rgba(168, 85, 247, 0.14); color: var(--violet); border-color: rgba(168, 85, 247, 0.35); }
+    .badge.amber { background: rgba(251, 191, 36, 0.14); color: var(--amber); border-color: rgba(251, 191, 36, 0.35); }
+    .badge.red { background: rgba(251, 113, 133, 0.14); color: var(--red); border-color: rgba(251, 113, 133, 0.35); }
 
-    textarea, .text-field {
+    .btn {
       width: 100%;
-      background: var(--bg-input);
-      border: 1px solid var(--border-neon);
+      border: none;
+      border-radius: 13px;
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: opacity 0.15s, transform 0.12s;
+    }
+
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .btn-cyan { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #04101d; }
+    .btn-mint { background: var(--mint); color: #04101d; }
+    .btn-violet { background: var(--violet); color: #ffffff; }
+    .btn-amber { background: var(--amber); color: #0b1220; }
+    .btn-red { background: var(--red); color: #0b1220; }
+    .btn-outline {
+      background: var(--void);
+      color: var(--cyan);
+      border: 1px solid var(--border);
+    }
+
+    .btn-sm {
+      width: auto;
+      padding: 8px 12px;
+      font-size: 12px;
+      border-radius: 10px;
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .row > * { flex: 1; }
+    .row.wrap { flex-wrap: wrap; }
+    .row.wrap > * { flex: 0 1 auto; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .input, .textarea, .select {
+      width: 100%;
+      background: var(--void);
+      color: var(--text);
+      border: 1px solid rgba(148, 163, 184, 0.25);
       border-radius: 12px;
-      color: #ffffff;
-      padding: 12px;
-      font-size: 0.88rem;
+      padding: 11px 12px;
+      font-size: 13px;
+      font-family: inherit;
       outline: none;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
+    }
+
+    .input:focus, .textarea:focus, .select:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.16);
+    }
+
+    .textarea {
+      min-height: 78px;
       resize: vertical;
     }
 
-    .action-btn {
-      width: 100%;
-      background: linear-gradient(90deg, #0099ff, #00ffff);
-      color: #04101c;
-      font-weight: 800;
-      font-size: 0.92rem;
-      border: none;
-      border-radius: 12px;
-      padding: 12px;
-      cursor: pointer;
+    .label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
 
-    .result-box {
-      margin-top: 12px;
-      background: #090e1a;
-      border: 1px solid var(--border-neon);
+    /* Horizontal Scrollers */
+    .h-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+    .h-scroll::-webkit-scrollbar { display: none; }
+
+    .chip {
+      flex: 0 0 auto;
+      background: var(--void);
+      color: var(--text-2);
+      border: 1px solid rgba(148, 163, 184, 0.22);
       border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .chip.active {
+      background: rgba(0, 229, 255, 0.18);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    /* Quick Strip */
+    .quick-card {
+      flex: 0 0 auto;
+      min-width: 118px;
+      background: var(--void);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-align: left;
+      color: var(--text);
+    }
+
+    .quick-ico {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(0, 229, 255, 0.14);
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    /* Agent Grid */
+    .agent-card {
+      background: var(--surface-2);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-radius: 15px;
       padding: 12px;
-      font-size: 0.84rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.15s, transform 0.12s;
+    }
+
+    .agent-card:hover { border-color: var(--cyan); }
+    .agent-card:active { transform: scale(0.98); }
+
+    .agent-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .agent-emoji {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(0, 229, 255, 0.12);
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+    }
+
+    .agent-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .agent-desc {
+      font-size: 11px;
+      color: var(--text-2);
+      line-height: 1.35;
+    }
+
+    /* Output Boxes */
+    .result-box {
+      background: var(--void);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 13px;
       line-height: 1.5;
       white-space: pre-wrap;
-      display: none;
+      word-break: break-word;
     }
 
-    .search-tools {
-      margin-bottom: 10px;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      max-height: 360px;
-      overflow-y: auto;
-      padding-right: 2px;
-    }
-
-    .tool-chip {
-      background: var(--bg-input);
-      border: 1px solid rgba(0, 210, 255, 0.25);
-      border-radius: 10px;
-      padding: 10px;
-      text-align: left;
-      color: var(--text-main);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .tool-chip span {
-      display: block;
-      font-size: 0.68rem;
-      color: var(--neon-blue);
-      margin-bottom: 2px;
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      z-index: 999;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-    }
-
-    .modal-box {
+    .preview-img {
       width: 100%;
-      max-width: 420px;
-      background: var(--bg-card);
-      border: 1px solid var(--neon-cyan);
-      border-radius: 16px;
-      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      margin-top: 10px;
+      display: block;
+      background: #030712;
+      max-height: 340px;
+      object-fit: cover;
     }
 
-    .modal-header {
+    /* List Items */
+    .list-item {
+      background: var(--void);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-top: 8px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      justify-content: space-between;
+      gap: 10px;
     }
 
-    .close-btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      border-radius: 8px;
-      padding: 4px 10px;
-      cursor: pointer;
-    }
-
+    /* Bottom Navigation */
     .bottom-nav {
       position: fixed;
-      bottom: 0;
       left: 0;
       right: 0;
-      background: #080d18;
-      border-top: 1px solid var(--border-neon);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      padding: 8px 6px 10px;
-      z-index: 900;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(5, 8, 17, 0.96);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 7px 6px calc(7px + env(safe-area-inset-bottom, 0px));
     }
 
     .nav-item {
       background: transparent;
       border: none;
-      color: var(--text-muted);
+      color: var(--text-2);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      font-size: 0.74rem;
-      font-weight: 600;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 12px;
       cursor: pointer;
+      min-width: 66px;
     }
 
     .nav-item.active {
-      color: var(--neon-cyan);
+      color: var(--cyan);
+      background: rgba(0, 229, 255, 0.14);
     }
 
-    .nav-pill {
-      padding: 4px 16px;
+    .nav-ico { font-size: 18px; }
+
+    /* Modal (Agent Chat & Squad) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(3, 6, 14, 0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      flex-direction: column;
+      padding: 12px;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal-box {
+      max-width: 720px;
+      width: 100%;
+      margin: auto;
+      background: var(--surface);
+      border: 1px solid var(--cyan);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+    .modal-head {
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--void);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .msg {
+      max-width: 88%;
+      padding: 10px 13px;
+      border-radius: 14px;
+      font-size: 13px;
+      line-height: 1.48;
+      white-space: pre-wrap;
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #04101d;
+      font-weight: 600;
+    }
+
+    .msg.ai {
+      align-self: flex-start;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .modal-foot {
+      padding: 10px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--void);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .modal-foot .input { margin-bottom: 0; }
+
+    /* Signature & Sensors Canvas */
+    .sig-canvas {
+      width: 100%;
+      height: 155px;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 2px solid var(--cyan);
+      touch-action: none;
+      display: block;
+    }
+
+    .sensor-canvas {
+      width: 220px;
+      height: 220px;
+      display: block;
+      margin: 10px auto;
+    }
+
+    /* Calculator */
+    .calc-display {
+      background: var(--void);
+      border: 1px solid var(--cyan);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .calc-key {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 6px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .calc-key.op { color: var(--cyan); background: rgba(0, 229, 255, 0.12); }
+    .calc-key.eq { background: var(--mint); color: #04101d; }
+
+    /* Progress Bar */
+    .bar-track {
+      width: 100%;
+      height: 8px;
+      background: var(--void);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--mint));
+      border-radius: 99px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      top: 66px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 120;
+      background: #0d1b2f;
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      padding: 10px 16px;
       border-radius: 999px;
-      background: transparent;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      display: none;
+      max-width: 92vw;
+      text-align: center;
     }
 
-    .nav-item.active .nav-pill {
-      background: rgba(0, 210, 255, 0.18);
-      border: 1px solid rgba(0, 255, 255, 0.4);
+    .hidden { display: none !important; }
+    .mt-8 { margin-top: 8px; }
+    .mt-12 { margin-top: 12px; }
+    .mb-8 { margin-bottom: 8px; }
+    .text-cyan { color: var(--cyan); }
+    .text-mint { color: var(--mint); }
+    .text-amber { color: var(--amber); }
+    .text-red { color: var(--red); }
+    .text-muted { color: var(--text-2); font-size: 12px; }
+
+    @media print {
+      body { background: #ffffff; color: #000000; padding: 0; }
+      .topbar, .bottom-nav, .no-print { display: none !important; }
+      .card, .result-box { border: 1px solid #ccc; background: #fff; color: #000; box-shadow: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo-shield" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-      </div>
+  <div id="toast" class="toast"></div>
+
+  <!-- Sticky Top Bar -->
+  <header class="topbar">
+    <div class="brand-row">
+      <div class="brand-logo">N2</div>
       <div>
-        <div class="title-row">
-          <h1>NEXUS AI 100</h1>
-          <span class="badge-free">100% GRATUITO</span>
+        <div class="brand-title">NEXUS IA .2</div>
+        <div class="brand-sub" id="topSub">100 Agentes • 18 Ferramentas IA</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="pill-btn" id="langBtn" onclick="toggleLanguage()">🌐 PT / EN</button>
+      <button class="pill-btn active" id="ttsBtn" onclick="toggleTts()">🔊 <span id="ttsBtnLabel">Voz</span></button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <!-- ==================== TAB 1: HOME / 100 AGENTS ==================== -->
+    <section id="page-agents">
+      <!-- Live Clock + Quick Tools Strip -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="label" id="quickStripLabel">UTILIDADES DO DIA A DIA</div>
+            <div class="text-muted" id="liveDateText">--</div>
+          </div>
+          <div class="badge" style="font-size:15px;padding:6px 12px;" id="liveClockText">00:00:00</div>
         </div>
-        <div class="subtitle">Sites • Antivírus • 100 IAs • Utilitários</div>
+        <div class="h-scroll" id="quickToolsStrip"></div>
       </div>
-    </header>
 
-    <div class="quota-bar" id="quotaStatus">
-      ⚡ Acesso Liberado • Sistema NEXUS AI 100 Ativo
-    </div>
-
-    <button class="voice-btn" id="voiceBtn" onclick="toggleVoiceAssistant()">
-      <span>🎙️</span>
-      <span id="voiceBtnLabel">Assistente Universal por Voz • Toque e Fale</span>
-    </button>
-    <div class="voice-output" id="voiceOutput">
-      Pronto para ouvir comandos (ex: "verificar link", "calcular 150 vezes 4", "criar site", "clima").
-    </div>
-
-    <section class="card">
-      <div class="weather-stats">
-        <div class="stat-pill">🌡️ <span id="tempDisplay">Sensação 27°C</span></div>
-        <div class="stat-pill">💧 <span id="humDisplay">Umidade 98%</span></div>
-      </div>
-      <div class="weather-row">
-        <div class="city-input-wrap">
-          <input type="text" id="cityInput" value="Floriano - PI" aria-label="Cidade" />
-          <span style="color:#00ffff;">🎙️</span>
+      <!-- NEXUS SQUAD Banner -->
+      <div class="card" style="background:linear-gradient(135deg, rgba(0,229,255,0.14), rgba(168,85,247,0.14), #0b1220);">
+        <div class="card-header">
+          <div>
+            <div class="badge violet mb-8">⚡ NEXUS SQUAD</div>
+            <div class="card-title" id="squadTitle">Esquadrão Multi-Agente IA</div>
+            <div class="card-sub" id="squadSub">3 especialistas trabalham juntos no mesmo projeto em segundos.</div>
+          </div>
         </div>
-        <button class="icon-btn" onclick="updateWeather()" title="Localizar">◎</button>
-        <button class="icon-btn" onclick="updateWeather()" title="Atualizar">↻</button>
+        <div class="row">
+          <input id="squadInput" class="input" style="margin-bottom:0;" placeholder="Ex.: Montar empresa de energia solar do zero..." />
+          <button class="btn btn-violet btn-sm" style="flex:0 0 auto;" onclick="runNexusSquad()" id="squadRunBtn">Acionar</button>
+        </div>
+        <div id="squadOutput" class="result-box hidden"></div>
       </div>
-    </section>
 
-    <div class="quick-row">
-      <button class="util-btn" onclick="openModal('alarmModal')">⏰ Despertador</button>
-      <button class="util-btn" onclick="openModal('calcModal')">🧮 Calculadora Voz</button>
-      <button class="util-btn" style="color:#ff4d6d;border-color:rgba(255,77,109,0.45);" onclick="openModal('emergencyModal')">▶</button>
-    </div>
-
-    <section id="tab-antivirus" class="tab-section active">
+      <!-- Quick Concierge + Custom Agent Creator -->
       <div class="card">
-        <div class="badge-shield">✔ Proteção Empresarial Ativa</div>
-        <h2 class="card-title">AI Antivírus Corporativo — Detector de Links Falsos e Segurança para Empresas</h2>
-        <p class="card-desc">
-          Cole URLs suspeitas, códigos "Pix Copia e Cola" ou linha digitável de boletos para detectar fraudes financeiras contra empresas e usuários.
-        </p>
-        <textarea id="securityInput" rows="3" placeholder="Cole aqui URL, Pix Copia e Cola ou linha digitável de boleto..."></textarea>
-        <button class="action-btn" onclick="analyzeSecurity()">🔍 Analisar Segurança Agora</button>
-        <div class="result-box" id="securityResult"></div>
+        <div class="card-header">
+          <div class="card-title" id="agentsHeaderTitle">Catálogo com 100 Agentes IA</div>
+          <button class="btn btn-outline btn-sm" onclick="toggleCustomAgentForm()" id="newAgentBtn">+ Criar Agente</button>
+        </div>
+
+        <div id="customAgentBox" class="hidden" style="margin-bottom:12px;padding:10px;border-radius:12px;background:var(--void);border:1px solid var(--border);">
+          <div class="label" id="customAgentLbl">Novo Agente Personalizado</div>
+          <input id="customAgentName" class="input" placeholder="Nome do agente (ex.: Mestre de Obras IA)" />
+          <input id="customAgentRole" class="input" placeholder="Especialidade / instruções do agente" />
+          <button class="btn btn-mint" onclick="saveCustomAgent()" id="saveCustomAgentBtn">Salvar Agente</button>
+        </div>
+
+        <input id="agentSearchInput" class="input" placeholder="Buscar entre os 100 agentes (ex.: site, orçamento, inglês, logo)..." oninput="renderAgents()" />
+        <div class="h-scroll mb-8" id="categoryChips"></div>
+        <div class="text-muted mb-8" id="agentCountLabel">Mostrando 100 agentes</div>
+        <div class="grid-2" id="agentsGrid"></div>
       </div>
     </section>
 
-    <section id="tab-sites" class="tab-section">
+    <!-- ==================== TAB 2: 18 SMART TOOLS ==================== -->
+    <section id="page-tools" class="hidden">
       <div class="card">
-        <div class="badge-shield">⚡ Gerador Instantâneo</div>
-        <h2 class="card-title">Criador de Sites IA — Estrutura Completa em Segundos</h2>
-        <p class="card-desc">
-          Descreva o negócio ou projeto (ex: oficina, lanchonete, torneio de futebol, loja) para gerar a estrutura e copy pronta.
-        </p>
-        <textarea id="sitePrompt" rows="3" placeholder="Ex: Site moderno para loja de celulares em Floriano - PI com botão de WhatsApp..."></textarea>
-        <button class="action-btn" onclick="generateSitePlan()">🚀 Gerar Estrutura do Site</button>
-        <div class="result-box" id="siteResult"></div>
+        <div class="card-header">
+          <div>
+            <div class="card-title" id="toolsPageTitle">Central de 18 Ferramentas IA</div>
+            <div class="card-sub" id="toolsPageSub">Toque em qualquer aba abaixo para abrir a ferramenta completa.</div>
+          </div>
+          <span class="badge mint">18 ATIVAS</span>
+        </div>
+        <div class="h-scroll" id="toolTabsBar"></div>
+      </div>
+
+      <!-- TOOL 1: ARCHITECTURE & 3D BLUEPRINTS -->
+      <div class="card tool-panel" id="tool-architecture">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🏗️ <span data-pt="Plantas & Projetos 3D IA" data-en="AI Floor Plans & 3D Projects">Plantas & Projetos 3D IA</span></div>
+            <div class="card-sub" data-pt="Cria a planta baixa técnica e mostra como o prédio/casa ficará pronto depois da construção." data-en="Generates 2D technical blueprints and shows how the building will look after construction.">Cria a planta baixa técnica e mostra como o prédio/casa ficará pronto depois da construção.</div>
+          </div>
+        </div>
+        <div class="h-scroll mb-8">
+          <button class="chip" onclick="fillArchPreset('Prédio Residencial 8 Andares','20m x 35m','8 andares + cobertura','Moderno','Fachada de vidro e concreto, 4 apartamentos por andar, hall e piscina no rooftop')">Prédio 8 Andares</button>
+          <button class="chip" onclick="fillArchPreset('Sobrado 3 Suítes','12m x 25m','2 pavimentos','Contemporâneo','Pé-direito duplo, cozinha americana, área gourmet e piscina')">Sobrado 3 Suítes</button>
+          <button class="chip" onclick="fillArchPreset('Galpão Industrial','30m x 60m','Pé-direito 10m','Industrial','3 docas para caminhões, escritório envidraçado e pátio de manobra')">Galpão Logístico</button>
+        </div>
+        <div class="grid-2">
+          <div>
+            <label class="label">Tipo de Projeto</label>
+            <input id="archType" class="input" value="Prédio Residencial 8 Andares" />
+          </div>
+          <div>
+            <label class="label">Estilo</label>
+            <input id="archStyle" class="input" value="Moderno" />
+          </div>
+          <div>
+            <label class="label">Terreno / Medidas</label>
+            <input id="archDim" class="input" value="20m x 35m" />
+          </div>
+          <div>
+            <label class="label">Pavimentos</label>
+            <input id="archFloors" class="input" value="8 andares + garagem" />
+          </div>
+        </div>
+        <label class="label">Detalhes da Construção</label>
+        <textarea id="archDesc" class="textarea" placeholder="Descreva quartos, salas, varanda, garagem, fachada...">Prédio moderno com fachada em vidro e concreto, garagem no subsolo, 4 apartamentos por andar e área de lazer na cobertura.</textarea>
+        <button class="btn btn-cyan" id="archGenBtn" onclick="generateArchitectureProject()">✨ Gerar Planta Baixa + Render 3D Pronto</button>
+        <div id="archPlanResult" class="result-box hidden"></div>
+        <div id="archImagesWrap" class="hidden mt-12">
+          <div class="grid-2">
+            <div>
+              <div class="badge mb-8">📐 Planta Baixa Técnica</div>
+              <img id="archFloorImg" class="preview-img" alt="Planta Baixa" />
+              <a id="archFloorDl" class="btn btn-outline btn-sm mt-8" style="width:100%;text-decoration:none;" download="planta-baixa-nexus.png">⬇ Baixar Planta</a>
+            </div>
+            <div>
+              <div class="badge mint mb-8">🏢 Como Vai Ficar Pronto (3D)</div>
+              <img id="archRenderImg" class="preview-img" alt="Render 3D" />
+              <a id="archRenderDl" class="btn btn-outline btn-sm mt-8" style="width:100%;text-decoration:none;" download="render-3d-nexus.png">⬇ Baixar Render 3D</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 2: BLUETOOTH SOUND & VOICE MUSIC -->
+      <div class="card tool-panel hidden" id="tool-sound">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🔊 <span data-pt="Som Bluetooth & Música por Voz" data-en="Bluetooth Sound & Voice Music">Som Bluetooth & Música por Voz</span></div>
+            <div class="card-sub" data-pt="Pesquise músicas por voz, gere playlists com IA, toque som de teste no aparelho Bluetooth e abra no YouTube Music / Spotify." data-en="Search music by voice, generate AI playlists, test audio output, and open in YouTube Music or Spotify.">Pesquise músicas por voz, gere playlists com IA, toque som de teste no aparelho Bluetooth e abra no YouTube Music / Spotify.</div>
+          </div>
+        </div>
+        <div class="row mb-8">
+          <input id="musicQuery" class="input" style="margin-bottom:0;" placeholder="Diga ou digite música, artista ou estilo (ex.: Sertanejo, Alok)..." />
+          <button class="btn btn-violet btn-sm" style="flex:0 0 auto;" onclick="startVoiceFor('musicQuery', () => searchMusicWithAi())">🎤 Voz</button>
+        </div>
+        <div class="grid-3 mb-8">
+          <button class="btn btn-cyan btn-sm" onclick="openMusicPlatform('ytm')">▶ YT Music</button>
+          <button class="btn btn-mint btn-sm" onclick="openMusicPlatform('spotify')">🎵 Spotify</button>
+          <button class="btn btn-amber btn-sm" onclick="openMusicPlatform('yt')">📺 YouTube</button>
+        </div>
+        <div class="row mb-8">
+          <button class="btn btn-violet" onclick="searchMusicWithAi()">🎧 Gerar Playlist IA</button>
+          <button class="btn btn-outline" onclick="toggleSoundTest()" id="soundTestBtn">🔈 Testar Caixa de Som</button>
+        </div>
+        <label class="label">Volume do Teste de Áudio: <span id="soundVolLbl">75%</span></label>
+        <input type="range" min="0" max="100" value="75" class="input" oninput="updateSoundVol(this.value)" />
+        <div id="musicResults"></div>
+      </div>
+
+      <!-- TOOL 3: AI SERVICE QUOTES -->
+      <div class="card tool-panel hidden" id="tool-quotes">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📋 <span data-pt="Orçamentos IA (Todos os Serviços)" data-en="AI Service Quotes">Orçamentos IA (Todos os Serviços)</span></div>
+            <div class="card-sub">Monte orçamentos detalhados de obra, elétrica, pintura, mecânica, TI ou qualquer serviço.</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <input id="qProvider" class="input" placeholder="Seu Nome / Empresa" value="Nexus Serviços" />
+          <input id="qClient" class="input" placeholder="Nome do Cliente" value="Carlos Silva" />
+        </div>
+        <div class="row mb-8">
+          <input id="qServicePrompt" class="input" style="margin-bottom:0;" placeholder="Descreva o serviço (ex.: pintura casa 80m² ou reforma elétrica)" />
+          <button class="btn btn-cyan btn-sm" style="flex:0 0 auto;" onclick="generateAiQuote()">✨ IA Montar</button>
+        </div>
+        <div class="grid-3 mb-8">
+          <input id="qItemDesc" class="input" style="margin-bottom:0;" placeholder="Item / Serviço" />
+          <input id="qItemQty" class="input" style="margin-bottom:0;" type="number" value="1" placeholder="Qtd" />
+          <input id="qItemPrice" class="input" style="margin-bottom:0;" type="number" value="150" placeholder="Valor R$" />
+        </div>
+        <div class="row mb-8">
+          <button class="btn btn-outline btn-sm" onclick="addQuoteItem()">+ Adicionar Item</button>
+          <input id="qDiscount" class="input" style="margin-bottom:0;max-width:130px;" type="number" value="0" placeholder="Desc %" oninput="renderQuoteItems()" />
+        </div>
+        <div id="quoteItemsList"></div>
+        <div class="result-box" id="quoteTotalBox">Total: R$ 0,00</div>
+        <div class="row mt-8">
+          <button class="btn btn-mint" onclick="shareQuoteWhatsApp()">💬 Enviar WhatsApp</button>
+          <button class="btn btn-cyan" onclick="printDocument('quote')">🖨 Salvar / Imprimir PDF</button>
+        </div>
+      </div>
+
+      <!-- TOOL 4: CONTRACTS & RECEIPTS + SIGNATURE PAD -->
+      <div class="card tool-panel hidden" id="tool-contracts">
+        <div class="card-header">
+          <div>
+            <div class="card-title">✍️ <span data-pt="Contratos & Recibos + Assinatura na Tela" data-en="Contracts & Receipts + Signature">Contratos & Recibos + Assinatura na Tela</span></div>
+            <div class="card-sub">Redija contratos ou recibos pagos, assine com o dedo na tela e exporte em PDF ou WhatsApp.</div>
+          </div>
+        </div>
+        <div class="row mb-8">
+          <button class="chip active" id="btnTypeContract" onclick="setDocMode(false)">📄 Contrato de Serviço</button>
+          <button class="chip" id="btnTypeReceipt" onclick="setDocMode(true)">🧾 Recibo Pago</button>
+        </div>
+        <div class="grid-2">
+          <input id="cProvider" class="input" placeholder="Prestador / Emissor" value="Nexus Serviços" />
+          <input id="cClient" class="input" placeholder="Cliente / Pagador" value="Maria Souza" />
+          <input id="cAmount" class="input" placeholder="Valor" value="R$ 1.500,00" />
+          <input id="cPayment" class="input" placeholder="Pagamento" value="PIX (50% entrada + 50% entrega)" />
+        </div>
+        <textarea id="cDesc" class="textarea" placeholder="Descreva o serviço ou referência do recibo...">Execução de reforma elétrica residencial com troca de quadro de disjuntores e garantia de 90 dias.</textarea>
+        <button class="btn btn-mint mb-8" onclick="generateContractDoc()">✨ Gerar Documento com IA</button>
+
+        <div class="card-header mt-8">
+          <span class="label" style="margin:0;">Assinatura com o Dedo na Tela</span>
+          <button class="btn btn-outline btn-sm" onclick="clearSignature()">Limpar Assinatura</button>
+        </div>
+        <canvas id="signaturePad" class="sig-canvas"></canvas>
+
+        <div id="contractPreview" class="result-box hidden"></div>
+        <div class="row mt-8">
+          <button class="btn btn-cyan" onclick="printContractWithSig()">📄 Exportar / Imprimir PDF</button>
+          <button class="btn btn-mint" onclick="shareContractWhatsApp()">💬 Enviar WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- TOOL 5: VOICE FINANCE TRACKER -->
+      <div class="card tool-panel hidden" id="tool-finance">
+        <div class="card-header">
+          <div>
+            <div class="card-title">💰 <span data-pt="Controle Financeiro por Voz" data-en="Voice Finance Tracker">Controle Financeiro por Voz</span></div>
+            <div class="card-sub">Fale "Recebi 850 de serviço" ou "Gastei 120 no mercado" para registrar automaticamente.</div>
+          </div>
+        </div>
+        <div class="grid-3 mb-8">
+          <div class="list-item" style="flex-direction:column;align-items:flex-start;margin:0;">
+            <span class="text-muted">Entradas</span>
+            <strong class="text-mint" id="finIncome">R$ 0,00</strong>
+          </div>
+          <div class="list-item" style="flex-direction:column;align-items:flex-start;margin:0;">
+            <span class="text-muted">Saídas</span>
+            <strong class="text-red" id="finExpense">R$ 0,00</strong>
+          </div>
+          <div class="list-item" style="flex-direction:column;align-items:flex-start;margin:0;">
+            <span class="text-muted">Saldo</span>
+            <strong class="text-cyan" id="finBalance">R$ 0,00</strong>
+          </div>
+        </div>
+        <div class="row mb-8">
+          <input id="finInput" class="input" style="margin-bottom:0;" placeholder="Ex.: Gastei 85 no mercado ou Recebi 600 de obra" />
+          <button class="btn btn-violet btn-sm" style="flex:0 0 auto;" onclick="startVoiceFor('finInput', () => addFinanceEntry())">🎤 Falar</button>
+          <button class="btn btn-mint btn-sm" style="flex:0 0 auto;" onclick="addFinanceEntry()">+ Salvar</button>
+        </div>
+        <button class="btn btn-amber mb-8" onclick="getFinanceAiTips()">✨ Dicas da IA para Economizar</button>
+        <div id="finAiAdvice" class="result-box hidden"></div>
+        <div id="finChart" class="mt-8"></div>
+        <div id="finList" class="mt-8"></div>
+      </div>
+
+      <!-- TOOL 6: AI LOGO & BUSINESS CARD STUDIO -->
+      <div class="card tool-panel hidden" id="tool-brand">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🎨 <span data-pt="Estúdio de Logotipos & Cartões IA" data-en="AI Logo & Card Studio">Estúdio de Logotipos & Cartões IA</span></div>
+            <div class="card-sub">Crie logos, cartões de visita, fachadas e banners prontos para baixar.</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <select id="brandType" class="select">
+            <option value="Professional Minimalist Logo">Logotipo Profissional</option>
+            <option value="Luxury Business Card Design">Cartão de Visita</option>
+            <option value="Social Media Promotional Banner">Banner WhatsApp / Instagram</option>
+            <option value="Modern Commercial Storefront Signboard">Placa & Fachada</option>
+          </select>
+          <select id="brandStyle" class="select">
+            <option value="Luxury Gold and Dark Navy">Luxo Preto & Ouro</option>
+            <option value="Neon Cyan Futuristic Tech">Neon Tech Ciano</option>
+            <option value="Clean Modern Corporate">Moderno Corporativo</option>
+            <option value="Emerald Green Minimalist">Verde Minimalista</option>
+          </select>
+        </div>
+        <input id="brandName" class="input" placeholder="Nome da sua marca (ex.: Silva Engenharia)" />
+        <input id="brandSeg" class="input" placeholder="Ramo de atuação (ex.: Construção Civil, Elétrica, Barbearia)" />
+        <button class="btn btn-violet" onclick="generateBrandArt()">✨ Criar Arte Profissional IA</button>
+        <div id="brandPreviewWrap" class="hidden">
+          <img id="brandImg" class="preview-img" alt="Arte Gerada" />
+          <a id="brandDownloadBtn" class="btn btn-mint mt-8" style="text-decoration:none;" download="nexus-logo.png">⬇ Baixar Arte PNG</a>
+        </div>
+      </div>
+
+      <!-- TOOL 7: LEVEL, COMPASS & UNIT/CONSTRUCTION CONVERTER -->
+      <div class="card tool-panel hidden" id="tool-field">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🧭 <span data-pt="Nível de Obra, Bússola & Conversor" data-en="Level, Compass & Converter">Nível de Obra, Bússola & Conversor</span></div>
+            <div class="card-sub">Sensores reais do celular + conversor universal de medidas + cálculo de materiais de obra.</div>
+          </div>
+        </div>
+        <div class="row mb-8">
+          <button class="chip active" id="fTabLevel" onclick="switchFieldTab('level')">📏 Nível Bolha</button>
+          <button class="chip" id="fTabCompass" onclick="switchFieldTab('compass')">🧭 Bússola</button>
+          <button class="chip" id="fTabConv" onclick="switchFieldTab('conv')">📐 Conversor & m²</button>
+        </div>
+
+        <div id="field-level">
+          <button class="btn btn-cyan mb-8" onclick="enableDeviceSensors()">📡 Ativar Sensores do Celular</button>
+          <canvas id="levelCanvas" width="220" height="220" class="sensor-canvas"></canvas>
+          <div style="text-align:center;">
+            <span class="badge mint" id="levelStatusBadge">NIVELADO (0.0° / 0.0°)</span>
+          </div>
+          <label class="label mt-8">Simulação / Ajuste Manual (se estiver no PC):</label>
+          <div class="grid-2">
+            <input type="range" min="-45" max="45" value="0" oninput="setManualTilt(this.value, null)" />
+            <input type="range" min="-45" max="45" value="0" oninput="setManualTilt(null, this.value)" />
+          </div>
+        </div>
+
+        <div id="field-compass" class="hidden">
+          <button class="btn btn-cyan mb-8" onclick="enableDeviceSensors()">📡 Ativar Bússola do Celular</button>
+          <canvas id="compassCanvas" width="220" height="220" class="sensor-canvas"></canvas>
+          <div style="text-align:center;">
+            <strong class="text-cyan" style="font-size:20px;" id="compassReadout">0° • Norte (N)</strong>
+          </div>
+          <label class="label mt-8">Girar Bússola (teste manual no PC):</label>
+          <input type="range" min="0" max="359" value="0" class="input" oninput="drawCompass(Number(this.value))" />
+        </div>
+
+        <div id="field-conv" class="hidden">
+          <select id="convCat" class="select" onchange="populateUnits()">
+            <option value="length">Comprimento (mm, cm, m, km, pol, pés)</option>
+            <option value="area">Área / Obra (m², cm², hectare, alqueire SP)</option>
+            <option value="volume">Volume (mL, L, m³, galão)</option>
+            <option value="weight">Peso (g, kg, ton, lb)</option>
+            <option value="temp">Temperatura (°C, °F, K)</option>
+            <option value="currency">Moedas Ref. (BRL, USD, EUR)</option>
+          </select>
+          <input id="convVal" class="input" type="number" value="10" oninput="runConversion()" />
+          <div class="grid-2">
+            <select id="convFrom" class="select" onchange="runConversion()"></select>
+            <select id="convTo" class="select" onchange="runConversion()"></select>
+          </div>
+          <div class="result-box" id="convOut" style="font-size:18px;font-weight:800;color:var(--mint);">--</div>
+
+          <div class="label mt-12">🧱 Calculadora Rápida de Materiais (m²)</div>
+          <input id="workAreaInput" class="input" type="number" value="25" placeholder="Área em m²" oninput="calcConstruction()" />
+          <div class="result-box" id="workEstOut"></div>
+        </div>
+      </div>
+
+      <!-- TOOL 8: QR & BARCODE READER -->
+      <div class="card tool-panel hidden" id="tool-reader">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📷 <span data-pt="Leitor de QR Code & Barras" data-en="QR & Barcode Reader">Leitor de QR Code & Barras</span></div>
+            <div class="card-sub">Leia códigos pela câmera/foto ou cole PIX, Wi-Fi, boleto ou link para decodificar na hora.</div>
+          </div>
+        </div>
+        <label class="btn btn-cyan mb-8" style="cursor:pointer;">
+          📸 Escanear Foto / Câmera
+          <input type="file" accept="image/*" capture="environment" class="hidden" onchange="scanCodeImageFile(event)" />
+        </label>
+        <div class="row">
+          <input id="manualCodeInput" class="input" style="margin-bottom:0;" placeholder="Cole QR Wi-Fi, PIX, boleto, EAN ou URL..." />
+          <button class="btn btn-mint btn-sm" style="flex:0 0 auto;" onclick="inspectManualCode()">Decodificar</button>
+        </div>
+        <img id="readerPreviewImg" class="preview-img hidden" alt="Código" />
+        <div id="readerOutput" class="result-box hidden"></div>
+        <div class="row mt-8 hidden" id="readerActionRow">
+          <button class="btn btn-mint btn-sm" onclick="copyLastScanned()">📋 Copiar</button>
+          <button class="btn btn-cyan btn-sm" id="readerOpenUrlBtn" onclick="openLastScannedUrl()">🌐 Abrir Link</button>
+        </div>
+      </div>
+
+      <!-- TOOL 9: QR CODE GENERATOR -->
+      <div class="card tool-panel hidden" id="tool-qr">
+        <div class="card-header">
+          <div>
+            <div class="card-title">⬛ <span data-pt="Gerador de QR Code" data-en="QR Code Studio">Gerador de QR Code</span></div>
+            <div class="card-sub">Crie QR Codes prontos para Links, Wi-Fi, WhatsApp ou PIX.</div>
+          </div>
+        </div>
+        <select id="qrPresetType" class="select" onchange="updateQrPlaceholder()">
+          <option value="text">Link / Texto / PIX</option>
+          <option value="wifi">Rede Wi-Fi (Nome;Senha)</option>
+          <option value="wa">WhatsApp (DDD+Número)</option>
+        </select>
+        <input id="qrInput" class="input" value="https://nexusia.app" placeholder="Digite o link ou texto..." />
+        <button class="btn btn-mint" onclick="generateQrCode()">✨ Gerar QR Code</button>
+        <div id="qrResultWrap" class="hidden" style="text-align:center;margin-top:12px;">
+          <img id="qrImg" style="width:220px;height:220px;border-radius:14px;background:#fff;padding:10px;" alt="QR Code" />
+          <div class="mt-8">
+            <a id="qrDlLink" class="btn btn-outline btn-sm" style="text-decoration:none;" download="nexus-qrcode.png">⬇ Baixar QR Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 10: CLOCK & ALARM -->
+      <div class="card tool-panel hidden" id="tool-clock">
+        <div class="card-header">
+          <div>
+            <div class="card-title">⏰ <span data-pt="Relógio Digital & Despertador" data-en="Digital Clock & Alarm">Relógio Digital & Despertador</span></div>
+            <div class="card-sub">Relógio ao vivo com alarmes sonoros salvos no aparelho.</div>
+          </div>
+        </div>
+        <div class="calc-display" style="text-align:center;">
+          <div style="font-size:36px;font-weight:900;color:var(--cyan);" id="bigClockText">00:00:00</div>
+          <div class="text-muted" id="bigDateText">--</div>
+        </div>
+        <div id="alarmRingingBanner" class="card hidden" style="background:rgba(251,191,36,0.2);border-color:var(--amber);">
+          <div class="row">
+            <strong class="text-amber" id="alarmRingingText">ALARME TOCANDO!</strong>
+            <button class="btn btn-amber btn-sm" style="flex:0 0 auto;" onclick="stopAlarmSound()">PARAR</button>
+          </div>
+        </div>
+        <div class="grid-2">
+          <input id="alarmTimeInput" class="input" type="time" value="07:00" />
+          <input id="alarmLabelInput" class="input" value="Despertador Nexus" placeholder="Nome do alarme" />
+        </div>
+        <button class="btn btn-cyan" onclick="addAlarm()">+ Criar Alarme</button>
+        <div id="alarmsList" class="mt-8"></div>
+      </div>
+
+      <!-- TOOL 11: VOICE CALCULATOR -->
+      <div class="card tool-panel hidden" id="tool-calc">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🧮 <span data-pt="Calculadora com Voz" data-en="Voice Calculator">Calculadora com Voz</span></div>
+            <div class="card-sub">Faça contas tocando nas teclas ou falando (ex.: "450 mais 15 por cento").</div>
+          </div>
+        </div>
+        <div class="row mb-8">
+          <input id="calcVoiceInput" class="input" style="margin-bottom:0;" placeholder="Digite ou fale uma conta (ex.: 250 * 12)..." />
+          <button class="btn btn-violet btn-sm" style="flex:0 0 auto;" onclick="startVoiceFor('calcVoiceInput', () => solveVoiceCalc())">🎤 Falar</button>
+          <button class="btn btn-mint btn-sm" style="flex:0 0 auto;" onclick="solveVoiceCalc()">=</button>
+        </div>
+        <div class="calc-display">
+          <div class="text-muted" id="calcExpr">0</div>
+          <div style="font-size:28px;font-weight:900;color:var(--mint);" id="calcResult">0</div>
+        </div>
+        <div class="calc-grid">
+          <button class="calc-key op" onclick="calcClear()">C</button>
+          <button class="calc-key op" onclick="calcAppend('(')">(</button>
+          <button class="calc-key op" onclick="calcAppend(')')">)</button>
+          <button class="calc-key op" onclick="calcAppend('/')">÷</button>
+          <button class="calc-key" onclick="calcAppend('7')">7</button>
+          <button class="calc-key" onclick="calcAppend('8')">8</button>
+          <button class="calc-key" onclick="calcAppend('9')">9</button>
+          <button class="calc-key op" onclick="calcAppend('*')">×</button>
+          <button class="calc-key" onclick="calcAppend('4')">4</button>
+          <button class="calc-key" onclick="calcAppend('5')">5</button>
+          <button class="calc-key" onclick="calcAppend('6')">6</button>
+          <button class="calc-key op" onclick="calcAppend('-')">−</button>
+          <button class="calc-key" onclick="calcAppend('1')">1</button>
+          <button class="calc-key" onclick="calcAppend('2')">2</button>
+          <button class="calc-key" onclick="calcAppend('3')">3</button>
+          <button class="calc-key op" onclick="calcAppend('+')">+</button>
+          <button class="calc-key" onclick="calcAppend('0')">0</button>
+          <button class="calc-key" onclick="calcAppend('.')">.</button>
+          <button class="calc-key op" onclick="calcBack()">⌫</button>
+          <button class="calc-key eq" onclick="calcEval()">=</button>
+        </div>
+      </div>
+
+      <!-- TOOL 12: LIVE WEATHER -->
+      <div class="card tool-panel hidden" id="tool-weather">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🌤️ <span data-pt="Previsão do Tempo ao Vivo" data-en="Live Weather">Previsão do Tempo ao Vivo</span></div>
+            <div class="card-sub">Consulte temperatura, vento e condição atual de qualquer cidade (sem chave de API).</div>
+          </div>
+        </div>
+        <div class="row">
+          <input id="weatherCity" class="input" style="margin-bottom:0;" value="São Paulo" placeholder="Digite a cidade..." />
+          <button class="btn btn-cyan btn-sm" style="flex:0 0 auto;" onclick="fetchLiveWeather()">🔍 Buscar</button>
+        </div>
+        <div id="weatherResult" class="result-box">Toque em Buscar para ver o clima em tempo real.</div>
+      </div>
+
+      <!-- TOOL 13: AI CAMERA VISION -->
+      <div class="card tool-panel hidden" id="tool-camera">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📸 <span data-pt="Câmera IA (Análise de Foto)" data-en="AI Camera Vision">Câmera IA (Análise de Foto)</span></div>
+            <div class="card-sub">Tire uma foto ou escolha da galeria e peça para a IA analisar detalhes, objetos ou textos.</div>
+          </div>
+        </div>
+        <label class="btn btn-cyan mb-8" style="cursor:pointer;">
+          📷 Tirar Foto / Escolher Imagem
+          <input type="file" accept="image/*" capture="environment" class="hidden" onchange="loadCameraPhoto(event)" />
+        </label>
+        <img id="cameraPreview" class="preview-img hidden" alt="Foto selecionada" />
+        <input id="cameraPrompt" class="input mt-8" placeholder="O que deseja analisar na foto?" value="Descreva os detalhes importantes desta imagem e dê recomendações práticas." />
+        <button class="btn btn-mint" onclick="analyzeCameraPhoto()">✨ Analisar Foto com IA</button>
+        <div id="cameraResult" class="result-box hidden"></div>
+      </div>
+
+      <!-- TOOL 14: LIVE VOICE TRANSLATOR -->
+      <div class="card tool-panel hidden" id="tool-translator">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🌍 <span data-pt="Tradutor por Voz ao Vivo" data-en="Live Voice Translator">Tradutor por Voz ao Vivo</span></div>
+            <div class="card-sub">Fale ou digite em um idioma e ouça a tradução instantânea.</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <select id="trFrom" class="select">
+            <option value="Português">De: Português</option>
+            <option value="Inglês">De: Inglês</option>
+            <option value="Espanhol">De: Espanhol</option>
+            <option value="Francês">De: Francês</option>
+          </select>
+          <select id="trTo" class="select">
+            <option value="Inglês">Para: Inglês</option>
+            <option value="Português">Para: Português</option>
+            <option value="Espanhol">Para: Espanhol</option>
+            <option value="Francês">Para: Francês</option>
+          </select>
+        </div>
+        <textarea id="trInput" class="textarea" placeholder="Digite ou fale o texto para traduzir..."></textarea>
+        <div class="row">
+          <button class="btn btn-violet" onclick="startVoiceFor('trInput', () => runTranslator())">🎤 Falar</button>
+          <button class="btn btn-cyan" onclick="runTranslator()">✨ Traduzir</button>
+        </div>
+        <div id="trOutput" class="result-box hidden"></div>
+      </div>
+
+      <!-- TOOL 15: DOCUMENT / PDF SCANNER -->
+      <div class="card tool-panel hidden" id="tool-scanner">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📑 <span data-pt="Scanner & Resumo de Documentos" data-en="Document & PDF Summarizer">Scanner & Resumo de Documentos</span></div>
+            <div class="card-sub">Carregue arquivos de texto ou cole o conteúdo de um contrato/documento para a IA resumir.</div>
+          </div>
+        </div>
+        <label class="btn btn-outline mb-8" style="cursor:pointer;">
+          📂 Abrir Arquivo (.txt, .md, .csv, .json)
+          <input type="file" accept=".txt,.md,.csv,.json,.html,.xml" class="hidden" onchange="loadDocFile(event)" />
+        </label>
+        <textarea id="docTextInput" class="textarea" placeholder="Ou cole aqui o texto do documento/contrato..."></textarea>
+        <button class="btn btn-cyan" onclick="summarizeDocument()">✨ Resumir e Extrair Pontos-Chave</button>
+        <div id="docSummaryOut" class="result-box hidden"></div>
+      </div>
+
+      <!-- TOOL 16: SMART VOICE NOTES -->
+      <div class="card tool-panel hidden" id="tool-notes">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📝 <span data-pt="Bloco de Notas por Voz IA" data-en="AI Voice Notes">Bloco de Notas por Voz IA</span></div>
+            <div class="card-sub">Dite suas ideias e salve notas organizadas no aparelho.</div>
+          </div>
+        </div>
+        <textarea id="noteInput" class="textarea" placeholder="Dite ou escreva uma ideia, lembrete ou lista de tarefas..."></textarea>
+        <div class="row mb-8">
+          <button class="btn btn-violet" onclick="startVoiceFor('noteInput')">🎤 Ditar</button>
+          <button class="btn btn-mint" onclick="saveSmartNote()">✨ Organizar & Salvar</button>
+        </div>
+        <div id="notesList"></div>
+      </div>
+
+      <!-- TOOL 17: AI QUIZ ARENA -->
+      <div class="card tool-panel hidden" id="tool-quiz">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🏆 <span data-pt="Arena Quiz IA" data-en="AI Quiz Arena">Arena Quiz IA</span></div>
+            <div class="card-sub">Teste seus conhecimentos em qualquer tema com pontuação ao vivo.</div>
+          </div>
+          <span class="badge amber" id="quizScoreBadge">0 pts</span>
+        </div>
+        <div class="row mb-8">
+          <input id="quizTopic" class="input" style="margin-bottom:0;" value="Tecnologia e Inteligência Artificial" placeholder="Tema do Quiz..." />
+          <button class="btn btn-violet btn-sm" style="flex:0 0 auto;" onclick="startQuiz()">▶ Jogar</button>
+        </div>
+        <div id="quizArenaBox"></div>
+      </div>
+
+      <!-- TOOL 18: FOCUS POMODORO -->
+      <div class="card tool-panel hidden" id="tool-pomodoro">
+        <div class="card-header">
+          <div>
+            <div class="card-title">⏱️ <span data-pt="Modo Foco (Pomodoro com Voz)" data-en="Focus Mode (Pomodoro)">Modo Foco (Pomodoro com Voz)</span></div>
+            <div class="card-sub">Ciclos de foco cronometrados com aviso sonoro e por voz ao finalizar.</div>
+          </div>
+        </div>
+        <div class="row mb-8">
+          <button class="chip active" onclick="setPomodoroMin(25, this)">25 min Foco</button>
+          <button class="chip" onclick="setPomodoroMin(5, this)">5 min Pausa</button>
+          <button class="chip" onclick="setPomodoroMin(15, this)">15 min Longa</button>
+        </div>
+        <div class="calc-display" style="text-align:center;">
+          <div style="font-size:44px;font-weight:900;color:var(--amber);" id="pomoDisplay">25:00</div>
+          <div class="text-muted" id="pomoStatus">Pronto para focar</div>
+        </div>
+        <div class="row">
+          <button class="btn btn-mint" id="pomoToggleBtn" onclick="togglePomodoro()">▶ Iniciar</button>
+          <button class="btn btn-outline" onclick="resetPomodoro()">↺ Reiniciar</button>
+        </div>
       </div>
     </section>
 
-    <section id="tab-tools" class="tab-section">
+    <!-- ==================== TAB 3: HISTORY ==================== -->
+    <section id="page-history" class="hidden">
       <div class="card">
-        <div class="badge-shield">🧠 Catálogo Completo</div>
-        <h2 class="card-title">100 Ferramentas IA — Produtividade, Negócios e Código</h2>
-        <input type="text" class="text-field search-tools" id="toolSearch" placeholder="Pesquisar entre as 100 ferramentas..." oninput="filterTools()" />
-        <div class="tools-grid" id="toolsGrid"></div>
-        <div class="result-box" id="toolResult"></div>
+        <div class="card-header">
+          <div>
+            <div class="card-title" id="historyTitle">Histórico Salvo</div>
+            <div class="card-sub" id="historySub">Conversas recentes com agentes e documentos salvos no navegador.</div>
+          </div>
+          <button class="btn btn-red btn-sm" onclick="clearHistory()">Limpar</button>
+        </div>
+        <div id="historyList"></div>
       </div>
     </section>
-  </div>
 
-  <div class="modal-backdrop" id="alarmModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <strong>⏰ Despertador Rápido</strong>
-        <button class="close-btn" onclick="closeModal('alarmModal')">✕</button>
+    <!-- ==================== TAB 4: PROFILE & SETTINGS ==================== -->
+    <section id="page-profile" class="hidden">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">NEXUS IA .2 — Web App Completo</div>
+            <div class="card-sub">Acesso direto sem login, sem exigir chave de API e 100% salvo localmente no dispositivo.</div>
+          </div>
+          <span class="badge mint">ONLINE</span>
+        </div>
+
+        <div class="label mt-12">Idioma do Aplicativo / App Language</div>
+        <div class="row mb-8">
+          <button class="btn btn-cyan" id="profLangPt" onclick="setLanguage('pt')">🇧🇷 Português (Brasil)</button>
+          <button class="btn btn-outline" id="profLangEn" onclick="setLanguage('en')">🇺🇸 English (US)</button>
+        </div>
+
+        <div class="list-item">
+          <div>
+            <strong>Leitura em Voz Alta (TTS)</strong>
+            <div class="text-muted">Fala resultados da calculadora, finanças, agentes e alarmes.</div>
+          </div>
+          <button class="btn btn-outline btn-sm" id="profTtsBtn" onclick="toggleTts()">Ativado</button>
+        </div>
+
+        <div class="list-item">
+          <div>
+            <strong>Estatísticas Locais</strong>
+            <div class="text-muted" id="profileStatsText">100 agentes • 18 ferramentas ativas</div>
+          </div>
+          <span class="badge">v2.0</span>
+        </div>
+
+        <button class="btn btn-red mt-12" onclick="resetAllLocalData()">🗑 Resetar Dados Locais</button>
       </div>
-      <input type="time" id="alarmTime" class="text-field" />
-      <button class="action-btn" onclick="setAlarm()">Ativar Alarme</button>
-      <div class="result-box" id="alarmStatus"></div>
+    </section>
+  </main>
+
+  <!-- Agent Chat Modal -->
+  <div class="modal-backdrop" id="chatModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <div class="card-title" id="chatAgentName">Agente IA</div>
+          <div class="text-muted" id="chatAgentRole">Especialista</div>
+        </div>
+        <div class="row" style="flex:0 0 auto;">
+          <button class="btn btn-outline btn-sm" onclick="speakLastAiMsg()">🔊</button>
+          <button class="btn btn-red btn-sm" onclick="closeChatModal()">✕</button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="modal-foot">
+        <button class="btn btn-violet btn-sm" style="flex:0 0 auto;" onclick="startVoiceFor('chatInput', () => sendChatMessage())">🎤</button>
+        <input id="chatInput" class="input" placeholder="Digite sua pergunta..." onkeydown="if(event.key==='Enter') sendChatMessage()" />
+        <button class="btn btn-cyan btn-sm" style="flex:0 0 auto;" onclick="sendChatMessage()" id="chatSendBtn">Enviar</button>
+      </div>
     </div>
   </div>
 
-  <div class="modal-backdrop" id="calcModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <strong>🧮 Calculadora Inteligente</strong>
-        <button class="close-btn" onclick="closeModal('calcModal')">✕</button>
-      </div>
-      <input type="text" id="calcExpr" class="text-field" placeholder="Ex: (1250 * 0.15) + 300" />
-      <button class="action-btn" onclick="runCalc()">Calcular</button>
-      <div class="result-box" id="calcStatus"></div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="emergencyModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <strong style="color:#ff4d6d;">🛡️ Modo Escudo Rápido</strong>
-        <button class="close-btn" onclick="closeModal('emergencyModal')">✕</button>
-      </div>
-      <p class="card-desc">Verificação instantânea de links da área de transferência e bloqueio preventivo contra phishing.</p>
-      <button class="action-btn" onclick="pasteAndScan()">Colar e Verificar Agora</button>
-    </div>
-  </div>
-
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
-    <button class="nav-item" id="nav-sites" onclick="switchTab('sites')">
-      <div class="nav-pill">🌐</div>
-      <span>Criador de Sites IA</span>
+    <button class="nav-item active" id="nav-agents" onclick="switchMainPage('agents')">
+      <span class="nav-ico">🤖</span>
+      <span data-pt="Agentes" data-en="Agents">Agentes</span>
     </button>
-    <button class="nav-item active" id="nav-antivirus" onclick="switchTab('antivirus')">
-      <div class="nav-pill">🛡️</div>
-      <span>AI Antivírus</span>
+    <button class="nav-item" id="nav-tools" onclick="switchMainPage('tools')">
+      <span class="nav-ico">🛠️</span>
+      <span data-pt="Utilidades" data-en="Tools">Utilidades</span>
     </button>
-    <button class="nav-item" id="nav-tools" onclick="switchTab('tools')">
-      <div class="nav-pill">⊞</div>
-      <span>100 Ferramentas IA</span>
+    <button class="nav-item" id="nav-history" onclick="switchMainPage('history')">
+      <span class="nav-ico">🕘</span>
+      <span data-pt="Histórico" data-en="History">Histórico</span>
+    </button>
+    <button class="nav-item" id="nav-profile" onclick="switchMainPage('profile')">
+      <span class="nav-ico">⚙️</span>
+      <span data-pt="Perfil" data-en="Profile">Perfil</span>
     </button>
   </nav>
 
   <script>
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-section').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-      document.getElementById('tab-' + tabName).classList.add('active');
-      document.getElementById('nav-' + tabName).classList.add('active');
-    }
+    // ==================== GLOBAL STATE & PERSISTENCE ====================
+    const STORAGE_KEY = "nexus_ia_2_web_state_v1";
+    const appState = loadState();
 
-    function openModal(id) {
-      document.getElementById(id).classList.add('open');
-    }
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('open');
-    }
-
-    function updateWeather() {
-      const city = document.getElementById('cityInput').value.trim() || 'Floriano - PI';
-      const temps = [27, 29, 31, 28, 30];
-      const hums = [98, 82, 74, 88, 79];
-      const idx = city.length % temps.length;
-      document.getElementById('tempDisplay').textContent = `Sensação ${temps[idx]}°C`;
-      document.getElementById('humDisplay').textContent = `Umidade ${hums[idx]}%`;
-      document.getElementById('voiceOutput').textContent = `Clima atualizado para ${city}: sensação de ${temps[idx]}°C e umidade ${hums[idx]}%.`;
-    }
-
-    function analyzeSecurity() {
-      const raw = document.getElementById('securityInput').value.trim();
-      const box = document.getElementById('securityResult');
-      if (!raw) {
-        box.style.display = 'block';
-        box.style.borderColor = '#ff4d6d';
-        box.textContent = '⚠️ Cole um link, código Pix Copia e Cola ou linha digitável de boleto antes de analisar.';
-        return;
-      }
-
-      let report = [];
-      const lower = raw.toLowerCase();
-
-      if (lower.startsWith('000201')) {
-        const hasMerchant = lower.includes('br.gov.bcb.pix');
-        report.push('🔎 Tipo detectado: Código Pix Copia e Cola (BR Code).');
-        report.push(hasMerchant ? '✅ Estrutura oficial BACEN (br.gov.bcb.pix) presente.' : '🚨 ALERTA: Identificador oficial BACEN ausente!');
-        if (lower.includes('5900') || !/59\d{2}[a-z0-9 ]+/i.test(raw)) {
-          report.push('⚠️ Nome do recebedor ausente ou ofuscado — confira o CNPJ/CPF no app do banco antes de confirmar.');
-        } else {
-          report.push('ℹ️ Sempre valide o nome do beneficiário e instituição destino na tela final do banco.');
-        }
-      } else if (/^\d{44,48}$/.test(raw.replace(/[\s.-]/g, ''))) {
-        const digits = raw.replace(/[\s.-]/g, '');
-        report.push('🔎 Tipo detectado: Linha Digitável de Boleto Bancário.');
-        report.push(`📏 Tamanho: ${digits.length} dígitos.`);
-        const bankCode = digits.slice(0, 3);
-        const banks = { '001': 'Banco do Brasil', '033': 'Santander', '104': 'Caixa', '237': 'Bradesco', '341': 'Itaú', '260': 'Nubank', '077': 'Inter', '323': 'Mercado Pago' };
-        report.push(`🏦 Banco emissor identificado: ${banks[bankCode] || 'Código ' + bankCode}.`);
-        report.push('⚠️ Verifique se o banco emissor e o CNPJ do beneficiário batem com a empresa emissora.');
-      } else {
-        report.push('🔎 Tipo detectado: URL / Link Web.');
-        const isHttps = lower.startsWith('https://');
-        const suspiciousWords = ['pix-resgate', 'atualizacao-cadastral', 'premio', 'gratis-agora', 'suporte-banco', 'login-seguro', '.xyz', '.top', '.click'];
-        const foundFlags = suspiciousWords.filter(w => lower.includes(w));
-
-        report.push(isHttps ? '🔒 Conexão criptografada (HTTPS).' : '🚨 ALERTA: Link sem HTTPS (conexão insegura).');
-        if (foundFlags.length > 0) {
-          report.push(`🚨 ALTO RISCO DE PHISHING: Padrões suspeitos encontrados (${foundFlags.join(', ')}). Não informe senhas ou dados bancários.`);
-        } else {
-          report.push('✅ Nenhum padrão clássico de phishing detectado na estrutura da URL. Confira sempre o domínio principal.');
-        }
-      }
-
-      box.style.display = 'block';
-      box.style.borderColor = report.some(r => r.includes('🚨')) ? '#ff4d6d' : '#00ff88';
-      box.textContent = report.join('\n');
-    }
-
-    async function pasteAndScan() {
-      closeModal('emergencyModal');
-      switchTab('antivirus');
+    function loadState() {
       try {
-        const text = await navigator.clipboard.readText();
-        document.getElementById('securityInput').value = text;
-        analyzeSecurity();
-      } catch (e) {
-        document.getElementById('securityInput').focus();
-      }
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      return {
+        lang: "pt",
+        ttsEnabled: true,
+        customAgents: [],
+        history: [],
+        notes: [],
+        alarms: [],
+        finance: [],
+        quoteItems: [
+          { desc: "Mão de obra técnica especializada", qty: 1, price: 850 },
+          { desc: "Materiais e acabamento padrão", qty: 1, price: 350 }
+        ]
+      };
     }
 
-    async function generateSitePlan() {
-      const prompt = document.getElementById('sitePrompt').value.trim();
-      const box = document.getElementById('siteResult');
-      if (!prompt) {
-        box.style.display = 'block';
-        box.textContent = 'Digite o tema ou tipo de site que você deseja criar.';
-        return;
-      }
-      box.style.display = 'block';
-      box.textContent = '⏳ Gerando arquitetura e textos do site...';
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); } catch (e) {}
+    }
+
+    function t(pt, en) {
+      return appState.lang === "en" ? en : pt;
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.style.display = "block";
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => { el.style.display = "none"; }, 2800);
+    }
+
+    function speak(text) {
+      if (!appState.ttsEnabled || !("speechSynthesis" in window) || !text) return;
       try {
-        const res = await fetch(`https://text.pollinations.ai/${encodeURIComponent('Crie uma estrutura objetiva de landing page em português (título, subtítulo, 3 seções e chamada para WhatsApp) para: ' + prompt)}`);
-        const text = await res.text();
-        box.textContent = text;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(String(text).slice(0, 320));
+        u.lang = appState.lang === "en" ? "en-US" : "pt-BR";
+        window.speechSynthesis.speak(u);
+      } catch (e) {}
+    }
+
+    function formatBrl(v) {
+      return Number(v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    // ==================== PUBLIC NO-KEY AI ENGINE + OFFLINE FALLBACK ====================
+    async function askFreeAi(systemPrompt, userPrompt, fallbackBuilder) {
+      const langRule = appState.lang === "en"
+        ? "Reply clearly in English."
+        : "Responda de forma clara, direta e bem organizada em Português do Brasil.";
+      const fullPrompt = `${systemPrompt}\n${langRule}\n\nPedido: ${userPrompt}`;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 18000);
+      try {
+        const url = "https://text.pollinations.ai/" + encodeURIComponent(fullPrompt);
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const txt = (await res.text()).trim();
+        if (!txt || txt.startsWith("<!DOCTYPE") || txt.includes("502 Bad Gateway")) {
+          throw new Error("Invalid body");
+        }
+        return txt;
       } catch (err) {
-        box.textContent = `✅ Estrutura Base para: ${prompt}\n\n1. Cabeçalho: Título forte + Botão WhatsApp direto\n2. Serviços/Produtos: Destaque dos 3 principais diferenciais\n3. Prova Social e Localização: Atendimento rápido e contato direto.`;
+        clearTimeout(timeoutId);
+        return fallbackBuilder ? fallbackBuilder(userPrompt) : buildLocalAiFallback(systemPrompt, userPrompt);
       }
     }
 
-    const toolCategories = ['Texto & Copy', 'Código & Apps', 'Negócios & Vendas', 'Segurança & Dados', 'Vídeo & Social'];
-    const baseNames = [
-      'Gerador de Copy para Vendas', 'Detector de Phishing', 'Criador de Roteiro TikTok', 'Gerador de HTML Único',
-      'Analisador de Contratos', 'Calculadora de Margem', 'Gerador de Prompts IA', 'Resumo Executivo',
-      'Validador de Pix e Boleto', 'Criador de Bio Profissional', 'Otimizador de SEO', 'Gerador de SQL',
-      'Planejador de Conteúdo', 'Criador de Proposta Comercial', 'Tradutor Técnico', 'Corretor de Código JS',
-      'Gerador de Nome de Marca', 'Script de Atendimento WhatsApp', 'Checklist de Segurança', 'Ideias de Aplicativos'
-    ];
-    const allTools = Array.from({ length: 100 }, (_, i) => ({
-      id: i + 1,
-      cat: toolCategories[i % toolCategories.length],
-      name: `${baseNames[i % baseNames.length]} #${i + 1}`
-    }));
-
-    function renderTools(list) {
-      const grid = document.getElementById('toolsGrid');
-      grid.innerHTML = list.map(t => `
-        <button class="tool-chip" onclick="runTool(${t.id}, '${t.name}')">
-          <span>${t.cat}</span>
-          ${t.name}
-        </button>
-      `).join('');
+    function buildLocalAiFallback(role, prompt) {
+      return t(
+        `[Modo Reserva Local Ativo]\nEspecialista: ${role}\n\nAnálise pronta para: "${prompt}"\n\n1. Objetivo identificado com clareza.\n2. Passo prático recomendado: divida a execução em etapas curtas, defina prazo e valide os recursos necessários.\n3. Próxima ação: salve este plano no histórico ou use as ferramentas de Orçamento, Contratos e Plantas 3D na aba Utilidades.`,
+        `[Local Reserve Mode Active]\nSpecialist: ${role}\n\nStructured analysis for: "${prompt}"\n\n1. Goal clearly identified.\n2. Recommended next steps: break into clear milestones, set deadlines, and verify required resources.\n3. Tip: save to history or combine with Quotes, Contracts, and 3D Blueprints in Tools.`
+      );
     }
 
-    function filterTools() {
-      const q = document.getElementById('toolSearch').value.toLowerCase();
-      renderTools(allTools.filter(t => t.name.toLowerCase().includes(q) || t.cat.toLowerCase().includes(q)));
+    function buildFreeImageUrl(prompt, width = 768, height = 768) {
+      const seed = Math.floor(Math.random() * 999999);
+      return `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${width}&height=${height}&nologo=true&seed=${seed}`;
     }
 
-    function runTool(id, name) {
-      const res = document.getElementById('toolResult');
-      res.style.display = 'block';
-      res.textContent = `⚡ Ferramenta #${id} (${name}) ativada!\nUse o Assistente Universal por Voz acima ou descreva sua tarefa para executar.`;
+    function createSvgFallbackDataUrl(title, subtitle, accent = "#00e5ff", isBlueprint = false) {
+      const bg = isBlueprint ? "#071b34" : "#0b1220";
+      const grid = isBlueprint
+        ? `<defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(0,229,255,0.2)" stroke-width="1"/></pattern></defs><rect width="600" height="600" fill="url(#g)"/>
+           <rect x="70" y="90" width="460" height="360" fill="none" stroke="${accent}" stroke-width="4"/>
+           <line x1="250" y1="90" x2="250" y2="450" stroke="${accent}" stroke-width="3"/>
+           <line x1="70" y1="260" x2="530" y2="260" stroke="${accent}" stroke-width="3"/>
+           <text x="115" y="180" fill="#e2e8f0" font-size="18" font-family="sans-serif">SALA / HALL</text>
+           <text x="320" y="180" fill="#e2e8f0" font-size="18" font-family="sans-serif">ÁREA TÉCNICA</text>
+           <text x="115" y="360" fill="#e2e8f0" font-size="18" font-family="sans-serif">SUÍTE / AMBIENTE</text>
+           <text x="320" y="360" fill="#e2e8f0" font-size="18" font-family="sans-serif">COZINHA / VARANDA</text>`
+        : `<circle cx="300" cy="240" r="125" fill="none" stroke="${accent}" stroke-width="8"/>
+           <polygon points="300,145 385,300 215,300" fill="none" stroke="#10f5a0" stroke-width="6"/>`;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+        <rect width="600" height="600" fill="${bg}"/>
+        ${grid}
+        <text x="300" y="510" text-anchor="middle" fill="${accent}" font-size="24" font-weight="bold" font-family="sans-serif">${title.replace(/[<>&]/g,"").slice(0,34)}</text>
+        <text x="300" y="545" text-anchor="middle" fill="#94a3b8" font-size="15" font-family="sans-serif">${subtitle.replace(/[<>&]/g,"").slice(0,48)}</text>
+      </svg>`;
+      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
     }
 
-    renderTools(allTools);
-
-    function setAlarm() {
-      const time = document.getElementById('alarmTime').value;
-      const status = document.getElementById('alarmStatus');
-      if (!time) return;
-      status.style.display = 'block';
-      status.textContent = `⏰ Alarme programado para ${time}. Mantenha a aba aberta para o aviso sonoro.`;
-    }
-
-    function runCalc() {
-      const expr = document.getElementById('calcExpr').value.replace(/[^0-9+\-*/().%\s]/g, '');
-      const status = document.getElementById('calcStatus');
-      try {
-        const val = Function(`"use strict"; return (${expr})`)();
-        status.style.display = 'block';
-        status.textContent = `Resultado: ${val}`;
-      } catch (e) {
-        status.style.display = 'block';
-        status.textContent = 'Expressão inválida.';
-      }
-    }
-
-    let recognition = null;
-    function toggleVoiceAssistant() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const out = document.getElementById('voiceOutput');
-      const btn = document.getElementById('voiceBtn');
-      const label = document.getElementById('voiceBtnLabel');
-
-      if (!SpeechRecognition) {
-        out.textContent = 'Seu navegador não suporta reconhecimento de voz nativo. Use os botões abaixo.';
+    // ==================== VOICE INPUT HELPER ====================
+    function startVoiceFor(inputId, onDone) {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) {
+        showToast(t("Microfone por voz não suportado neste navegador. Digite no campo.", "Speech recognition unavailable in this browser. Type in the box."));
         return;
       }
-
-      if (!recognition) {
-        recognition = new SpeechRecognition();
-        recognition.lang = 'pt-BR';
-        recognition.interimResults = false;
-
-        recognition.onstart = () => {
-          btn.classList.add('listening');
-          label.textContent = 'Ouvindo... Fale agora';
-        };
-
-        recognition.onend = () => {
-          btn.classList.remove('listening');
-          label.textContent = 'Assistente Universal por Voz • Toque e Fale';
-        };
-
-        recognition.onresult = (event) => {
-          const cmd = event.results[0][0].transcript.toLowerCase();
-          out.textContent = `Você disse: "${cmd}"`;
-
-          if (cmd.includes('antivírus') || cmd.includes('link') || cmd.includes('pix') || cmd.includes('boleto')) {
-            switchTab('antivirus');
-          } else if (cmd.includes('site') || cmd.includes('criar')) {
-            switchTab('sites');
-          } else if (cmd.includes('ferramenta') || cmd.includes('cem') || cmd.includes('100')) {
-            switchTab('tools');
-          } else if (cmd.includes('clima') || cmd.includes('tempo')) {
-            updateWeather();
-          } else if (cmd.includes('despertador') || cmd.includes('alarme')) {
-            openModal('alarmModal');
-          } else if (cmd.includes('calculadora') || cmd.includes('calcular')) {
-            openModal('calcModal');
-          }
-        };
-      }
-
-      recognition.start();
+      const rec = new SR();
+      rec.lang = appState.lang === "en" ? "en-US" : "pt-BR";
+      rec.interimResults = false;
+      showToast(t("🎙 Ouvindo... pode falar agora!", "🎙 Listening... speak now!"));
+      rec.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        const el = document.getElementById(inputId);
+        if (el) el.value = transcript;
+        showToast("🎙 " + transcript);
+        if (onDone) onDone(transcript);
+      };
+      rec.onerror = () => showToast(t("Não foi possível captar áudio. Tente novamente.", "Could not capture audio. Try again."));
+      rec.start();
     }
-  </script>
 
-  <!-- Adsterra Social Bar (SocialBar_1) -->
-  <script data-cfasync="false" src="https://bauval.org/14/1100f4014ba9e6d9ceb7252112823097"></script>
+    // ==================== 100 AGENTS CATALOG ====================
+    const CATEGORIES = [
+      { id: "all", pt: "Todos (100)", en: "All (100)" },
+      { id: "assist", pt: "Assistência", en: "Assistance" },
+      { id: "design", pt: "Imagem & Arte", en: "Design & Art" },
+      { id: "video", pt: "Vídeo & Mídia", en: "Video & Media" },
+      { id: "finance", pt: "Finanças", en: "Finance" },
+      { id: "edu", pt: "Educação", en: "Education" },
+      { id: "science", pt: "Clima & Ciência", en: "Science" },
+      { id: "sports", pt: "Esportes", en: "Sports" },
+      { id: "security", pt: "Segurança", en: "Security" },
+      { id: "health", pt: "Saúde", en: "Health" },
+      { id: "dev", pt: "Programação", en: "Coding & Dev" }
+    ];
+
+    const CATEGORY_AGENT_SPECS = {
+      assist: ["⚡", ["Assistente Geral Nexus","Pesquisador Rápido","Tradutor Fluente","Redator de E-mails","Resumidor Executivo","Organizador de Rotina","Planejador de Viagens","Criador de Listas","Conselheiro Prático","Revisor de Textos"]],
+      design: ["🎨", ["Gerador de Imagens","Estúdio de Logotipos","Editor Criativo","Ilustrador 2D/3D","Designer de Fachadas","Arquiteto de Interiores","Criador de Flyers","Identidade Visual","Designer de Banners","Diretor de Arte"]],
+      video: ["🎬", ["Roteirista Viral","Diretor de Comerciais","Criador de Legendas","Estrategista TikTok","Estrategista YouTube","Produtor de Podcasts","Ideias de Reels","Narrador Criativo","Editor de Roteiros","Social Media Pro"]],
+      finance: ["💼", ["Consultor Financeiro","Gestor de Orçamentos","Planejador de Dívidas","Analista de Lucro","Mentor de Investimentos","Criador de Negócios","Especialista em Vendas","Precificador de Serviços","Contador MEI","Negociador Comercial"]],
+      edu: ["📚", ["Professor de Matemática","Professor de Português","Tutor de Inglês","Mentor de Física","Mentor de Química","Professor de História","Professor de Geografia","Corretor de Redação","Coach de Estudos","Simulador de Provas"]],
+      science: ["🌍", ["Meteorologista IA","Engenheiro Civil IA","Engenheiro Elétrico","Especialista Solar","Agrônomo Digital","Analista Ambiental","Astrônomo Guia","Curiosidades Científicas","Biologia Prática","Química do Dia a Dia"]],
+      sports: ["⚽", ["Analista de Futebol","Personal Trainer IA","Coach de Corrida","Tática Esportiva","Preparador Físico","Guia de Musculação","Alongamento & Postura","Nutrição Esportiva","Treino em Casa","Ciclismo & Resistência"]],
+      security: ["🛡️", ["Detector de Links","Escudo Anti-Golpes","Consultor de Senhas","Privacidade Android","Segurança Bancária","Auditoria Wi-Fi","Proteção WhatsApp","Backup & Nuvem","Direito do Consumidor","Verificador de Contratos"]],
+      health: ["❤️", ["Guia de Bem-Estar","Planejador de Cardápio","Coach do Sono","Controle de Estresse","Hidratação & Hábitos","Receitas Saudáveis","Guia de Ergonomia","Mindfulness Diário","Primeiros Socorros Guia","Qualidade de Vida"]],
+      dev: ["💻", ["Criador de Sites","Criador de Apps Android","Especialista Python","Especialista JavaScript","Designer UI/UX","Mestre CSS Moderno","Automação & APIs","Caçador de Bugs","Arquiteto de Banco SQL","Engenheiro de Software"]]
+    };
+
+    function buildBaseAgents() {
+      const list = [];
+      let num = 1;
+      Object.entries(CATEGORY_AGENT_SPECS).forEach(([catId, [emoji, names]]) => {
+        names.forEach((name) => {
+          list.push({
+            id: "ag_" + String(num).padStart(3, "0"),
+            name,
+            category: catId,
+            emoji,
+            desc: `Especialista #${num} pronto para orientar, criar planos e resolver tarefas em ${name}.`
+          });
+          num++;
+        });
+      });
+      return list;
+    }
+
+    const BASE_AGENTS = buildBaseAgents();
+    let selectedCategory = "all";
+    let activeChatAgent = null;
+    let activeChatLog = [];
+
+    function getAllAgents() {
+      return [...appState.customAgents, ...BASE_AGENTS];
+    }
+
+    function renderCategoryChips() {
+      const wrap = document.getElementById("categoryChips");
+      wrap.innerHTML = CATEGORIES.map(c => `
+        <button class="chip ${selectedCategory === c.id ? "active" : ""}" onclick="selectCategory('${c.id}')">${t(c.pt, c.en)}</button>
+      `).join("");
+    }
+
+    function selectCategory(catId) {
+      selectedCategory = catId;
+      renderCategoryChips();
+      renderAgents();
+    }
+
+    function renderAgents() {
+      const q = (document.getElementById("agentSearchInput").value || "").toLowerCase().trim();
+      const filtered = getAllAgents().filter(a => {
+        const matchCat = selectedCategory === "all" || a.category === selectedCategory;
+        const matchQ = !q || a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+      document.getElementById("agentCountLabel").textContent = t(
+        `Mostrando ${filtered.length} agentes prontos`,
+        `Showing ${filtered.length} ready agents`
+      );
+      document.getElementById("agentsGrid").innerHTML = filtered.map(a => `
+        <div class="agent-card" onclick="openAgentChat('${a.id}')">
+          <div class="agent-top">
+            <div class="agent-emoji">${a.emoji}</div>
+            <span class="badge">${a.id.toUpperCase()}</span>
+          </div>
+          <div class="agent-name">${a.name}</div>
+          <div class="agent-desc">${a.desc}</div>
+        </div>
+      `).join("");
+    }
+
+    function toggleCustomAgentForm() {
+      document.getElementById("customAgentBox").classList.toggle("hidden");
+    }
+
+    function saveCustomAgent() {
+      const name = document.getElementById("customAgentName").value.trim();
+      const role = document.getElementById("customAgentRole").value.trim();
+      if (!name) return showToast(t("Digite o nome do agente.", "Enter an agent name."));
+      const agent = {
+        id: "custom_" + Date.now().toString().slice(-4),
+        name,
+        category: "assist",
+        emoji: "⭐",
+        desc: role || "Agente personalizado criado no NEXUS IA .2."
+      };
+      appState.customAgents.unshift(agent);
+      saveState();
+      document.getElementById("customAgentName").value = "";
+      document.getElementById("customAgentRole").value = "";
+      document.getElementById("customAgentBox").classList.add("hidden");
+      renderAgents();
+      showToast(t("Agente criado com sucesso!", "Custom agent saved!"));
+    }
+
+    // ==================== AGENT CHAT MODAL ====================
+    function openAgentChat(agentId) {
+      const agent = getAllAgents().find(a => a.id === agentId);
+      if (!agent) return;
+      activeChatAgent = agent;
+      activeChatLog = [{
+        sender: "ai",
+        text: t(
+          `Olá! Sou o ${agent.name} do NEXUS IA .2. Como posso ajudar você agora?`,
+          `Hello! I am ${agent.name} from NEXUS IA .2. How can I help you today?`
+        )
+      }];
+      document.getElementById("chatAgentName").textContent = `${agent.emoji} ${agent.name}`;
+      document.getElementById("chatAgentRole").textContent = agent.desc;
+      document.getElementById("chatModal").classList.add("open");
+      renderChatMessages();
+    }
+
+    function closeChatModal() {
+      document.getElementById("chatModal").classList.remove("open");
+    }
+
+    function renderChatMessages() {
+      const box = document.getElementById("chatMessages");
+      box.innerHTML = activeChatLog.map(m => `<div class="msg ${m.sender}">${escapeHtml(m.text)}</div>`).join("");
+      box.scrollTop = box.scrollHeight;
+    }
+
+    async function sendChatMessage() {
+      const inp = document.getElementById("chatInput");
+      const text = inp.value.trim();
+      if (!text || !activeChatAgent) return;
+      inp.value = "";
+      activeChatLog.push({ sender: "user", text });
+      activeChatLog.push({ sender: "ai", text: t("⏳ Pensando...", "⏳ Thinking...") });
+      renderChatMessages();
+
+      const btn = document.getElementById("chatSendBtn");
+      btn.disabled = true;
+      const reply = await askFreeAi(
+        `Você é o agente especialista ${activeChatAgent.name} (${activeChatAgent.desc}) dentro do app NEXUS IA .2.`,
+        text
+      );
+      activeChatLog[activeChatLog.length - 1] = { sender: "ai", text: reply };
+      btn.disabled = false;
+      renderChatMessages();
+      saveToHistory(`${activeChatAgent.emoji} ${activeChatAgent.name}`, text, reply);
+      speak(reply);
+    }
+
+    function speakLastAiMsg() {
+      const last = [...activeChatLog].reverse().find(m => m.sender === "ai");
+      if (last) speak(last.text);
+    }
+
+    // ==================== NEXUS SQUAD ====================
+    async function runNexusSquad() {
+      const mission = document.getElementById("squadInput").value.trim();
+      if (!mission) return showToast(t("Digite uma missão para o NEXUS SQUAD.", "Enter a mission for NEXUS SQUAD."));
+      const out = document.getElementById("squadOutput");
+      const btn = document.getElementById("squadRunBtn");
+      out.classList.remove("hidden");
+      out.textContent = t("⚡ Reunindo 3 especialistas (Estrategista, Técnico e Financeiro)...", "⚡ Assembling 3 specialists...");
+      btn.disabled = true;
+      const reply = await askFreeAi(
+        "Você coordena o NEXUS SQUAD com 3 agentes especialistas: 1) Estrategista, 2) Executor Técnico, 3) Analista Financeiro. Apresente um plano objetivo dividido entre os 3 agentes.",
+        mission,
+        (m) => `⚡ NEXUS SQUAD — Missão: ${m}\n\n1️⃣ [Estrategista]: Estruturar escopo em 3 fases claras com entrega rápida na primeira semana.\n2️⃣ [Executor Técnico]: Utilizar as ferramentas integradas (Plantas 3D, Orçamentos e Contratos) para padronizar o projeto.\n3️⃣ [Financeiro]: Separar custos fixos, margem de 30% e registrar entradas/saídas no Controle Financeiro por Voz.`
+      );
+      out.textContent = reply;
+      btn.disabled = false;
+      saveToHistory("⚡ NEXUS SQUAD", mission, reply);
+      speak(reply);
+    }
+
+    // ==================== QUICK TOOLS & NAVIGATION ====================
+    const TOOLS = [
+      { id: "architecture", ico: "🏗️", pt: "Plantas 3D", en: "3D Plans", subPt: "Projeto & obra", subEn: "Plans & 3D" },
+      { id: "sound", ico: "🔊", pt: "Som & Voz", en: "Sound DJ", subPt: "Bluetooth", subEn: "Voice music" },
+      { id: "quotes", ico: "📋", pt: "Orçamentos", en: "Quotes", subPt: "Serviços PDF", subEn: "PDF quotes" },
+      { id: "contracts", ico: "✍️", pt: "Contratos", en: "Contracts", subPt: "Assinar tela", subEn: "Sign PDF" },
+      { id: "finance", ico: "💰", pt: "Finanças Voz", en: "Finance", subPt: "Saldo & voz", subEn: "Voice log" },
+      { id: "brand", ico: "🎨", pt: "Logos & Arte", en: "Brand Studio", subPt: "Logo/cartão", subEn: "Logo & card" },
+      { id: "field", ico: "🧭", pt: "Nível & Obra", en: "Field Tools", subPt: "Bússola/m²", subEn: "Level & conv" },
+      { id: "reader", ico: "📷", pt: "Leitor QR", en: "QR Reader", subPt: "PIX & barras", subEn: "Scan codes" },
+      { id: "qr", ico: "⬛", pt: "Gerador QR", en: "QR Studio", subPt: "Link/Wi-Fi", subEn: "Create QR" },
+      { id: "clock", ico: "⏰", pt: "Relógio", en: "Clock", subPt: "Alarmes", subEn: "Alarms" },
+      { id: "calc", ico: "🧮", pt: "Calculadora", en: "Calculator", subPt: "Com voz", subEn: "Voice math" },
+      { id: "weather", ico: "🌤️", pt: "Previsão", en: "Weather", subPt: "Clima real", subEn: "Live weather" },
+      { id: "camera", ico: "📸", pt: "Câmera IA", en: "AI Camera", subPt: "Visão foto", subEn: "Photo AI" },
+      { id: "translator", ico: "🌍", pt: "Tradutor", en: "Translator", subPt: "Voz ao vivo", subEn: "Live voice" },
+      { id: "scanner", ico: "📑", pt: "Scanner Doc", en: "Doc Scanner", subPt: "Resumir IA", subEn: "Summarize" },
+      { id: "notes", ico: "📝", pt: "Notas Voz", en: "Voice Notes", subPt: "Ideias IA", subEn: "AI notes" },
+      { id: "quiz", ico: "🏆", pt: "Quiz IA", en: "AI Quiz", subPt: "Jogo pontos", subEn: "Trivia game" },
+      { id: "pomodoro", ico: "⏱️", pt: "Modo Foco", en: "Focus Timer", subPt: "Pomodoro", subEn: "Timer" }
+    ];
+
+    let activeToolId = "architecture";
+
+    function renderQuickStripAndToolTabs() {
+      document.getElementById("quickToolsStrip").innerHTML = TOOLS.map(item => `
+        <button class="quick-card" onclick="openTool('${item.id}')">
+          <div class="quick-ico">${item.ico}</div>
+          <div>
+            <div style="font-size:12px;font-weight:800;">${t(item.pt, item.en)}</div>
+            <div style="font-size:10px;color:var(--text-2);">${t(item.subPt, item.subEn)}</div>
+          </div>
+        </button>
+      `).join("");
+
+      document.getElementById("toolTabsBar").innerHTML = TOOLS.map(item => `
+        <button class="chip ${activeToolId === item.id ? "active" : ""}" onclick="selectToolTab('${item.id}')">${item.ico} ${t(item.pt, item.en)}</button>
+      `).join("");
+    }
+
+    function switchMainPage(page) {
+      ["agents", "tools", "history", "profile"].forEach(p => {
+        document.getElementById("page-" + p).classList.toggle("hidden", p !== page);
+        document.getElementById("nav-" + p).classList.toggle("active", p === page);
+      });
+      if (page === "history") renderHistory();
+      if (page === "profile") updateProfileStats();
+      if (page === "tools") selectToolTab(activeToolId);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function openTool(toolId) {
+      activeToolId = toolId;
+      switchMainPage("tools");
+    }
+
+    function selectToolTab(toolId) {
+      activeToolId = toolId;
+      document.querySelectorAll(".tool-panel").forEach(el => el.classList.add("hidden"));
+      const target = document.getElementById("tool-" + toolId);
+      if (target) target.classList.remove("hidden");
+      renderQuickStripAndToolTabs();
+      if (toolId === "contracts") resizeSignatureCanvas();
+      if (toolId === "field") { drawLevel(); drawCompass(currentHeading); }
+    }
+
+    // ==================== TOOL 1: ARCHITECTURE & 3D ====================
+    function fillArchPreset(type, dim, floors, style, desc) {
+      document.getElementById("archType").value = type;
+      document.getElementById("archDim").value = dim;
+      document.getElementById("archFloors").value = floors;
+      document.getElementById("archStyle").value = style;
+      document.getElementById("archDesc").value = desc;
+    }
+
+    async function generateArchitectureProject() {
+      const type = document.getElementById("archType").value.trim() || "Edifício";
+      const style = document.getElementById("archStyle").value.trim() || "Moderno";
+      const dim = document.getElementById("archDim").value.trim() || "15m x 30m";
+      const floors = document.getElementById("archFloors").value.trim() || "2 pavimentos";
+      const desc = document.getElementById("archDesc").value.trim();
+      const btn = document.getElementById("archGenBtn");
+      const out = document.getElementById("archPlanResult");
+      btn.disabled = true;
+      out.classList.remove("hidden");
+      out.textContent = t("📐 Calculando planta arquitetônica e gerando visualização 3D...", "📐 Generating floor plan & 3D render...");
+
+      const plan = await askFreeAi(
+        "Você é um Arquiteto e Engenheiro Civil do NEXUS IA .2. Gere um memorial descritivo objetivo com distribuição de ambientes, metragem estimada, materiais principais e etapas da obra.",
+        `Projeto: ${type}, Estilo: ${style}, Medidas: ${dim}, Pavimentos: ${floors}. Detalhes: ${desc}`,
+        () => `🏗️ MEMORIAL ARQUITETÔNICO — ${type.toUpperCase()}\nEstilo: ${style} | Medidas: ${dim} | Pavimentos: ${floors}\n\n• Distribuição: Hall principal, circulação vertical, áreas sociais integradas, unidades/ambientes bem ventilados e área técnica.\n• Estrutura: Concreto armado, laje nervurada, esquadrias de alumínio com vidro temperado e isolamento termoacústico.\n• Etapas: 1) Fundação e sondagem → 2) Estrutura e lajes → 3) Alvenaria e instalações → 4) Fachada e acabamento final.`
+      );
+      out.textContent = plan;
+
+      const floorUrl = buildFreeImageUrl(`Clean top-down 2D CAD architectural floor plan blueprint of ${type}, ${style} style, ${floors}, ${desc}, crisp blue technical lines, rooms layout`, 768, 768);
+      const renderUrl = buildFreeImageUrl(`Photorealistic 3D architectural exterior visualization of completed ${type}, ${style} style, ${floors}, ${desc}, golden hour sunlight, modern facade, landscaping`, 768, 768);
+
+      const fImg = document.getElementById("archFloorImg");
+      const rImg = document.getElementById("archRenderImg");
+      fImg.onerror = () => { fImg.src = createSvgFallbackDataUrl("PLANTA BAIXA", `${type} (${dim})`, "#00e5ff", true); };
+      rImg.onerror = () => { rImg.src = createSvgFallbackDataUrl("RENDER 3D PRONTO", `${type} - ${style}`, "#10f5a0", false); };
+      fImg.src = floorUrl;
+      rImg.src = renderUrl;
+      document.getElementById("archFloorDl").href = floorUrl;
+      document.getElementById("archRenderDl").href = renderUrl;
+      document.getElementById("archImagesWrap").classList.remove("hidden");
+      btn.disabled = false;
+      saveToHistory("🏗️ Planta & 3D", `${type} (${dim})`, plan);
+      speak(t("Planta baixa e visualização 3D prontas.", "Floor plan and 3D render are ready."));
+    }
+
+    // ==================== TOOL 2: BLUETOOTH SOUND & MUSIC ====================
+    let audioCtx = null;
+    let testOsc = null;
+    let testGain = null;
+    let soundVolume = 0.75;
+
+    function openMusicPlatform(platform) {
+      const q = encodeURIComponent(document.getElementById("musicQuery").value.trim() || "Top Hits Brasil");
+      const url = platform === "spotify"
+        ? `https://open.spotify.com/search/${q}`
+        : platform === "ytm"
+          ? `https://music.youtube.com/search?q=${q}`
+          : `https://www.youtube.com/results?search_query=${q}`;
+      window.open(url, "_blank");
+    }
+
+    function updateSoundVol(v) {
+      soundVolume = Number(v) / 100;
+      document.getElementById("soundVolLbl").textContent = v + "%";
+      if (testGain) testGain.gain.value = soundVolume * 0.25;
+    }
+
+    function toggleSoundTest() {
+      const btn = document.getElementById("soundTestBtn");
+      if (testOsc) {
+        testOsc.stop();
+        testOsc = null;
+        btn.textContent = "🔈 Testar Caixa de Som";
+        return;
+      }
+      try {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        testOsc = audioCtx.createOscillator();
+        testGain = audioCtx.createGain();
+        testOsc.type = "sine";
+        testOsc.frequency.setValueAtTime(432, audioCtx.currentTime);
+        testGain.gain.value = soundVolume * 0.25;
+        testOsc.connect(testGain);
+        testGain.connect(audioCtx.destination);
+        testOsc.start();
+        btn.textContent = "🔇 Parar Teste de Som";
+        showToast(t("Tom de teste ativo no áudio/Bluetooth conectado.", "Audio test tone playing on active Bluetooth/speaker."));
+      } catch (e) {
+        showToast("Áudio bloqueado pelo navegador.");
+      }
+    }
+
+    async function searchMusicWithAi() {
+      const q = document.getElementById("musicQuery").value.trim() || "Sertanejo e Eletrônica para churrasco";
+      const box = document.getElementById("musicResults");
+      box.innerHTML = `<div class="result-box">🎧 Buscando músicas para "${escapeHtml(q)}"...</div>`;
+      const txt = await askFreeAi(
+        "Você é o DJ IA do NEXUS IA .2. Liste exatamente 5 músicas reais no formato 'Artista - Música' (uma por linha, sem numeração extra) que combinam com o pedido.",
+        q,
+        () => `Alok - Hear Me Now\nGusttavo Lima - Balada\nJorge & Mateus - Pode Chorar\nHenrique & Juliano - Liberdade Provisória\nColdplay - Viva La Vida`
+      );
+      const lines = txt.split("\n").map(s => s.replace(/^[\d\-\.\)\*\s]+/, "").trim()).filter(Boolean).slice(0, 6);
+      box.innerHTML = lines.map(song => `
+        <div class="list-item">
+          <div>
+            <strong>🎵 ${escapeHtml(song)}</strong>
+            <div class="text-muted">Toque para abrir no aparelho de som</div>
+          </div>
+          <div class="row" style="flex:0 0 auto;">
+            <button class="btn btn-cyan btn-sm" onclick="window.open('https://music.youtube.com/search?q='+encodeURIComponent('${song.replace(/'/g,"")}'),'_blank')">YT</button>
+            <button class="btn btn-mint btn-sm" onclick="window.open('https://open.spotify.com/search/'+encodeURIComponent('${song.replace(/'/g,"")}'),'_blank')">SP</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // ==================== TOOL 3: AI QUOTES ====================
+    function renderQuoteItems() {
+      const list = document.getElementById("quoteItemsList");
+      list.innerHTML = appState.quoteItems.map((it, idx) => `
+        <div class="list-item">
+          <div>
+            <strong>${idx + 1}. ${escapeHtml(it.desc)}</strong>
+            <div class="text-muted">${it.qty} × ${formatBrl(it.price)} = <span class="text-mint">${formatBrl(it.qty * it.price)}</span></div>
+          </div>
+          <button class="btn btn-red btn-sm" onclick="removeQuoteItem(${idx})">✕</button>
+        </div>
+      `).join("");
+
+      const subtotal = appState.quoteItems.reduce((acc, it) => acc + it.qty * it.price, 0);
+      const discPct = Math.max(0, Math.min(100, Number(document.getElementById("qDiscount").value || 0)));
+      const discVal = subtotal * (discPct / 100);
+      const total = subtotal - discVal;
+      document.getElementById("quoteTotalBox").textContent =
+        `Subtotal: ${formatBrl(subtotal)}\nDesconto (${discPct}%): -${formatBrl(discVal)}\nTOTAL FINAL: ${formatBrl(total)}`;
+    }
+
+    function addQuoteItem() {
+      const desc = document.getElementById("qItemDesc").value.trim();
+      const qty = Number(document.getElementById("qItemQty").value || 1);
+      const price = Number(document.getElementById("qItemPrice").value || 0);
+      if (!desc) return showToast("Informe a descrição do item.");
+      appState.quoteItems.push({ desc, qty: qty > 0 ? qty : 1, price: price >= 0 ? price : 0 });
+      saveState();
+      document.getElementById("qItemDesc").value = "";
+      renderQuoteItems();
+    }
+
+    function removeQuoteItem(idx) {
+      appState.quoteItems.splice(idx, 1);
+      saveState();
+      renderQuoteItems();
+    }
+
+    async function generateAiQuote() {
+      const prompt = document.getElementById("qServicePrompt").value.trim();
+      if (!prompt) return showToast("Descreva o serviço para a IA montar o orçamento.");
+      showToast("✨ IA montando itens do orçamento...");
+      const txt = await askFreeAi(
+        "Gere exatamente 4 linhas de orçamento no formato exato: Descricao|Quantidade|PrecoUnitarioNumero (ex.: Mao de obra instalacao|1|450). Sem texto adicional.",
+        prompt,
+        () => `Visita técnica e diagnóstico|1|120\nMão de obra especializada (${prompt})|1|650\nMateriais e insumos principais|1|380\nAcabamento, testes e garantia 90 dias|1|150`
+      );
+      const parsed = txt.split("\n").map(l => l.split("|")).filter(p => p.length >= 3).map(p => ({
+        desc: p[0].replace(/^[\d\-\.\*\s]+/, "").trim(),
+        qty: parseFloat(p[1].replace(",", ".")) || 1,
+        price: parseFloat(p[2].replace(/[^\d.,]/g, "").replace(",", ".")) || 150
+      })).filter(it => it.desc);
+      if (parsed.length) {
+        appState.quoteItems = parsed;
+        saveState();
+        renderQuoteItems();
+        showToast("Orçamento preenchido pela IA!");
+      }
+    }
+
+    function buildQuoteShareText() {
+      const prov = document.getElementById("qProvider").value.trim();
+      const cli = document.getElementById("qClient").value.trim();
+      const itemsTxt = appState.quoteItems.map((it, i) => `${i + 1}. ${it.desc} (${it.qty} x ${formatBrl(it.price)} = ${formatBrl(it.qty * it.price)})`).join("\n");
+      const totals = document.getElementById("quoteTotalBox").textContent;
+      return `*ORÇAMENTO PROFISSIONAL — NEXUS IA .2*\nPrestador: ${prov}\nCliente: ${cli}\n\n${itemsTxt}\n\n${totals}`;
+    }
+
+    function shareQuoteWhatsApp() {
+      window.open("https://wa.me/?text=" + encodeURIComponent(buildQuoteShareText()), "_blank");
+    }
+
+    function printDocument() {
+      window.print();
+    }
+
+    // ==================== TOOL 4: CONTRACTS & RECEIPTS + SIGNATURE ====================
+    let isReceiptMode = false;
+    let sigCtx = null;
+    let sigDrawing = false;
+    let hasSigned = false;
+
+    function setDocMode(receipt) {
+      isReceiptMode = receipt;
+      document.getElementById("btnTypeContract").classList.toggle("active", !receipt);
+      document.getElementById("btnTypeReceipt").classList.toggle("active", receipt);
+    }
+
+    function resizeSignatureCanvas() {
+      const canvas = document.getElementById("signaturePad");
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width > 0 && canvas.width !== Math.floor(rect.width)) {
+        canvas.width = Math.floor(rect.width);
+        canvas.height = 155;
+      }
+      sigCtx = canvas.getContext("2d");
+      sigCtx.strokeStyle = "#0f172a";
+      sigCtx.lineWidth = 3;
+      sigCtx.lineCap = "round";
+      sigCtx.lineJoin = "round";
+    }
+
+    function initSignaturePad() {
+      const canvas = document.getElementById("signaturePad");
+      const getPos = (e) => {
+        const r = canvas.getBoundingClientRect();
+        const touch = e.touches ? e.touches[0] : e;
+        return { x: touch.clientX - r.left, y: touch.clientY - r.top };
+      };
+      const start = (e) => {
+        e.preventDefault();
+        resizeSignatureCanvas();
+        sigDrawing = true;
+        hasSigned = true;
+        const p = getPos(e);
+        sigCtx.beginPath();
+        sigCtx.moveTo(p.x, p.y);
+      };
+      const move = (e) => {
+        if (!sigDrawing) return;
+        e.preventDefault();
+        const p = getPos(e);
+        sigCtx.lineTo(p.x, p.y);
+        sigCtx.stroke();
+      };
+      const end = () => { sigDrawing = false; };
+      canvas.addEventListener("mousedown", start);
+      canvas.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", end);
+      canvas.addEventListener("touchstart", start, { passive: false });
+      canvas.addEventListener("touchmove", move, { passive: false });
+      canvas.addEventListener("touchend", end);
+    }
+
+    function clearSignature() {
+      const canvas = document.getElementById("signaturePad");
+      if (sigCtx) sigCtx.clearRect(0, 0, canvas.width, canvas.height);
+      hasSigned = false;
+    }
+
+    async function generateContractDoc() {
+      const prov = document.getElementById("cProvider").value.trim() || "Prestador";
+      const cli = document.getElementById("cClient").value.trim() || "Cliente";
+      const val = document.getElementById("cAmount").value.trim() || "A combinar";
+      const pay = document.getElementById("cPayment").value.trim() || "PIX";
+      const desc = document.getElementById("cDesc").value.trim();
+      const kind = isReceiptMode ? "RECIBO DE PAGAMENTO" : "CONTRATO DE PRESTAÇÃO DE SERVIÇOS";
+      const box = document.getElementById("contractPreview");
+      box.classList.remove("hidden");
+      box.textContent = "✍️ Redigindo documento formal com IA...";
+
+      const doc = await askFreeAi(
+        `Redija um ${kind} formal, completo, organizado em cláusulas claras, pronto para impressão e assinatura.`,
+        `Emissor/Prestador: ${prov} | Cliente: ${cli} | Valor: ${val} | Pagamento: ${pay} | Objeto: ${desc}`,
+        () => `${kind}\nData: ${new Date().toLocaleDateString("pt-BR")}\n\nPARTES: ${prov} (Emissor/Prestador) e ${cli} (Cliente).\nVALOR: ${val} | FORMA DE PAGAMENTO: ${pay}\n\n1. OBJETO: ${desc}\n2. OBRIGAÇÕES: O prestador compromete-se a executar o serviço com qualidade técnica e dentro do prazo combinado.\n3. PAGAMENTO E GARANTIA: Valor acordado de ${val} conforme condição ${pay}, com garantia legal sobre o serviço prestado.\n4. FORO: As partes elegem o foro local para resolução de dúvidas.`
+      );
+      box.textContent = doc;
+      saveToHistory(`✍️ ${kind}`, `${cli} - ${val}`, doc);
+      speak(t("Documento pronto. Você já pode assinar na tela ou exportar o PDF.", "Document ready. Sign on screen or export as PDF."));
+    }
+
+    function printContractWithSig() {
+      const text = document.getElementById("contractPreview").textContent.trim();
+      if (!text) return showToast("Gere o contrato ou recibo primeiro.");
+      const sigData = hasSigned ? document.getElementById("signaturePad").toDataURL("image/png") : "";
+      const w = window.open("", "_blank");
+      if (!w) { window.print(); return; }
+      w.document.write(`<html><head><title>Documento NEXUS IA .2</title><style>body{font-family:Arial,sans-serif;padding:34px;line-height:1.55;color:#111;}pre{white-space:pre-wrap;font-family:inherit;font-size:14px;}.sig{margin-top:34px;border-top:1px solid #444;width:260px;padding-top:6px;font-size:12px;}</style></head><body><h2>NEXUS IA .2 — Documento Oficial</h2><pre>${escapeHtml(text)}</pre>${sigData ? `<img src="${sigData}" style="max-width:260px;margin-top:20px;display:block;"/>` : ""}<div class="sig">Assinatura — ${escapeHtml(document.getElementById("cClient").value)}</div><script>window.print();<\/script></body></html>`);
+      w.document.close();
+    }
+
+    function shareContractWhatsApp() {
+      const text = document.getElementById("contractPreview").textContent.trim();
+      if (!text) return showToast("Gere o documento primeiro.");
+      window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
+    }
+
+    // ==================== TOOL 5: VOICE FINANCE TRACKER ====================
+    function parseFinancePhrase(raw) {
+      const clean = raw.trim();
+      const match = clean.match(/(\d{1,3}(?:\.\d{3})+,\d{1,2}|\d+,\d{1,2}|\d+\.\d{1,2}|\d+)/);
+      if (!match) return null;
+      let tok = match[1];
+      if (tok.includes(".") && tok.includes(",")) tok = tok.replace(/\./g, "").replace(",", ".");
+      else if (tok.includes(",")) tok = tok.replace(",", ".");
+      const amount = parseFloat(tok);
+      if (!amount || amount <= 0) return null;
+
+      const low = clean.toLowerCase();
+      const isIncome = /(recebi|ganhei|entrou|vendi|venda|faturei|sal[aá]rio|earned|received|income)/.test(low);
+      let category = isIncome ? "Receitas" : "Outros";
+      if (/(mercado|lanche|almo|jantar|comida|padaria|restaurante|food)/.test(low)) category = "Alimentação";
+      else if (/(gasolina|combust|uber|onibus|transporte|fuel|gas)/.test(low)) category = "Transporte";
+      else if (/(aluguel|luz|energia|agua|internet|casa|rent)/.test(low)) category = "Moradia";
+      else if (/(servi|obra|cliente|material|ferramenta|freelance|work)/.test(low)) category = "Serviços & Obra";
+      else if (/(farm[aá]cia|m[eé]dico|sa[uú]de|health)/.test(low)) category = "Saúde";
+      return { id: Date.now(), type: isIncome ? "INCOME" : "EXPENSE", amount, category, desc: clean, date: new Date().toLocaleDateString("pt-BR") };
+    }
+
+    function addFinanceEntry() {
+      const inp = document.getElementById("finInput");
+      const entry = parseFinancePhrase(inp.value);
+      if (!entry) return showToast(t("Inclua um valor na frase, ex.: 'Gastei 85 no mercado'.", "Include a number, e.g. 'Spent 45 on lunch'."));
+      appState.finance.unshift(entry);
+      saveState();
+      inp.value = "";
+      renderFinance();
+      speak(`${entry.type === "INCOME" ? "Entrada" : "Saída"} de ${formatBrl(entry.amount)} registrada em ${entry.category}.`);
+    }
+
+    function deleteFinance(id) {
+      appState.finance = appState.finance.filter(x => x.id !== id);
+      saveState();
+      renderFinance();
+    }
+
+    function renderFinance() {
+      const inc = appState.finance.filter(x => x.type === "INCOME").reduce((a, b) => a + b.amount, 0);
+      const exp = appState.finance.filter(x => x.type === "EXPENSE").reduce((a, b) => a + b.amount, 0);
+      const bal = inc - exp;
+      document.getElementById("finIncome").textContent = formatBrl(inc);
+      document.getElementById("finExpense").textContent = formatBrl(exp);
+      document.getElementById("finBalance").textContent = formatBrl(bal);
+
+      const byCat = {};
+      appState.finance.filter(x => x.type === "EXPENSE").forEach(x => { byCat[x.category] = (byCat[x.category] || 0) + x.amount; });
+      const entries = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
+      const maxVal = entries.length ? entries[0][1] : 1;
+      document.getElementById("finChart").innerHTML = entries.length
+        ? `<div class="label">Gastos por Categoria</div>` + entries.map(([cat, val]) => `
+            <div style="margin-bottom:8px;">
+              <div class="row" style="justify-content:space-between;font-size:12px;">
+                <span>${cat}</span><strong class="text-amber" style="text-align:right;">${formatBrl(val)}</strong>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:${Math.max(6, (val / maxVal) * 100)}%;"></div></div>
+            </div>
+          `).join("")
+        : "";
+
+      document.getElementById("finList").innerHTML = appState.finance.length
+        ? appState.finance.slice(0, 20).map(x => `
+            <div class="list-item">
+              <div>
+                <strong>${escapeHtml(x.desc)}</strong>
+                <div class="text-muted">${x.category} • ${x.date}</div>
+              </div>
+              <div class="row" style="flex:0 0 auto;">
+                <strong class="${x.type === "INCOME" ? "text-mint" : "text-red"}">${x.type === "INCOME" ? "+" : "-"}${formatBrl(x.amount)}</strong>
+                <button class="btn btn-outline btn-sm" onclick="deleteFinance(${x.id})">🗑</button>
+              </div>
+            </div>
+          `).join("")
+        : `<div class="text-muted">Nenhum lançamento ainda. Fale ou digite um valor acima.</div>`;
+    }
+
+    async function getFinanceAiTips() {
+      const box = document.getElementById("finAiAdvice");
+      box.classList.remove("hidden");
+      box.textContent = "✨ Analisando suas finanças...";
+      const summary = `Entradas: ${document.getElementById("finIncome").textContent}, Saídas: ${document.getElementById("finExpense").textContent}, Saldo: ${document.getElementById("finBalance").textContent}.`;
+      const tips = await askFreeAi(
+        "Você é o consultor financeiro do NEXUS IA .2. Dê 3 dicas práticas e objetivas para economizar e organizar dinheiro.",
+        summary,
+        () => `💡 DICAS FINANCEIRAS NEXUS:\n1. Reserve ao menos 15% de toda entrada para caixa de emergência.\n2. Estabeleça um teto semanal para sua maior categoria de gastos.\n3. Registre cada entrada e saída por voz no mesmo dia para manter o saldo real.`
+      );
+      box.textContent = tips;
+      speak(tips);
+    }
+
+    // ==================== TOOL 6: BRAND & LOGO STUDIO ====================
+    function generateBrandArt() {
+      const name = document.getElementById("brandName").value.trim();
+      if (!name) return showToast("Informe o nome da sua marca.");
+      const type = document.getElementById("brandType").value;
+      const style = document.getElementById("brandStyle").value;
+      const seg = document.getElementById("brandSeg").value.trim() || "Professional Services";
+      const prompt = `Studio-grade ${type} for brand "${name}" in ${seg} business, ${style}, vector sharp typography, clean dark showcase, ultra detailed, no watermarks`;
+      const url = buildFreeImageUrl(prompt, 768, 768);
+      const img = document.getElementById("brandImg");
+      img.onerror = () => { img.src = createSvgFallbackDataUrl(name.toUpperCase(), `${seg} • ${style}`, "#a855f7", false); };
+      img.src = url;
+      document.getElementById("brandDownloadBtn").href = url;
+      document.getElementById("brandPreviewWrap").classList.remove("hidden");
+      showToast("✨ Arte gerada! Aguarde carregar e toque em Baixar.");
+      speak(`Arte para ${name} gerada com sucesso.`);
+    }
+
+    // ==================== TOOL 7: LEVEL, COMPASS & CONVERTER ====================
+    let tiltX = 0, tiltY = 0, currentHeading = 0;
+
+    function switchFieldTab(mode) {
+      ["level", "compass", "conv"].forEach(m => {
+        document.getElementById("field-" + m).classList.toggle("hidden", m !== mode);
+        document.getElementById("fTab" + m.charAt(0).toUpperCase() + m.slice(1)).classList.toggle("active", m === mode);
+      });
+      if (mode === "level") drawLevel();
+      if (mode === "compass") drawCompass(currentHeading);
+    }
+
+    function enableDeviceSensors() {
+      const attach = () => {
+        window.addEventListener("deviceorientation", (e) => {
+          if (typeof e.gamma === "number" && typeof e.beta === "number") {
+            tiltX = Math.max(-45, Math.min(45, e.gamma));
+            tiltY = Math.max(-45, Math.min(45, e.beta));
+            drawLevel();
+          }
+          if (typeof e.alpha === "number") {
+            currentHeading = Math.round((360 - e.alpha) % 360);
+            drawCompass(currentHeading);
+          }
+        });
+        showToast("📡 Sensores ativados! Incline ou gire o celular.");
+      };
+      if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
+        DeviceOrientationEvent.requestPermission().then(r => { if (r === "granted") attach(); }).catch(() => showToast("Permissão de sensor negada."));
+      } else {
+        attach();
+      }
+    }
+
+    function setManualTilt(x, y) {
+      if (x !== null) tiltX = Number(x);
+      if (y !== null) tiltY = Number(y);
+      drawLevel();
+    }
+
+    function drawLevel() {
+      const c = document.getElementById("levelCanvas");
+      if (!c) return;
+      const ctx = c.getContext("2d");
+      const w = c.width, h = c.height, cx = w / 2, cy = h / 2, r = 96;
+      const isLevel = Math.abs(tiltX) <= 1.8 && Math.abs(tiltY) <= 1.8;
+      const color = isLevel ? "#10f5a0" : "#fbbf24";
+      ctx.clearRect(0, 0, w, h);
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fillStyle = "#070c18"; ctx.fill();
+      ctx.lineWidth = 3; ctx.strokeStyle = color; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, r * 0.28, 0, Math.PI * 2); ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+      ctx.strokeStyle = "rgba(148,163,184,0.28)";
+      ctx.beginPath(); ctx.moveTo(cx - r, cy); ctx.lineTo(cx + r, cy); ctx.moveTo(cx, cy - r); ctx.lineTo(cx, cy + r); ctx.stroke();
+      const bx = cx + (tiltX / 45) * (r * 0.72);
+      const by = cy + (tiltY / 45) * (r * 0.72);
+      ctx.beginPath(); ctx.arc(bx, by, 16, 0, Math.PI * 2); ctx.fillStyle = color; ctx.fill();
+
+      const badge = document.getElementById("levelStatusBadge");
+      badge.className = "badge " + (isLevel ? "mint" : "amber");
+      badge.textContent = `${isLevel ? "NIVELADO" : "AJUSTAR"} (${tiltX.toFixed(1)}° / ${tiltY.toFixed(1)}°)`;
+    }
+
+    function drawCompass(deg) {
+      currentHeading = deg;
+      const c = document.getElementById("compassCanvas");
+      if (!c) return;
+      const ctx = c.getContext("2d");
+      const cx = 110, cy = 110, r = 94;
+      ctx.clearRect(0, 0, 220, 220);
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fillStyle = "#070c18"; ctx.fill();
+      ctx.strokeStyle = "#00e5ff"; ctx.lineWidth = 3; ctx.stroke();
+
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate((-deg * Math.PI) / 180);
+      ctx.fillStyle = "#fb7185"; ctx.font = "bold 16px sans-serif"; ctx.textAlign = "center"; ctx.fillText("N", 0, -68);
+      ctx.fillStyle = "#00e5ff"; ctx.fillText("S", 0, 80); ctx.fillText("L", 74, 6); ctx.fillText("O", -74, 6);
+      ctx.beginPath(); ctx.moveTo(0, -56); ctx.lineTo(-9, 0); ctx.lineTo(9, 0); ctx.closePath(); ctx.fillStyle = "#fb7185"; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(0, 56); ctx.lineTo(-9, 0); ctx.lineTo(9, 0); ctx.closePath(); ctx.fillStyle = "#00e5ff"; ctx.fill();
+      ctx.restore();
+
+      const dirs = ["Norte (N)", "Nordeste (NE)", "Leste (L)", "Sudeste (SE)", "Sul (S)", "Sudoeste (SO)", "Oeste (O)", "Noroeste (NO)"];
+      const idx = Math.round(((deg % 360) / 45)) % 8;
+      document.getElementById("compassReadout").textContent = `${Math.round(deg)}° • ${dirs[idx]}`;
+    }
+
+    const UNIT_MAP = {
+      length: [["mm", 0.001], ["cm", 0.01], ["m", 1], ["km", 1000], ["pol", 0.0254], ["pés", 0.3048]],
+      area: [["cm²", 0.0001], ["m²", 1], ["ft²", 0.092903], ["hectare", 10000], ["alqueire SP", 24200]],
+      volume: [["mL", 0.001], ["L", 1], ["m³", 1000], ["galão US", 3.78541]],
+      weight: [["g", 0.001], ["kg", 1], ["ton", 1000], ["lb", 0.453592]],
+      temp: [["°C", 1], ["°F", 1], ["K", 1]],
+      currency: [["BRL (R$)", 1], ["USD (US$)", 5.80], ["EUR (€)", 6.25]]
+    };
+
+    function populateUnits() {
+      const cat = document.getElementById("convCat").value;
+      const opts = UNIT_MAP[cat].map(([name], i) => `<option value="${i}">${name}</option>`).join("");
+      document.getElementById("convFrom").innerHTML = opts;
+      document.getElementById("convTo").innerHTML = opts;
+      document.getElementById("convTo").selectedIndex = Math.min(1, UNIT_MAP[cat].length - 1);
+      runConversion();
+    }
+
+    function runConversion() {
+      const cat = document.getElementById("convCat").value;
+      const val = parseFloat(document.getElementById("convVal").value || "0");
+      const from = UNIT_MAP[cat][document.getElementById("convFrom").selectedIndex];
+      const to = UNIT_MAP[cat][document.getElementById("convTo").selectedIndex];
+      let res = val;
+      if (cat === "temp") {
+        let c = from[0] === "°F" ? (val - 32) * 5 / 9 : from[0] === "K" ? val - 273.15 : val;
+        res = to[0] === "°F" ? c * 9 / 5 + 32 : to[0] === "K" ? c + 273.15 : c;
+      } else {
+        res = (val * from[1]) / to[1];
+      }
+      document.getElementById("convOut").textContent = `${Number(res.toFixed(4))} ${to[0]}`;
+    }
+
+    function calcConstruction() {
+      const area = Math.max(0, parseFloat(document.getElementById("workAreaInput").value || "0"));
+      const margin = area * 1.10;
+      const tiles = Math.ceil(margin / 0.36);
+      const mortar = Math.ceil(area / 4);
+      const bricks = Math.ceil(area * 25);
+      document.getElementById("workEstOut").textContent =
+        `• Piso com 10% margem: ${margin.toFixed(1)} m²\n• Porcelanato 60×60cm: ~${tiles} peças\n• Argamassa (sacos 20kg): ~${mortar} sacos\n• Tijolos cerâmicos 8 furos: ~${bricks} unidades`;
+    }
+
+    // ==================== TOOL 8: QR & BARCODE READER ====================
+    let lastScannedRaw = "";
+
+    function classifyCode(raw) {
+      const s = raw.trim();
+      if (/^WIFI:/i.test(s)) {
+        const ssid = (s.match(/S:([^;]*)/i) || [])[1] || "";
+        const pass = (s.match(/P:([^;]*)/i) || [])[1] || "";
+        return { type: "WIFI", title: `Rede Wi-Fi: ${ssid}`, detail: `Senha: ${pass}\nPayload: ${s}`, copy: pass || s };
+      }
+      if (/^000201/.test(s)) return { type: "PIX", title: "PIX Copia e Cola", detail: `Confira o beneficiário no app do banco antes de confirmar.\n${s}`, copy: s };
+      if (/^https?:\/\//i.test(s)) return { type: "URL", title: "Link Detectado", detail: s, copy: s };
+      if (/^\d{44,48}$/.test(s.replace(/[\s.-]/g, ""))) return { type: "BOLETO", title: "Linha Digitável de Boleto", detail: s, copy: s };
+      if (/^\d{8,14}$/.test(s)) return { type: "BARCODE", title: "Código de Barras (EAN/UPC)", detail: `Produto com ${s.length} dígitos: ${s}`, copy: s };
+      return { type: "TEXT", title: "Conteúdo Decodificado", detail: s, copy: s };
+    }
+
+    function showDecodedCode(raw) {
+      const info = classifyCode(raw);
+      lastScannedRaw = info.copy;
+      const out = document.getElementById("readerOutput");
+      out.classList.remove("hidden");
+      out.textContent = `[${info.type}] ${info.title}\n\n${info.detail}`;
+      document.getElementById("readerActionRow").classList.remove("hidden");
+      document.getElementById("readerOpenUrlBtn").classList.toggle("hidden", info.type !== "URL");
+      speak(`${info.title} detectado.`);
+    }
+
+    function inspectManualCode() {
+      const val = document.getElementById("manualCodeInput").value.trim();
+      if (!val) return showToast("Cole um código ou link para decodificar.");
+      showDecodedCode(val);
+    }
+
+    async function scanCodeImageFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      const img = document.getElementById("readerPreviewImg");
+      img.src = url;
+      img.classList.remove("hidden");
+      if ("BarcodeDetector" in window) {
+        try {
+          const detector = new BarcodeDetector();
+          const bmp = await createImageBitmap(file);
+          const codes = await detector.detect(bmp);
+          if (codes.length && codes[0].rawValue) {
+            showDecodedCode(codes[0].rawValue);
+            return;
+          }
+        } catch (e) {}
+      }
+      showDecodedCode(`Imagem carregada (${file.name}). Se o navegador não possuir BarcodeDetector nativo, cole o código ou link no campo acima para análise instantânea.`);
+    }
+
+    function copyLastScanned() {
+      if (!lastScannedRaw) return;
+      navigator.clipboard?.writeText(lastScannedRaw);
+      showToast("📋 Código copiado!");
+    }
+
+    function openLastScannedUrl() {
+      if (/^https?:\/\//i.test(lastScannedRaw)) window.open(lastScannedRaw, "_blank");
+    }
+
+    // ==================== TOOL 9: QR CODE GENERATOR ====================
+    function updateQrPlaceholder() {
+      const type = document.getElementById("qrPresetType").value;
+      const inp = document.getElementById("qrInput");
+      if (type === "wifi") inp.placeholder = "NomeDaRede;Senha123";
+      else if (type === "wa") inp.placeholder = "5511999998888";
+      else inp.placeholder = "https://seusite.com.br ou texto";
+    }
+
+    function generateQrCode() {
+      const type = document.getElementById("qrPresetType").value;
+      let val = document.getElementById("qrInput").value.trim();
+      if (!val) return showToast("Digite o conteúdo do QR Code.");
+      if (type === "wifi") {
+        const [ssid, pass = ""] = val.split(";");
+        val = `WIFI:T:WPA;S:${ssid.trim()};P:${pass.trim()};;`;
+      } else if (type === "wa") {
+        val = `https://wa.me/${val.replace(/\D/g, "")}`;
+      }
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=${encodeURIComponent(val)}`;
+      document.getElementById("qrImg").src = qrUrl;
+      document.getElementById("qrDlLink").href = qrUrl;
+      document.getElementById("qrResultWrap").classList.remove("hidden");
+      showToast("QR Code pronto!");
+    }
+
+    // ==================== TOOL 10: LIVE CLOCK & ALARMS ====================
+    let alarmInterval = null;
+    let lastAlarmKey = "";
+
+    function tickClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString(appState.lang === "en" ? "en-US" : "pt-BR", { hour12: false });
+      const date = now.toLocaleDateString(appState.lang === "en" ? "en-US" : "pt-BR", { weekday: "short", day: "2-digit", month: "short", year: "numeric" });
+      document.getElementById("liveClockText").textContent = time;
+      document.getElementById("liveDateText").textContent = date;
+      document.getElementById("bigClockText").textContent = time;
+      document.getElementById("bigDateText").textContent = date;
+
+      const hhmm = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+      if (hhmm !== lastAlarmKey) {
+        const hit = appState.alarms.find(a => a.enabled && a.time === hhmm);
+        if (hit) {
+          lastAlarmKey = hhmm;
+          triggerAlarm(hit);
+        }
+      }
+    }
+
+    function triggerAlarm(alarm) {
+      document.getElementById("alarmRingingBanner").classList.remove("hidden");
+      document.getElementById("alarmRingingText").textContent = `⏰ ${alarm.time} — ${alarm.label}`;
+      speak(`Alarme ${alarm.label}. Agora são ${alarm.time}.`);
+      try {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        const beep = () => {
+          const o = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          o.frequency.value = 880;
+          g.gain.value = 0.2;
+          o.connect(g); g.connect(audioCtx.destination);
+          o.start(); setTimeout(() => o.stop(), 350);
+        };
+        beep();
+        clearInterval(alarmInterval);
+        alarmInterval = setInterval(beep, 900);
+      } catch (e) {}
+    }
+
+    function stopAlarmSound() {
+      clearInterval(alarmInterval);
+      document.getElementById("alarmRingingBanner").classList.add("hidden");
+    }
+
+    function addAlarm() {
+      const time = document.getElementById("alarmTimeInput").value;
+      const label = document.getElementById("alarmLabelInput").value.trim() || "Alarme Nexus";
+      if (!time) return;
+      appState.alarms.push({ id: Date.now(), time, label, enabled: true });
+      saveState();
+      renderAlarms();
+      showToast(`⏰ Alarme salvo para ${time}`);
+    }
+
+    function toggleAlarm(id) {
+      const a = appState.alarms.find(x => x.id === id);
+      if (a) a.enabled = !a.enabled;
+      saveState();
+      renderAlarms();
+    }
+
+    function deleteAlarm(id) {
+      appState.alarms = appState.alarms.filter(x => x.id !== id);
+      saveState();
+      renderAlarms();
+    }
+
+    function renderAlarms() {
+      document.getElementById("alarmsList").innerHTML = appState.alarms.length
+        ? appState.alarms.map(a => `
+            <div class="list-item">
+              <div>
+                <strong style="font-size:18px;color:${a.enabled ? "var(--cyan)" : "var(--text-2)"};">${a.time}</strong>
+                <div class="text-muted">${escapeHtml(a.label)}</div>
+              </div>
+              <div class="row" style="flex:0 0 auto;">
+                <button class="btn btn-outline btn-sm" onclick="toggleAlarm(${a.id})">${a.enabled ? "ON" : "OFF"}</button>
+                <button class="btn btn-red btn-sm" onclick="deleteAlarm(${a.id})">✕</button>
+              </div>
+            </div>
+          `).join("")
+        : `<div class="text-muted">Nenhum alarme cadastrado.</div>`;
+    }
+
+    // ==================== TOOL 11: VOICE CALCULATOR ====================
+    let calcExpStr = "";
+
+    function calcAppend(ch) {
+      calcExpStr += ch;
+      document.getElementById("calcExpr").textContent = calcExpStr;
+    }
+
+    function calcClear() {
+      calcExpStr = "";
+      document.getElementById("calcExpr").textContent = "0";
+      document.getElementById("calcResult").textContent = "0";
+    }
+
+    function calcBack() {
+      calcExpStr = calcExpStr.slice(0, -1);
+      document.getElementById("calcExpr").textContent = calcExpStr || "0";
+    }
+
+    function safeEvalMath(expr) {
+      const sanitized = expr
+        .toLowerCase()
+        .replace(/mais/g, "+")
+        .replace(/menos/g, "-")
+        .replace(/(vezes|x)/g, "*")
+        .replace(/(dividido por|dividido)/g, "/")
+        .replace(/,/g, ".")
+        .replace(/[^0-9+\-*/().%\s]/g, "");
+      if (!sanitized.trim()) return null;
+      const percentFixed = sanitized.replace(/(\d+(?:\.\d+)?)\s*%/g, "($1/100)");
+      return Function(`"use strict"; return (${percentFixed})`)();
+    }
+
+    function calcEval() {
+      try {
+        const res = safeEvalMath(calcExpStr);
+        if (res === null || !isFinite(res)) throw new Error();
+        const formatted = Number(res.toFixed(6)).toString();
+        document.getElementById("calcResult").textContent = formatted;
+        speak(`O resultado é ${formatted}`);
+      } catch (e) {
+        document.getElementById("calcResult").textContent = "Erro";
+      }
+    }
+
+    function solveVoiceCalc() {
+      const raw = document.getElementById("calcVoiceInput").value.trim();
+      if (!raw) return;
+      calcExpStr = raw;
+      document.getElementById("calcExpr").textContent = raw;
+      calcEval();
+    }
+
+    // ==================== TOOL 12: LIVE WEATHER (OPEN-METEO FREE) ====================
+    async function fetchLiveWeather() {
+      const city = document.getElementById("weatherCity").value.trim() || "São Paulo";
+      const out = document.getElementById("weatherResult");
+      out.textContent = "🌤️ Consultando previsão ao vivo...";
+      try {
+        const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=pt&format=json`);
+        const geo = await geoRes.json();
+        if (!geo.results || !geo.results.length) throw new Error("Cidade não encontrada");
+        const place = geo.results[0];
+        const wRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto`);
+        const w = await wRes.json();
+        const cur = w.current;
+        const summary = `📍 ${place.name}, ${place.admin1 || ""} (${place.country})\n🌡️ Temperatura: ${cur.temperature_2m}°C\n💧 Umidade: ${cur.relative_humidity_2m}%\n💨 Vento: ${cur.wind_speed_10m} km/h`;
+        out.textContent = summary;
+        speak(`Em ${place.name}, faz ${cur.temperature_2m} graus com vento de ${cur.wind_speed_10m} quilômetros por hora.`);
+      } catch (e) {
+        out.textContent = `📍 ${city}\nNão foi possível consultar o servidor climático agora. Verifique sua conexão e tente novamente.`;
+      }
+    }
+
+    // ==================== TOOL 13: AI CAMERA VISION ====================
+    let selectedPhotoName = "";
+
+    function loadCameraPhoto(e) {
+      const f = e.target.files[0];
+      if (!f) return;
+      selectedPhotoName = f.name;
+      const img = document.getElementById("cameraPreview");
+      img.src = URL.createObjectURL(f);
+      img.classList.remove("hidden");
+      showToast("📸 Foto carregada!");
+    }
+
+    async function analyzeCameraPhoto() {
+      const prompt = document.getElementById("cameraPrompt").value.trim() || "Analise esta foto.";
+      const out = document.getElementById("cameraResult");
+      out.classList.remove("hidden");
+      out.textContent = "🔍 Analisando imagem com IA...";
+      const res = await askFreeAi(
+        "Você é o assistente de visão da Câmera IA do NEXUS IA .2. Dê uma orientação prática e estruturada baseada no pedido do usuário sobre a imagem capturada.",
+        `Foto: ${selectedPhotoName || "imagem da câmera"}. Pedido: ${prompt}`
+      );
+      out.textContent = res;
+      speak(res);
+    }
+
+    // ==================== TOOL 14: LIVE VOICE TRANSLATOR ====================
+    async function runTranslator() {
+      const text = document.getElementById("trInput").value.trim();
+      if (!text) return showToast("Digite ou fale o texto para traduzir.");
+      const from = document.getElementById("trFrom").value;
+      const to = document.getElementById("trTo").value;
+      const out = document.getElementById("trOutput");
+      out.classList.remove("hidden");
+      out.textContent = "🌍 Traduzindo...";
+      const res = await askFreeAi(
+        `Traduza com naturalidade de ${from} para ${to}. Retorne apenas a tradução seguida de uma dica curta de pronúncia.`,
+        text,
+        () => `[Tradução ${from} → ${to}]\n${text}`
+      );
+      out.textContent = res;
+      speak(res);
+    }
+
+    // ==================== TOOL 15: DOCUMENT SCANNER ====================
+    function loadDocFile(e) {
+      const f = e.target.files[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById("docTextInput").value = String(reader.result || "").slice(0, 12000);
+        showToast("📂 Arquivo carregado!");
+      };
+      reader.readAsText(f);
+    }
+
+    async function summarizeDocument() {
+      const text = document.getElementById("docTextInput").value.trim();
+      if (!text) return showToast("Carregue um arquivo ou cole o texto do documento.");
+      const out = document.getElementById("docSummaryOut");
+      out.classList.remove("hidden");
+      out.textContent = "📑 Resumindo documento...";
+      const res = await askFreeAi(
+        "Você é o Scanner Inteligente do NEXUS IA .2. Faça um resumo claro em tópicos destacando valores, datas, prazos e pontos de atenção.",
+        text.slice(0, 4000)
+      );
+      out.textContent = res;
+      saveToHistory("📑 Resumo Documento", text.slice(0, 50), res);
+      speak(res);
+    }
+
+    // ==================== TOOL 16: VOICE NOTES ====================
+    async function saveSmartNote() {
+      const raw = document.getElementById("noteInput").value.trim();
+      if (!raw) return showToast("Escreva ou dite sua nota.");
+      const organized = await askFreeAi(
+        "Organize esta nota ditada em um título curto e tópicos objetivos.",
+        raw,
+        () => `📌 Nota Rápida\n• ${raw}`
+      );
+      appState.notes.unshift({ id: Date.now(), body: organized, date: new Date().toLocaleString("pt-BR") });
+      saveState();
+      document.getElementById("noteInput").value = "";
+      renderNotes();
+      showToast("📝 Nota salva!");
+    }
+
+    function deleteNote(id) {
+      appState.notes = appState.notes.filter(n => n.id !== id);
+      saveState();
+      renderNotes();
+    }
+
+    function renderNotes() {
+      document.getElementById("notesList").innerHTML = appState.notes.length
+        ? appState.notes.map(n => `
+            <div class="list-item" style="align-items:flex-start;">
+              <div style="flex:1;white-space:pre-wrap;font-size:12px;">
+                <div>${escapeHtml(n.body)}</div>
+                <div class="text-muted mt-8">${n.date}</div>
+              </div>
+              <button class="btn btn-red btn-sm" onclick="deleteNote(${n.id})">🗑</button>
+            </div>
+          `).join("")
+        : `<div class="text-muted">Nenhuma nota salva ainda.</div>`;
+    }
+
+    // ==================== TOOL 17: AI QUIZ ARENA ====================
+    const FALLBACK_QUIZ = [
+      { q: "Qual componente exibe uma planta baixa antes de construir um prédio?", opts: ["Projeto Arquitetônico", "Bússola Magnética", "Sensor de Áudio", "Código EAN"], a: 0, exp: "O projeto arquitetônico define medidas, cômodos e estrutura da obra." },
+      { q: "No gerenciamento financeiro, qual regra ajuda a evitar dívidas?", opts: ["Gastar mais que ganha", "Registrar entradas e saídas", "Ignorar descontos", "Nunca fazer orçamento"], a: 1, exp: "Registrar entradas e saídas permite controlar o saldo real." },
+      { q: "Qual tecnologia conecta o celular a uma caixa de som sem fios?", opts: ["Bluetooth", "HDMI", "Cabo P2", "Infravermelho"], a: 0, exp: "O Bluetooth transmite áudio sem fio para caixas e fones." },
+      { q: "Quantos centímetros existem em 2,5 metros?", opts: ["25 cm", "250 cm", "2500 cm", "125 cm"], a: 1, exp: "1 metro equivale a 100 cm, logo 2,5 m = 250 cm." },
+      { q: "O que significa a sigla PDF em documentos?", opts: ["Personal Data File", "Portable Document Format", "Public Digital Form", "Print Device Folder"], a: 1, exp: "PDF significa Portable Document Format." }
+    ];
+
+    let quizQuestions = [];
+    let quizIndex = 0;
+    let quizScore = 0;
+
+    async function startQuiz() {
+      const topic = document.getElementById("quizTopic").value.trim() || "Conhecimentos Gerais";
+      const box = document.getElementById("quizArenaBox");
+      box.innerHTML = `<div class="result-box">🏆 Gerando perguntas sobre "${escapeHtml(topic)}"...</div>`;
+      quizIndex = 0;
+      quizScore = 0;
+      document.getElementById("quizScoreBadge").textContent = "0 pts";
+
+      try {
+        const raw = await askFreeAi(
+          `Retorne APENAS um JSON válido com array de 5 objetos no formato: [{"q":"pergunta","opts":["A","B","C","D"],"a":0,"exp":"explicacao curta"}]. Sem texto fora do JSON.`,
+          `Crie 5 perguntas de quiz sobre: ${topic}`,
+          () => JSON.stringify(FALLBACK_QUIZ)
+        );
+        const start = raw.indexOf("[");
+        const end = raw.lastIndexOf("]");
+        const parsed = JSON.parse(start >= 0 && end > start ? raw.slice(start, end + 1) : raw);
+        quizQuestions = Array.isArray(parsed) && parsed.length ? parsed : FALLBACK_QUIZ;
+      } catch (e) {
+        quizQuestions = FALLBACK_QUIZ;
+      }
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      const box = document.getElementById("quizArenaBox");
+      if (quizIndex >= quizQuestions.length) {
+        box.innerHTML = `<div class="result-box" style="text-align:center;"><h3>🎉 Quiz Finalizado!</h3><p class="mt-8">Pontuação final: <strong>${quizScore} / ${quizQuestions.length * 10} pts</strong></p><button class="btn btn-mint mt-12" onclick="startQuiz()">Jogar Novamente</button></div>`;
+        speak(`Quiz finalizado! Você fez ${quizScore} pontos.`);
+        return;
+      }
+      const item = quizQuestions[quizIndex];
+      box.innerHTML = `
+        <div class="result-box">
+          <div class="badge mb-8">Pergunta ${quizIndex + 1} de ${quizQuestions.length}</div>
+          <div style="font-weight:800;margin-bottom:10px;">${escapeHtml(item.q)}</div>
+          ${item.opts.map((opt, idx) => `<button class="btn btn-outline mb-8" style="justify-content:flex-start;" onclick="answerQuiz(${idx})">${String.fromCharCode(65 + idx)}) ${escapeHtml(opt)}</button>`).join("")}
+          <div id="quizFeedback" class="mt-8"></div>
+        </div>
+      `;
+    }
+
+    function answerQuiz(choice) {
+      const item = quizQuestions[quizIndex];
+      const ok = choice === item.a;
+      if (ok) quizScore += 10;
+      document.getElementById("quizScoreBadge").textContent = `${quizScore} pts`;
+      document.getElementById("quizFeedback").innerHTML = `
+        <div class="badge ${ok ? "mint" : "red"}">${ok ? "✅ Acertou! +10 pts" : "❌ Quase! Resposta: " + escapeHtml(item.opts[item.a])}</div>
+        <div class="text-muted mt-8">${escapeHtml(item.exp || "")}</div>
+        <button class="btn btn-cyan mt-8" onclick="quizIndex++; renderQuizQuestion()">Próxima Pergunta →</button>
+      `;
+    }
+
+    // ==================== TOOL 18: FOCUS POMODORO ====================
+    let pomoSeconds = 25 * 60;
+    let pomoBaseMin = 25;
+    let pomoTimer = null;
+
+    function updatePomoUI() {
+      const m = String(Math.floor(pomoSeconds / 60)).padStart(2, "0");
+      const s = String(pomoSeconds % 60).padStart(2, "0");
+      document.getElementById("pomoDisplay").textContent = `${m}:${s}`;
+    }
+
+    function setPomodoroMin(min, btnEl) {
+      clearInterval(pomoTimer);
+      pomoTimer = null;
+      pomoBaseMin = min;
+      pomoSeconds = min * 60;
+      document.getElementById("pomoToggleBtn").textContent = "▶ Iniciar";
+      document.getElementById("pomoStatus").textContent = `Pronto (${min} min)`;
+      updatePomoUI();
+      if (btnEl) {
+        btnEl.parentElement.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        btnEl.classList.add("active");
+      }
+    }
+
+    function togglePomodoro() {
+      const btn = document.getElementById("pomoToggleBtn");
+      if (pomoTimer) {
+        clearInterval(pomoTimer);
+        pomoTimer = null;
+        btn.textContent = "▶ Retomar";
+        document.getElementById("pomoStatus").textContent = "Pausado";
+        return;
+      }
+      btn.textContent = "⏸ Pausar";
+      document.getElementById("pomoStatus").textContent = "Foco em andamento...";
+      pomoTimer = setInterval(() => {
+        pomoSeconds--;
+        updatePomoUI();
+        if (pomoSeconds <= 0) {
+          clearInterval(pomoTimer);
+          pomoTimer = null;
+          btn.textContent = "▶ Iniciar";
+          document.getElementById("pomoStatus").textContent = "Ciclo concluído!";
+          speak("Tempo de foco concluído! Parabéns!");
+          showToast("⏱️ Ciclo Pomodoro concluído!");
+        }
+      }, 1000);
+    }
+
+    function resetPomodoro() {
+      setPomodoroMin(pomoBaseMin);
+    }
+
+    // ==================== HISTORY, LANGUAGE & PROFILE ====================
+    function saveToHistory(source, prompt, response) {
+      appState.history.unshift({
+        id: Date.now(),
+        source,
+        prompt,
+        response,
+        time: new Date().toLocaleString("pt-BR")
+      });
+      appState.history = appState.history.slice(0, 40);
+      saveState();
+    }
+
+    function renderHistory() {
+      const el = document.getElementById("historyList");
+      if (!appState.history.length) {
+        el.innerHTML = `<div class="text-muted">${t("Nenhum histórico salvo ainda. Converse com um agente ou use qualquer ferramenta IA!", "No history yet. Chat with an agent or use any AI tool!")}</div>`;
+        return;
+      }
+      el.innerHTML = appState.history.map(h => `
+        <div class="list-item" style="flex-direction:column;align-items:flex-start;">
+          <div class="row" style="width:100%;justify-content:space-between;">
+            <strong class="text-cyan">${escapeHtml(h.source)}</strong>
+            <span class="text-muted" style="text-align:right;">${h.time}</span>
+          </div>
+          <div style="font-size:12px;font-weight:700;">${escapeHtml(h.prompt)}</div>
+          <div class="text-muted" style="white-space:pre-wrap;">${escapeHtml(h.response.slice(0, 260))}${h.response.length > 260 ? "..." : ""}</div>
+        </div>
+      `).join("");
+    }
+
+    function clearHistory() {
+      appState.history = [];
+      saveState();
+      renderHistory();
+      showToast(t("Histórico limpo.", "History cleared."));
+    }
+
+    function toggleLanguage() {
+      setLanguage(appState.lang === "pt" ? "en" : "pt");
+    }
+
+    function setLanguage(lang) {
+      appState.lang = lang;
+      saveState();
+      applyLanguage();
+      showToast(lang === "en" ? "Language switched to English" : "Idioma alterado para Português");
+    }
+
+    function applyLanguage() {
+      document.getElementById("langBtn").textContent = appState.lang === "en" ? "🇺🇸 EN" : "🇧🇷 PT";
+      document.getElementById("topSub").textContent = t("100 Agentes • 18 Ferramentas IA", "100 Agents • 18 AI Tools");
+      document.getElementById("quickStripLabel").textContent = t("UTILIDADES DO DIA A DIA", "DAILY AI UTILITIES");
+      document.getElementById("squadTitle").textContent = t("Esquadrão Multi-Agente IA", "Multi-Agent AI Squad");
+      document.getElementById("squadSub").textContent = t("3 especialistas trabalham juntos no mesmo projeto em segundos.", "3 specialists collaborate on your project in seconds.");
+      document.getElementById("agentsHeaderTitle").textContent = t("Catálogo com 100 Agentes IA", "100 AI Agents Catalog");
+      document.getElementById("newAgentBtn").textContent = t("+ Criar Agente", "+ New Agent");
+      document.getElementById("toolsPageTitle").textContent = t("Central de 18 Ferramentas IA", "18 Smart AI Tools Hub");
+      document.getElementById("toolsPageSub").textContent = t("Toque em qualquer aba abaixo para abrir a ferramenta completa.", "Tap any tab below to launch a complete tool.");
+      document.getElementById("historyTitle").textContent = t("Histórico Salvo", "Saved History");
+      document.getElementById("ttsBtnLabel").textContent = t("Voz", "Voice");
+      document.getElementById("profLangPt").className = appState.lang === "pt" ? "btn btn-cyan" : "btn btn-outline";
+      document.getElementById("profLangEn").className = appState.lang === "en" ? "btn btn-cyan" : "btn btn-outline";
+
+      document.querySelectorAll("[data-pt]").forEach(el => {
+        el.textContent = appState.lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-pt");
+      });
+      renderCategoryChips();
+      renderAgents();
+      renderQuickStripAndToolTabs();
+    }
+
+    function toggleTts() {
+      appState.ttsEnabled = !appState.ttsEnabled;
+      saveState();
+      document.getElementById("ttsBtn").classList.toggle("active", appState.ttsEnabled);
+      document.getElementById("profTtsBtn").textContent = appState.ttsEnabled ? t("Ativado", "Enabled") : t("Desativado", "Muted");
+      showToast(appState.ttsEnabled ? t("🔊 Voz ativada", "🔊 Voice enabled") : t("🔇 Voz desativada", "🔇 Voice muted"));
+    }
+
+    function updateProfileStats() {
+      document.getElementById("profileStatsText").textContent =
+        `${getAllAgents().length} agentes • 18 ferramentas • ${appState.history.length} históricos • ${appState.finance.length} lançamentos`;
+      document.getElementById("profTtsBtn").textContent = appState.ttsEnabled ? t("Ativado", "Enabled") : t("Desativado", "Muted");
+    }
+
+    function resetAllLocalData() {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    // ==================== BOOTSTRAP ====================
+    window.addEventListener("DOMContentLoaded", () => {
+      initSignaturePad();
+      populateUnits();
+      calcConstruction();
+      renderQuoteItems();
+      renderFinance();
+      renderAlarms();
+      renderNotes();
+      drawLevel();
+      drawCompass(0);
+      updatePomoUI();
+      applyLanguage();
+      tickClock();
+      setInterval(tickClock, 1000);
+    });
+  </script>
 </body>
 </html>
-
-
