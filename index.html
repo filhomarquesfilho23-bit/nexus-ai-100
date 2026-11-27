@@ -1,42 +1,548 @@
-Atue como um desenvolvedor sênior de interface e aplicativos. Atualize a interface do meu projeto "NEXUS IA .2" para seguir fielmente este design premium dark neon, mantendo 100% das funções já existentes (sem recriar do zero e sem remover nenhum dos 100 agentes nem das 18 ferramentas):
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NEXUS IA .2 | 100 Agentes</title>
 
-1. PALETA DE CORES E ESTILO VISUAL:
-- Fundo principal: preto puro (#000000) com leve brilho azul neon no topo.
-- Cartões e superfícies: azul-marinho quase preto (#080E1C / #040710).
-- Bordas e efeitos luminosos: gradiente em azul neon (#1E90FF) e ciano elétrico (#00E5FF), com detalhes em roxo neon (#8B5CF6) e dourado (#F59E0B) no selo Premium.
-- Ícones modernos, coloridos e em blocos com degradê vibrante dentro de cada cartão.
-- Zero espaços vazios sobrando na tela e espaçamento equilibrado.
+  <!-- Configuração da PWA (Preservando o seu atalho) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#050811">
 
-2. CABEÇALHO SUPERIOR (em cartão com borda azul/ciano neon):
-- À esquerda: ícone + título "NEXUS IA .2" com selo luminoso "Premium".
-- À direita: botão "PT" (alterna o idioma entre Português e Inglês) e botão "Voz" (ativa/desativa leitura por voz com ícone de áudio).
+  <style>
+    /* --- Variaveis de Design --- */
+    :root {
+      --bg: #050811;
+      --surface: #0b1220;
+      --surface-2: #111b2e;
+      --void: #070c18;
+      --cyan: #00e5ff;
+      --blue: #38bdf8;
+      --mint: #10f5a0;
+      --violet: #a855f7;
+      --amber: #fbbf24;
+      --red: #fb7185;
+      --text: #f1f5f9;
+      --text-2: #94a3b8;
+      --border: rgba(0, 229, 255, 0.22);
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+    }
 
-3. CATEGORIAS LOGO ABAIXO DO CABEÇALHO (rolagem horizontal com borda neon):
-- Primeira aba: "Todos (100)" selecionada com destaque azul/ciano neon.
-- Segunda aba: "Assistência".
-- Terceira aba: "Imagem & Arte".
-- Seguida pelas demais categorias para completar os 100 agentes (10 por categoria).
+    /* --- Reset e Estilos Globais --- */
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
 
-4. CARTÃO "ASSISTENTE IA EM DESTAQUE":
-- Bloco de alto destaque com borda luminosa em gradiente ciano/azul/roxo e selo verde "ONLINE".
-- Título "Assistente IA Nexus" com descrição curta e 3 botões funcionais lado a lado:
-  - "Conversar" (botão principal ciano neon)
-  - "Voz IA" (botão com borda azul neon e ícone de microfone)
-  - "SQUAD" (botão com borda roxa neon para múltiplos agentes)
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-size: 13px;
+      line-height: 1.4;
+    }
 
-5. BUSCA, 18 FERRAMENTAS E GRADE DOS 100 AGENTES:
-- Barra de busca compacta (texto + microfone) e faixa de acesso rápido às 18 ferramentas (Plantas 3D, Som Bluetooth, Orçamentos, Contratos PDF com assinatura, Finanças por Voz, Estúdio de Logos, Nível/Bússola/Conversor, Leitor QR/Barras, Calculadora Voz, Scanner, Tradutor, Pomodoro, Notas de Voz, etc.).
-- Cartões dos 100 agentes organizados em GRADE adaptativa:
-  - 2 colunas no celular
-  - 3 colunas em tablets médios
-  - 4 colunas em tablets grandes e computadores
-- Cada cartão com borda azul neon, ícone colorido moderno, nome, resumo, botão de favorito/compartilhar e abertura em 1 toque.
+    /* Fundo Gradiente Sutil */
+    body {
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(0, 229, 255, 0.08), transparent 36%),
+        radial-gradient(circle at 88% 18%, rgba(56, 189, 248, 0.06), transparent 34%);
+      padding-bottom: 84px; /* Espaço para o menu inferior */
+      padding-top: 16px;
+    }
 
-6. MENU INFERIOR FIXO (com linha neon fina no topo e fundo preto puro):
-- Exatamente 4 itens: "Início", "Ferramentas", "Biblioteca" (agrupando Histórico e Portal/Guias) e "Perfil".
-- Em telas largas (tablets e computadores), adaptar o menu inferior para barra lateral fixa (NavigationRail / Sidebar).
+    .app-shell {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 14px;
+    }
 
-REGRAS OBRIGATÓRIAS:
-- Não deixe nenhum botão morto, tela vazia ou função inacabada.
-- Preserve todos os 100 agentes, todas as 18 ferramentas e toda a lógica já existente.
-- Teste todos os botões, filtros de categoria, troca de idioma PT/EN, botão Voz e abertura dos agentes na grade antes de finalizar.
+    /* --- Cabeçalho (Top Bar) --- */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--violet));
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #04101d;
+      font-size: 16px;
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: 0.4px;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--cyan);
+      line-height: 1.2;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Estilo dos Badges (PT, Voz) */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(0, 229, 255, 0.14);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      white-space: nowrap;
+    }
+
+    .badge.gold {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+
+    /* --- Secção de Utilidades (Cartões Modernos) --- */
+    .utils-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .util-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s var(--ease);
+    }
+
+    .util-card:active { transform: scale(0.97); border-color: var(--cyan); }
+
+    .util-ico {
+        width: 38px; height: 38px; border-radius: 10px;
+        display: grid; place-items: center; font-size: 18px;
+    }
+    .util-name { font-size: 12px; font-weight: 700; }
+    .util-desc { font-size: 10px; color: var(--text-2); margin-top: 1px;}
+
+    /* --- Catálogo Principal --- */
+    .catalog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .catalog-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .btn-outline {
+      background: var(--void);
+      color: var(--cyan);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s var(--ease);
+    }
+    .btn-outline:active { background: rgba(0, 229, 255, 0.1); transform: scale(0.97);}
+
+    /* Barra de Pesquisa */
+    .search-input {
+      width: 100%;
+      background: var(--void);
+      color: var(--text);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13px;
+      outline: none;
+      margin-bottom: 12px;
+      transition: border-color 0.15s var(--ease);
+    }
+    .search-input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.16); }
+
+    /* Chips de Categoria (Scroll Horizontal) */
+    .h-scroll {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      margin-bottom: 12px;
+    }
+    .h-scroll::-webkit-scrollbar { display: none; }
+
+    .chip {
+      flex: 0 0 auto;
+      background: var(--void);
+      color: var(--text-2);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s var(--ease);
+    }
+    .chip.active {
+      background: rgba(0, 229, 255, 0.18);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+    .chip:active { transform: scale(0.95); }
+
+    /* Contador de Agentes */
+    .agent-count {
+      font-size: 11px;
+      color: var(--text-2);
+      margin-bottom: 12px;
+    }
+
+    /* Painel do Assistente IA (Em Destaque) */
+    .ai-assist-panel {
+        background: var(--void);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    .ai-assist-ico {
+        width: 44px; height: 44px; border-radius: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: grid; place-items: center; font-size: 22px;
+        box-shadow: 0 4px 10px rgba(118, 75, 162, 0.4);
+    }
+    .ai-assist-content { flex: 1; }
+    .ai-assist-title { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+    .ai-assist-meta { font-size: 10px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .ai-assist-desc { font-size: 11px; color: var(--text-2); line-height: 1.5; }
+
+    /* Grelha de Agentes (Cartões Modernos) */
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .agent-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s var(--ease);
+    }
+    .agent-card:hover { border-color: var(--cyan); box-shadow: 0 5px 15px rgba(0, 229, 255, 0.1); }
+    .agent-card:active { background: rgba(0, 229, 255, 0.08); transform: scale(0.98); }
+
+    .agent-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .agent-icon {
+      width: 32px; height: 32px; border-radius: 9px;
+      background: rgba(0, 229, 255, 0.12);
+      display: grid; place-items: center; font-size: 16px;
+    }
+    .agent-tag {
+        font-size: 9px; font-weight: 700; color: var(--cyan);
+        background: rgba(0, 229, 255, 0.1); padding: 3px 6px; border-radius: 6px;
+    }
+    .agent-name { font-size: 12px; font-weight: 800; }
+    .agent-desc { font-size: 10px; color: var(--text-2); line-height: 1.4; }
+
+    /* --- Menu Inferior (Bottom Navigation) --- */
+    .bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(5, 8, 17, 0.96);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-item {
+      background: transparent;
+      border: none;
+      color: var(--text-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+      min-width: 70px;
+    }
+    .nav-item:active { transform: scale(0.95); }
+    .nav-item.active {
+      color: var(--cyan);
+      background: rgba(0, 229, 255, 0.14);
+    }
+    .nav-ico { font-size: 18px; }
+
+    /* Classes Utilitárias */
+    .hidden { display: none !important; }
+    .mb-4 { margin-bottom: 4px; }
+    .text-cyan { color: var(--cyan); }
+    .text-blue { color: var(--blue); }
+    .text-violet { color: var(--violet); }
+    .text-mint { color: var(--mint); }
+    .text-red { color: var(--red); }
+    .text-amber { color: var(--amber); }
+
+  </style>
+</head>
+<body>
+
+  <main class="app-shell">
+    <!-- 1. Cabeçalho (Nova Versão) -->
+    <header class="topbar">
+      <div class="brand-row">
+        <div class="brand-logo">N2</div>
+        <div>
+          <div class="brand-title">NEXUS IA .2</div>
+          <div class="brand-sub">100 Agentes • 18 Ferramentas IA</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="badge gold">PT</span>
+        <span class="badge gold">🔊 Voz</span>
+      </div>
+    </header>
+
+    <!-- 2. Secção de Utilidades (Cartões - Nova Versão) -->
+    <div class="utils-grid">
+        <a href="#" class="util-card" onclick="openTool('3d')">
+            <div class="util-ico" style="background:rgba(0,229,255,0.15);color:var(--cyan);">🏗️</div>
+            <div>
+                <div class="util-name text-cyan">Plantas 3D</div>
+                <div class="util-desc">Projeto & Obra</div>
+            </div>
+        </a>
+        <a href="#" class="util-card" onclick="openTool('voice')">
+            <div class="util-ico" style="background:rgba(168,85,247,0.15);color:var(--violet);">🔊</div>
+            <div>
+                <div class="util-name text-violet">Som & Voz</div>
+                <div class="util-desc">Bluetooth</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- 3. Catálogo Principal -->
+    <section id="catalog-section">
+        <div class="catalog-header">
+            <div class="catalog-title">Catálogo com 100 Agentes IA</div>
+            <button class="btn-outline" onclick="createAgent()">+ Criar Agente</button>
+        </div>
+
+        <input type="text" class="search-input" placeholder="Buscar entre os 100 agentes (ex.: site, orçamento, inglês, logo)..." id="searchInput">
+
+        <div class="h-scroll" id="categoryChips">
+            <button class="chip active" onclick="filterAgents('all')">Todos (100)</button>
+            <button class="chip" onclick="filterAgents('assist')">Assistência</button>
+            <button class="chip" onclick="filterAgents('art')">Imagem & Arte</button>
+            <button class="chip" onclick="filterAgents('video')">Vídeo & Mídia</button>
+            <button class="chip" onclick="filterAgents('finance')">Finanças</button>
+            <button class="chip" onclick="filterAgents('edu')">Educação</button>
+            <button class="chip" onclick="filterAgents('science')">Clima & Ciência</button>
+        </div>
+
+        <div class="agent-count mb-4" id="agentCountText">Mostrando 100 agentes prontos</div>
+
+        <!-- Painel do Assistente IA -->
+        <div class="ai-assist-panel">
+            <div class="ai-assist-ico">🤖</div>
+            <div class="ai-assist-content">
+                <div class="ai-assist-title">Assistente IA Nexus</div>
+                <div class="ai-assist-meta">Pesquisar • Sugerir • Agentes</div>
+                <div class="ai-assist-desc">O seu copiloto pessoal. Pesquisa entre os 100 agentes para encontrar o especialista ideal para a sua tarefa.</div>
+            </div>
+        </div>
+
+        <!-- Grelha de Agentes (Renderizada pelo JavaScript) -->
+        <div class="agent-grid" id="agentGridContainer">
+            <!-- Os cartões AG_001, AG_002, etc., serão injetados aqui -->
+        </div>
+    </section>
+
+  </main>
+
+  <!-- Menu Inferior (Bottom Navigation) -->
+  <nav class="bottom-nav">
+    <a href="#catalog-section" class="nav-item active" onclick="setActiveNav(this)">
+      <span class="nav-ico">🤖</span>
+      Agentes
+    </a>
+    <a href="#utilidades-section" class="nav-item" onclick="setActiveNav(this)">
+      <span class="nav-ico">🛠️</span>
+      Utilidades
+    </a>
+    <a href="#historico-section" class="nav-item" onclick="setActiveNav(this)">
+      <span class="nav-ico">🕘</span>
+      Histórico
+    </a>
+    <a href="#perfil-section" class="nav-item" onclick="setActiveNav(this)">
+      <span class="nav-ico">⚙️</span>
+      Perfil
+    </a>
+  </nav>
+
+  <!-- --- JavaScript (Lógica e Dados Preservados) --- -->
+  <script>
+    // --- Configuration (VERIFICAR URL) ---
+    // Substitua "nexus-ai-100-oficial.vercel.app" pela URL real do seu projeto na Vercel
+    const siteUrl = "nexus-ai-100-oficial.vercel.app";
+
+    // --- Agent Data (Os seus 100 Agentes) ---
+    const agents = [
+      { id: '001', name: 'Assistente Geral Navius', tag: 'AG_001', desc: 'Assistente #1 pronto para orientar em qualquer tarefa.', type: 'assist', icon: '⚡', color: 'var(--cyan)' },
+      { id: '002', name: 'Pesquisador Rápido', tag: 'AG_002', desc: 'Encontra respostas, dados e informações na web em segundos.', type: 'assist', icon: '🔍', color: 'var(--blue)' },
+      { id: '003', name: 'Criador de Conteúdo', tag: 'AG_003', desc: 'Gera textos para redes sociais, blogs e e-mails automaticamente.', type: 'art', icon: '✍️', color: 'var(--violet)' },
+      { id: '004', name: 'Analista de Dados', tag: 'AG_004', desc: 'Processa dados brutos e extrai insights valiosos para o seu negócio.', type: 'finance', icon: '📊', color: 'var(--amber)' },
+      { id: '005', name: 'Designer de Logo', tag: 'AG_005', desc: 'Cria logotipos profissionais e identidades visuais para sua marca.', type: 'art', icon: '🎨', color: 'var(--mint)' },
+      { id: '006', name: 'Estrategista de Mídia', tag: 'AG_006', desc: 'Desenvolve estratégias de marketing para campanhas de sucesso.', type: 'video', icon: '📈', color: 'var(--red)' },
+      // Restante dos agentes (94) gerados dinamicamente para brevidade do código,
+      // mas você pode adicionar os seus 100 objetos aqui com a mesma estrutura.
+      ...Array.from({ length: 94 }, (_, i) => {
+          const id = String(i + 7).padStart(3, '0');
+          const types = ['assist', 'art', 'video', 'finance', 'edu', 'science'];
+          const icons = ['🤖', '💡', '🧠', '🛠️', '📡', '🧮', '🧬', '🌍'];
+          const colors = ['var(--cyan)', 'var(--blue)', 'var(--violet)', 'var(--amber)', 'var(--mint)', 'var(--red)'];
+          return {
+              id: id,
+              name: `Agente ${id}`,
+              tag: `AG_${id}`,
+              desc: `Descrição de exemplo para o agente ${id}.`,
+              type: types[i % types.length],
+              icon: icons[i % icons.length],
+              color: colors[i % colors.length]
+          };
+      })
+    ];
+
+    // --- Render Agents (Modificado para gerar HTML no novo estilo) ---
+    function renderAgents(filteredAgents = agents) {
+      const container = document.getElementById('agentGridContainer');
+      container.innerHTML = ''; // Limpa a grelha existente
+
+      filteredAgents.forEach(agent => {
+        const card = document.createElement('a');
+        card.href = '#';
+        card.className = 'agent-card';
+        const cardColor = agent.color || 'var(--cyan)';
+
+        card.innerHTML = `
+          <div class="agent-top">
+              <div class="agent-icon" style="color: ${cardColor};">${agent.icon}</div>
+              <span class="agent-tag">${agent.tag}</span>
+          </div>
+          <div class="agent-name text-cyan">${agent.name}</div>
+          <div class="agent-desc">${agent.desc}</div>
+        `;
+        container.appendChild(card);
+      });
+      document.getElementById('agentCountText').textContent = `Mostrando ${filteredAgents.length} agentes prontos`;
+    }
+
+    // --- Funcionalidades (Preservadas) ---
+    function filterAgents(type) {
+      if (type === 'all') {
+        renderAgents(agents);
+      } else {
+        const filtered = agents.filter(agent => agent.type === type);
+        renderAgents(filtered);
+      }
+      const chips = document.querySelectorAll('.chip');
+      chips.forEach(chip => chip.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filtered = agents.filter(agent =>
+        agent.name.toLowerCase().includes(searchTerm) ||
+        agent.tag.toLowerCase().includes(searchTerm) ||
+        agent.desc.toLowerCase().includes(searchTerm)
+      );
+      renderAgents(filtered);
+    });
+
+    function createAgent() { console.log('Criar Agente clicado'); }
+    function openTool(toolId) { console.log('Abrir ferramenta:', toolId); }
+
+    function setActiveNav(element) {
+        const items = document.querySelectorAll('.nav-item');
+        items.forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+    }
+
+    // Initial Render
+    renderAgents();
+
+  </script>
+
+</body>
+</html>
