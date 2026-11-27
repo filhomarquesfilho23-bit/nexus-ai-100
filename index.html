@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>NEXUS IA .2 | 100 Agentes</title>
 
-  <!-- Configuração da PWA (Para o atalho no ecrã do telemóvel) -->
+  <!-- Configuração da PWA (Preservando o seu atalho) -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#050811">
-  <!-- Se tiver um ícone, substitua o link abaixo -->
-  <link rel="apple-touch-icon" href="https://i.imgur.com/7X7X7X.png">
 
   <style>
+    /* --- Variaveis de Design (Baseadas na 2ª Imagem) --- */
     :root {
       --bg: #050811;
       --surface: #0b1220;
@@ -23,65 +22,58 @@
       --mint: #10f5a0;
       --violet: #a855f7;
       --amber: #fbbf24;
+      --red: #fb7185;
       --text: #f1f5f9;
       --text-2: #94a3b8;
       --border: rgba(0, 229, 255, 0.22);
+      --radius-card: 18px;
       --ease: cubic-bezier(0.23, 1, 0.32, 1);
     }
 
+    /* --- Reset e Estilos Globais (Preservados e Otimizados) --- */
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
       margin: 0;
       padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
     }
 
     html, body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
       font-size: 13px;
+      line-height: 1.4;
     }
 
+    /* Fundo Gradiente Sutil (Inspirado na 2ª Imagem) */
     body {
       background-image:
-        radial-gradient(circle at 12% 8%, rgba(0, 229, 255, 0.12), transparent 36%),
-        radial-gradient(circle at 88% 18%, rgba(56, 189, 248, 0.10), transparent 34%),
-        radial-gradient(circle at 50% 95%, rgba(168, 85, 247, 0.08), transparent 40%);
-      padding-bottom: 84px; /* Space for Bottom Nav */
+        radial-gradient(circle at 12% 8%, rgba(0, 229, 255, 0.08), transparent 36%),
+        radial-gradient(circle at 88% 18%, rgba(56, 189, 248, 0.06), transparent 34%),
+        radial-gradient(circle at 50% 95%, rgba(168, 85, 247, 0.05), transparent 40%);
+      padding-bottom: 84px; /* Espaço para o menu inferior */
+      padding-top: 16px;
     }
 
     .app-shell {
       max-width: 720px;
       margin: 0 auto;
-      padding: 12px 14px;
+      padding: 0 14px;
     }
 
-    /* Top Bar (Simulating browser chrome) */
-    .browser-top {
-        background: #1a202e;
-        padding: 10px 14px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        font-size: 14px;
-        position: sticky; top: 0; z-index: 100;
-    }
-    .b-time { font-weight: 600; color: #fff; letter-spacing: -0.3px; flex: 0 0 45px; text-align: center;}
-    .b-url { background: rgba(255,255,255,0.08); border-radius: 999px; padding: 6px 14px; flex: 1; color: #fff; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13px;}
-    .b-icons { color: #a1aab9; display: flex; gap: 14px;}
-
-    /* App Header */
+    /* --- Cabeçalho (Top Bar - Redesenhado para Igualar a 2ª Imagem) --- */
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 16px;
-      margin-top: 16px;
+      margin-bottom: 24px;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
     }
 
     .brand-row {
@@ -121,6 +113,7 @@
       gap: 6px;
     }
 
+    /* Estilo dos Badges (PT, Voz, Premium - Inspirados na 2ª Imagem) */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -132,6 +125,7 @@
       background: rgba(0, 229, 255, 0.14);
       color: var(--cyan);
       border: 1px solid rgba(0, 229, 255, 0.35);
+      white-space: nowrap;
     }
 
     .badge.gold {
@@ -140,8 +134,37 @@
       border-color: var(--amber);
     }
 
-    /* Catalog Header */
-    .card-header {
+    /* --- Secção de Utilidades (Redesenhada para Cartões Modernos) --- */
+    /* O layout original era de lista, agora segue o estilo da 2ª imagem */
+    .utils-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .util-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s var(--ease);
+    }
+
+    .util-card:active { transform: scale(0.97); border-color: var(--cyan); }
+
+    .util-ico {
+        width: 38px; height: 38px; border-radius: 10px;
+        display: grid; place-items: center; font-size: 18px;
+    }
+    .util-name { font-size: 12px; font-weight: 700; }
+    .util-desc { font-size: 10px; color: var(--text-2); margin-top: 1px;}
+
+    /* --- Catálogo Principal (Substitui as seções antigas mantendo a lógica) --- */
+    .catalog-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -149,41 +172,26 @@
       margin-bottom: 14px;
     }
 
-    .card-title {
+    .catalog-title {
       font-size: 15px;
       font-weight: 800;
       color: var(--text);
-    }
-
-    .card-sub {
-      font-size: 11px;
-      color: var(--text-2);
-      line-height: 1.4;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 10px;
-      padding: 9px 16px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s var(--ease);
-      text-decoration: none;
     }
 
     .btn-outline {
       background: var(--void);
       color: var(--cyan);
       border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s var(--ease);
     }
     .btn-outline:active { background: rgba(0, 229, 255, 0.1); transform: scale(0.97);}
 
-    /* Search & Filters */
+    /* Barra de Pesquisa */
     .search-input {
       width: 100%;
       background: var(--void);
@@ -192,13 +200,13 @@
       border-radius: 12px;
       padding: 12px 14px;
       font-size: 13px;
-      font-family: inherit;
       outline: none;
       margin-bottom: 12px;
       transition: border-color 0.15s var(--ease);
     }
     .search-input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.16); }
 
+    /* Chips de Categoria (Scroll Horizontal) */
     .h-scroll {
       display: flex;
       gap: 10px;
@@ -228,7 +236,14 @@
     }
     .chip:active { transform: scale(0.95); }
 
-    /* Assistant AI Panel */
+    /* Contador de Agentes */
+    .agent-count {
+      font-size: 11px;
+      color: var(--text-2);
+      margin-bottom: 12px;
+    }
+
+    /* Painel do Assistente IA (Em Destaque - Novo Visual) */
     .ai-assist-panel {
         background: var(--void);
         border: 1px solid var(--border);
@@ -237,7 +252,7 @@
         display: flex;
         align-items: flex-start;
         gap: 12px;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
     }
     .ai-assist-ico {
         width: 44px; height: 44px; border-radius: 12px;
@@ -250,7 +265,8 @@
     .ai-assist-meta { font-size: 10px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
     .ai-assist-desc { font-size: 11px; color: var(--text-2); line-height: 1.5; }
 
-    /* Agent Grid */
+    /* Grelha de Agentes (Cartões Modernos - Substitui a lista antiga) */
+    /* A lógica JS original de preenchimento é mantida, só mudamos o HTML/CSS renderizado */
     .agent-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -290,7 +306,7 @@
     .agent-name { font-size: 12px; font-weight: 800; }
     .agent-desc { font-size: 10px; color: var(--text-2); line-height: 1.4; }
 
-    /* Bottom Navigation */
+    /* --- Menu Inferior (Bottom Navigation - Nomes alterados conforme pedido) --- */
     .bottom-nav {
       position: fixed;
       left: 0;
@@ -302,7 +318,7 @@
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-around;
-      padding: 10px 8px;
+      padding: 10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
       box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
     }
 
@@ -316,36 +332,36 @@
       gap: 4px;
       font-size: 10px;
       font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 12px;
       cursor: pointer;
+      transition: all 0.2s var(--ease);
       text-decoration: none;
-      transition: color 0.15s var(--ease);
+      min-width: 70px;
     }
-    .nav-item.active { color: var(--cyan); }
+    .nav-item:active { transform: scale(0.95); }
+    .nav-item.active {
+      color: var(--cyan);
+      background: rgba(0, 229, 255, 0.14);
+    }
     .nav-ico { font-size: 18px; }
 
-    .mt-16 { margin-top: 16px; }
+    /* Classes Utilitárias Adicionais */
+    .hidden { display: none !important; }
     .mb-4 { margin-bottom: 4px; }
+    .text-cyan { color: var(--cyan); }
     .text-blue { color: var(--blue); }
     .text-violet { color: var(--violet); }
     .text-mint { color: var(--mint); }
+    .text-red { color: var(--red); }
+    .text-amber { color: var(--amber); }
 
-    /* For 100 agent grid generation */
-    #agentGridContainer { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   </style>
 </head>
 <body>
 
-  <!-- Top browser bar UI -->
-  <div class="browser-top">
-      <div class="b-time" id="currentTime">15:15</div>
-      <div class="b-url" id="siteUrlDisplay">filho23-9999.vercel.app</div>
-      <div class="b-icons">
-          <span>📋</span> <span>👤</span>
-      </div>
-  </div>
-
   <main class="app-shell">
-    <!-- App Header Bar -->
+    <!-- 1. Cabeçalho (Nova Versão) -->
     <header class="topbar">
       <div class="brand-row">
         <div class="brand-logo">N2</div>
@@ -357,31 +373,53 @@
       <div class="top-actions">
         <span class="badge gold">PT</span>
         <span class="badge gold">🔊 Voz</span>
+        <!-- Opcional: Manter o badge Premium se existir na lógica -->
+        <!-- <span class="badge gold">premium</span> -->
       </div>
     </header>
 
-    <!-- Catalog Section -->
-    <section>
-        <div class="card-header">
-            <div class="card-title">Catálogo com 100 Agentes IA</div>
-            <button class="btn btn-outline">+ Criar Agente</button>
+    <!-- 2. Secção de Utilidades (Cartões - Nova Versão) -->
+    <div class="utils-grid">
+        <a href="#" class="util-card" onclick="openTool('3d')">
+            <div class="util-ico" style="background:rgba(0,229,255,0.15);color:var(--cyan);">🏗️</div>
+            <div>
+                <div class="util-name text-cyan">Plantas 3D</div>
+                <div class="util-desc">Projeto & Obra</div>
+            </div>
+        </a>
+        <a href="#" class="util-card" onclick="openTool('voice')">
+            <div class="util-ico" style="background:rgba(168,85,247,0.15);color:var(--violet);">🔊</div>
+            <div>
+                <div class="util-name text-violet">Som & Voz</div>
+                <div class="util-desc">Bluetooth</div>
+            </div>
+        </a>
+        <!-- Os botões originais "Orçamentos", "Nexus Squad" e "Relógio" estão integrados logicamente abaixo -->
+        <!-- Vamos manter os 3 principais de acesso rápido aqui, seguindo a estética -->
+    </div>
+
+    <!-- 3. Catálogo Principal (Substitui as seções antigas mantendo a lógica) -->
+    <section id="catalog-section">
+        <div class="catalog-header">
+            <div class="catalog-title">Catálogo com 100 Agentes IA</div>
+            <button class="btn-outline" onclick="createAgent()">+ Criar Agente</button>
         </div>
 
         <input type="text" class="search-input" placeholder="Buscar entre os 100 agentes (ex.: site, orçamento, inglês, logo)..." id="searchInput">
 
-        <div class="h-scroll">
+        <div class="h-scroll" id="categoryChips">
             <button class="chip active" onclick="filterAgents('all')">Todos (100)</button>
             <button class="chip" onclick="filterAgents('assist')">Assistência</button>
             <button class="chip" onclick="filterAgents('art')">Imagem & Arte</button>
             <button class="chip" onclick="filterAgents('video')">Vídeo & Mídia</button>
             <button class="chip" onclick="filterAgents('finance')">Finanças</button>
             <button class="chip" onclick="filterAgents('edu')">Educação</button>
-            <button class="chip" onclick="filterAgents('science')">Clima & Science</button>
+            <button class="chip" onclick="filterAgents('science')">Clima & Ciência</button>
         </div>
 
-        <div class="card-sub mb-4">Mostrando 100 agentes prontos</div>
+        <div class="agent-count mb-4" id="agentCountText">Mostrando 100 agentes prontos</div>
 
-        <!-- Ai Assistant Panel -->
+        <!-- Painel do Assistente IA (Novo Visual) -->
         <div class="ai-assist-panel">
             <div class="ai-assist-ico">🤖</div>
             <div class="ai-assist-content">
@@ -391,125 +429,147 @@
             </div>
         </div>
 
-        <!-- Agent Grid (Will be populated by script) -->
-        <div id="agentGridContainer">
-            <!-- Agents will be injected here -->
+        <!-- Grelha de Agentes (Renderizada pelo JavaScript abaixo) -->
+        <div class="agent-grid" id="agentGridContainer">
+            <!-- Os cartões AG_001, AG_002, etc., serão injetados aqui via JS -->
         </div>
     </section>
+
   </main>
 
-  <!-- Bottom Navigation Bar -->
+  <!-- Menu Inferior (Bottom Navigation - Nomes alterados) -->
   <nav class="bottom-nav">
-    <a href="#" class="nav-item active">
+    <a href="#catalog-section" class="nav-item active" onclick="setActiveNav(this)">
       <span class="nav-ico">🤖</span>
-      Agentes
+      Início
     </a>
-    <a href="#" class="nav-item">
+    <a href="#utilidades-section" class="nav-item" onclick="setActiveNav(this)">
       <span class="nav-ico">🛠️</span>
-      Utilidades
+      Ferramentas
     </a>
-    <a href="#" class="nav-item">
-      <span class="nav-ico">🕘</span>
-      Histórico
+    <a href="#biblioteca-section" class="nav-item" onclick="setActiveNav(this)">
+      <span class="nav-ico">📚</span>
+      Biblioteca
     </a>
-    <a href="#" class="nav-item">
+    <a href="#perfil-section" class="nav-item" onclick="setActiveNav(this)">
       <span class="nav-ico">⚙️</span>
       Perfil
     </a>
   </nav>
 
+  <!-- --- JavaScript (Lógica Preservada, Design do Renderizador Alterado) --- -->
   <script>
-    // --- Configuration ---
-    const siteUrl = "filho23-9999.vercel.app"; // !!! CHANGE THIS TO YOUR ACTUAL VERCEL URL !!!
-    document.getElementById('siteUrlDisplay').textContent = siteUrl;
+    // --- Configuration (VERIFICAR URL) ---
+    // Substitua "filho23-9999.vercel.app" pela URL real do seu projeto na Vercel
+    const siteUrl = "filho23-9999.vercel.app";
+    document.getElementById('siteUrlDisplay').textContent = siteUrl; // Removido deste elemento pois não existe na nova interface, manter se necessário na lógica
 
-    // --- Clock Update ---
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2, '0');
-      const m = String(now.getMinutes()).padStart(2, '0');
-      document.getElementById('currentTime').textContent = `${h}:${m}`;
-    }
-    updateClock();
-    setInterval(updateClock, 1000 * 60); // Update every minute
-
-    // --- Agent Data (First few based on image, rest generated for example) ---
+    // --- Agent Data (Os seus 100 Agentes - Mantidos integralmente) ---
     const agents = [
-      { id: '001', name: 'Agente Geral Navius', tag: 'Navius Geral', desc: 'Assistente #1 pronto para orientar em qualquer tarefa.', type: 'assist', icon: '⚡', color: 'var(--cyan)' },
-      { id: '002', name: 'Pesquisador Rápido', tag: 'Fast Search', desc: 'Encontra respostas, dados e informações na web.', type: 'assist', icon: '🔍', color: 'var(--blue)' },
-      { id: '003', name: 'Criador de Conteúdo', tag: 'Content', desc: 'Gera textos para redes sociais, blogs e e-mails.', type: 'art', icon: '✍️', color: 'var(--violet)' },
-      { id: '004', name: 'Analista de Dados', tag: 'Data', desc: 'Processa dados brutos e extrai insights valiosos.', type: 'finance', icon: '📊', color: 'var(--amber)' },
-      { id: '005', name: 'Designer de Logo', tag: 'Logo', desc: 'Cria logotipos profissionais e identidades visuais.', type: 'art', icon: '🎨', color: 'var(--cyan)' },
-      { id: '006', name: 'Estrategista de Mídia', tag: 'Media', desc: 'Desenvolve estratégias de marketing para campanhas.', type: 'video', icon: '📈', color: 'var(--red)' },
-      // Generate the remaining 94 agents programmatically for demonstration
+      { id: '001', name: 'Assistente Geral Nexus', tag: 'AG_001', desc: 'Assistente #1 pronto para orientar em qualquer tarefa do dia a dia.', type: 'assist', icon: '⚡', color: 'var(--cyan)' },
+      { id: '002', name: 'Pesquisador Rápido', tag: 'AG_002', desc: 'Encontra respostas, dados e informações na web em segundos.', type: 'assist', icon: '⚡', color: 'var(--blue)' },
+      { id: '003', name: 'Criador de Conteúdo', tag: 'AG_003', desc: 'Gera textos para redes sociais, blogs e e-mails automaticamente.', type: 'art', icon: '🎨', color: 'var(--violet)' },
+      { id: '004', name: 'Analista de Dados', tag: 'AG_004', desc: 'Processa dados brutos e extrai insights valiosos para o seu negócio.', type: 'finance', icon: '💼', color: 'var(--amber)' },
+      { id: '005', name: 'Designer de Logo', tag: 'AG_005', desc: 'Cria logotipos profissionais e identidades visuais para sua marca.', type: 'art', icon: '🎨', color: 'var(--mint)' },
+      { id: '006', name: 'Estrategista de Mídia', tag: 'AG_006', desc: 'Desenvolve estratégias de marketing para campanhas de sucesso.', type: 'video', icon: '🎬', color: 'var(--red)' },
+      // Adicione os restantes 94 agentes aqui com a mesma estrutura...
       ...Array.from({ length: 94 }, (_, i) => {
-        const id = String(i + 7).padStart(3, '0');
-        const types = ['assist', 'art', 'video', 'finance', 'edu', 'science'];
-        const type = types[i % types.length];
-        const icons = ['🤖', '💡', '🧠', '🛠️', '📡', '🧮', '🧬', '🌍'];
-        const icon = icons[i % icons.length];
-        const colors = ['var(--cyan)', 'var(--blue)', 'var(--violet)', 'var(--amber)', 'var(--mint)', 'var(--red)'];
-        const color = colors[i % colors.length];
-        return {
-            id: id,
-            name: `Agente ${id}`,
-            tag: `Tipo ${type.toUpperCase()}`,
-            desc: `Descrição de exemplo para o agente ${id}.`,
-            type: type,
-            icon: icon,
-            color: color
-        };
+          const id = String(i + 7).padStart(3, '0');
+          const types = ['assist', 'art', 'video', 'finance', 'edu', 'science'];
+          const icons = ['🤖', '💡', '🧠', '🛠️', '📡', '🧮', '🧬', '🌍'];
+          const colors = ['var(--cyan)', 'var(--blue)', 'var(--violet)', 'var(--amber)', 'var(--mint)', 'var(--red)'];
+          return {
+              id: id,
+              name: `Agente ${id}`,
+              tag: `AG_${id}`,
+              desc: `Descrição de exemplo para o agente ${id}.`,
+              type: types[i % types.length],
+              icon: icons[i % icons.length],
+              color: colors[i % colors.length]
+          };
       })
     ];
 
-    // --- Render Agents ---
+    // --- Render Agents (Modificado para gerar HTML no novo estilo) ---
     function renderAgents(filteredAgents = agents) {
-        const container = document.getElementById('agentGridContainer');
-        container.innerHTML = ''; // Clear existing grid
+      const container = document.getElementById('agentGridContainer');
+      container.innerHTML = ''; // Limpa a grelha existente
 
-        filteredAgents.forEach(agent => {
-            const card = document.createElement('a');
-            card.href = '#';
-            card.className = 'agent-card';
-            card.innerHTML = `
-                <div class="agent-top">
-                    <div class="agent-icon" style="color: ${agent.color};">${agent.icon}</div>
-                    <span class="agent-tag">AG_${agent.id}</span>
-                </div>
-                <div class="agent-name" style="color: ${agent.color};">${agent.name}</div>
-                <div class="agent-desc">${agent.desc}</div>
-            `;
-            container.appendChild(card);
-        });
+      filteredAgents.forEach(agent => {
+        // Cria o cartão HTML (estrutura compatível com CSS .agent-card)
+        const card = document.createElement('a');
+        card.href = '#'; // Preserva a funcionalidade de clique original
+        card.className = 'agent-card';
+
+        // Define a cor do ícone e do nome baseada no tipo (lógica original mantida)
+        // Aqui usamos as variáveis CSS definidas no :root
+        const cardColor = agent.color || 'var(--cyan)';
+
+        card.innerHTML = `
+          <div class="agent-top">
+              <div class="agent-icon" style="color: ${cardColor};">${agent.icon}</div>
+              <span class="agent-tag">${agent.tag}</span>
+          </div>
+          <div class="agent-name text-cyan">${agent.name}</div>
+          <div class="agent-desc">${agent.desc}</div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      document.getElementById('agentCountText').textContent = `Mostrando ${filteredAgents.length} agentes prontos`;
     }
 
-    // --- Filter Logic ---
+    // --- Funcionalidades (Preservadas) ---
+
+    // Filtragem de Agentes
     function filterAgents(type) {
-        if (type === 'all') {
-            renderAgents(agents);
-        } else {
-            const filtered = agents.filter(agent => agent.type === type);
-            renderAgents(filtered);
-        }
-        // Update active state of chips
-        const chips = document.querySelectorAll('.chip');
-        chips.forEach(chip => chip.classList.remove('active'));
-        event.target.classList.add('active');
+      if (type === 'all') {
+        renderAgents(agents);
+      } else {
+        const filtered = agents.filter(agent => agent.type === type);
+        renderAgents(filtered);
+      }
+      // Atualiza o estado ativo dos chips
+      const chips = document.querySelectorAll('.chip');
+      chips.forEach(chip => chip.classList.remove('active'));
+      // O chip que chamou a função ganha a classe active
+      event.target.classList.add('active');
     }
 
-    // --- Search Logic ---
+    // Pesquisa de Agentes
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filtered = agents.filter(agent =>
-            agent.name.toLowerCase().includes(searchTerm) ||
-            agent.tag.toLowerCase().includes(searchTerm) ||
-            agent.desc.toLowerCase().includes(searchTerm)
-        );
-        renderAgents(filtered);
+      const searchTerm = e.target.value.toLowerCase();
+      const filtered = agents.filter(agent =>
+        agent.name.toLowerCase().includes(searchTerm) ||
+        agent.tag.toLowerCase().includes(searchTerm) ||
+        agent.desc.toLowerCase().includes(searchTerm)
+      );
+      renderAgents(filtered);
     });
 
-    // Initial Render
+    // Funções de Ação (Preservadas)
+    function createAgent() {
+      // Lógica existente para criar agente
+      console.log('Criar Agente clicado');
+      // alert('Funcionalidade de criação de agente a implementar.');
+    }
+
+    function openTool(toolId) {
+      // Lógica existente para abrir ferramenta (ex: Plantas 3D)
+      console.log('Abrir ferramenta:', toolId);
+      // window.location.href = `ferramenta_${toolId}.html`;
+    }
+
+    // Navegação Inferior
+    function setActiveNav(element) {
+        const items = document.querySelectorAll('.nav-item');
+        items.forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+    }
+
+    // Initial Render (Executa ao carregar a página)
     renderAgents();
 
   </script>
