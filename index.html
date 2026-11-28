@@ -154,14 +154,21 @@
       border-radius: 14px;
       padding: 14px;
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
       cursor: pointer;
       text-decoration: none;
       color: var(--text);
       transition: all 0.2s var(--ease);
     }
     .util-card:active { transform: scale(0.97); border-color: var(--cyan); }
+
+    .util-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
     .util-ico {
       width: 38px;
@@ -170,6 +177,7 @@
       display: grid;
       place-items: center;
       font-size: 18px;
+      flex-shrink: 0;
     }
     .util-name { font-size: 12px; font-weight: 700; }
     .util-desc { font-size: 10px; color: var(--text-2); margin-top: 1px; }
@@ -262,11 +270,17 @@
       border-radius: 14px;
       padding: 14px;
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      flex-direction: column;
+      gap: 10px;
       margin-bottom: 16px;
       cursor: pointer;
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.12);
+    }
+
+    .ai-assist-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
     }
 
     .ai-assist-ico {
@@ -334,7 +348,7 @@
     .btn-open-blue {
       width: 100%;
       margin-top: 4px;
-      padding: 7px 10px;
+      padding: 8px 10px;
       border-radius: 9px;
       border: 1px solid var(--cyan);
       background: linear-gradient(135deg, var(--cyan), var(--blue));
@@ -346,6 +360,63 @@
     }
     .btn-open-blue:active {
       transform: scale(0.97);
+    }
+
+    .calc-display {
+      width: 100%;
+      background: var(--void);
+      border: 1px solid var(--cyan);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--cyan);
+      font-size: 20px;
+      font-weight: 800;
+      text-align: right;
+      margin-bottom: 10px;
+      overflow-x: auto;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .calc-btn {
+      padding: 12px 8px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--void);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .calc-btn.op {
+      color: var(--cyan);
+      border-color: rgba(0, 229, 255, 0.4);
+    }
+
+    .calc-btn.eq {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #04101d;
+      border-color: var(--cyan);
+    }
+
+    .info-panel {
+      background: var(--void);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .clock-big {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--cyan);
+      margin-bottom: 4px;
     }
 
     .bottom-nav {
@@ -609,6 +680,8 @@
 
     .text-cyan { color: var(--cyan); }
     .text-violet { color: var(--violet); }
+    .text-amber { color: var(--amber); }
+    .text-mint { color: var(--mint); }
   </style>
 </head>
 <body>
@@ -635,20 +708,60 @@
     </div>
 
     <div class="utils-grid">
-      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Aperte o microfone e fale o projeto de casa ou obra. Eu falo em voz alta e mostro o gasto estimado.', 'science')">
-        <div class="util-ico" style="background:rgba(0,229,255,0.15);color:var(--cyan);">🏗️</div>
-        <div>
-          <div class="util-name text-cyan">Plantas 3D</div>
-          <div class="util-desc">Projeto • Voz • Gasto</div>
+      <div class="util-card" onclick="launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Aperte o microfone e fale o projeto de casa ou obra. Eu falo em voz alta e mostro o gasto estimado.', 'science')">
+        <div class="util-top">
+          <div class="util-ico" style="background:rgba(0,229,255,0.15);color:var(--cyan);">🏗️</div>
+          <div>
+            <div class="util-name text-cyan">Plantas 3D</div>
+            <div class="util-desc">Projeto • Voz • Gasto</div>
+          </div>
         </div>
-      </a>
-      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('SOM_VOZ', 'Estúdio Som & Voz Bluetooth', 'Fale pelo microfone e ouça tudo em voz alta.', 'video')">
-        <div class="util-ico" style="background:rgba(168,85,247,0.15);color:var(--violet);">🔊</div>
-        <div>
-          <div class="util-name text-violet">Som & Voz</div>
-          <div class="util-desc">Bluetooth</div>
+        <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Aperte o microfone e fale o projeto de casa ou obra. Eu falo em voz alta e mostro o gasto estimado.', 'science')">Abrir</button>
+      </div>
+
+      <div class="util-card" onclick="launchAgent('SOM_VOZ', 'Estúdio Som & Voz Bluetooth', 'Fale pelo microfone e ouça tudo em voz alta.', 'video')">
+        <div class="util-top">
+          <div class="util-ico" style="background:rgba(168,85,247,0.15);color:var(--violet);">🔊</div>
+          <div>
+            <div class="util-name text-violet">Som & Voz</div>
+            <div class="util-desc">Bluetooth</div>
+          </div>
         </div>
-      </a>
+        <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); launchAgent('SOM_VOZ', 'Estúdio Som & Voz Bluetooth', 'Fale pelo microfone e ouça tudo em voz alta.', 'video')">Abrir</button>
+      </div>
+
+      <div class="util-card" onclick="openCalculatorModal()">
+        <div class="util-top">
+          <div class="util-ico" style="background:rgba(16,245,160,0.15);color:var(--mint);">🧮</div>
+          <div>
+            <div class="util-name text-mint">Calculadora Digital</div>
+            <div class="util-desc">Contas rápidas</div>
+          </div>
+        </div>
+        <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); openCalculatorModal()">Abrir</button>
+      </div>
+
+      <div class="util-card" onclick="openWeatherModal()">
+        <div class="util-top">
+          <div class="util-ico" style="background:rgba(251,191,36,0.15);color:var(--amber);">🌦️</div>
+          <div>
+            <div class="util-name text-amber">Previsão do Tempo</div>
+            <div class="util-desc">Clima e consulta</div>
+          </div>
+        </div>
+        <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); openWeatherModal()">Abrir</button>
+      </div>
+
+      <div class="util-card" onclick="openClockModal()">
+        <div class="util-top">
+          <div class="util-ico" style="background:rgba(56,189,248,0.15);color:var(--blue);">🕒</div>
+          <div>
+            <div class="util-name" style="color:var(--blue);">Horas</div>
+            <div class="util-desc" id="clockCardPreview">Carregando...</div>
+          </div>
+        </div>
+        <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); openClockModal()">Abrir</button>
+      </div>
     </div>
 
     <section id="catalog-section">
@@ -675,12 +788,15 @@
       <div class="agent-count" id="agentCountText">Mostrando 100 agentes prontos</div>
 
       <div class="ai-assist-panel" onclick="launchAgent('NEXUS_MASTER', 'Assistente IA Nexus', 'Não precisa escrever: aperte o microfone e fale sua pergunta que eu respondo falando e mostro o gasto.', 'assist')">
-        <div class="ai-assist-ico">🤖</div>
-        <div class="ai-assist-content">
-          <div class="ai-assist-title">Assistente IA Nexus</div>
-          <div class="ai-assist-meta">APENAS TEXTO + VOZ • SEM IMAGENS</div>
-          <div class="ai-assist-desc">Em qualquer agente, responde falando em voz alta e mostra a estimativa de valor de gasto em R$.</div>
+        <div class="ai-assist-top">
+          <div class="ai-assist-ico">🤖</div>
+          <div class="ai-assist-content">
+            <div class="ai-assist-title">Assistente IA Nexus</div>
+            <div class="ai-assist-meta">APENAS TEXTO + VOZ • SEM IMAGENS</div>
+            <div class="ai-assist-desc">Em qualquer agente, responde falando em voz alta e mostra a estimativa de valor de gasto em R$.</div>
+          </div>
         </div>
+        <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); launchAgent('NEXUS_MASTER', 'Assistente IA Nexus', 'Não precisa escrever: aperte o microfone e fale sua pergunta que eu respondo falando e mostro o gasto.', 'assist')">Abrir</button>
       </div>
 
       <div class="agent-grid" id="agentGridContainer"></div>
@@ -705,6 +821,72 @@
       Perfil
     </a>
   </nav>
+
+  <!-- Modal Calculadora Digital -->
+  <div class="modal-overlay" id="calculatorModal">
+    <div class="modal-box" style="border-color: var(--mint);">
+      <div class="modal-header">
+        <div class="modal-title" style="color: var(--mint);">🧮 Calculadora Digital</div>
+        <button class="modal-close" onclick="closeCalculatorModal()">✕</button>
+      </div>
+      <div class="calc-display" id="calcDisplay">0</div>
+      <div class="calc-grid">
+        <button type="button" class="calc-btn op" onclick="calcClear()">C</button>
+        <button type="button" class="calc-btn op" onclick="calcBackspace()">⌫</button>
+        <button type="button" class="calc-btn op" onclick="calcAppend('%')">%</button>
+        <button type="button" class="calc-btn op" onclick="calcAppend('/')">÷</button>
+
+        <button type="button" class="calc-btn" onclick="calcAppend('7')">7</button>
+        <button type="button" class="calc-btn" onclick="calcAppend('8')">8</button>
+        <button type="button" class="calc-btn" onclick="calcAppend('9')">9</button>
+        <button type="button" class="calc-btn op" onclick="calcAppend('*')">×</button>
+
+        <button type="button" class="calc-btn" onclick="calcAppend('4')">4</button>
+        <button type="button" class="calc-btn" onclick="calcAppend('5')">5</button>
+        <button type="button" class="calc-btn" onclick="calcAppend('6')">6</button>
+        <button type="button" class="calc-btn op" onclick="calcAppend('-')">-</button>
+
+        <button type="button" class="calc-btn" onclick="calcAppend('1')">1</button>
+        <button type="button" class="calc-btn" onclick="calcAppend('2')">2</button>
+        <button type="button" class="calc-btn" onclick="calcAppend('3')">3</button>
+        <button type="button" class="calc-btn op" onclick="calcAppend('+')">+</button>
+
+        <button type="button" class="calc-btn" onclick="calcAppend('0')">0</button>
+        <button type="button" class="calc-btn" onclick="calcAppend('.')">.</button>
+        <button type="button" class="calc-btn eq" style="grid-column: span 2;" onclick="calcEqual()">=</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Previsão do Tempo -->
+  <div class="modal-overlay" id="weatherModal">
+    <div class="modal-box" style="border-color: var(--amber);">
+      <div class="modal-header">
+        <div class="modal-title" style="color: var(--amber);">🌦️ Previsão do Tempo</div>
+        <button class="modal-close" onclick="closeWeatherModal()">✕</button>
+      </div>
+      <input type="text" id="weatherCityInput" class="modal-input" placeholder="Digite a cidade (ex: Floriano, PI)" value="Floriano, PI">
+      <button type="button" class="btn-primary" id="weatherBtn" onclick="fetchWeather()">Consultar Previsão</button>
+      <div class="info-panel" id="weatherResultBox" style="margin-top: 12px;">
+        <p style="font-size:12px; color:var(--text-2);">Digite uma cidade e toque em Consultar Previsão.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Horas -->
+  <div class="modal-overlay" id="clockModal">
+    <div class="modal-box" style="border-color: var(--blue);">
+      <div class="modal-header">
+        <div class="modal-title" style="color: var(--blue);">🕒 Horas</div>
+        <button class="modal-close" onclick="closeClockModal()">✕</button>
+      </div>
+      <div class="info-panel">
+        <div class="clock-big" id="modalClockTime">--:--:--</div>
+        <div style="font-size:12px; color:var(--text-2);" id="modalClockDate">Carregando data...</div>
+      </div>
+      <button type="button" class="btn-primary" onclick="speakClockTime()">🔊 Falar Horas</button>
+    </div>
+  </div>
 
   <!-- Modal Criar Seu Agente -->
   <div class="modal-overlay" id="createAgentModal">
@@ -794,6 +976,139 @@
     let activeAgentContext = "";
     let activeAgentNameOnly = "Agente IA";
     let recognitionInstance = null;
+    let calcExpr = "";
+
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      const shortTime = now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+      const dateStr = now.toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long", year: "numeric" });
+
+      const preview = document.getElementById("clockCardPreview");
+      const modalTime = document.getElementById("modalClockTime");
+      const modalDate = document.getElementById("modalClockDate");
+
+      if (preview) preview.textContent = shortTime;
+      if (modalTime) modalTime.textContent = timeStr;
+      if (modalDate) modalDate.textContent = dateStr;
+    }
+
+    function openClockModal() {
+      updateClock();
+      document.getElementById("clockModal").classList.add("open");
+    }
+
+    function closeClockModal() {
+      document.getElementById("clockModal").classList.remove("open");
+    }
+
+    function speakClockTime() {
+      const now = new Date();
+      const shortTime = now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+      speakText(`Agora são ${shortTime}.`, true);
+    }
+
+    function openCalculatorModal() {
+      document.getElementById("calculatorModal").classList.add("open");
+    }
+
+    function closeCalculatorModal() {
+      document.getElementById("calculatorModal").classList.remove("open");
+    }
+
+    function renderCalc() {
+      document.getElementById("calcDisplay").textContent = calcExpr || "0";
+    }
+
+    function calcAppend(val) {
+      calcExpr += val;
+      renderCalc();
+    }
+
+    function calcClear() {
+      calcExpr = "";
+      renderCalc();
+    }
+
+    function calcBackspace() {
+      calcExpr = calcExpr.slice(0, -1);
+      renderCalc();
+    }
+
+    function calcEqual() {
+      if (!calcExpr) return;
+      try {
+        const sanitized = calcExpr.replace(/[^0-9+\-*/.%]/g, "");
+        const withPercent = sanitized.replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
+        const result = Function(`"use strict"; return (${withPercent})`)();
+        calcExpr = String(Number.isFinite(result) ? result : 0);
+        renderCalc();
+      } catch {
+        document.getElementById("calcDisplay").textContent = "Erro";
+        calcExpr = "";
+      }
+    }
+
+    function openWeatherModal() {
+      document.getElementById("weatherModal").classList.add("open");
+    }
+
+    function closeWeatherModal() {
+      document.getElementById("weatherModal").classList.remove("open");
+    }
+
+    async function fetchWeather() {
+      const cityInput = document.getElementById("weatherCityInput").value.trim() || "Floriano, PI";
+      const box = document.getElementById("weatherResultBox");
+      const btn = document.getElementById("weatherBtn");
+
+      btn.disabled = true;
+      btn.textContent = "Consultando...";
+      box.innerHTML = `<p style="font-size:12px; color:var(--text-2);">Buscando previsão para ${cityInput}...</p>`;
+
+      try {
+        const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityInput.split(",")[0].trim())}&count=1&language=pt&format=json`);
+        const geoData = await geoRes.json();
+
+        if (!geoData.results || geoData.results.length === 0) {
+          box.innerHTML = `<p style="font-size:12px; color:var(--amber);">Cidade não encontrada. Tente informar o nome da cidade em português.</p>`;
+          return;
+        }
+
+        const place = geoData.results[0];
+        const wxRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`);
+        const wxData = await wxRes.json();
+        const curr = wxData.current;
+
+        const weatherDescMap = {
+          0: "Céu limpo",
+          1: "Principalmente limpo",
+          2: "Parcialmente nublado",
+          3: "Nublado",
+          45: "Neblina",
+          51: "Garoa leve",
+          61: "Chuva fraca",
+          63: "Chuva moderada",
+          65: "Chuva forte",
+          80: "Pancadas de chuva",
+          95: "Trovoada"
+        };
+        const cond = weatherDescMap[curr.weather_code] || "Condição variável";
+
+        box.innerHTML = `
+          <div style="font-size:13px; font-weight:800; color:var(--cyan); margin-bottom:6px;">${place.name}${place.admin1 ? " - " + place.admin1 : ""}</div>
+          <div style="font-size:22px; font-weight:900; color:var(--text); margin-bottom:6px;">${Math.round(curr.temperature_2m)}°C</div>
+          <div style="font-size:12px; color:var(--text); margin-bottom:4px;">Clima: ${cond}</div>
+          <div style="font-size:11px; color:var(--text-2);">Umidade: ${curr.relative_humidity_2m}% • Vento: ${Math.round(curr.wind_speed_10m)} km/h</div>
+        `;
+        speakText(`Em ${place.name}, temperatura de ${Math.round(curr.temperature_2m)} graus e ${cond}.`);
+      } catch {
+        box.innerHTML = `<p style="font-size:12px; color:var(--amber);">Não foi possível carregar a previsão agora. Tente novamente.</p>`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Consultar Previsão";
+      }
+    }
 
     function stopSpeech() {
       if ('speechSynthesis' in window) {
@@ -950,6 +1265,10 @@
       return [...getSavedCustomAgents(), ...baseAgents, ...generatedAgents];
     }
 
+    function escapeAttr(str) {
+      return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+
     function renderAgents(list = getAllAgents()) {
       const container = document.getElementById('agentGridContainer');
       container.innerHTML = '';
@@ -966,7 +1285,7 @@
             <div class="agent-name" style="color:${agent.color}; margin-top:8px;">${agent.name}</div>
             <div class="agent-desc" style="margin-top:4px;">${agent.desc}</div>
           </div>
-          <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); launchAgent('${agent.tag.replace(/'/g, "\\'")}', '${agent.name.replace(/'/g, "\\'")}', '${agent.desc.replace(/'/g, "\\'")}', '${agent.type}')">Abrir</button>
+          <button type="button" class="btn-open-blue" data-tag="${escapeAttr(agent.tag)}" data-name="${escapeAttr(agent.name)}" data-desc="${escapeAttr(agent.desc)}" data-type="${escapeAttr(agent.type)}" onclick="event.stopPropagation(); launchAgent(this.dataset.tag, this.dataset.name, this.dataset.desc, this.dataset.type)">Abrir</button>
         `;
         container.appendChild(card);
       });
@@ -1164,6 +1483,8 @@ Parte 2: Estimativa realista de valor de gasto no Brasil em Reais (R$), listando
       filterAgents(filterType, null);
     }
 
+    updateClock();
+    setInterval(updateClock, 1000);
     updateVipBadge();
     renderAgents();
   </script>
