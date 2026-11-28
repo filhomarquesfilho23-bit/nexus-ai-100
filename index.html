@@ -298,6 +298,7 @@
       cursor: pointer;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       gap: 8px;
       text-decoration: none;
       color: var(--text);
@@ -329,6 +330,23 @@
     }
     .agent-name { font-size: 12px; font-weight: 800; }
     .agent-desc { font-size: 10px; color: var(--text-2); line-height: 1.4; }
+
+    .btn-open-blue {
+      width: 100%;
+      margin-top: 4px;
+      padding: 7px 10px;
+      border-radius: 9px;
+      border: 1px solid var(--cyan);
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #04101d;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-open-blue:active {
+      transform: scale(0.97);
+    }
 
     .bottom-nav {
       position: fixed;
@@ -940,12 +958,15 @@
         card.className = 'agent-card';
         card.onclick = () => launchAgent(agent.tag, agent.name, agent.desc, agent.type);
         card.innerHTML = `
-          <div class="agent-top">
-            <div class="agent-icon" style="color:${agent.color};">${agent.icon}</div>
-            <span class="agent-tag">${agent.tag}</span>
+          <div>
+            <div class="agent-top">
+              <div class="agent-icon" style="color:${agent.color};">${agent.icon}</div>
+              <span class="agent-tag">${agent.tag}</span>
+            </div>
+            <div class="agent-name" style="color:${agent.color}; margin-top:8px;">${agent.name}</div>
+            <div class="agent-desc" style="margin-top:4px;">${agent.desc}</div>
           </div>
-          <div class="agent-name" style="color:${agent.color};">${agent.name}</div>
-          <div class="agent-desc">${agent.desc}</div>
+          <button type="button" class="btn-open-blue" onclick="event.stopPropagation(); launchAgent('${agent.tag.replace(/'/g, "\\'")}', '${agent.name.replace(/'/g, "\\'")}', '${agent.desc.replace(/'/g, "\\'")}', '${agent.type}')">Abrir</button>
         `;
         container.appendChild(card);
       });
