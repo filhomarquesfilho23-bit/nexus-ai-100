@@ -549,7 +549,7 @@
       border: 1px solid var(--cyan);
       display: block;
       background: #040812;
-      min-height: 160px;
+      min-height: 165px;
       object-fit: cover;
     }
 
@@ -639,7 +639,7 @@
         <div class="brand-logo" onclick="window.location.reload()">N2</div>
         <div>
           <div class="brand-title">NEXUS IA .2</div>
-          <div class="brand-sub">100 Agentes • Mic + Voz + Gasto + Foto em Todos</div>
+          <div class="brand-sub">100 Agentes • Mic + Voz + Gasto + Foto</div>
         </div>
       </div>
       <div class="top-actions">
@@ -656,14 +656,14 @@
     </div>
 
     <div class="utils-grid">
-      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Aperte o microfone e fale o que quer construir. Eu falo o gasto e mostro a foto 3D.')">
+      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Aperte o microfone e fale o projeto de casa ou obra. Eu falo o gasto e mostro a foto da casa.', 'science')">
         <div class="util-ico" style="background:rgba(0,229,255,0.15);color:var(--cyan);">🏗️</div>
         <div>
           <div class="util-name text-cyan">Plantas 3D</div>
-          <div class="util-desc">Mic • Gasto • Foto</div>
+          <div class="util-desc">Casa • Gasto • Foto</div>
         </div>
       </a>
-      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('SOM_VOZ', 'Estúdio Som & Voz Bluetooth', 'Fale pelo microfone e ouça tudo em voz alta.')">
+      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('SOM_VOZ', 'Estúdio Som & Voz Bluetooth', 'Fale pelo microfone e ouça tudo em voz alta.', 'video')">
         <div class="util-ico" style="background:rgba(168,85,247,0.15);color:var(--violet);">🔊</div>
         <div>
           <div class="util-name text-violet">Som & Voz</div>
@@ -681,7 +681,7 @@
         </div>
       </div>
 
-      <input type="text" class="search-input" placeholder="Buscar entre os 100 agentes (ex.: site, orçamento, inglês, logo)..." id="searchInput">
+      <input type="text" class="search-input" placeholder="Buscar entre os 100 agentes (ex.: casa, obra, orçamento, logo)..." id="searchInput">
 
       <div class="h-scroll" id="categoryChips">
         <button class="chip active" onclick="filterAgents('all', this)">Todos (100)</button>
@@ -695,12 +695,12 @@
 
       <div class="agent-count" id="agentCountText">Mostrando 100 agentes prontos</div>
 
-      <div class="ai-assist-panel" onclick="launchAgent('NEXUS_MASTER', 'Assistente IA Nexus', 'Não precisa escrever: aperte o microfone e fale sua pergunta que eu respondo falando, mostro o gasto e a foto.')">
+      <div class="ai-assist-panel" onclick="launchAgent('NEXUS_MASTER', 'Assistente IA Nexus', 'Não precisa escrever: aperte o microfone e fale sua pergunta que eu respondo falando, mostro o gasto e a foto.', 'assist')">
         <div class="ai-assist-ico">🤖</div>
         <div class="ai-assist-content">
           <div class="ai-assist-title">Assistente IA Nexus</div>
           <div class="ai-assist-meta">TODOS OS AGENTES • MICROFONE + FALA + GASTO + FOTO</div>
-          <div class="ai-assist-desc">Todos os agentes falam ao abrir, ouvem pelo microfone, mostram o valor de gasto e a foto de exemplo.</div>
+          <div class="ai-assist-desc">Em qualquer agente, a foto corresponde ao tema pedido, com fala automática e gasto em R$.</div>
         </div>
       </div>
 
@@ -734,7 +734,7 @@
         <div class="modal-title" style="color: var(--mint);">✨ Criar Seu Agente IA</div>
         <button class="modal-close" onclick="closeCreateAgentModal()">✕</button>
       </div>
-      <input type="text" id="newAgentName" class="modal-input" placeholder="Nome do agente (ex: Especialista em Orçamentos)">
+      <input type="text" id="newAgentName" class="modal-input" placeholder="Nome do agente (ex: Especialista em Casas e Obras)">
       <select id="newAgentType" class="modal-select">
         <option value="assist">Assistência</option>
         <option value="art">Imagem & Arte</option>
@@ -748,7 +748,7 @@
     </div>
   </div>
 
-  <!-- Modal de Execução de Agente (Microfone + Fala + Gasto + Foto em Todos) -->
+  <!-- Modal de Execução de Agente -->
   <div class="modal-overlay" id="agentModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -764,7 +764,7 @@
       <div class="mic-status" id="micStatus">Aperte 🎤 Falar Pergunta para falar sem precisar digitar.</div>
 
       <p style="font-size:11px; color:var(--text-2); margin-bottom:10px;" id="modalAgentDesc"></p>
-      <textarea class="modal-textarea" id="modalPromptInput" placeholder="Fale no microfone ou digite sua pergunta aqui..."></textarea>
+      <textarea class="modal-textarea" id="modalPromptInput" placeholder="Fale no microfone ou digite (ex: projeto de casa moderna com garagem, cozinha e jardim)..."></textarea>
       <button class="btn-primary" id="runAgentBtn" onclick="executeAI()">⚡ Perguntar e Ouvir Resposta + Gasto + Foto</button>
 
       <div class="result-wrapper" id="resultWrapper">
@@ -821,6 +821,7 @@
     let voiceEnabled = true;
     let activeAgentContext = "";
     let activeAgentNameOnly = "Agente IA";
+    let activeAgentType = "assist";
     let recognitionInstance = null;
 
     function stopSpeech() {
@@ -895,6 +896,63 @@
       }
     }
 
+    // Traduz termos comuns de PT para EN para gerar imagens precisas em todos os agentes
+    function translateKeywordsToEnglish(text) {
+      const dictionary = [
+        [/projeto de casa|casa moderna|planta de casa|planta 3d|construcao|construção|obra|quarto|cozinha|garagem|terreno|muro|telhado/gi, "modern house architecture exterior garden daylight"],
+        [/logo|logotipo|marca|identidade visual/gi, "minimalist modern brand logo design on dark background"],
+        [/video|vídeo|youtube|tiktok|reels|roteiro|camera|câmera|audio|áudio|som|musica|música/gi, "video production studio camera lighting setup"],
+        [/dinheiro|financa|finança|orcamento|orçamento|lucro|venda|loja|negocio|negócio|banco|contrato/gi, "business financial planning desk charts calculator"],
+        [/ingles|inglês|estudo|escola|aula|livro|codigo|código|programacao|programação|python|sql/gi, "study desk laptop notebook educational workspace"],
+        [/clima|tempo|ciencia|ciência|natureza|planeta|energia/gi, "nature landscape science environment daylight"]
+      ];
+
+      let mapped = text.toLowerCase();
+      for (const [pattern, replacement] of dictionary) {
+        if (pattern.test(mapped)) {
+          return replacement;
+        }
+      }
+
+      return mapped
+        .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 75);
+    }
+
+    function buildAgentImagePrompt(userPrompt, agentName, agentType) {
+      const combined = `${userPrompt} ${agentName}`.toLowerCase();
+
+      if (
+        combined.includes("casa") ||
+        combined.includes("planta") ||
+        combined.includes("obra") ||
+        combined.includes("constru") ||
+        combined.includes("quarto") ||
+        combined.includes("garagem") ||
+        combined.includes("terreno")
+      ) {
+        return "Architectural exterior photo of a modern house project with front yard, clean walls, glass windows, daylight, realistic photography";
+      }
+
+      const translated = translateKeywordsToEnglish(combined);
+      if (translated) {
+        return `${translated}, realistic photography, clear lighting, high detail`;
+      }
+
+      const typeFallbacks = {
+        assist: "Helpful smart assistant workspace modern desk realistic photo",
+        art: "Creative graphic design studio color palette realistic photo",
+        video: "Video editing and sound studio setup realistic photo",
+        finance: "Financial planning desk with budget sheets realistic photo",
+        edu: "Study table with books and laptop realistic photo",
+        science: "Modern house architectural model and engineering blueprint photo"
+      };
+
+      return typeFallbacks[agentType] || "Modern house architectural design realistic photo";
+    }
+
     function isVipUnlocked() {
       if (TEST_MODE_OPEN) return true;
       return localStorage.getItem("nexus_vip_unlocked") === "true";
@@ -920,7 +978,7 @@
       }
     }
 
-    const standardSuffix = "Fala ao abrir, usa microfone, mostra o valor de gasto e a foto de exemplo.";
+    const standardSuffix = "Fala ao abrir, usa microfone, mostra o valor de gasto e a foto certa.";
 
     const baseAgents = [
       { id: '001', name: 'Assistente Geral Navius', tag: 'AG_001', desc: `Orientação completa para tarefas diárias. ${standardSuffix}`, type: 'assist', icon: '⚡', color: 'var(--cyan)' },
@@ -930,7 +988,7 @@
       { id: '005', name: 'Designer de Logotipos', tag: 'AG_005', desc: `Ideias de marca, logos e estilo visual. ${standardSuffix}`, type: 'art', icon: '🎨', color: 'var(--mint)' },
       { id: '006', name: 'Estrategista de Mídia', tag: 'AG_006', desc: `Divulgação, campanhas e crescimento. ${standardSuffix}`, type: 'video', icon: '📈', color: 'var(--red)' },
       { id: '007', name: 'Professor de Inglês', tag: 'AG_007', desc: `Tradução e conversação prática. ${standardSuffix}`, type: 'edu', icon: '🌎', color: 'var(--cyan)' },
-      { id: '008', name: 'Engenheiro de Obras', tag: 'AG_008', desc: `Materiais de construção, plantas e obras. ${standardSuffix}`, type: 'science', icon: '🏗️', color: 'var(--amber)' }
+      { id: '008', name: 'Engenheiro de Obras', tag: 'AG_008', desc: `Projetos de casa, materiais e obras. ${standardSuffix}`, type: 'science', icon: '🏗️', color: 'var(--amber)' }
     ];
 
     const generatedAgents = Array.from({ length: 92 }, (_, i) => {
@@ -970,7 +1028,7 @@
       list.forEach(agent => {
         const card = document.createElement('div');
         card.className = 'agent-card';
-        card.onclick = () => launchAgent(agent.tag, agent.name, agent.desc);
+        card.onclick = () => launchAgent(agent.tag, agent.name, agent.desc, agent.type);
         card.innerHTML = `
           <div class="agent-top">
             <div class="agent-icon" style="color:${agent.color};">${agent.icon}</div>
@@ -1038,12 +1096,13 @@
       renderAgents(filtered);
     });
 
-    function launchAgent(tag, name, desc) {
+    function launchAgent(tag, name, desc, agentType = "assist") {
       if (!isVipUnlocked() && getUsageCount() >= FREE_LIMIT) {
         openPaywallModal();
         return;
       }
       activeAgentNameOnly = name;
+      activeAgentType = agentType;
       activeAgentContext = `${name} (${tag}): ${desc}`;
       document.getElementById('modalAgentName').textContent = `${tag} • ${name}`;
       document.getElementById('modalAgentDesc').textContent = desc;
@@ -1116,17 +1175,34 @@
       costBox.textContent = "Calculando estimativa de gasto em R$...";
       photoLabel.textContent = "⏳ Gerando foto de exemplo...";
 
-      const imagePrompt = `Professional realistic high quality visual example of: ${promptText}, context ${activeAgentContext}, clean lighting, sharp details`;
-      const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(imagePrompt)}?width=768&height=512&nologo=true&seed=${Date.now()}`;
+      const primaryImgPrompt = buildAgentImagePrompt(promptText, activeAgentNameOnly, activeAgentType);
+      const fallbackImgPrompt = buildAgentImagePrompt(promptText, "", activeAgentType);
+      const primaryUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(primaryImgPrompt)}?width=768&height=512&nologo=true&seed=${Date.now()}`;
+      const fallbackUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fallbackImgPrompt)}?width=768&height=512&nologo=true&seed=${Date.now() + 1}`;
 
+      let triedFallback = false;
       photoImg.onload = () => {
-        photoLabel.textContent = "🖼️ Exemplo Visual Gerado pela IA";
+        if (photoImg.naturalWidth > 120) {
+          photoLabel.textContent = "🖼️ Exemplo Visual Gerado pela IA";
+        } else if (!triedFallback) {
+          triedFallback = true;
+          photoImg.src = fallbackUrl;
+          fullPhotoBtn.href = fallbackUrl;
+        } else {
+          photoLabel.textContent = "⚠️ Exemplo visual indisponível no momento";
+        }
       };
       photoImg.onerror = () => {
-        photoLabel.textContent = "⚠️ Não foi possível carregar a foto agora";
+        if (!triedFallback) {
+          triedFallback = true;
+          photoImg.src = fallbackUrl;
+          fullPhotoBtn.href = fallbackUrl;
+        } else {
+          photoLabel.textContent = "⚠️ Não foi possível carregar a foto agora";
+        }
       };
-      photoImg.src = imageUrl;
-      fullPhotoBtn.href = imageUrl;
+      photoImg.src = primaryUrl;
+      fullPhotoBtn.href = primaryUrl;
 
       try {
         const langLabel = currentLang === 'PT' ? 'Português do Brasil' : 'Inglês';
