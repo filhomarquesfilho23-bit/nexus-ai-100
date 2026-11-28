@@ -411,14 +411,30 @@
     }
 
     .voice-bar {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
       gap: 8px;
       margin-bottom: 10px;
     }
 
+    .btn-mic-action {
+      padding: 10px 8px;
+      border-radius: 10px;
+      border: 1px solid var(--cyan);
+      background: rgba(0, 229, 255, 0.16);
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-mic-action.listening {
+      background: rgba(251, 113, 133, 0.24);
+      border-color: var(--red);
+      color: var(--red);
+    }
+
     .btn-voice-action {
-      flex: 1;
-      padding: 9px 10px;
+      padding: 10px 8px;
       border-radius: 10px;
       border: 1px solid var(--mint);
       background: rgba(16, 245, 160, 0.14);
@@ -429,7 +445,7 @@
     }
 
     .btn-voice-stop {
-      padding: 9px 12px;
+      padding: 10px 10px;
       border-radius: 10px;
       border: 1px solid var(--red);
       background: rgba(251, 113, 133, 0.14);
@@ -437,6 +453,13 @@
       font-size: 11px;
       font-weight: 800;
       cursor: pointer;
+    }
+
+    .mic-status {
+      font-size: 11px;
+      color: var(--mint);
+      margin-bottom: 8px;
+      min-height: 15px;
     }
 
     .modal-input, .modal-select {
@@ -454,7 +477,7 @@
 
     .modal-textarea {
       width: 100%;
-      min-height: 80px;
+      min-height: 78px;
       background: var(--void);
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -616,7 +639,7 @@
         <div class="brand-logo" onclick="window.location.reload()">N2</div>
         <div>
           <div class="brand-title">NEXUS IA .2</div>
-          <div class="brand-sub">100 Agentes • Voz + Gasto + Foto</div>
+          <div class="brand-sub">100 Agentes • Mic + Voz + Gasto + Foto em Todos</div>
         </div>
       </div>
       <div class="top-actions">
@@ -633,14 +656,14 @@
     </div>
 
     <div class="utils-grid">
-      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Fala em voz alta e ajuda você a criar planta 3D, ver valor de gasto e foto.')">
+      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Aperte o microfone e fale o que quer construir. Eu falo o gasto e mostro a foto 3D.')">
         <div class="util-ico" style="background:rgba(0,229,255,0.15);color:var(--cyan);">🏗️</div>
         <div>
           <div class="util-name text-cyan">Plantas 3D</div>
-          <div class="util-desc">Voz • Gasto • Foto</div>
+          <div class="util-desc">Mic • Gasto • Foto</div>
         </div>
       </a>
-      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('SOM_VOZ', 'Estúdio Som & Voz Bluetooth', 'Fala em voz alta para quem prefere ouvir em vez de ler.')">
+      <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('SOM_VOZ', 'Estúdio Som & Voz Bluetooth', 'Fale pelo microfone e ouça tudo em voz alta.')">
         <div class="util-ico" style="background:rgba(168,85,247,0.15);color:var(--violet);">🔊</div>
         <div>
           <div class="util-name text-violet">Som & Voz</div>
@@ -672,12 +695,12 @@
 
       <div class="agent-count" id="agentCountText">Mostrando 100 agentes prontos</div>
 
-      <div class="ai-assist-panel" onclick="launchAgent('NEXUS_MASTER', 'Assistente IA Nexus', 'Abro falando e respondo tudo em voz alta, com valor de gasto e foto de exemplo.')">
+      <div class="ai-assist-panel" onclick="launchAgent('NEXUS_MASTER', 'Assistente IA Nexus', 'Não precisa escrever: aperte o microfone e fale sua pergunta que eu respondo falando, mostro o gasto e a foto.')">
         <div class="ai-assist-ico">🤖</div>
         <div class="ai-assist-content">
           <div class="ai-assist-title">Assistente IA Nexus</div>
-          <div class="ai-assist-meta">FALA AO ABRIR • RESPOSTA + GASTO + FOTO</div>
-          <div class="ai-assist-desc">Ao abrir qualquer agente, ele fala com você automaticamente para quem não lê ou prefere ouvir.</div>
+          <div class="ai-assist-meta">TODOS OS AGENTES • MICROFONE + FALA + GASTO + FOTO</div>
+          <div class="ai-assist-desc">Todos os agentes falam ao abrir, ouvem pelo microfone, mostram o valor de gasto e a foto de exemplo.</div>
         </div>
       </div>
 
@@ -725,7 +748,7 @@
     </div>
   </div>
 
-  <!-- Modal de Execução de Agente (Fala ao Abrir + Resposta + Valor de Gasto + Foto) -->
+  <!-- Modal de Execução de Agente (Microfone + Fala + Gasto + Foto em Todos) -->
   <div class="modal-overlay" id="agentModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -734,12 +757,14 @@
       </div>
 
       <div class="voice-bar">
-        <button type="button" class="btn-voice-action" onclick="speakCurrentModal()">🔊 Ouvir Agente / Resultado</button>
+        <button type="button" class="btn-mic-action" id="micBtn" onclick="startMicrophone()">🎤 Falar Pergunta</button>
+        <button type="button" class="btn-voice-action" onclick="speakCurrentModal()">🔊 Ouvir Resposta</button>
         <button type="button" class="btn-voice-stop" onclick="stopSpeech()">⏹ Parar</button>
       </div>
+      <div class="mic-status" id="micStatus">Aperte 🎤 Falar Pergunta para falar sem precisar digitar.</div>
 
       <p style="font-size:11px; color:var(--text-2); margin-bottom:10px;" id="modalAgentDesc"></p>
-      <textarea class="modal-textarea" id="modalPromptInput" placeholder="Fale ou digite sua pergunta (ex: construir quarto 4x4, montar loja online, criar logotipo...)"></textarea>
+      <textarea class="modal-textarea" id="modalPromptInput" placeholder="Fale no microfone ou digite sua pergunta aqui..."></textarea>
       <button class="btn-primary" id="runAgentBtn" onclick="executeAI()">⚡ Perguntar e Ouvir Resposta + Gasto + Foto</button>
 
       <div class="result-wrapper" id="resultWrapper">
@@ -796,7 +821,7 @@
     let voiceEnabled = true;
     let activeAgentContext = "";
     let activeAgentNameOnly = "Agente IA";
-    let lastSpokenText = "";
+    let recognitionInstance = null;
 
     function stopSpeech() {
       if ('speechSynthesis' in window) {
@@ -808,9 +833,8 @@
       if (!('speechSynthesis' in window)) return;
       if (!voiceEnabled && !forceSpeak) return;
       if (!textToSpeak || !textToSpeak.trim()) return;
-      lastSpokenText = textToSpeak.trim();
       window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(lastSpokenText.slice(0, 600));
+      const utter = new SpeechSynthesisUtterance(textToSpeak.trim().slice(0, 600));
       utter.lang = currentLang === 'PT' ? 'pt-BR' : 'en-US';
       utter.rate = 0.98;
       window.speechSynthesis.speak(utter);
@@ -820,10 +844,54 @@
       const resp = document.getElementById('modalResponseBox').textContent.trim();
       const cost = document.getElementById('costEstimateBox').textContent.trim();
       if (resp && resp !== "Analisando sua pergunta com NEXUS IA...") {
-        speakText(`${resp}. Estimativa de gastos: ${cost}`, true);
+        speakText(`${resp}. Valor estimado de gasto: ${cost}`, true);
       } else {
         const desc = document.getElementById('modalAgentDesc').textContent.trim();
-        speakText(`Olá! Você abriu o ${activeAgentNameOnly}. ${desc} Pode falar ou digitar a sua pergunta que eu respondo em voz alta, mostro o valor estimado de gasto e a foto de exemplo.`, true);
+        speakText(`Você abriu o ${activeAgentNameOnly}. ${desc} Aperte o botão falar pergunta para usar o microfone.`, true);
+      }
+    }
+
+    function startMicrophone() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const statusEl = document.getElementById('micStatus');
+      const micBtn = document.getElementById('micBtn');
+
+      if (!SpeechRec) {
+        statusEl.textContent = "Seu navegador não suporta microfone por voz aqui. Use o teclado de voz do celular.";
+        return;
+      }
+
+      stopSpeech();
+      recognitionInstance = new SpeechRec();
+      recognitionInstance.lang = currentLang === 'PT' ? 'pt-BR' : 'en-US';
+      recognitionInstance.interimResults = false;
+      recognitionInstance.maxAlternatives = 1;
+
+      micBtn.classList.add('listening');
+      micBtn.textContent = "🎙️ Ouvindo...";
+      statusEl.textContent = "Pode falar agora sua pergunta...";
+
+      recognitionInstance.onresult = (event) => {
+        const spokenText = event.results[0][0].transcript;
+        document.getElementById('modalPromptInput').value = spokenText;
+        statusEl.textContent = `Você falou: "${spokenText}"`;
+      };
+
+      recognitionInstance.onerror = () => {
+        statusEl.textContent = "Não consegui ouvir bem. Permita o microfone ou tente falar novamente.";
+      };
+
+      recognitionInstance.onend = () => {
+        micBtn.classList.remove('listening');
+        micBtn.textContent = "🎤 Falar Pergunta";
+      };
+
+      try {
+        recognitionInstance.start();
+      } catch (e) {
+        micBtn.classList.remove('listening');
+        micBtn.textContent = "🎤 Falar Pergunta";
+        statusEl.textContent = "Toque novamente em Falar Pergunta para ativar o microfone.";
       }
     }
 
@@ -852,15 +920,17 @@
       }
     }
 
+    const standardSuffix = "Fala ao abrir, usa microfone, mostra o valor de gasto e a foto de exemplo.";
+
     const baseAgents = [
-      { id: '001', name: 'Assistente Geral Navius', tag: 'AG_001', desc: 'Fala com você e ajuda em tarefas, gastos e foto de exemplo.', type: 'assist', icon: '⚡', color: 'var(--cyan)' },
-      { id: '002', name: 'Pesquisador Rápido', tag: 'AG_002', desc: 'Explica em voz alta, mostra custos médios e foto.', type: 'assist', icon: '🔍', color: 'var(--blue)' },
-      { id: '003', name: 'Criador de Conteúdo', tag: 'AG_003', desc: 'Cria roteiros para vídeos, calcula gasto e mostra capa.', type: 'art', icon: '✍️', color: 'var(--violet)' },
-      { id: '004', name: 'Analista Financeiro', tag: 'AG_004', desc: 'Fala o orçamento em reais, gastos e lucros.', type: 'finance', icon: '📊', color: 'var(--amber)' },
-      { id: '005', name: 'Designer de Logotipos', tag: 'AG_005', desc: 'Cria ideias de logo, valor estimado e foto de exemplo.', type: 'art', icon: '🎨', color: 'var(--mint)' },
-      { id: '006', name: 'Estrategista de Mídia', tag: 'AG_006', desc: 'Mostra como divulgar, gasto estimado e exemplo visual.', type: 'video', icon: '📈', color: 'var(--red)' },
-      { id: '007', name: 'Professor de Inglês', tag: 'AG_007', desc: 'Fala e ensina inglês de forma simples com imagem.', type: 'edu', icon: '🌎', color: 'var(--cyan)' },
-      { id: '008', name: 'Engenheiro de Obras', tag: 'AG_008', desc: 'Fala o gasto de material e obra e mostra foto 3D.', type: 'science', icon: '🏗️', color: 'var(--amber)' }
+      { id: '001', name: 'Assistente Geral Navius', tag: 'AG_001', desc: `Orientação completa para tarefas diárias. ${standardSuffix}`, type: 'assist', icon: '⚡', color: 'var(--cyan)' },
+      { id: '002', name: 'Pesquisador Rápido', tag: 'AG_002', desc: `Resumos objetivos e dados rápidos. ${standardSuffix}`, type: 'assist', icon: '🔍', color: 'var(--blue)' },
+      { id: '003', name: 'Criador de Conteúdo', tag: 'AG_003', desc: `Roteiros virais para redes sociais e vídeos. ${standardSuffix}`, type: 'art', icon: '✍️', color: 'var(--violet)' },
+      { id: '004', name: 'Analista Financeiro', tag: 'AG_004', desc: `Orçamentos, gastos em reais e lucros. ${standardSuffix}`, type: 'finance', icon: '📊', color: 'var(--amber)' },
+      { id: '005', name: 'Designer de Logotipos', tag: 'AG_005', desc: `Ideias de marca, logos e estilo visual. ${standardSuffix}`, type: 'art', icon: '🎨', color: 'var(--mint)' },
+      { id: '006', name: 'Estrategista de Mídia', tag: 'AG_006', desc: `Divulgação, campanhas e crescimento. ${standardSuffix}`, type: 'video', icon: '📈', color: 'var(--red)' },
+      { id: '007', name: 'Professor de Inglês', tag: 'AG_007', desc: `Tradução e conversação prática. ${standardSuffix}`, type: 'edu', icon: '🌎', color: 'var(--cyan)' },
+      { id: '008', name: 'Engenheiro de Obras', tag: 'AG_008', desc: `Materiais de construção, plantas e obras. ${standardSuffix}`, type: 'science', icon: '🏗️', color: 'var(--amber)' }
     ];
 
     const generatedAgents = Array.from({ length: 92 }, (_, i) => {
@@ -875,7 +945,7 @@
         id,
         name: `${titles[idx]} #${num}`,
         tag: `AG_${id}`,
-        desc: `Agente ${id}: fala ao abrir, mostra valor de gasto e foto de exemplo.`,
+        desc: `Agente ${id}: ${standardSuffix}`,
         type: types[idx],
         icon: icons[idx],
         color: colors[idx]
@@ -927,11 +997,12 @@
     function saveCustomAgent() {
       const name = document.getElementById('newAgentName').value.trim();
       const type = document.getElementById('newAgentType').value;
-      const desc = document.getElementById('newAgentDesc').value.trim();
-      if (!name || !desc) {
+      const rawDesc = document.getElementById('newAgentDesc').value.trim();
+      if (!name || !rawDesc) {
         alert("Preencha o nome e a função do seu agente.");
         return;
       }
+      const desc = rawDesc.includes(standardSuffix) ? rawDesc : `${rawDesc} ${standardSuffix}`;
       const customList = getSavedCustomAgents();
       const customNum = customList.length + 1;
       const newAgent = {
@@ -977,15 +1048,18 @@
       document.getElementById('modalAgentName').textContent = `${tag} • ${name}`;
       document.getElementById('modalAgentDesc').textContent = desc;
       document.getElementById('modalPromptInput').value = '';
+      document.getElementById('micStatus').textContent = "Aperte 🎤 Falar Pergunta para falar sem precisar digitar.";
       document.getElementById('resultWrapper').style.display = 'none';
       document.getElementById('agentModal').classList.add('open');
 
-      // Fala automaticamente ao abrir o agente
-      speakText(`Olá! Você abriu o ${name}. ${desc} Digite a sua pergunta que eu falo a resposta, o valor de gasto e mostro a foto de exemplo.`);
+      speakText(`Você abriu o ${name}. Aperte falar pergunta para usar o microfone que eu respondo em voz alta, mostro o gasto e a foto.`);
     }
 
     function closeAgentModal() {
       stopSpeech();
+      if (recognitionInstance) {
+        try { recognitionInstance.stop(); } catch {}
+      }
       document.getElementById('agentModal').classList.remove('open');
     }
 
@@ -1012,7 +1086,7 @@
     async function executeAI() {
       const promptText = document.getElementById('modalPromptInput').value.trim();
       if (!promptText) {
-        alert("Digite sua pergunta primeiro.");
+        alert("Fale no microfone ou digite sua pergunta primeiro.");
         return;
       }
 
@@ -1074,7 +1148,6 @@ Parte 2: Estimativa realista de valor de gasto no Brasil em Reais (R$), listando
         respBox.textContent = mainText;
         costBox.textContent = costText;
 
-        // Fala a resposta e o valor de gasto automaticamente
         speakText(`${mainText}. Valor estimado de gasto: ${costText}`);
       } catch (err) {
         respBox.textContent = "Erro de conexão ao gerar o texto. Verifique sua internet e tente novamente.";
