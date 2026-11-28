@@ -58,7 +58,6 @@
       padding: 0 14px;
     }
 
-    /* Cabeçalho */
     .topbar {
       display: flex;
       align-items: center;
@@ -128,7 +127,6 @@
       border-color: var(--amber);
     }
 
-    /* Slot de Anúncio Adsterra (Responsivo e Não-Bloqueante) */
     .adsterra-banner-slot {
       width: 100%;
       min-height: 54px;
@@ -143,7 +141,6 @@
       padding: 4px;
     }
 
-    /* Utilidades */
     .utils-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -177,7 +174,6 @@
     .util-name { font-size: 12px; font-weight: 700; }
     .util-desc { font-size: 10px; color: var(--text-2); margin-top: 1px; }
 
-    /* Catálogo */
     .catalog-header {
       display: flex;
       align-items: center;
@@ -249,7 +245,6 @@
       margin-bottom: 12px;
     }
 
-    /* Assistente IA em Destaque */
     .ai-assist-panel {
       background: linear-gradient(145deg, var(--void), var(--surface-2));
       border: 1px solid var(--cyan);
@@ -278,7 +273,6 @@
     .ai-assist-meta { font-size: 10px; color: var(--mint); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 700; }
     .ai-assist-desc { font-size: 11px; color: var(--text-2); line-height: 1.5; }
 
-    /* Grade de Agentes */
     .agent-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -325,7 +319,6 @@
     .agent-name { font-size: 12px; font-weight: 800; }
     .agent-desc { font-size: 10px; color: var(--text-2); line-height: 1.4; }
 
-    /* Menu Inferior Fixo */
     .bottom-nav {
       position: fixed;
       left: 0;
@@ -362,7 +355,6 @@
     }
     .nav-ico { font-size: 18px; }
 
-    /* Modal de Execução de Agente e Paywall VIP Mercado Pago */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -491,7 +483,6 @@
 <body>
 
   <main class="app-shell">
-    <!-- 1. Cabeçalho Superior -->
     <header class="topbar">
       <div class="brand-row">
         <div class="brand-logo" onclick="window.location.reload()">N2</div>
@@ -501,19 +492,17 @@
         </div>
       </div>
       <div class="top-actions">
-        <span class="badge gold" id="vipStatusBadge" onclick="openPaywallModal()">⭐ VIP</span>
+        <span class="badge gold" id="vipStatusBadge" onclick="openPaywallModal()">🧪 TESTE LIVRE</span>
         <span class="badge" id="langBadge" onclick="toggleLanguage()">PT</span>
         <span class="badge" id="voiceBadge" onclick="toggleVoice()">🔊 Voz</span>
       </div>
     </header>
 
-    <!-- 2. Banner Adsterra Topo (320x50 Mobile) -->
     <div class="adsterra-banner-slot" id="adsterra-top-banner">
       <!-- COLE AQUI O SEU CÓDIGO <script> DO BANNER 320x50 DA ADSTERRA -->
       <span style="font-size: 10px; color: var(--text-2);">Espaço Patrocinado • NEXUS IA</span>
     </div>
 
-    <!-- 3. Utilidades Rápidas -->
     <div class="utils-grid">
       <a href="#" class="util-card" onclick="event.preventDefault(); launchAgent('PLANTA_3D', 'Gerador de Plantas 3D', 'Descreva o terreno, quartos e medidas para gerar o projeto 3D.')">
         <div class="util-ico" style="background:rgba(0,229,255,0.15);color:var(--cyan);">🏗️</div>
@@ -531,7 +520,6 @@
       </a>
     </div>
 
-    <!-- 4. Catálogo de 100 Agentes -->
     <section id="catalog-section">
       <div class="catalog-header">
         <div class="catalog-title">Catálogo com 100 Agentes IA</div>
@@ -552,7 +540,6 @@
 
       <div class="agent-count" id="agentCountText">Mostrando 100 agentes prontos</div>
 
-      <!-- Assistente IA em Destaque -->
       <div class="ai-assist-panel" onclick="launchAgent('NEXUS_MASTER', 'Assistente IA Nexus', 'Pergunte qualquer coisa ou peça ajuda para escolher um dos 100 agentes.')">
         <div class="ai-assist-ico">🤖</div>
         <div class="ai-assist-content">
@@ -562,12 +549,10 @@
         </div>
       </div>
 
-      <!-- Grade dos 100 Agentes -->
       <div class="agent-grid" id="agentGridContainer"></div>
     </section>
   </main>
 
-  <!-- Menu Inferior Fixo -->
   <nav class="bottom-nav">
     <a href="#inicio" class="nav-item active" onclick="event.preventDefault(); setActiveNav(this, 'all')">
       <span class="nav-ico">🏠</span>
@@ -587,7 +572,6 @@
     </a>
   </nav>
 
-  <!-- Modal Funcional do Agente (Com IA Pública Sem Chave) -->
   <div class="modal-overlay" id="agentModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -601,7 +585,6 @@
     </div>
   </div>
 
-  <!-- Modal Paywall Mercado Pago (Após 2 Testes Grátis) -->
   <div class="modal-overlay" id="paywallModal">
     <div class="modal-box" style="border-color: var(--amber);">
       <div class="modal-header">
@@ -609,13 +592,13 @@
         <button class="modal-close" onclick="closePaywallModal()">✕</button>
       </div>
       <p style="font-size:12px; color:var(--text); line-height:1.5;">
-        Você utilizou seus <strong>2 testes gratuitos</strong> do NEXUS IA .2! Desbloqueie todos os <strong>100 Agentes</strong> e as <strong>18 Ferramentas</strong> por apenas <strong>R$ 2,00</strong>.
+        Modo de teste liberado. Quando quiser ativar a cobrança após os testes grátis, o link de pagamento é de <strong>R$ 2,00</strong> no Mercado Pago.
       </p>
       <a href="https://mpago.la/13o8xzR" target="_blank" rel="noopener noreferrer" class="btn-mp">
         💳 Pagar R$ 2,00 no Mercado Pago
       </a>
       <p style="font-size:11px; color:var(--text-2); margin-top:8px;">
-        Já pagou? Digite sua senha de liberação VIP abaixo:
+        Senha de liberação VIP:
       </p>
       <div class="vip-unlock-row">
         <input type="text" id="vipCodeInput" class="vip-input" placeholder="Senha VIP (ex: NEXUS2026)">
@@ -625,10 +608,10 @@
   </div>
 
   <script>
-    // URL Oficial do Projeto na Vercel
     const siteUrl = "https://nexus-ai-100-oficial.vercel.app";
 
-    // Controle de Monetização (2 testes grátis + VIP Mercado Pago)
+    // MODO DE TESTE LIBERADO: mude TEST_MODE_OPEN para false quando quiser voltar ao bloqueio após 2 usos
+    const TEST_MODE_OPEN = true;
     const FREE_LIMIT = 2;
     const VIP_PASSWORD = "NEXUS2026";
     let currentLang = "PT";
@@ -636,6 +619,7 @@
     let activeAgentContext = "";
 
     function isVipUnlocked() {
+      if (TEST_MODE_OPEN) return true;
       return localStorage.getItem("nexus_vip_unlocked") === "true";
     }
 
@@ -645,7 +629,11 @@
 
     function updateVipBadge() {
       const badge = document.getElementById("vipStatusBadge");
-      if (isVipUnlocked()) {
+      if (TEST_MODE_OPEN) {
+        badge.textContent = "🧪 TESTE LIVRE";
+        badge.style.borderColor = "var(--mint)";
+        badge.style.color = "var(--mint)";
+      } else if (isVipUnlocked()) {
         badge.textContent = "👑 VIP ATIVO";
         badge.style.borderColor = "var(--mint)";
         badge.style.color = "var(--mint)";
@@ -655,7 +643,6 @@
       }
     }
 
-    // Catálogo dos 100 Agentes
     const baseAgents = [
       { id: '001', name: 'Assistente Geral Navius', tag: 'AG_001', desc: 'Orientação completa para tarefas diárias, textos e ideias.', type: 'assist', icon: '⚡', color: 'var(--cyan)' },
       { id: '002', name: 'Pesquisador Rápido', tag: 'AG_002', desc: 'Resumos objetivos, respostas e dados estruturados.', type: 'assist', icon: '🔍', color: 'var(--blue)' },
@@ -726,7 +713,6 @@
       renderAgents(filtered);
     });
 
-    // Abertura de Agente com Verificação de Limite Gratuito
     function launchAgent(tag, name, desc) {
       if (!isVipUnlocked() && getUsageCount() >= FREE_LIMIT) {
         openPaywallModal();
@@ -762,11 +748,10 @@
         closePaywallModal();
         alert("Acesso VIP NEXUS IA .2 desbloqueado com sucesso!");
       } else {
-        alert("Senha inválida. Conclua o pagamento de R$ 2,00 no Mercado Pago ou digite NEXUS2026.");
+        alert("Senha inválida. Digite NEXUS2026.");
       }
     }
 
-    // Execução de IA Pública (Sem exigir chave API do usuário)
     async function executeAI() {
       const promptText = document.getElementById('modalPromptInput').value.trim();
       if (!promptText) {
@@ -830,13 +815,11 @@
       filterAgents(filterType, null);
     }
 
-    // Inicialização
     updateVipBadge();
     renderAgents();
   </script>
 
   <!-- SCRIPT SOCIAL BAR ADSTERRA (COLE SUA TAG ASSÍNCRONA ABAIXO ANTES DO </body>) -->
-  <!-- Exemplo: <script async type='text/javascript' src='//plXXXXX.highperformanceformat.com/XX/XX/XX/XXXX.js'></script> -->
 
 </body>
 </html>
