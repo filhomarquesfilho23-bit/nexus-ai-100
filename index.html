@@ -178,8 +178,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 14px;
+      flex-wrap: wrap;
     }
 
     .catalog-title {
@@ -188,15 +189,25 @@
       color: var(--text);
     }
 
+    .catalog-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .btn-outline {
       background: var(--void);
       color: var(--cyan);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 9px 14px;
+      padding: 8px 12px;
       font-size: 11px;
       font-weight: 700;
       cursor: pointer;
+    }
+    .btn-outline.create-btn {
+      background: rgba(0, 229, 255, 0.14);
+      border-color: var(--cyan);
     }
 
     .search-input {
@@ -396,6 +407,19 @@
       font-weight: bold;
     }
 
+    .modal-input, .modal-select {
+      width: 100%;
+      background: var(--void);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 12px;
+      color: var(--text);
+      font-size: 13px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    .modal-input:focus, .modal-select:focus { border-color: var(--cyan); }
+
     .modal-textarea {
       width: 100%;
       min-height: 90px;
@@ -498,9 +522,10 @@
       </div>
     </header>
 
+    <!-- SLOT 1 ADSTERRA: BANNER 320x50 NO TOPO -->
     <div class="adsterra-banner-slot" id="adsterra-top-banner">
-      <!-- COLE AQUI O SEU CÓDIGO <script> DO BANNER 320x50 DA ADSTERRA -->
-      <span style="font-size: 10px; color: var(--text-2);">Espaço Patrocinado • NEXUS IA</span>
+      <!-- COLE AQUI O CÓDIGO DO BANNER 320x50 DA ADSTERRA -->
+      <span style="font-size: 10px; color: var(--text-2);">Espaço Adsterra • NEXUS IA .2</span>
     </div>
 
     <div class="utils-grid">
@@ -523,7 +548,10 @@
     <section id="catalog-section">
       <div class="catalog-header">
         <div class="catalog-title">Catálogo com 100 Agentes IA</div>
-        <button class="btn-outline" onclick="openPaywallModal()">🔓 Liberar VIP</button>
+        <div class="catalog-actions">
+          <button class="btn-outline create-btn" onclick="openCreateAgentModal()">+ Criar Agente</button>
+          <button class="btn-outline" onclick="openPaywallModal()">🔓 Liberar VIP</button>
+        </div>
       </div>
 
       <input type="text" class="search-input" placeholder="Buscar entre os 100 agentes (ex.: site, orçamento, inglês, logo)..." id="searchInput">
@@ -572,6 +600,28 @@
     </a>
   </nav>
 
+  <!-- Modal Criar Seu Agente -->
+  <div class="modal-overlay" id="createAgentModal">
+    <div class="modal-box" style="border-color: var(--mint);">
+      <div class="modal-header">
+        <div class="modal-title" style="color: var(--mint);">✨ Criar Seu Agente IA</div>
+        <button class="modal-close" onclick="closeCreateAgentModal()">✕</button>
+      </div>
+      <input type="text" id="newAgentName" class="modal-input" placeholder="Nome do agente (ex: Especialista em Orçamentos)">
+      <select id="newAgentType" class="modal-select">
+        <option value="assist">Assistência</option>
+        <option value="art">Imagem & Arte</option>
+        <option value="video">Vídeo & Mídia</option>
+        <option value="finance">Finanças</option>
+        <option value="edu">Educação</option>
+        <option value="science">Clima & Ciência</option>
+      </select>
+      <textarea id="newAgentDesc" class="modal-textarea" placeholder="O que esse agente faz e como ele deve responder?"></textarea>
+      <button class="btn-primary" onclick="saveCustomAgent()">💾 Salvar no Catálogo</button>
+    </div>
+  </div>
+
+  <!-- Modal de Execução de Agente -->
   <div class="modal-overlay" id="agentModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -585,6 +635,7 @@
     </div>
   </div>
 
+  <!-- Modal VIP Mercado Pago -->
   <div class="modal-overlay" id="paywallModal">
     <div class="modal-box" style="border-color: var(--amber);">
       <div class="modal-header">
@@ -654,29 +705,38 @@
       { id: '008', name: 'Engenheiro de Obras', tag: 'AG_008', desc: 'Cálculo de materiais, plantas 3D e cronogramas.', type: 'science', icon: '🏗️', color: 'var(--amber)' }
     ];
 
-    const allAgents = [
-      ...baseAgents,
-      ...Array.from({ length: 92 }, (_, i) => {
-        const num = i + 9;
-        const id = String(num).padStart(3, '0');
-        const types = ['assist', 'art', 'video', 'finance', 'edu', 'science'];
-        const titles = ['Especialista Web', 'Gerador de Contratos', 'Editor de Roteiros', 'Consultor Fiscal', 'Tutor de Python & SQL', 'Analista de Dados'];
-        const icons = ['🤖', '💡', '🎬', '💰', '💻', '🧬'];
-        const colors = ['var(--cyan)', 'var(--blue)', 'var(--violet)', 'var(--amber)', 'var(--mint)', 'var(--red)'];
-        const idx = i % types.length;
-        return {
-          id,
-          name: `${titles[idx]} #${num}`,
-          tag: `AG_${id}`,
-          desc: `Agente especializado ${id} pronto para executar demandas sob medida.`,
-          type: types[idx],
-          icon: icons[idx],
-          color: colors[idx]
-        };
-      })
-    ];
+    const generatedAgents = Array.from({ length: 92 }, (_, i) => {
+      const num = i + 9;
+      const id = String(num).padStart(3, '0');
+      const types = ['assist', 'art', 'video', 'finance', 'edu', 'science'];
+      const titles = ['Especialista Web', 'Gerador de Contratos', 'Editor de Roteiros', 'Consultor Fiscal', 'Tutor de Python & SQL', 'Analista de Dados'];
+      const icons = ['🤖', '💡', '🎬', '💰', '💻', '🧬'];
+      const colors = ['var(--cyan)', 'var(--blue)', 'var(--violet)', 'var(--amber)', 'var(--mint)', 'var(--red)'];
+      const idx = i % types.length;
+      return {
+        id,
+        name: `${titles[idx]} #${num}`,
+        tag: `AG_${id}`,
+        desc: `Agente especializado ${id} pronto para executar demandas sob medida.`,
+        type: types[idx],
+        icon: icons[idx],
+        color: colors[idx]
+      };
+    });
 
-    function renderAgents(list = allAgents) {
+    function getSavedCustomAgents() {
+      try {
+        return JSON.parse(localStorage.getItem("nexus_custom_agents") || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function getAllAgents() {
+      return [...getSavedCustomAgents(), ...baseAgents, ...generatedAgents];
+    }
+
+    function renderAgents(list = getAllAgents()) {
       const container = document.getElementById('agentGridContainer');
       container.innerHTML = '';
       list.forEach(agent => {
@@ -696,8 +756,44 @@
       document.getElementById('agentCountText').textContent = `Mostrando ${list.length} agentes prontos`;
     }
 
+    function openCreateAgentModal() {
+      document.getElementById('newAgentName').value = '';
+      document.getElementById('newAgentDesc').value = '';
+      document.getElementById('createAgentModal').classList.add('open');
+    }
+
+    function closeCreateAgentModal() {
+      document.getElementById('createAgentModal').classList.remove('open');
+    }
+
+    function saveCustomAgent() {
+      const name = document.getElementById('newAgentName').value.trim();
+      const type = document.getElementById('newAgentType').value;
+      const desc = document.getElementById('newAgentDesc').value.trim();
+      if (!name || !desc) {
+        alert("Preencha o nome e a função do seu agente.");
+        return;
+      }
+      const customList = getSavedCustomAgents();
+      const customNum = customList.length + 1;
+      const newAgent = {
+        id: `custom_${Date.now()}`,
+        name,
+        tag: `MEU_${String(customNum).padStart(2, '0')}`,
+        desc,
+        type,
+        icon: '✨',
+        color: 'var(--mint)'
+      };
+      customList.unshift(newAgent);
+      localStorage.setItem("nexus_custom_agents", JSON.stringify(customList));
+      closeCreateAgentModal();
+      renderAgents();
+    }
+
     function filterAgents(type, el) {
-      const filtered = type === 'all' ? allAgents : allAgents.filter(a => a.type === type);
+      const all = getAllAgents();
+      const filtered = type === 'all' ? all : all.filter(a => a.type === type);
       renderAgents(filtered);
       document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       if (el) el.classList.add('active');
@@ -705,7 +801,7 @@
 
     document.getElementById('searchInput').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase();
-      const filtered = allAgents.filter(a =>
+      const filtered = getAllAgents().filter(a =>
         a.name.toLowerCase().includes(q) ||
         a.tag.toLowerCase().includes(q) ||
         a.desc.toLowerCase().includes(q)
@@ -819,7 +915,7 @@
     renderAgents();
   </script>
 
-  <!-- SCRIPT SOCIAL BAR ADSTERRA (COLE SUA TAG ASSÍNCRONA ABAIXO ANTES DO </body>) -->
+  <!-- SLOT 2 ADSTERRA: SOCIAL BAR (COLE AQUI SUA TAG <script async ...> ANTES DO </body>) -->
 
 </body>
 </html>
